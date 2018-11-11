@@ -2,18 +2,25 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>分类: 杂言 - HeRaNO</title>
+<title>「HLOI2015」Color - HeRaNO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="HeRaNO">
-<meta property="og:url" content="https://herano.github.io/categories/杂言/index.html">
+    <meta name="description" content="HLOI2015 Day1 T2">
+<meta name="keywords" content="HLOI,DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「HLOI2015」Color">
+<meta property="og:url" content="https://herano.github.io/2016/05/02/「HLOI2015」Color/index.html">
 <meta property="og:site_name" content="HeRaNO">
+<meta property="og:description" content="HLOI2015 Day1 T2">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://herano.github.io/images/HLOI2015-color.jpg">
+<meta property="og:updated_time" content="2018-11-11T15:03:17.767Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HeRaNO">
+<meta name="twitter:title" content="「HLOI2015」Color">
+<meta name="twitter:description" content="HLOI2015 Day1 T2">
+<meta name="twitter:image" content="https://herano.github.io/images/HLOI2015-color.jpg">
 
 
 
@@ -112,6 +119,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -126,34 +137,22 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">分类</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">杂言</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-10T16:00:00.000Z">2018-11-11</time>
+                <time class="level-item has-text-grey" datetime="2016-05-02T08:18:14.000Z">2016-05-02</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/杂言/">杂言</a>
+                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    10 分钟 读完 (大约 1531 个字)
+                    6 分钟 读完 (大约 845 个字)
                 </span>
                 
             </div>
@@ -161,30 +160,92 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/11/11/AFTER-STORY-HeRaNO-UESTC-and-more/">AFTER STORY, HeRaNO@UESTC, and more</a>
+                「HLOI2015」Color
             
         </h1>
         <div class="content">
-            <p>为什么要搞这么个博客呢？<br></p>
+            <p>HLOI2015 Day1 T2<br><a id="more"></a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>魔法世界的庆典就要到了，大法师交给 Chavo 好多好多魔法丝带，要求 Chavo 为它们涂上五彩斑斓的颜色。Chavo 把一条丝带等分成 \(m\) 段，将连续的几段涂上一种颜色。她有 \(n \) 种不同颜色的颜料，而且她会使用每一种颜色一次且仅一次。某一次涂色可能会覆盖掉之前已经涂上的颜色，但是她不会让一种颜色完全覆盖掉另外一种颜色。现在 Chavo 想知道，她有多少种不同的方案为一条丝带涂色？结果要对 \(10^9+7 \) 取模后输出。</p>
+<p>设颜色 \(A \) 的起点为 \(L_1 \)，终点为 \(R_1 \)，颜色 \(B \) 的起点为 \(L_2 \)，终点为 \(R_2 \)，当 \(L_1\le L_2\le R_2\le R_1 \) 时，颜色 \(A \) 完全覆盖颜色 \(B \) 。每一种方案包含 \(n \) 对 \(L_i\) 和 \(R_i \)，每一对 \(L_i \) 和 \(R_i \) 代表一次涂色的起点和终点（其中 \(1\le L_i\le R_i\le m \)）。</p>
+<p>两种方案不一样当且仅当一种方案里的某一次涂色的起点和终点在另外一种方案里不存在。 </p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>只有一行输入整数 \(n \) 和 \(m \)。</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>输出一行带有一个整数代表有多少种画法满足题意，结果要对 \(10^9+7 \) 取模后输出。</p>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 3</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6</span><br></pre></td></tr></table></figure>
+<h2 id="样例说明"><a href="#样例说明" class="headerlink" title="样例说明"></a>样例说明</h2><p>\(6\) 种情况为：<br><img src="/images/HLOI2015-color.jpg" alt="六种染色方法"></p>
+<h2 id="数据范围及约定"><a href="#数据范围及约定" class="headerlink" title="数据范围及约定"></a>数据范围及约定</h2><p>对于 \(30\%\) 的数据，\(1\le n,m\le 10 \)；<br>对于 \(60\%\) 的数据，\(1\le n,m\le 100 \)；<br>对于 \(100\%\) 的数据，\(1\le n\times m\le 10^5 \)。</p>
+<h2 id="时间限制与空间限制"><a href="#时间限制与空间限制" class="headerlink" title="时间限制与空间限制"></a>时间限制与空间限制</h2><p>时间限制：\(2000\text{ms} \)，空间限制：\(128\text{MB} \)</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>由题意可知，对于任意两段颜色来说，设起点分别为 \(L_1,L_2 \)，终点分别为 \(R_1,R_2 \)。</p>
+<p>若 \(L_1=L_2 \)，则无论 \(R_1,R_2 \) 大小关系如何，必定一段颜色覆盖另一段，不满足题意。同理 \(R_1\not =R_2 \)。于是可以知道每一个位置最多是一种颜色的起点，一种颜色的终点。</p>
+<p>令 \(L_1&lt;L_2 \)（反之也是一样），若 \(R_1&gt;R_2 \)，则第一段颜色覆盖第二段颜色，所以必有 \(R_1&lt;R_2 \)<br>对任意两段颜色都成立，则对所有颜色都成立。</p>
+<p>所以有 \(L_1&lt;L_2&lt;\cdots &lt;L_n \)，则必有 \(R_1&lt;R_2&lt;\cdots &lt;R_n \)，且 \(L_1\le R_1,\ L_2\le R_2,\ \cdots ,\ L_n\le R_n \)。由此可知，某个起点 \(L_i \) 所对应的 \(R_i \) 与其位置无关，仅与已经确定的 \(R_i \) 的个数有关。故考虑以下动态规划状态。</p>
+<p>\(f(k,i,j) \) 代表在已经确定前 \(k-1 \) 个格子中有 \(i \) 个起点和 \(j \) 个终点，第 \(k \) 个格子为确定四种状态之一：起点，终点，既是起点又是终点，不是起点也不是终点。</p>
+<p>时间复杂度为 \(\mathcal{O}(n^2m) \)。</p>
+<p>对于 \(n\times m\le 10^5 \)，考虑到如果 \(n&gt;m \)，则无解，故 \(n\le m \)，由此推出 \(n^2\le n\times m\le 10^5 \)，则 \(n&lt;333 \)，则 \(n^2m\le 3.33\times 10^7 \)，可以在时限内运行完。因为一个格子的状态只与上一个格子的状态有关，可以用滚动数组优化内存空间。</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> M 1000000007</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,m,f[<span class="hljs-number">2</span>][<span class="hljs-number">333</span>][<span class="hljs-number">333</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="hljs-keyword">if</span>(n&gt;m)<span class="hljs-comment">//特判</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">puts</span>(<span class="hljs-string">"0"</span>);</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	f[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;<span class="hljs-comment">//初始</span></span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">1</span>;k&lt;=m;k++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=n;i++)<span class="hljs-comment">//运用与运算压缩空间，k&amp;1 的结果为 k%2</span></span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;=i;j++)<span class="hljs-comment">//终点数应小于等于起点数</span></span><br><span class="line">			&#123;</span><br><span class="line">				f[k&amp;<span class="hljs-number">1</span>][i][j]=f[k<span class="hljs-number">-1</span>&amp;<span class="hljs-number">1</span>][i][j];</span><br><span class="line">				<span class="hljs-comment">//这一格既不是起点也不是终点</span></span><br><span class="line">				<span class="hljs-keyword">if</span>(i) f[k&amp;<span class="hljs-number">1</span>][i][j]=(f[k<span class="hljs-number">-1</span>&amp;<span class="hljs-number">1</span>][i<span class="hljs-number">-1</span>][j]+f[k&amp;<span class="hljs-number">1</span>][i][j])%M;</span><br><span class="line">				<span class="hljs-comment">//以这一格为起点</span></span><br><span class="line">				<span class="hljs-keyword">if</span>(j) f[k&amp;<span class="hljs-number">1</span>][i][j]=(f[k<span class="hljs-number">-1</span>&amp;<span class="hljs-number">1</span>][i][j<span class="hljs-number">-1</span>]+f[k&amp;<span class="hljs-number">1</span>][i][j])%M;</span><br><span class="line">				<span class="hljs-comment">//以这一格为终点</span></span><br><span class="line">				<span class="hljs-keyword">if</span>(i&amp;&amp;j) f[k&amp;<span class="hljs-number">1</span>][i][j]=(f[k<span class="hljs-number">-1</span>&amp;<span class="hljs-number">1</span>][i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>]+f[k&amp;<span class="hljs-number">1</span>][i][j])%M;</span><br><span class="line">				<span class="hljs-comment">//既以这一格为起点，又以这一格为终点</span></span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d"</span>,f[m&amp;<span class="hljs-number">1</span>][n][n]%M);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/11/11/AFTER-STORY-HeRaNO-UESTC-and-more/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/DP/">DP</a>, <a class="has-link-grey -link" href="/tags/HLOI/">HLOI</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
 </div>
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/11/11/AFTER-STORY-HeRaNO-UESTC-and-more/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">AFTER STORY, HeRaNO@UESTC, and more</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2016/04/30/「HLOI2015」Magic/">
+                <span class="level-item">「HLOI2015」Magic</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDk0NS8xNzQ3MA==">
+    <script type="text/javascript">
+        (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+
+            if (typeof LivereTower === 'function') { return; }
+
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+    </script>
+    <noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+
+    </div>
+</div>
 </div>
                 
 
@@ -284,6 +345,53 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述">
+        <span class="has-mr-6">1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#输入">
+        <span class="has-mr-6">2</span>
+        <span>输入</span>
+        </a></li><li>
+        <a class="is-flex" href="#输出">
+        <span class="has-mr-6">3</span>
+        <span>输出</span>
+        </a></li><li>
+        <a class="is-flex" href="#样例输入">
+        <span class="has-mr-6">4</span>
+        <span>样例输入</span>
+        </a></li><li>
+        <a class="is-flex" href="#样例输出">
+        <span class="has-mr-6">5</span>
+        <span>样例输出</span>
+        </a></li><li>
+        <a class="is-flex" href="#样例说明">
+        <span class="has-mr-6">6</span>
+        <span>样例说明</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据范围及约定">
+        <span class="has-mr-6">7</span>
+        <span>数据范围及约定</span>
+        </a></li><li>
+        <a class="is-flex" href="#时间限制与空间限制">
+        <span class="has-mr-6">8</span>
+        <span>时间限制与空间限制</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解">
+        <span class="has-mr-6">9</span>
+        <span>题解</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 

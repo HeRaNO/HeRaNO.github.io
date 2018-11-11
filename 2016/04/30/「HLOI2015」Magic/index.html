@@ -2,18 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>分类: 杂言 - HeRaNO</title>
+<title>「HLOI2015」Magic - HeRaNO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="HeRaNO">
-<meta property="og:url" content="https://herano.github.io/categories/杂言/index.html">
+    <meta name="description" content="HLOI2015 Day1 T1">
+<meta name="keywords" content="HLOI,最小生成树,最短路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「HLOI2015」Magic">
+<meta property="og:url" content="https://herano.github.io/2016/04/30/「HLOI2015」Magic/index.html">
 <meta property="og:site_name" content="HeRaNO">
+<meta property="og:description" content="HLOI2015 Day1 T1">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-11T15:03:05.679Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HeRaNO">
+<meta name="twitter:title" content="「HLOI2015」Magic">
+<meta name="twitter:description" content="HLOI2015 Day1 T1">
 
 
 
@@ -112,6 +117,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -126,34 +135,22 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">分类</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">杂言</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-10T16:00:00.000Z">2018-11-11</time>
+                <time class="level-item has-text-grey" datetime="2016-04-30T13:33:32.000Z">2016-04-30</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/杂言/">杂言</a>
+                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    10 分钟 读完 (大约 1531 个字)
+                    6 分钟 读完 (大约 867 个字)
                 </span>
                 
             </div>
@@ -161,20 +158,50 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/11/11/AFTER-STORY-HeRaNO-UESTC-and-more/">AFTER STORY, HeRaNO@UESTC, and more</a>
+                「HLOI2015」Magic
             
         </h1>
         <div class="content">
-            <p>为什么要搞这么个博客呢？<br></p>
+            <p>HLOI2015 Day1 T1<br><a id="more"></a></p>
+<p>//这次貌似暴露省份了……</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Chavo 是一个生活在魔法世界里的小法师。魔法的世界里有 \(n\) 座法师塔，第 \(i\) 座法师塔有 \(a_i \) 点魔法。其中有 \(m \) 对法师塔之间可以相互传送，传送消耗的魔法值是两个法师塔魔法值的最小公倍数。</p>
+<p>Chavo 想要从第一座法师塔传送到第 \(n \) 座法师塔，她在每一次传送之后都会等待魔法全部恢复再进行下一次传送，也就是说 Chavo 需要的魔法值只是所有传送消耗魔法的最大值。Chavo 想知道她最少需要多少魔法值就可以从第一座法师塔传送到第 \(n \) 座法师塔？</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>第一行输入整数 \(n \) 和 \(m \)。<br>接下来一行 \(n \) 个数，第 \(i\) 个数 \(a_i \) 代表第 \(i \) 座法师塔的魔法值。<br>接下来 \(m \) 行，每行 \(2 \) 个数 \(u,v \)，代表第 \(u \) 座法师塔和第 \(v \) 座法师塔之间可以相互传送。</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>输出一行带有一个整数代表需要的最小魔法值。</p>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3 3</span><br><span class="line">2 3 5</span><br><span class="line">1 3</span><br><span class="line">3 1</span><br><span class="line">2 2</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10</span><br></pre></td></tr></table></figure>
+<h2 id="样例说明"><a href="#样例说明" class="headerlink" title="样例说明"></a>样例说明</h2><p>只有一条路径从 \(1 \) 到 \(3 \)，传送需要的魔法值是 \(2 \) 和 \(5 \) 的最小公倍数 \(10 \)，故需要 \(10 \) 点魔法值。</p>
+<h2 id="数据范围及约定"><a href="#数据范围及约定" class="headerlink" title="数据范围及约定"></a>数据范围及约定</h2><p>对于 \(30\% \) 的数据， \(1\le n,m\le 100,1\le u,v\le n,1\le a_i\le 10^3 \)；<br>对于 \(60\% \) 的数据， \(1\le n\le 100,1\le m\le 10^4,1\le u,v\le n,1\le a_i\le 10^3 \)；<br>对于 \(100\% \) 的数据， \(1\le n,m\le 10^5,1\le u,v\le n,1\le a_i\le 10^3 \)。</p>
+<h2 id="时间限制与空间限制"><a href="#时间限制与空间限制" class="headerlink" title="时间限制与空间限制"></a>时间限制与空间限制</h2><p>时间限制：\(2000\text{ms}\)，空间限制：\(128\text{MB}\)。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>因为最大值符合加法性质（即两部分最大值的最大值为整体最大值），所以可以类似 SPFA 一样松弛。<br><del>应该是这样吧，题解打的是二分套 SPFA 验证。</del></p>
+<p>根据题目，求的是两点之间的路径长度最大值的最小值，考虑货车运输的类似做法即可，不过货车运输求的是两点之间路径长度最小值的最大值。</p>
+<p>直接 SPFA 的时间复杂度是 \(\mathcal{O}(km)\) 的，标程的时间复杂度是 \(\mathcal{O}(km\log L)\) 的，最小生成树的时间复杂度是 \(\mathcal{O}(m\log m+m\alpha(n))\) 的。</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 100010</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">link</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> to,val,nxt;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">link e[MAXN&lt;&lt;<span class="hljs-number">1</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> head[MAXN],cnt;</span><br><span class="line"><span class="hljs-keyword">int</span> n,m,u,v,a[MAXN],dis[MAXN];</span><br><span class="line"><span class="hljs-keyword">bool</span> vis[MAXN];</span><br><span class="line"><span class="hljs-built_in">queue</span> &lt;<span class="hljs-keyword">int</span>&gt; q;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>&#123;<span class="hljs-keyword">return</span> b?gcd(b,a%b):a;&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lcm</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>&#123;<span class="hljs-keyword">return</span> a*b/gcd(a,b);&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getdis</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u,<span class="hljs-keyword">int</span> v)</span></span>&#123;<span class="hljs-keyword">return</span> lcm(a[u],a[v]);&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">mymax</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>&#123;<span class="hljs-keyword">return</span> a&gt;b?a:b;&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u,<span class="hljs-keyword">int</span> v,<span class="hljs-keyword">int</span> w)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	e[cnt]=(link)&#123;v,w,head[u]&#125;;head[u]=cnt++;</span><br><span class="line">	e[cnt]=(link)&#123;u,w,head[v]&#125;;head[v]=cnt++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">SPFA</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	q.push(<span class="hljs-number">1</span>);dis[<span class="hljs-number">1</span>]=<span class="hljs-number">0</span>;vis[<span class="hljs-number">1</span>]=<span class="hljs-literal">true</span>;</span><br><span class="line">	<span class="hljs-keyword">while</span> (!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">int</span> u=q.front();q.pop();vis[u]=<span class="hljs-literal">false</span>;</span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=edge_num[u];~i;i=e[i].nxt)</span><br><span class="line">		<span class="hljs-keyword">if</span> (dis[e[i].to]&gt;mymax(dis[u],e[i].val))</span><br><span class="line">		&#123;</span><br><span class="line">			dis[e[i].to]=mymax(dis[u],e[i].val);</span><br><span class="line">			<span class="hljs-keyword">if</span> (!vis[e[i].to])</span><br><span class="line">			&#123;</span><br><span class="line">				vis[e[i].to]=<span class="hljs-literal">true</span>;</span><br><span class="line">				q.push(e[i].to);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> dis[n];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">memset</span>(head,<span class="hljs-number">-1</span>,<span class="hljs-keyword">sizeof</span> head);</span><br><span class="line">	<span class="hljs-built_in">memset</span>(dis,<span class="hljs-number">0x7f</span>,<span class="hljs-keyword">sizeof</span> dis);</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>,&amp;u,&amp;v);</span><br><span class="line">		add(u,v,getdis(u,v));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,SPFA());</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/HLOI/">HLOI</a>, <a class="has-link-grey -link" href="/tags/最小生成树/">最小生成树</a>, <a class="has-link-grey -link" href="/tags/最短路/">最短路</a>
+                </div>
+            </div>
         </div>
         
         
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/11/11/AFTER-STORY-HeRaNO-UESTC-and-more/#more">阅读更多</a>
-                </div>
-            </div>
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2016/05/02/「HLOI2015」Color/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">「HLOI2015」Color</span>
+            </a>
         </div>
         
         
@@ -183,8 +210,29 @@
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDk0NS8xNzQ3MA==">
+    <script type="text/javascript">
+        (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
 
+            if (typeof LivereTower === 'function') { return; }
 
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+    </script>
+    <noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+
+    </div>
+</div>
 </div>
                 
 
@@ -284,6 +332,53 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述">
+        <span class="has-mr-6">1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#输入">
+        <span class="has-mr-6">2</span>
+        <span>输入</span>
+        </a></li><li>
+        <a class="is-flex" href="#输出">
+        <span class="has-mr-6">3</span>
+        <span>输出</span>
+        </a></li><li>
+        <a class="is-flex" href="#样例输入">
+        <span class="has-mr-6">4</span>
+        <span>样例输入</span>
+        </a></li><li>
+        <a class="is-flex" href="#样例输出">
+        <span class="has-mr-6">5</span>
+        <span>样例输出</span>
+        </a></li><li>
+        <a class="is-flex" href="#样例说明">
+        <span class="has-mr-6">6</span>
+        <span>样例说明</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据范围及约定">
+        <span class="has-mr-6">7</span>
+        <span>数据范围及约定</span>
+        </a></li><li>
+        <a class="is-flex" href="#时间限制与空间限制">
+        <span class="has-mr-6">8</span>
+        <span>时间限制与空间限制</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解">
+        <span class="has-mr-6">9</span>
+        <span>题解</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 

@@ -2,18 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>分类: OI/ACM - HeRaNO</title>
+<title>UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解 - HeRaNO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="HeRaNO">
-<meta property="og:url" content="https://herano.github.io/categories/OI-ACM/index.html">
+    <meta name="description" content="5/5 Penalty: 03:36:41 Rank 5">
+<meta name="keywords" content="模拟,概率与期望,数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解">
+<meta property="og:url" content="https://herano.github.io/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/index.html">
 <meta property="og:site_name" content="HeRaNO">
+<meta property="og:description" content="5/5 Penalty: 03:36:41 Rank 5">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-17T09:46:21.983Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HeRaNO">
+<meta name="twitter:title" content="UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解">
+<meta name="twitter:description" content="5/5 Penalty: 03:36:41 Rank 5">
 
 
 
@@ -112,6 +117,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -126,18 +135,6 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">分类</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">OI/ACM</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
@@ -161,126 +158,105 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/">UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解</a>
+                UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解
             
         </h1>
         <div class="content">
-            <p>5/5 Penalty: 03:36:41 Rank 5<br></p>
+            <p>5/5 Penalty: 03:36:41 Rank 5<br><a id="more"></a></p>
+<p>英语口试之前打比赛，居然 AK 了……<br>（说实话真的头一次 AK 一个比赛……）</p>
+<p>比赛链接在<a href="https://lutece.xyz/contest/detail/6/" target="_blank" rel="noopener">这里</a>。</p>
+<h2 id="A-阴阳师？这游戏没有SSR！"><a href="#A-阴阳师？这游戏没有SSR！" class="headerlink" title="A. 阴阳师？这游戏没有SSR！"></a>A. 阴阳师？这游戏没有SSR！</h2><p>题目大意：给出 \(n\) 个式神，砸一次砸中的概率是 \(p_i\)，求砸两次后砸中式神数的期望。</p>
+<p>根据标题，期望数为 \(0\)，因此直接输出就好了（大雾）。</p>
+<p>根据期望性质，\(E(X+Y)=E(X)+E(Y)\)，因此设 \(X\) 为砸第一次砸中式神数的期望，\(Y\) 为砸第二次砸中式神的期望，两个事件的并就是答案。</p>
+<p>那么 \(E(X)=\sum\limits_{i=1}^n p_i,\ E(Y)=\sum\limits_{i=1}^n (1-p_i)p_i\)，算出这两个后求和就行了。</p>
+<p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
+<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 310</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n;</span><br><span class="line"><span class="hljs-keyword">double</span> ans,a[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lf"</span>,&amp;a[i]);a[i]/=<span class="hljs-number">100.0</span>;</span><br><span class="line">		a[i]=a[i]+(<span class="hljs-number">1.0</span>-a[i])*a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) ans+=a[i];</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%.3lf\n"</span>,ans);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="B-保护果实"><a href="#B-保护果实" class="headerlink" title="B. 保护果实"></a>B. 保护果实</h2><p>题目大意：有 \(n\) 块板子排成一行，如果要买第 \(i\) 块栅栏，那么必须要先买第 \(i-1\) 块栅栏（第一块栅栏除外），求至少买多少板子才能构成一个多边形。</p>
+<p>构成多边形的条件复习一下：最大边长度小于其余边长度之和。</p>
+<p>然后，如果要买第 \(i\) 块栅栏，那么必须要先买第 \(i-1\) 块栅栏（第一块栅栏除外）！</p>
+<p>考虑买了第 \(i\) 块，那一定是买了第 \(i-1\) 块，买了第 \(i-1\) 块，那一定是买了第 \(i-2\) 块，……，由数学归纳法可知，所买板子序列一定是从 \(1\) 开始的。</p>
+<p>考试的时候想到了这点，然后就去抢 E 的一血，结果一血没抢到就忘了，再看的时候以为是一道双指针扫描，结果发现维护最大值可能复杂度爆炸，然后又想起来了……</p>
+<p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
+<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,x,sum,mx;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">max</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>&#123;<span class="hljs-keyword">return</span> a&gt;b?a:b;&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">min</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>&#123;<span class="hljs-keyword">return</span> a&lt;b?a:b;&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="hljs-keyword">if</span> (n&lt;<span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> <span class="hljs-built_in">puts</span>(<span class="hljs-string">"-1"</span>),<span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;x);</span><br><span class="line">		sum+=x;mx=max(mx,x);</span><br><span class="line">		<span class="hljs-keyword">if</span> (mx*<span class="hljs-number">2</span>&lt;sum)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,i);</span><br><span class="line">			<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-built_in">puts</span>(<span class="hljs-string">"-1"</span>);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="C-渐变字符串"><a href="#C-渐变字符串" class="headerlink" title="C. 渐变字符串"></a>C. 渐变字符串</h2><p>题目大意：如果一个字符串，它每个字母（第一个除外）为前一个字母的后一位，则这样的字符串被称为渐变字符串。如：<code>abcde</code>, <code>bc</code>, <code>m</code>。求 \(n\) 个写有小写字母的卡片重排后最少构成多少渐变字符串。</p>
+<p>看到数据范围，暴力之即可。</p>
+<p>统计出每个字母出现的次数，然后每次从第一个出现次数不为 \(0\) 的字母开始，尽可能长地扩展渐变字符串，直到无法扩展，重复这个操作直到所有字符出现次数均为 \(0\) 即可。</p>
+<p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(n)\)</p>
+<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,cnt[<span class="hljs-number">26</span>],ans;</span><br><span class="line"><span class="hljs-keyword">char</span> a[<span class="hljs-number">1010</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%s"</span>,a);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++) ++cnt[a[i]-<span class="hljs-string">'a'</span>];</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">26</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">while</span> (cnt[i])</span><br><span class="line">		&#123;</span><br><span class="line">			++ans;</span><br><span class="line">			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=i;j&lt;<span class="hljs-number">26</span>&amp;&amp;cnt[j];j++) --cnt[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="D-可怜的非洲银"><a href="#D-可怜的非洲银" class="headerlink" title="D. 可怜的非洲银"></a>D. 可怜的非洲银</h2><p>题目大意：给出每天攒的 SSR 碎片种类，每天还能获得一个 F 种类的碎片，如果一种碎片凑齐 \(50\) 个就能获得 SSR，求最少多少天才能获得 SSR，否则输出无解信息。</p>
+<p>根据 A 题，是不可能获得 SSR 的，因此直接无解即可（大雾）。</p>
+<p>啥也不说了，还是暴力。开一个桶统计一下每种碎片的出现次数，如果这种碎片出现了 \(50\) 次，就输出有解，否则判断 \(n\) 与 \(k\) 的大小关系输出不同的无解信息。</p>
+<p>因为口语考试这题打急了，WA 了三次……</p>
+<p>时间复杂度：\(\mathcal{O}(\min(n,k)m)\)，其中 \(m\) 为字符串长度，空间复杂度：\(\mathcal{O}(m)\)。</p>
+<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">char</span> a[<span class="hljs-number">110</span>],m;</span><br><span class="line"><span class="hljs-keyword">int</span> cnt[<span class="hljs-number">6</span>],lx,n,k,r;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>,&amp;n,&amp;k);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=min(k,n)&amp;&amp;!r;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cnt[<span class="hljs-string">'F'</span>-<span class="hljs-string">'A'</span>]++;</span><br><span class="line">		<span class="hljs-keyword">if</span> (cnt[<span class="hljs-string">'F'</span>-<span class="hljs-string">'A'</span>]==<span class="hljs-number">50</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			r=i;m=<span class="hljs-string">'F'</span>;<span class="hljs-keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%s"</span>,&amp;a);lx=<span class="hljs-built_in">strlen</span>(a);</span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;lx;j++) </span><br><span class="line">		&#123;</span><br><span class="line">			++cnt[a[j]-<span class="hljs-string">'A'</span>];</span><br><span class="line">			<span class="hljs-keyword">if</span> (cnt[a[j]-<span class="hljs-string">'A'</span>]==<span class="hljs-number">50</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				r=i;m=a[j];<span class="hljs-keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">if</span> (r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d %c\n"</span>,r,m);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span> (k&lt;=n) <span class="hljs-built_in">puts</span>(<span class="hljs-string">"Feizhou Yin"</span>);</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-built_in">puts</span>(<span class="hljs-string">"AMNZ"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="E-简单的数学题"><a href="#E-简单的数学题" class="headerlink" title="E. 简单的数学题"></a>E. 简单的数学题</h2><p>题目大意：给出一个数 \(n\)，求它的各个数位重新排列得到的数 \(m\)，使得 \(\lvert n-m\rvert \bmod 9\equiv 0\)，并且 \(m\) 最小。</p>
+<p>猜结论：\(m\) 这个数是 \(n\) 的各个排列字典序最小的一个。</p>
+<p>证明？err……</p>
+<p>下面的证明引自<a href="https://blog.csdn.net/qq_38367763/article/details/84190195" target="_blank" rel="noopener">这里</a>。</p>
+<p>考虑初始数字为 \(\sum\limits_{i=0}^n a_i10^i\)，现在交换两位 \(a_p\) 与 \(a_q\)。</p>
+<p>那么新形成的两个数字之差为：<br>$$<br>\begin{align}<br>\begin{split}<br>(a_p\times 10^p+a_q\times 10^q)-(a_q\times 10^p+a_p\times 10^q)<br>&amp;=(a_p-a_q)\times 10^p+(a_q-a_p)\times 10^q\\<br>&amp;=(a_p-a_q)\times (10^p-10^q)\\<br>&amp;=(a_p-a_q)\times (10^{p-q}-1)\times 10^b<br>\end{split}<br>\end{align}<br>$$</p>
+<p>中间 \((10^{p-q}-1)\bmod 9\equiv 0\)，于是互换两个数位后得到的数与原数的差值必然是 \(9\) 的整数倍。任意互换数位后的数，必然可由有限次两个数位互换得到。</p>
+<p>因此猜想是对的。</p>
+<p>就因为抢这道题的一血结果差点把 B 题条件忘了……</p>
+<p>时间复杂度：\(\mathcal{O}(n\log n)\)，空间复杂度：\(\mathcal{O}(n)\)。</p>
+<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 1010</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">char</span> a[MAXN];<span class="hljs-keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%s"</span>,a);n=<span class="hljs-built_in">strlen</span>(a);sort(a,a+n);<span class="hljs-built_in">puts</span>(a);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/数学/">数学</a>, <a class="has-link-grey -link" href="/tags/概率与期望/">概率与期望</a>, <a class="has-link-grey -link" href="/tags/模拟/">模拟</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
 </div>
 
 
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-05-02T08:18:14.000Z">2016-05-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 845 个字)
-                </span>
-                
-            </div>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/11/11/AFTER-STORY-HeRaNO-UESTC-and-more/">
+                <span class="level-item">AFTER STORY, HeRaNO@UESTC, and more</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2016/05/02/「HLOI2015」Color/">「HLOI2015」Color</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI2015 Day1 T2<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2016/05/02/「HLOI2015」Color/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
         
     </div>
 </div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDk0NS8xNzQ3MA==">
+    <script type="text/javascript">
+        (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
 
+            if (typeof LivereTower === 'function') { return; }
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-04-30T13:33:32.000Z">2016-04-30</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 867 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2016/04/30/「HLOI2015」Magic/">「HLOI2015」Magic</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI2015 Day1 T1<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2016/04/30/「HLOI2015」Magic/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+    </script>
+    <noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
 </div>
 
-
-
-
-
+    </div>
+</div>
 </div>
                 
 
@@ -380,6 +356,37 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#A-阴阳师？这游戏没有SSR！">
+        <span class="has-mr-6">1</span>
+        <span>A. 阴阳师？这游戏没有SSR！</span>
+        </a></li><li>
+        <a class="is-flex" href="#B-保护果实">
+        <span class="has-mr-6">2</span>
+        <span>B. 保护果实</span>
+        </a></li><li>
+        <a class="is-flex" href="#C-渐变字符串">
+        <span class="has-mr-6">3</span>
+        <span>C. 渐变字符串</span>
+        </a></li><li>
+        <a class="is-flex" href="#D-可怜的非洲银">
+        <span class="has-mr-6">4</span>
+        <span>D. 可怜的非洲银</span>
+        </a></li><li>
+        <a class="is-flex" href="#E-简单的数学题">
+        <span class="has-mr-6">5</span>
+        <span>E. 简单的数学题</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 

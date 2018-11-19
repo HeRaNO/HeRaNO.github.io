@@ -2,18 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>归档: 2018 - HeRaNO</title>
+<title>「HLOI2015」Tree - HeRaNO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="HeRaNO">
-<meta property="og:url" content="https://herano.github.io/archives/2018/index.html">
+    <meta name="description" content="HLOI 2015 Day1 T3">
+<meta name="keywords" content="HLOI,线段树,DFS 序,矩阵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「HLOI2015」Tree">
+<meta property="og:url" content="https://herano.github.io/2018/11/19/「HLOI2015」Tree/index.html">
 <meta property="og:site_name" content="HeRaNO">
+<meta property="og:description" content="HLOI 2015 Day1 T3">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-19T13:02:44.420Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HeRaNO">
+<meta name="twitter:title" content="「HLOI2015」Tree">
+<meta name="twitter:description" content="HLOI 2015 Day1 T3">
 
 
 
@@ -112,6 +117,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -125,77 +134,136 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2018
-        </h3>
-        <div class="timeline">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2018-11-19T05:41:10.000Z">2018-11-19</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-11-19T05:41:10.000Z">2018-11-19</time>
-                        <a href="/2018/11/19/「HLOI2015」Tree/" class="has-link-black-ter is-size-6">「HLOI2015」Tree</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
                 </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-11-17T09:00:00.000Z">2018-11-17</time>
-                        <a href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/" class="has-link-black-ter is-size-6">UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2018-11-10T16:00:00.000Z">2018-11-11</time>
-                        <a href="/2018/11/11/AFTER-STORY-HeRaNO-UESTC-and-more/" class="has-link-black-ter is-size-6">AFTER STORY, HeRaNO@UESTC, and more</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/杂言/">杂言</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+                <span class="level-item has-text-grey">
+                    
+                    
+                    13 分钟 读完 (大约 1976 个字)
+                </span>
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                「HLOI2015」Tree
+            
+        </h1>
+        <div class="content">
+            <p>HLOI 2015 Day1 T3<br><a id="more"></a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>Chavo 有一颗水晶树，树上会结出魔法水晶。包括树根在内，树一共有  \(n\) 个分叉的节点，其中 \(1\) 号节点为树根，初始状态下每一个节点都有一个生长值 \(a_i \)。Chavo 有一根法杖，法杖可以对某个节点 \(u \) 释放生长法术，使得以 \(u \) 为根的子树的每个节点的生长值更新为 \(f(k) \)。对于每一个被更新的节点来说， \(f(x) \) 的定义都不一样，其中 \(f(1) \) 是在释放法术之前被更新节点的生长值， \(f(2) \) 是在释放法术之前节点 \(v \) 的生长值。但是对于所有被更新的节点来说， \(f(x) \) 的递推公式都一样，是 \(f(x)=f(x-1)+f(x-2)+k \)。</p>
+<p>Chavo 想要释放 \(m \) 次生长法术，每次法术都给定 \(u,\ v,\ k \) ，她想问问你释放法术之后所有节点的生长值的和是多少？结果要对 \(10^9+7 \) 取模后输出。</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>第一行输入整数 \(n \) 和 \(m \)；<br>第二行输入 \(n \) 个整数，第 \(i \) 个整数代表第 \(i \) 个节点上初始值 \(a_i \)；<br>接下来 \(n-1 \) 行，每一行有两个正整数 \(i,j \) ，代表树上第 \(i \) 个节点和第 \(j \) 个节点有树杈相连；<br>接下来 \(m \) 行，每一行有 \(3 \) 个正整数 \(u,\ v,\ k \)，如题目描述。</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>输出一个整数代表经过所有操作后整棵树上所有节点数的和，结果要对 \(10^9+7 \) 取模后输出。</p>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">3 2</span><br><span class="line">3 4 5</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">1 2 2</span><br><span class="line">2 3 3</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">19</span><br></pre></td></tr></table></figure>
+<h2 id="样例说明"><a href="#样例说明" class="headerlink" title="样例说明"></a>样例说明</h2><p>第一次操作时，更新 \(1,\ 2,\ 3 \) 号点，对于 \(1 \) 号点，\(f(1)=3,\ f(2)=4 \)，更新后 \(1 \) 号点值为 \(f(2)=4 \)，同理 \(2,\ 3 \) 号点值为 \(4 \)。</p>
+<p>第二次操作时，更新 \(2 \) 号点，\(f(1)=4,\ f(2)=4,\ f(3)=11 \)，更新后 \(2 \) 号点为 \(11 \)。</p>
+<p>最后求和为 \(4+11+4=19 \)。</p>
+<h2 id="数据范围及约定"><a href="#数据范围及约定" class="headerlink" title="数据范围及约定"></a>数据范围及约定</h2><p>对于 \(30\% \) 的数据，\(1\le n,m,k\le 100,1\le u,v,i,j\le n,0\le a_i\le 100 \)；<br>对于 \(60\% \) 的数据，\(1\le n,m\le 10^3,1\le k\le 10^9,1\le u,v,i,j\le n,0\le a_i\le 10^9 \)；<br>对于 \(100\% \) 的数据，\(1\le n,m\le 10^5,1\le k\le 10^9,1\le u,v,i,j\le n,0\le a_i\le 10^9  \)。</p>
+<h2 id="时间限制与空间限制"><a href="#时间限制与空间限制" class="headerlink" title="时间限制与空间限制"></a>时间限制与空间限制</h2><p>时间限制：\(2000\text{ms}\)，空间限制：\(128\text{MB}\)。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="推式子"><a href="#推式子" class="headerlink" title="推式子"></a>推式子</h3><p>注意， \(f(1) \) 是对于子树内每个点说的……每个点的 \(f(1) \) 不一定相同，不过都是该点的权值。</p>
+<p>树上实现子树修改和查询，搞出来个 DFS 序就变成了区间问题，线段树即可解决。</p>
+<p>但是这什么<del>鬼畜</del>修改。这个类似于斐波那契数列的递推关系。<br>先看看 \(f(x) \) 的一些值有什么规律：</p>
+<p>$$<br>\begin{equation}<br>f(1)=u\\<br>f(2)=v\\<br>f(3)=u+v+k\\<br>f(4)=u+2v+k\\<br>f(5)=2u+3v+4k\\<br>f(6)=3u+5v+7k\\<br>f(7)=5u+8v+12k\\<br>\dots<br>\end{equation}<br>$$</p>
+<p>如果我们定义一个类斐波那契数列 \(F_i \)， \(F_{-1}=1,F_0=0,F_1=1 \)，\(F_i=F_{i-1}+F_{i-2} \ \ \ \ (i&gt;1) \)，\(f(n) \) 就可以这样描述了：</p>
+<p>$$<br>\begin{equation}<br>f(n)=F_{n-2}u+F_{n-1}v+(F_n-1)k<br>\end{equation}<br>$$</p>
+<p>那么就可以想到如下两种算法。</p>
+<h3 id="算法一"><a href="#算法一" class="headerlink" title="算法一"></a>算法一</h3><p>注意到修改可以分为两部分，是给这个点的子树内所有节点的权值先乘上 \(F_{n-2}\)，再加上 \(F_{n-1}v+(F_n-1)k\)。于是先做一个区间乘法，然后利用矩阵算出要加的部分，最后做一个区间加法即可。</p>
+<p>时间复杂度为 \(\mathcal{O}(m(\log n+\log k)) \)，空间复杂度为 \(\mathcal{O}(n)\)。</p>
+<h3 id="算法二"><a href="#算法二" class="headerlink" title="算法二"></a>算法二</h3><p>算法一中，需要区间乘，区间加，区间覆盖，虽然很快但不好敲代码（好吧我承认其实也挺好写的……），所以考虑用一个矩阵乘法完成所有操作。</p>
+<p>线段树中叶子节点维护的矩阵 \(S \) 这样构造：</p>
+<p>$$<br>\begin{equation}<br>S=<br>\begin{bmatrix}<br>u&amp;0&amp;1\\<br>0&amp;0&amp;0\\<br>0&amp;0&amp;0\\<br>\end{bmatrix}<br>\end{equation}<br>$$</p>
+<p>其中，\(u \) 为此时这个节点的的权值，线段树上非叶子节点维护的都是单位矩阵，方便之后下传矩阵。</p>
+<p>每次修改需要乘的矩阵 \(T \) 是两个矩阵的乘积：</p>
+<p>$$<br>\begin{equation}<br>T=<br>\begin{bmatrix}<br>1&amp;0&amp;0\\<br>0&amp;0&amp;0\\<br>0&amp;v&amp;1\\<br>\end{bmatrix}<br>\times<br>\begin{bmatrix}<br>0&amp;1&amp;0\\<br>1&amp;1&amp;0\\<br>0&amp;k&amp;1\\<br>\end{bmatrix}<br>^{k-1}<br>\end{equation}<br>$$</p>
+<p>其中，\(v \) 是节点 \(v \) 的生长值，\(k \) 意义与题中相同。</p>
+<p>那么这么乘能乘出来些什么？</p>
+<p>为了方便，令：</p>
+<p>$$<br>\begin{equation}<br>A=<br>\begin{bmatrix}<br>0&amp;1&amp;1\\<br>1&amp;1&amp;0\\<br>0&amp;k&amp;1\\<br>\end{bmatrix}<br>,B=<br>\begin{bmatrix}<br>1&amp;0&amp;0\\<br>0&amp;0&amp;0\\<br>0&amp;v&amp;1\\<br>\end{bmatrix}<br>\end{equation}<br>$$</p>
+<p>发现 \(A^c \) 这个矩阵是这样的：</p>
+<p>$$<br>\begin{equation}<br>A^c=<br>\begin{bmatrix}<br>F_{c-1}&amp;F_c&amp;0\\<br>F_c&amp;F_{c+1}&amp;0\\<br>(F_{c+1}-1)k&amp;(F_{c+2}-1)k&amp;1\\<br>\end{bmatrix}<br>\end{equation}<br>$$</p>
+<p>那么，\(A^{k-1} \) 就是这样的：</p>
+<p>$$<br>\begin{equation}<br>A^{k-1}=<br>\begin{bmatrix}<br>F_{k-2}&amp;F_{k-1}&amp;0\\<br>F_{k-1}&amp;F_{k}&amp;0\\<br>(F_k-1)k&amp;(F_{k+1}-1)k&amp;1\\<br>\end{bmatrix}<br>\end{equation}<br>$$</p>
+<p>\(B\times A^{k-1} \) 是这样的：</p>
+<p>$$<br>\begin{equation}<br>B\times A^{k-1}=<br>\begin{bmatrix}<br>F_{k-2}&amp;F_{k-1}&amp;0\\<br>0&amp;0&amp;0\\<br>vF_{k-1}+(F_k-1)k&amp;vF_k+(F_{k+1}-1)k&amp;1\\<br>\end{bmatrix}<br>\end{equation}<br>$$</p>
+<p>更新一个节点后，矩阵就是这样的：</p>
+<p>$$<br>\begin{equation}<br>S\times B\times A^{k-1}=<br>\begin{bmatrix}<br>uF_{k-2}+vF_{k-1}+(F_k-1)k&amp;uF_{k-1}+vF_k+(F_{k+1}-1)k&amp;1\\<br>0&amp;0&amp;0\\<br>0&amp;0&amp;0\\<br>\end{bmatrix}<br>\end{equation}<br>$$</p>
+<p>\(u \) 的位置顺利被 \(f(k) \) 替代，构造成功。</p>
+<p>那么，如何更新答案？</p>
+<p>对于线段树矩阵，更新一个区间时 \(S \) 矩阵乘 \(T \)，每次查询节点 \(v \) 的生长值时，将这一区间矩阵下传，之后清为单位矩阵。</p>
+<p>最后，将线段树上非叶子节点全部下传清为单位矩阵后，统计答案。即将矩阵中的 \(u \) 加起来。</p>
+<p>时间复杂度为 \(\mathcal{O}(m(\log n+\log k)) \)，空间复杂度为 \(\mathcal{O}(n)\)。</p>
+<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 100010</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MOD 1000000007LL</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">KSM</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> m[<span class="hljs-number">3</span>][<span class="hljs-number">3</span>];</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">clean</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function">	</span>&#123;</span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">3</span>;i++)</span><br><span class="line">			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">3</span>;j++)</span><br><span class="line">				m[i][j]=(i==j);</span><br><span class="line">		<span class="hljs-keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">SegmentTree</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> p,r,m;KSM a;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">link</span></span></span><br><span class="line"><span class="hljs-class">&#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> to,nxt;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">link e[MAXN&lt;&lt;<span class="hljs-number">1</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> head[MAXN],cnt;</span><br><span class="line">KSM ans,base;</span><br><span class="line">SegmentTree tree[<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">18</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> n,T,R=<span class="hljs-number">1</span>,u,v,k;</span><br><span class="line"><span class="hljs-keyword">int</span> in[MAXN],out[MAXN],seq[MAXN],a[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u,<span class="hljs-keyword">int</span> v)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	e[cnt]=(link)&#123;v,head[u]&#125;;head[u]=cnt++;</span><br><span class="line">	e[cnt]=(link)&#123;u,head[v]&#125;;head[v]=cnt++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> KSM <span class="hljs-title">multiply</span><span class="hljs-params">(KSM a,KSM b)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	KSM res;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">3</span>;i++)</span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">3</span>;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			res.m[i][j]=<span class="hljs-number">0L</span>L;</span><br><span class="line">			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k=<span class="hljs-number">0</span>;k&lt;<span class="hljs-number">3</span>;k++)</span><br><span class="line">				res.m[i][j]=(res.m[i][j]+a.m[i][k]*b.m[k][j])%MOD;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> node,<span class="hljs-keyword">int</span> father)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	in[node]=R;seq[R++]=node;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=head[node];~i;i=e[i].nxt)</span><br><span class="line">	<span class="hljs-keyword">if</span> (e[i].to!=father) dfs(e[i].to,node);</span><br><span class="line">	out[node]=R;</span><br><span class="line">	<span class="hljs-keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getset</span><span class="hljs-params">(<span class="hljs-keyword">int</span> v,<span class="hljs-keyword">int</span> k)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">memset</span>(base.m,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span> base.m);</span><br><span class="line">	base.m[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]=base.m[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>]=base.m[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]=base.m[<span class="hljs-number">2</span>][<span class="hljs-number">2</span>]=<span class="hljs-number">1</span>;base.m[<span class="hljs-number">2</span>][<span class="hljs-number">1</span>]=k;</span><br><span class="line">	<span class="hljs-built_in">memset</span>(ans.m,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span> ans.m);</span><br><span class="line">	ans.m[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]=ans.m[<span class="hljs-number">2</span>][<span class="hljs-number">2</span>]=<span class="hljs-number">1</span>;ans.m[<span class="hljs-number">2</span>][<span class="hljs-number">1</span>]=v;k--;</span><br><span class="line">	<span class="hljs-keyword">while</span> (k)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span> (k&amp;<span class="hljs-number">1</span>) ans=multiply(ans,base);</span><br><span class="line">		base=multiply(base,base);</span><br><span class="line">		k&gt;&gt;=<span class="hljs-number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Push_Down</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	tree[u&lt;&lt;<span class="hljs-number">1</span>].a=multiply(tree[u&lt;&lt;<span class="hljs-number">1</span>].a,tree[u].a);</span><br><span class="line">	tree[u&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>].a=multiply(tree[u&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>].a,tree[u].a);</span><br><span class="line">	tree[u].a.clean();</span><br><span class="line">	<span class="hljs-keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Build_A_Tree</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> (tree[u].p+<span class="hljs-number">1</span>==tree[u].r)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[u].a.m[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]=a[seq[tree[u].p]];</span><br><span class="line">		tree[u].a.m[<span class="hljs-number">0</span>][<span class="hljs-number">2</span>]=<span class="hljs-number">1</span>;</span><br><span class="line">		<span class="hljs-keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	tree[u].m=tree[u].p+tree[u].r&gt;&gt;<span class="hljs-number">1</span>;</span><br><span class="line">	tree[u&lt;&lt;<span class="hljs-number">1</span>].p=tree[u].p;tree[u&lt;&lt;<span class="hljs-number">1</span>].r=tree[u].m;Build_A_Tree(u&lt;&lt;<span class="hljs-number">1</span>);</span><br><span class="line">	tree[u&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>].p=tree[u].m;tree[u&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>].r=tree[u].r;Build_A_Tree(u&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>);</span><br><span class="line">	tree[u].a.clean();</span><br><span class="line">	<span class="hljs-keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">modify</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u,<span class="hljs-keyword">int</span> l,<span class="hljs-keyword">int</span> r,KSM x)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> (tree[u].p==l&amp;&amp;tree[u].r==r)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[u].a=multiply(tree[u].a,x);</span><br><span class="line">		<span class="hljs-keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	Push_Down(u);</span><br><span class="line">	<span class="hljs-keyword">if</span> (r&lt;=tree[u].m) modify(u&lt;&lt;<span class="hljs-number">1</span>,l,r,x);</span><br><span class="line">	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (tree[u].m&lt;=l) modify(u&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>,l,r,x);</span><br><span class="line">	<span class="hljs-keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		modify(u&lt;&lt;<span class="hljs-number">1</span>,l,tree[u].m,x);</span><br><span class="line">		modify(u&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>,tree[u].m,r,x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u,<span class="hljs-keyword">int</span> x)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> (tree[u].p+<span class="hljs-number">1</span>==tree[u].r) <span class="hljs-keyword">return</span> tree[u].a.m[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>];</span><br><span class="line">	Push_Down(u);</span><br><span class="line">	<span class="hljs-keyword">if</span> (x&lt;tree[u].m) <span class="hljs-keyword">return</span> query(u&lt;&lt;<span class="hljs-number">1</span>,x);</span><br><span class="line">	<span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> query(u&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>,x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">big_query</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> (tree[u].p+<span class="hljs-number">1</span>==tree[u].r) <span class="hljs-keyword">return</span> tree[u].a.m[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>];</span><br><span class="line">	Push_Down(u);</span><br><span class="line">	<span class="hljs-keyword">return</span> (big_query(u&lt;&lt;<span class="hljs-number">1</span>)+big_query(u&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>))%MOD;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">read</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;x)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	x=<span class="hljs-number">0</span>;<span class="hljs-keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="hljs-keyword">while</span> (ch&lt;<span class="hljs-string">'0'</span>||ch&gt;<span class="hljs-string">'9'</span>) ch=getchar();</span><br><span class="line">	<span class="hljs-keyword">while</span> (ch&gt;=<span class="hljs-string">'0'</span>&amp;&amp;ch&lt;=<span class="hljs-string">'9'</span>) x=(x&lt;&lt;<span class="hljs-number">3</span>)+(x&lt;&lt;<span class="hljs-number">1</span>)+ch-<span class="hljs-string">'0'</span>,ch=getchar();</span><br><span class="line">	<span class="hljs-keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">memset</span>(head,<span class="hljs-number">-1</span>,<span class="hljs-keyword">sizeof</span> head);</span><br><span class="line">	read(n);read(T);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) read(a[i]);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		read(u);read(v);add(u,v);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>);tree[<span class="hljs-number">1</span>].p=<span class="hljs-number">1</span>;tree[<span class="hljs-number">1</span>].r=n+<span class="hljs-number">1</span>;Build_A_Tree(<span class="hljs-number">1</span>);</span><br><span class="line">	<span class="hljs-keyword">while</span> (T--)</span><br><span class="line">	&#123;</span><br><span class="line">		read(u);read(v);read(k);</span><br><span class="line">		getset(query(<span class="hljs-number">1</span>,in[v]),k);</span><br><span class="line">		modify(<span class="hljs-number">1</span>,in[u],out[u],ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>,big_query(<span class="hljs-number">1</span>));</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/DFS-序/">DFS 序</a>, <a class="has-link-grey -link" href="/tags/HLOI/">HLOI</a>, <a class="has-link-grey -link" href="/tags/矩阵/">矩阵</a>, <a class="has-link-grey -link" href="/tags/线段树/">线段树</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
 </div>
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/">
+                <span class="level-item">UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDk0NS8xNzQ3MA==">
+    <script type="text/javascript">
+        (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+
+            if (typeof LivereTower === 'function') { return; }
+
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+    </script>
+    <noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+
+    </div>
+</div>
 </div>
                 
 
@@ -295,6 +363,65 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述">
+        <span class="has-mr-6">1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#输入">
+        <span class="has-mr-6">2</span>
+        <span>输入</span>
+        </a></li><li>
+        <a class="is-flex" href="#输出">
+        <span class="has-mr-6">3</span>
+        <span>输出</span>
+        </a></li><li>
+        <a class="is-flex" href="#样例输入">
+        <span class="has-mr-6">4</span>
+        <span>样例输入</span>
+        </a></li><li>
+        <a class="is-flex" href="#样例输出">
+        <span class="has-mr-6">5</span>
+        <span>样例输出</span>
+        </a></li><li>
+        <a class="is-flex" href="#样例说明">
+        <span class="has-mr-6">6</span>
+        <span>样例说明</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据范围及约定">
+        <span class="has-mr-6">7</span>
+        <span>数据范围及约定</span>
+        </a></li><li>
+        <a class="is-flex" href="#时间限制与空间限制">
+        <span class="has-mr-6">8</span>
+        <span>时间限制与空间限制</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解">
+        <span class="has-mr-6">9</span>
+        <span>题解</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#推式子">
+        <span class="has-mr-6">9.1</span>
+        <span>推式子</span>
+        </a></li><li>
+        <a class="is-flex" href="#算法一">
+        <span class="has-mr-6">9.2</span>
+        <span>算法一</span>
+        </a></li><li>
+        <a class="is-flex" href="#算法二">
+        <span class="has-mr-6">9.3</span>
+        <span>算法二</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 

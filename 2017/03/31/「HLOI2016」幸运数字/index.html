@@ -2,18 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: HLOI - HeRaNO</title>
+<title>「HLOI2016」幸运数字 - HeRaNO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="HeRaNO">
-<meta property="og:url" content="https://herano.github.io/tags/HLOI/index.html">
+    <meta name="description" content="HLOI2016 Day2 T3">
+<meta name="keywords" content="HLOI,DP,数位 DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「HLOI2016」幸运数字">
+<meta property="og:url" content="https://herano.github.io/2017/03/31/「HLOI2016」幸运数字/index.html">
 <meta property="og:site_name" content="HeRaNO">
+<meta property="og:description" content="HLOI2016 Day2 T3">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-20T12:48:11.764Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HeRaNO">
+<meta name="twitter:title" content="「HLOI2016」幸运数字">
+<meta name="twitter:description" content="HLOI2016 Day2 T3">
 
 
 
@@ -112,6 +117,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -126,17 +135,6 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">HLOI</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
@@ -160,414 +158,96 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2017/03/31/「HLOI2016」幸运数字/">「HLOI2016」幸运数字</a>
+                「HLOI2016」幸运数字
             
         </h1>
         <div class="content">
-            <p>HLOI2016 Day2 T3<br></p>
+            <p>HLOI2016 Day2 T3<br><a id="more"></a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>小明是个非常喜欢幸运数字的同学，他认为自己的幸运数字是 \(7\)。同时他非常喜欢偶数，所以他认为如果 \(7\) 出现在某一个整数的所有的左起（从 \(1\) 开始计数）偶数位上，那这个整数就是他的幸运数。</p>
+<p>这天，小刚想要考小明一个问题，他说给小明一个区间 \([l,r]\)，问这个区间里能够整除 \(m\) 的幸运数有多少个。</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>输入的第一行是一个整数 \(m\)，第二行是两个整数 \(l\) 和 \(r\)，代表询问的区间。</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>输出中仅包含一个数字，即对应输入文件的答案。由于答案可能比较多，输出答案应对 \(10^9+7\) 取余。</p>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">10 99</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
+<h2 id="样例说明"><a href="#样例说明" class="headerlink" title="样例说明"></a>样例说明</h2><p>\(10\) 到 \(99\) 之间有 \(27,\ 57,\ 87\) 可以整除 \(3\)，并且是幸运数字。</p>
+<h2 id="数据范围及约定"><a href="#数据范围及约定" class="headerlink" title="数据范围及约定"></a>数据范围及约定</h2><p>对于 \(30\%\) 的数据：\(1\le l\lt r\le 10^6\)；<br>对于 \(100\%\) 的数据：\(1\le m\le 2\times 10^3,1\le l\lt r\le 10^{2\times 10^3}\)。<br>数据保证 \(l\) 和 \(r\) 的位数一致并没有前导零。</p>
+<h2 id="时间与空间限制"><a href="#时间与空间限制" class="headerlink" title="时间与空间限制"></a>时间与空间限制</h2><p>时间限制：\(1000\text{ms}\)，空间限制：\(128\text{MB}\)。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>HLOI2016 全 AC 达成。</p>
+<p>\(l \) 和 \(r \) 太大了，典型数位 DP 题。<br>于是这就成为本蒟蒻第一道数位 DP……</p>
+<p>两个 DP 数组，用 \(K_{i,j,0/1/2} \) 表示 \([1,K] \) 中，前 \(i \) 位组成的数余数为 \(j \)，且组成的数大于/等于/小于左或右区间的数。</p>
+<p>每次加入一位数，比前 \(i-1 \) 位大的转移到比前 \(i \) 位大，小的同理。相等的可以自行意会……</p>
+<p>初值就是把 \(1 \sim 9 \) 扫一遍，加到 DP 数组里。</p>
+<p>答案是 \(R_{n,0,2}+R_{n,0,1}-L_{n,0,2} \)。具体转移和答案参见代码。</p>
+<p><del>题解说了跟没说一样。</del></p>
+<p>然后不知为何貌似数据错了？</p>
+<p><del>省选题数据会错？</del></p>
+<p>如果哪位神犇看出了错误请留言或发个邮件什么的。</p>
+<p>平均来算，时间复杂度应该为 \(\mathcal{O}(\frac{11}{2}mn) \)。 \(n \) 为数字位数。空间复杂度为 \(\mathcal{O}(nm)\)。</p>
+<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 2010</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MOD 1000000007</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,M,L[MAXN],R[MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> dpL[MAXN][MAXN][<span class="hljs-number">3</span>],dpR[MAXN][MAXN][<span class="hljs-number">3</span>];</span><br><span class="line"><span class="hljs-keyword">char</span> s[MAXN];</span><br><span class="line"><span class="hljs-comment">//0:&gt; 1:= 2:&lt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> b)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	a+=b;</span><br><span class="line">	<span class="hljs-keyword">if</span> (a&gt;MOD) a-=MOD;</span><br><span class="line">	<span class="hljs-keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Digital_DP</span><span class="hljs-params">(<span class="hljs-keyword">int</span> dp[MAXN][MAXN][<span class="hljs-number">3</span>],<span class="hljs-keyword">int</span> num[])</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=num[<span class="hljs-number">1</span>];i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span> (i&lt;num[<span class="hljs-number">1</span>]) dp[<span class="hljs-number">1</span>][i%M][<span class="hljs-number">2</span>]++;</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i==num[<span class="hljs-number">1</span>]) dp[<span class="hljs-number">1</span>][i%M][<span class="hljs-number">1</span>]++;</span><br><span class="line">		<span class="hljs-keyword">else</span> dp[<span class="hljs-number">1</span>][i%M][<span class="hljs-number">0</span>]++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">2</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span> (i&amp;<span class="hljs-number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k=<span class="hljs-number">0</span>;k&lt;=<span class="hljs-number">9</span>;k++)</span><br><span class="line">				<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;M;j++)</span><br><span class="line">				&#123;</span><br><span class="line">					dp[i][(j*<span class="hljs-number">10</span>+k)%M][<span class="hljs-number">0</span>]=update(dp[i][(j*<span class="hljs-number">10</span>+k)%M][<span class="hljs-number">0</span>],dp[i<span class="hljs-number">-1</span>][j][<span class="hljs-number">0</span>]);</span><br><span class="line">					<span class="hljs-keyword">if</span> (k&lt;num[i]) dp[i][(j*<span class="hljs-number">10</span>+k)%M][<span class="hljs-number">2</span>]=update(dp[i][(j*<span class="hljs-number">10</span>+k)%M][<span class="hljs-number">2</span>],dp[i<span class="hljs-number">-1</span>][j][<span class="hljs-number">1</span>]);</span><br><span class="line">					<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (k==num[i]) dp[i][(j*<span class="hljs-number">10</span>+k)%M][<span class="hljs-number">1</span>]=update(dp[i][(j*<span class="hljs-number">10</span>+k)%M][<span class="hljs-number">1</span>],dp[i<span class="hljs-number">-1</span>][j][<span class="hljs-number">1</span>]);</span><br><span class="line">					<span class="hljs-keyword">else</span> dp[i][(j*<span class="hljs-number">10</span>+k)%M][<span class="hljs-number">0</span>]=update(dp[i][(j*<span class="hljs-number">10</span>+k)%M][<span class="hljs-number">0</span>],dp[i<span class="hljs-number">-1</span>][j][<span class="hljs-number">1</span>]);</span><br><span class="line">					dp[i][(j*<span class="hljs-number">10</span>+k)%M][<span class="hljs-number">2</span>]=update(dp[i][(j*<span class="hljs-number">10</span>+k)%M][<span class="hljs-number">2</span>],dp[i<span class="hljs-number">-1</span>][j][<span class="hljs-number">2</span>]);</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;M;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				dp[i][(j*<span class="hljs-number">10</span>+<span class="hljs-number">7</span>)%M][<span class="hljs-number">0</span>]=update(dp[i][(j*<span class="hljs-number">10</span>+<span class="hljs-number">7</span>)%M][<span class="hljs-number">0</span>],dp[i<span class="hljs-number">-1</span>][j][<span class="hljs-number">0</span>]);</span><br><span class="line">				<span class="hljs-keyword">if</span> (<span class="hljs-number">7</span>&lt;num[i]) dp[i][(j*<span class="hljs-number">10</span>+<span class="hljs-number">7</span>)%M][<span class="hljs-number">2</span>]=update(dp[i][(j*<span class="hljs-number">10</span>+<span class="hljs-number">7</span>)%M][<span class="hljs-number">2</span>],dp[i<span class="hljs-number">-1</span>][j][<span class="hljs-number">1</span>]);</span><br><span class="line">				<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-number">7</span>==num[i]) dp[i][(j*<span class="hljs-number">10</span>+<span class="hljs-number">7</span>)%M][<span class="hljs-number">1</span>]=update(dp[i][(j*<span class="hljs-number">10</span>+<span class="hljs-number">7</span>)%M][<span class="hljs-number">1</span>],dp[i<span class="hljs-number">-1</span>][j][<span class="hljs-number">1</span>]);</span><br><span class="line">				<span class="hljs-keyword">else</span> dp[i][(j*<span class="hljs-number">10</span>+<span class="hljs-number">7</span>)%M][<span class="hljs-number">0</span>]=update(dp[i][(j*<span class="hljs-number">10</span>+<span class="hljs-number">7</span>)%M][<span class="hljs-number">0</span>],dp[i<span class="hljs-number">-1</span>][j][<span class="hljs-number">1</span>]);</span><br><span class="line">				dp[i][(j*<span class="hljs-number">10</span>+<span class="hljs-number">7</span>)%M][<span class="hljs-number">2</span>]=update(dp[i][(j*<span class="hljs-number">10</span>+<span class="hljs-number">7</span>)%M][<span class="hljs-number">2</span>],dp[i<span class="hljs-number">-1</span>][j][<span class="hljs-number">2</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-comment">//freopen("luckynumber.in","r",stdin);freopen("luckynumber.out","w",stdout);</span></span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;M);</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%s"</span>,s+<span class="hljs-number">1</span>);n=<span class="hljs-built_in">strlen</span>(s+<span class="hljs-number">1</span>);</span><br><span class="line">	<span class="hljs-keyword">if</span> (n==<span class="hljs-number">1</span>)&#123;<span class="hljs-built_in">puts</span>(<span class="hljs-string">"0"</span>);<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;&#125;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) L[i]=s[i]-<span class="hljs-string">'0'</span>;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%s"</span>,s+<span class="hljs-number">1</span>);<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++) R[i]=s[i]-<span class="hljs-string">'0'</span>;</span><br><span class="line">	Digital_DP(dpL,L);Digital_DP(dpR,R);</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,(dpR[n][<span class="hljs-number">0</span>][<span class="hljs-number">2</span>]+dpR[n][<span class="hljs-number">0</span>][<span class="hljs-number">1</span>]-dpL[n][<span class="hljs-number">0</span>][<span class="hljs-number">2</span>]+MOD)%MOD);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/03/31/「HLOI2016」幸运数字/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/DP/">DP</a>, <a class="has-link-grey -link" href="/tags/HLOI/">HLOI</a>, <a class="has-link-grey -link" href="/tags/数位-DP/">数位 DP</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
 </div>
 
 
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-02-18T11:54:35.000Z">2017-02-18</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 分钟 读完 (大约 1387 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2017/02/18/「HLOI2016」序列问题/">「HLOI2016」序列问题</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI2016 Day2 T2<br></p>
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/11/11/AFTER-STORY-HeRaNO-UESTC-and-more/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">AFTER STORY, HeRaNO@UESTC, and more</span>
+            </a>
         </div>
         
         
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/02/18/「HLOI2016」序列问题/#more">阅读更多</a>
-                </div>
-            </div>
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2017/02/18/「HLOI2016」序列问题/">
+                <span class="level-item">「HLOI2016」序列问题</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        
         
     </div>
 </div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDk0NS8xNzQ3MA==">
+    <script type="text/javascript">
+        (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
 
+            if (typeof LivereTower === 'function') { return; }
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-02-18T08:42:00.000Z">2017-02-18</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 分钟 读完 (大约 643 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2017/02/18/「HLOI2016」农场修路/">「HLOI2016」农场修路</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI2016 Day2 T1<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/02/18/「HLOI2016」农场修路/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+    </script>
+    <noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
 </div>
 
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-02-18T08:31:39.000Z">2017-02-18</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 1085 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2017/02/18/「HLOI2016」黑白棋/">「HLOI2016」黑白棋</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI2016 Day1 T3<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/02/18/「HLOI2016」黑白棋/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
     </div>
 </div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-02-18T08:12:16.000Z">2017-02-18</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 789 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2017/02/18/「HLOI2016」小明的智力游戏/">「HLOI2016」小明的智力游戏</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI2016 Day1 T2<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/02/18/「HLOI2016」小明的智力游戏/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-02-18T07:55:39.000Z">2017-02-18</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 686 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2017/02/18/「HLOI2016」字符串问题/">「HLOI2016」字符串问题</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI2016 Day1 T1<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/02/18/「HLOI2016」字符串问题/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-05-02T09:02:49.000Z">2016-05-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    13 分钟 读完 (大约 1976 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2016/05/02/「HLOI2015」Tree/">「HLOI2015」Tree</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI 2015 Day1 T3<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2016/05/02/「HLOI2015」Tree/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-05-02T08:18:14.000Z">2016-05-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 845 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2016/05/02/「HLOI2015」Color/">「HLOI2015」Color</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI2015 Day1 T2<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2016/05/02/「HLOI2015」Color/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-04-30T13:33:32.000Z">2016-04-30</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 867 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2016/04/30/「HLOI2015」Magic/">「HLOI2015」Magic</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI2015 Day1 T1<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2016/04/30/「HLOI2015」Magic/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
 </div>
                 
 
@@ -667,6 +347,53 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述">
+        <span class="has-mr-6">1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#输入">
+        <span class="has-mr-6">2</span>
+        <span>输入</span>
+        </a></li><li>
+        <a class="is-flex" href="#输出">
+        <span class="has-mr-6">3</span>
+        <span>输出</span>
+        </a></li><li>
+        <a class="is-flex" href="#样例输入">
+        <span class="has-mr-6">4</span>
+        <span>样例输入</span>
+        </a></li><li>
+        <a class="is-flex" href="#样例输出">
+        <span class="has-mr-6">5</span>
+        <span>样例输出</span>
+        </a></li><li>
+        <a class="is-flex" href="#样例说明">
+        <span class="has-mr-6">6</span>
+        <span>样例说明</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据范围及约定">
+        <span class="has-mr-6">7</span>
+        <span>数据范围及约定</span>
+        </a></li><li>
+        <a class="is-flex" href="#时间与空间限制">
+        <span class="has-mr-6">8</span>
+        <span>时间与空间限制</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解">
+        <span class="has-mr-6">9</span>
+        <span>题解</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 

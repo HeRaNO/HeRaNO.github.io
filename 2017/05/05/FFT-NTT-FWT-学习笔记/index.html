@@ -2,19 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签 - HeRaNO</title>
+<title>FFT, NTT, FWT 学习笔记 - HeRaNO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="keywords" content="杂言,HLOI,DP,模拟,概率与期望,数学,最小生成树,最短路,线段树,数位 DP,矩阵,BFS,历史,DFS 序,FFT,NTT,FWT">
-<meta property="og:type" content="website">
-<meta property="og:title" content="HeRaNO">
-<meta property="og:url" content="https://herano.github.io/tags/index.html">
+    <meta name="description" content="前方高能！慎入！">
+<meta name="keywords" content="FFT,NTT,FWT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FFT, NTT, FWT 学习笔记">
+<meta property="og:url" content="https://herano.github.io/2017/05/05/FFT-NTT-FWT-学习笔记/index.html">
 <meta property="og:site_name" content="HeRaNO">
+<meta property="og:description" content="前方高能！慎入！">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-29T14:34:49.023Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HeRaNO">
+<meta name="twitter:title" content="FFT, NTT, FWT 学习笔记">
+<meta name="twitter:description" content="前方高能！慎入！">
 
 
 
@@ -104,7 +108,7 @@
                 
                 <a class="navbar-item" href="/categories">分类</a>
                 
-                <a class="navbar-item is-active" href="/tags">标签</a>
+                <a class="navbar-item" href="/tags">标签</a>
                 
                 <a class="navbar-item" href="/about">关于</a>
                 
@@ -112,6 +116,10 @@
             
             <div class="navbar-end">
                 
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
                 
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
@@ -126,205 +134,272 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <ul class="menu-list">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2017-05-05T15:07:06.000Z">2017-05-05</time>
                 
-                <li>
-                    <a class="level is-marginless" href="/tags/BFS/">
-                        <span class="level-start">
-                            <span class="level-item">BFS</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
+                </div>
                 
-                <li>
-                    <a class="level is-marginless" href="/tags/DFS-序/">
-                        <span class="level-start">
-                            <span class="level-item">DFS 序</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
                 
-                <li>
-                    <a class="level is-marginless" href="/tags/DP/">
-                        <span class="level-start">
-                            <span class="level-item">DP</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">3</span>
-                        </span>
-                    </a>
-                </li>
+                <span class="level-item has-text-grey">
+                    
+                    
+                    38 分钟 读完 (大约 5695 个字)
+                </span>
                 
-                <li>
-                    <a class="level is-marginless" href="/tags/FFT/">
-                        <span class="level-start">
-                            <span class="level-item">FFT</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/FWT/">
-                        <span class="level-start">
-                            <span class="level-item">FWT</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/HLOI/">
-                        <span class="level-start">
-                            <span class="level-item">HLOI</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">9</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/NTT/">
-                        <span class="level-start">
-                            <span class="level-item">NTT</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/历史/">
-                        <span class="level-start">
-                            <span class="level-item">历史</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/数位-DP/">
-                        <span class="level-start">
-                            <span class="level-item">数位 DP</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/数学/">
-                        <span class="level-start">
-                            <span class="level-item">数学</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">2</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/最小生成树/">
-                        <span class="level-start">
-                            <span class="level-item">最小生成树</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">2</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/最短路/">
-                        <span class="level-start">
-                            <span class="level-item">最短路</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/杂言/">
-                        <span class="level-start">
-                            <span class="level-item">杂言</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">1</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/概率与期望/">
-                        <span class="level-start">
-                            <span class="level-item">概率与期望</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">3</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/模拟/">
-                        <span class="level-start">
-                            <span class="level-item">模拟</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">2</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/矩阵/">
-                        <span class="level-start">
-                            <span class="level-item">矩阵</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">2</span>
-                        </span>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="level is-marginless" href="/tags/线段树/">
-                        <span class="level-start">
-                            <span class="level-item">线段树</span>
-                        </span>
-                        <span class="level-end">
-                            <span class="level-item tag">3</span>
-                        </span>
-                    </a>
-                </li>
-                
-            </ul>
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                FFT, NTT, FWT 学习笔记
+            
+        </h1>
+        <div class="content">
+            <p>前方高能！慎入！<br><a id="more"></a></p>
+<h1 id="为什么学-FFT"><a href="#为什么学-FFT" class="headerlink" title="为什么学 FFT"></a>为什么学 FFT</h1><p>退役（很早）之前听说 FFT 很神（e）奇（xin），Po 姐来讲的时候也是膜（sha）了（ye）一（bu）发（dong），于是就放那里了。退役之后有（xian）了（de）时（mei）间（shi），<del>并且在篮球赛之前立了赢一场的 flag 否则学 FFT 结果又双叒叕全输了</del>，于是下面就是成果了……网上 FFT 讲解多得是不看也罢……</p>
+<p>如果想要深入了解，请参考王逸松在 2018 年全国青少年信息学奥林匹克竞赛冬令营的讲课<a href="https://wys.life/201801-Fourier-Lecture.html" target="_blank" rel="noopener">傅里叶变换及其在 OI 中的应用</a>。</p>
+<h1 id="什么是-FFT？为什么-FFT？"><a href="#什么是-FFT？为什么-FFT？" class="headerlink" title="什么是 FFT？为什么 FFT？"></a>什么是 FFT？为什么 FFT？</h1><h2 id="什么是-FFT？"><a href="#什么是-FFT？" class="headerlink" title="什么是 FFT？"></a>什么是 FFT？</h2><p>FFT <em>(Fast Fourier Transform)</em>，全名快速傅里叶变换，这与 <a href="https://en.wikipedia.org/wiki/Fourier_transform" target="_blank" rel="noopener">Fourier 变换</a><strong>只有半毛钱的关系</strong>，Fourier 变换是分析波的成分的方法，通过推广 Fourier 变换得到了 FFT ，为了展示区别和联系，下面是 Fourier 变换和 Fourier 逆变换的公式。</p>
+<p>Fourier 变换：</p>
+<p>$$<br>\begin{equation}<br>\Large<br>F(\omega)=\mathcal{F}[f(t)]=\int\limits_{-\infty}^\infty f(t)e^{-i\omega t} dt<br>\end{equation}<br>$$</p>
+<p>Fourier 逆变换：</p>
+<p>$$<br>\begin{equation}<br>\Large<br>f(t)=\mathcal{F}^{-1}[F(\omega)]=\frac{1}{2\pi} \int\limits_{-\infty}^\infty F(\omega)e^{i\omega t} d\omega<br>\end{equation}<br>$$</p>
+<p>其中 \(f(t)\) 为以 \(t\) 为周期的周期函数，且满足 <a href="https://en.wikipedia.org/wiki/Dirichlet_conditions" target="_blank" rel="noopener">Dirichlet 条件</a>，\(F(\omega)\) 称为 \(f(t)\) 的像函数，\(f(t)\) 称为 \(F(\omega)\) 的原像函数。具体请参考数字信号处理相关书籍或实分析相关书籍。</p>
+<h2 id="为什么-FFT？"><a href="#为什么-FFT？" class="headerlink" title="为什么 FFT？"></a>为什么 FFT？</h2><p>从一个简单问题说起：大整数乘法。在做 <a href="https://vijos.org/p/2000" target="_blank" rel="noopener">Vijos P2000</a> 的时候，看数据范围 \(\mathcal{O}(n^2)\) 有点卡常？在做 <a href="http://acm.hdu.edu.cn/showproblem.php?pid=1402" target="_blank" rel="noopener">HDOJ1402</a> 的时候 \(\mathcal{O}(n^2)\) 接着卡常？大整数乘法的时间复杂度只能是 \(\mathcal{O}(n^2)\) 了？</p>
+<p>并不是。从算法优化上可以实现为 \(\mathcal{O}(n^{\log_2 3})\) 的方法（\(\log_2 3\approx 1.585\)，此方法为 Karatsuba 乘法，详解看<a href="http://blog.miskcoo.com/2014/10/karatsuba-multiplication" target="_blank" rel="noopener">这里</a>），还是不太友好。那么就会用到 \(\mathcal{O}(n\log n)\) 的 FFT 了。</p>
+<h1 id="（初中知识）多项式"><a href="#（初中知识）多项式" class="headerlink" title="（初中知识）多项式"></a>（初中知识）多项式</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>我们把形如 \(a_0+a_1x+a_2x^2+\cdots+a_{n-1}x^{n-1}\) 的式子叫做多项式，其中 \(a_0,a_1,\cdots,a_{n-1}\) 称为多项式的系数，多项式中单项式个数为多项式的项数。因为多项式由单项式组成，规定最高次项的次数叫做多项式的次数，这里 \(A(x)\) 的次数为 \(n-1\)。\(x\) 为未知数。</p>
+<p>以上内容均为初二（我记得是）的内容，不明白的自觉面壁思过（初中数学老师：这个定义抄 \(10\) 遍给我）……</p>
+<p>下面就是没学过的了。</p>
+<p>为方便表示，我们记多项式 \(a_0+a_1x+a_2x^2+\cdots+a_{n-1}x^{n-1}\) 为 \(A(x)\)，即：</p>
+<p>$$<br>\begin{equation}<br>\Large<br>A(x)=\sum\limits_{i=0}^{n-1}a_ix^i<br>\end{equation}<br>$$</p>
+<p>我们规定：严格大于 \(n\) 的任意整数为这个多项式的次数界，即次数的范围。多项式中任意单项式次数均严格小于次数界。</p>
+<p>下面无特殊说明，多项式均用 \(A(x)\) 等类似形式表示。</p>
+<h2 id="多项式的两种表示法"><a href="#多项式的两种表示法" class="headerlink" title="多项式的两种表示法"></a>多项式的两种表示法</h2><h3 id="系数（插值）表示法"><a href="#系数（插值）表示法" class="headerlink" title="系数（插值）表示法"></a>系数（插值）表示法</h3><p>我们知道，向量是个好东西（蛤？），矩阵也是个好东西（蛤？），于是我们把三者结合起来看（蛤玩意？）。</p>
+<p>我们将 \(n-1\) 次多项式的系数看成 \(n\) 维向量，即 \(\vec a=(a_0,a_1,\cdots,a_{n-1})\)，则称 \(\vec a\) 为多项式 \(A(x)\) 的系数表示。</p>
+<p>在选修 4-2 中，我们知道向量与矩阵有着密切联系，这就是为什么我们把多项式，向量和矩阵联系起来。（然而我们并没选 4-2 蛤蛤蛤）</p>
+<p>于是这个 \(n\) 维向量可以表示为一个 \(n\) 维列向量，为：</p>
+<p>$$<br>\begin{bmatrix}<br>a_0\\<br>a_1\\<br>\vdots \\<br>a_{n-1}<br>\end{bmatrix}<br>$$</p>
+<h3 id="点值表示法"><a href="#点值表示法" class="headerlink" title="点值表示法"></a>点值表示法</h3><p>我们把多项式 \(A(x)\) 看做一个函数，选取不同的 \(n\) 个值 \(x_0,x_1,\cdots,x_{n-1}\) 代入 \(A(x)\) 中，可以得到 \(A(x)\) 的图像上 \(n\) 个不同的点，那么称点集 \(\alpha=\{ (x_i,A(x_i))\mid i\in[0,n-1],i\in \mathbb{Z}\}\) 为多项式 \(A(x)\) 的点值表示。</p>
+<p>我们知道一个 \(n\) 次多项式至少需要 \(n+1\) 个两两不同的点才能确定。因为 \(n\) 次多项式共 \(n+1\) 个系数，需要 \(n+1\) 个 \(n+1\) 元方程组才能求解。</p>
+<p>到这里，是不是差不多忘了要干什么了……</p>
+<h2 id="多项式的运算"><a href="#多项式的运算" class="headerlink" title="多项式的运算"></a>多项式的运算</h2><h3 id="多项式求值"><a href="#多项式求值" class="headerlink" title="多项式求值"></a>多项式求值</h3><p>对于一个多项式 \(A(x)\)，给出 \(x\) 的值求 \(A(x)\)，就是多项式求值。</p>
+<p>学过必修三吗？<br>学过必修三还不会？<br>拿出数学必修三翻到 \(37\) 页你看到了什么？</p>
+<p>秦九韶算法可以大量减少乘法和加法次数，并且把运算量简化为 \(\mathcal{O}(n)\) 的。</p>
+<h3 id="多项式加法"><a href="#多项式加法" class="headerlink" title="多项式加法"></a>多项式加法</h3><p>没啥难度，直接加即可：</p>
+<p>$$<br>\begin{equation}<br>\begin{aligned}<br>C(x)&amp;=A(x)+B(x)\\<br>&amp;=\sum\limits_{i=0}^{n-1}a_ix^i+\sum\limits_{j=0}^{n-1}b_jx^j\\<br>&amp;=\sum\limits_{i=0}^{n-1}(a_i+b_i)x^i\\<br>&amp;=\sum\limits_{i=0}^{n-1}c_ix^i<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>这个操作可以 \(\mathcal{O}(n)\) 完成。</p>
+<h3 id="多项式乘法"><a href="#多项式乘法" class="headerlink" title="多项式乘法"></a>多项式乘法</h3><p>这就是个开括号的问题……</p>
+<p>两个次数界为 \(n_a,n_b\) 的多项式 \(A(x),B(x)\) 相乘，得到的多项式 \(C(x)\) 的次数界为 \(n_a+n_b-1\)。</p>
+<p>我们把不足的次数用系数 \(0\) 补充，变成两个齐次多项式。</p>
+<p>考虑怎样的两项乘完后，结果的幂指数为同一个。即 \(a_ix^i\times b_jx^j=c_kx^k\)，\(i,j\) 怎样取值才能使 \(k\) 为定值。显然 \(k=i+j\)。</p>
+<p>那么乘完之后，\(C(x)\) 就可以知道了。</p>
+<p>$$<br>\begin{equation}<br>\begin{aligned}<br>C(x)&amp;=\sum\limits_{i=0}^{2n-2}(\sum\limits_{j=0}^ia_jb_{i-j})x^i\\<br>&amp;=\sum\limits_{i=0}^{2n-2}c_ix^i<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>我们把中间的那个加法，即 \(c_i=\sum\limits_{j=0}^ia_jb_{i-j}\) 叫做卷积。</p>
+<p>这样，朴素算法时间复杂度为 \(\mathcal{O}(n^2)\)，显然不是太好。</p>
+<p>但是点值表达式的表示就很好了，直接乘起来就好了嘛！</p>
+<p>设两个多项式的次数界均为 \(n\)，则它们相乘得到的多项式的次数界即为 \(2n-1\)，因此需要在每个多项式上取 \(2n-1\) 个点才能确定乘出来的多项式。</p>
+<p>设 \(A(x)\) 的点值表示为 \(\alpha=\{ (x_i,A(x_i))\mid i\in[0,2n-2],i\in \mathbb{Z}\}\)，设 \(B(x)\) 的点值表示为 \(\beta=\{ (x_i,B(x_i))\mid i\in[0,2n-2],i\in \mathbb{Z}\}\)，然后就能得到 \(C(x)\) 的点值表示为：\(\gamma=\{ (x_i,A(x_i)B(x_i))\mid i\in[0,2n-2],i\in \mathbb{Z}\}\)。</p>
+<h2 id="插值-点值转换"><a href="#插值-点值转换" class="headerlink" title="插值 - 点值转换"></a>插值 - 点值转换</h2><p>就要接近重点了同志们加油！</p>
+<p>先定义两个运算：</p>
+<ol>
+<li>定义一种运算，可以将系数表示转化为点值表示，记为 \(\text{DFT}(A(x))=\alpha\)；</li>
+<li>定义其逆运算，即从一个多项式的点值表示确定其系数表示为插值。记为 \(\text{DFT}^{-1}(\alpha)=\text{IDFT}(\alpha)=A(x)\)。</li>
+</ol>
+<p>第一个运算在 \(x_i\) 确定时唯一确定，那么第二个在 \(x_i\) 确定时可不可以唯一确定 \(A(x)\) 呢？</p>
+<p>答案是肯定的。我们把这些点代入，可以得出一个 \(n\) 元一次方程组，当 \(x_i\) 均不相同时，可以唯一确定 \(a_0,a_1,\cdots ,a_n\)。（如果有一个 \(x_i\) 相同立刻变成不定方程）</p>
+<p><del>当然可以拿矩阵证明网上多得是。</del></p>
+<p>那么就很尴尬，\(\text{DFT}(A(x))\) 的复杂度是 \(\mathcal{O}(n^2)\) 的，它的逆运算是 \(\mathcal{O}(n^3)\) 的（高斯消元）……还不如不优化了。</p>
+<p>所以我们还需要一些姿势。</p>
+<h1 id="（高中知识）复数"><a href="#（高中知识）复数" class="headerlink" title="（高中知识）复数"></a>（高中知识）复数</h1><p>一些奇奇怪怪的问题无法解决，可以把它从实数域扩展到复数域上解决，加入了复数这种类似向量的东西，问题就会变得简单。</p>
+<p>噫，向量？点值表示不就是个向量吗！</p>
+<h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>可以参考 <a href="https://oi-wiki.org/math/complex/" target="_blank" rel="noopener">复数 - OI Wiki</a>。</p>
+<p>一堆定义就不说了，选修 2-2 内容，这里<del>简单的</del>强调一些运算：</p>
+<p>设 \(i^2=-1\)。</p>
+<p>设 \(z_1,z_2\in \mathbb{C}\)，\(z_1=a+bi,z_2=c+di\)，则：</p>
+<p>$$<br>\Large<br>z_1\pm z_2=(a\pm c)+(b\pm d)i\\<br>\Large<br>z_1\times z_2=(ac-bd)+(ad+bc)i\\<br>\Large<br>\frac{z_1}{z_2}=\frac{ac+bd}{c^2+d^2}+\frac{bc-ad}{c^2+d^2}i<br>$$</p>
+<p>设 \(z\in \mathbb{C}\)，\(z=a+bi\)，则 \(z\) 的共轭复数为 \(\overline z=a-bi\)。</p>
+<p>这是学过的，下面就说说没学过的。</p>
+<h2 id="单位根"><a href="#单位根" class="headerlink" title="单位根"></a>单位根</h2><p>根？方程的根？什么方程的根？</p>
+<p>定义：\(x^n=1\) 的所有根叫做 \(n\) 次单位根。</p>
+<p>当我们把问题引入复数域，\(x\) 就不能简单计算为 \(x=\sqrt[n] 1=1\) 了，而是在复平面内解决问题。</p>
+<h2 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h2><p>一个很强的公式。内容是：</p>
+<p>$$<br>\begin{equation}<br>e^{ix}=\cos x+i\sin x<br>\end{equation}<br>$$</p>
+<p>式子很简单，证明如下：</p>
+<p>由 Taylor 公式：</p>
+<p>$$<br>\begin{equation}<br>\begin{aligned}<br>e^x&amp;=1+x+\frac{x^2}{2!}+\cdots +\frac{x^n}{n!}+\cdots \\<br>\cos x&amp;=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\cdots \\<br>\sin x&amp;=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\cdots \\<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>将 Taylor 公式推广到复数域上，有复数运算 \(\pm i=\pm i,(\pm i)^2=-1,(\pm i)^3=\mp i,(\pm i)^4=1\)，可得：</p>
+<p>$$<br>\begin{equation}<br>\begin{aligned}<br>e^{ix}&amp;=1+ix-\frac{x^2}{2!}-i\frac{x^3}{3!}+\frac{x^4}{4!}+i\frac{x^5}{5!}+\cdots \\<br>&amp;=(1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots)+i(x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots)\\<br>&amp;=\cos x+i\sin x<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>证毕。</p>
+<p>将 \(x\) 换成 \(\pi\)，就出现了 \(e^{\pi i}=-1\)，即 \(e^{\pi i}+1=0\)，被誉为上帝创造的公式。</p>
+<p>将 \(x\) 换成 \(2k\pi\ \ (k\in \mathbb{Z})\)，就出现了 \(e^{2k\pi i}=1\)。</p>
+<p>我们不是要解 \(x^n=1\) 吗！</p>
+<p>那么 \(x=e^{\frac{2k\pi i}{n}} \ \ (k \in \mathbb{Z})\)，记这些单位根为 \(\omega_n^k=e^{\frac{2k\pi i}{n}}\)。</p>
+<p>下面就是一些数论问题了……</p>
+<p>记 \(k=nr+p\)，其中 \(p\in[0,n-1]\)，则 \(\omega_n^k=e^{\frac{2p\pi i}{n}}\)。</p>
+<p>$$<br>\Large<br>\begin{equation}<br>\begin{aligned}<br>\omega_n^k&amp;=e^{\frac{2k\pi i}{n}}\\<br>&amp;=e^{\frac{2(nr+p)\pi i}{n}}\\<br>&amp;=e^{\frac{2nr\pi i}{n}+\frac{2p\pi i}{n}}\\<br>&amp;=e^{\frac{2nr\pi i}{n}}\times e^{\frac{2p\pi i}{n}}\\<br>&amp;=e^{2\pi ir}\times e^{\frac{2p\pi i}{n}}\\<br>&amp;=1^r\times e^{\frac{2p\pi i}{n}}=e^{\frac{2p\pi i}{n}}<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>这不一样吗……</p>
+<p>所以可以证明 \(k\in [0,n-1]\)。也就是 \(n\) 次单位根有 \(n\) 个，不难发现，这 \(n\) 个单位根就是单位圆上的 \(n\) 个 \(n\) 等分点。</p>
+<p>于是记这些根为 \(\omega_n^0,\omega_n^1,\cdots ,\omega_n^{n-1}\)，这些根各不相同，并且在乘法意义下构成一个群。即：\(\omega_n^i\omega_n^j=\omega_n^{i+j}=\omega_n^{(i+j)\bmod n}\)，且 \(\omega_n^{-1}=\omega_n^{n-1}\)，证明如下：</p>
+<p>$$<br>\Large<br>\begin{equation}<br>\begin{aligned}<br>\omega_n^{-1}&amp;=1\times \omega_n^{-1}\\<br>&amp;=e^{2\pi i}\times e^{\frac{-2\pi i}{n}}\\<br>&amp;=e^{2\pi i-\frac{2\pi i}{n}}\\<br>&amp;=e^{\frac{2(n-1)\pi i}{n}}=\omega_n^{n-1}<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>问题得证。</p>
+<h2 id="三个引理"><a href="#三个引理" class="headerlink" title="三个引理"></a>三个引理</h2><h3 id="消去引理"><a href="#消去引理" class="headerlink" title="消去引理"></a>消去引理</h3><p>内容：当 \(d\not =0\) 时，\(\omega_{dn}^{dk}=\omega_n^k\)。</p>
+<p>证明：</p>
+<p>$$<br>\Large<br>\begin{equation}<br>\begin{aligned}<br>\omega_{dn}^{dk}&amp;=e^{\frac{2dk\pi i}{dn}}\\<br>&amp;=e^{\frac{2k\pi i}{n}}=\omega_n^k<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>很简单……<del>也很智障</del></p>
+<h3 id="折半引理"><a href="#折半引理" class="headerlink" title="折半引理"></a>折半引理</h3><p>内容：如果 \(n&gt;0\) 且 \(n\) 为偶数，\((\omega_n^k)^2=\omega_{\frac{n}{2}}^k\)。</p>
+<p>证明：</p>
+<p>$$<br>\Large<br>\begin{equation}<br>\begin{aligned}<br>(\omega_{n}^{k})^2&amp;=(e^{\frac{2k\pi i}{n}})^2\\<br>&amp;=e^{\frac{2k\pi i}{\frac{n}{2}}}=\omega_{\frac{n}{2}}^k<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>还行吧……可以看出，\(n\) 个 \(n\) 次单位根平方的集合就是 \(\frac{n}{2}\) 个 \(\frac{n}{2}\) 次单位根的集合，并且每个元素出现两次。可以通过单位根的对称性来理解。</p>
+<p>更一般的结论：</p>
+<p>$$<br>\Large<br>\omega_n^{k+\frac{n}{2}}=\omega_n^{\frac{n}{2}}\omega_n^k=-\omega_n^k\\<br>\Large \omega_n^{\frac{n}{2}}=e^{\pi i}=-1<br>$$</p>
+<h3 id="求和引理"><a href="#求和引理" class="headerlink" title="求和引理"></a>求和引理</h3><p>内容：对于 \(\forall k\in(0,n)\)，有 \(\sum\limits_{j=0}^{n-1}(\omega_n^k)^j=0\)。</p>
+<p>证明：</p>
+<p>$$<br>\Large<br>\begin{equation}<br>\begin{aligned}<br>\sum\limits_{j=0}^{n-1}(\omega_n^k)^j<br>&amp;=\frac{1-(\omega_{n}^{k})^n}{1-\omega_{n}^{k}}\\<br>&amp;=\frac{1-(\omega_{n}^{n})^k}{1-\omega_{n}^{k}}=0<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>注意：\(\omega_n^n=1\)，第一步用到了等比数列求和，化简省略了部分<del>很多</del>步骤。</p>
+<p>现在全都就绪了，终于要到目标了……</p>
+<h1 id="离散傅里叶变换（DFT）"><a href="#离散傅里叶变换（DFT）" class="headerlink" title="离散傅里叶变换（DFT）"></a>离散傅里叶变换（DFT）</h1><p>DFT，即 Discrete Fourier Transform，离散 Fourier 变换，就是我们之前定义的那个，现在有了复数，我们就可以在 \(\mathcal{O}(n\log n)\) 的时间内做完 DFT 运算。运用到了 Cooley-Tukey 算法。</p>
+<p>我们想在尽可能快的时间里获得 \(A(x)\) 的点值表示。并且为了满足之后的操作，我们需要在二倍的次数界下完成这个操作，也就是我们需要代入 \(2n-1\) 个点。每次多项式求值的复杂度是 \(\mathcal{O}(n)\) 的，因此朴素算法的复杂度为 \(\mathcal{O}(n^2)\)。</p>
+<p>我们<strong>将多项式按照指数的奇偶分类</strong>，记原多项式为 \(A(x)\)，那么构造两个多项式：</p>
+<p>$$<br>\Large<br>\begin{equation}<br>\begin{aligned}<br>A_0(x)&amp;=a_0+a_2x+a_4x^2+\cdots +a_{n-2}x^{\frac{n}{2}-1}\\<br>&amp;=\sum\limits_{i=0}^{\frac{n}{2}-1}a_{2i}x^i\\<br>A_1(x)&amp;=a_1+a_3x+a_5x^2+\cdots +a_{n-1}x^{\frac{n}{2}-1}\\<br>&amp;=\sum\limits_{i=0}^{\frac{n}{2}-1}a_{2i+1}x^i\\<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>通过观察可知，\(A(x)=A_0(x^2)+xA_1(x^2)\)，根据折半引理，我们考虑将 \(n\) 次单位根作为 \(x\) 代入计算。又因为折半引理，我们即可分治操作。</p>
+<p>那么，对于 \(k&lt;\frac{n}{2}\)，有：</p>
+<p>$$<br>\Large<br>\begin{equation}<br>\begin{aligned}<br>A(\omega_n^k)&amp;=A_0((\omega_n^k)^2)+\omega_n^kA_1((\omega_n^k)^2)\\<br>&amp;=A_0(\omega_{\frac{n}{2}}^k)+\omega_n^kA_1(\omega_{\frac{n}{2}}^k)\\<br>&amp;=\sum\limits_{i=0}^{\frac{n}{2}-1}a_{2i}\omega_{\frac{n}{2}}^{ki}+\omega_n^k\sum\limits_{i=0}^{\frac{n}{2}-1}a_{2i+1}\omega_{\frac{n}{2}}^{ki}\\<br>A(\omega_n^{k+\frac{n}{2}})&amp;=A_0((\omega_n^k)^2)+\omega_n^{k+\frac{n}{2}}A_1((\omega_n^k)^2)\\<br>&amp;=A_0(\omega_{\frac{n}{2}}^k)-\omega_n^kA_1(\omega_{\frac{n}{2}}^k)\\<br>&amp;=\sum\limits_{i=0}^{\frac{n}{2}-1}a_{2i}\omega_{\frac{n}{2}}^{ki}-\omega_n^k\sum\limits_{i=0}^{\frac{n}{2}-1}a_{2i+1}\omega_{\frac{n}{2}}^{ki}<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>这样，由奇偶性使得需要代入的值范围减半，递归做下去就行了。</p>
+<p>时间复杂度为：</p>
+<p>$$<br>\begin{equation}<br>\mathcal{T}(n)=2\mathcal{T}(\frac{n}{2})+\mathcal{O}(n)=\mathcal{O}(n\log n)<br>\end{equation}<br>$$</p>
+<p>因此，对于单位根的多项式求值，其实是均摊 \(\mathcal{O}(\log n)\) 的。</p>
+<p>因为永远是奇偶合并，如果想要更方便地合并必然 \(n\) 取 \(2\) 的整数次幂，否则合并到一定时候左右不一定都是相同次数（可以考虑一个完全二叉树）。所以做的时候取 \(2\) 的整数次幂作为 \(n\)。</p>
+<h1 id="逆离散傅里叶变换（IDFT）"><a href="#逆离散傅里叶变换（IDFT）" class="headerlink" title="逆离散傅里叶变换（IDFT）"></a>逆离散傅里叶变换（IDFT）</h1><p>IDFT，即 Inverse Discrete Fourier Transform，逆离散傅里叶变换，还是我们之前定义的那个。我们在 \(\mathcal{O}(n\log n)\) 的时间里搞定了 DFT，可是 IDFT 还是 \(\mathcal{O}(n^3)\) 的，所以我们继续观（tui）察（da）性（shi）质（zi）。</p>
+<p>我们说过，IDFT 相当于解个 \(n\) 元一次方程组，这个方程组写成矩阵形式是这样的：</p>
+<p>$$<br>\begin{equation}<br>\begin{bmatrix}<br>(\omega_n^0)^0&amp; (\omega_n^0)^1&amp;(\omega_n^0)^2 &amp;\cdots &amp;(\omega_n^0)^{n-1}\\<br>(\omega_n^1)^0&amp; (\omega_n^1)^1&amp;(\omega_n^1)^2&amp;\cdots &amp;(\omega_n^1)^{n-1}\\<br>\vdots&amp;\vdots &amp;\vdots &amp;\ddots &amp;\vdots \\<br>(\omega_n^{n-1})^0 &amp; (\omega_n^{n-1})^1&amp; (\omega_n^{n-1})^2&amp;\cdots &amp; (\omega_n^{n-1})^{n-1}<br>\end{bmatrix}<br>\times<br>\begin{bmatrix}<br>a_0\\a_1\\ \vdots \\a_{n-1}<br>\end{bmatrix}=<br>\begin{bmatrix}<br>A(\omega_n^0)\\<br>A(\omega_n^1)\\<br>A(\omega_n^2)\\<br>\vdots \\<br>A(\omega_n^{n-1})\\<br>\end{bmatrix}<br>\end{equation}<br>$$</p>
+<p>这同时也是做 DFT 时我们利用的矩阵。只不过做 DFT 时右边是未知的，这次 \(a_i\) 是未知的。</p>
+<p>记上面的系数矩阵为 \(D\)，再考虑以下矩阵：</p>
+<p>$$<br>\begin{bmatrix}<br>(\omega_n^0)^0&amp; (\omega_n^0)^1&amp;(\omega_n^0)^2 &amp;\cdots &amp;(\omega_n^0)^{n-1}\\<br>(\omega_n^{-1})^0&amp; (\omega_n^{-1})^1&amp;(\omega_n^{-1})^2&amp;\cdots &amp;(\omega_n^{-1})^{n-1}\\<br>\vdots&amp;\vdots &amp;\vdots &amp;\ddots &amp;\vdots \\<br>(\omega_n^{-(n-1)})^0 &amp; (\omega_n^{-(n-1)})^1&amp; (\omega_n^{-(n-1)})^2&amp;\cdots &amp; (\omega_n^{-(n-1)})^{n-1}<br>\end{bmatrix}<br>$$</p>
+<p>记此矩阵为 \(W\)，则记 \(E=D\times W\)。可知：</p>
+<p>$$<br>\begin{equation}<br>\begin{aligned}<br>E_{ij}&amp;=\sum\limits_{k=0}^{n-1}D_{ik}W_{kj}\\<br>&amp;=\sum\limits_{k=0}^{n-1}\omega_n^{-ik}\omega_n^{kj}\\<br>&amp;=\sum\limits_{k=0}^{n-1}\omega_n^{k(j-i)}<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>当 \(i=j\) 时：</p>
+<p>$$<br>\begin{equation}<br>\begin{aligned}<br>E_{ij}&amp;=\sum\limits_{k=0}^{n-1}\omega_n^{k(j-i)}\\<br>&amp;=\sum\limits_{k=0}^{n-1}\omega_n^0=n\\<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>当 \(i\not =j\) 时，由求和引理：</p>
+<p>$$<br>\begin{equation}<br>\begin{aligned}<br>E_{ij}&amp;=\sum\limits_{k=0}^{n-1}\omega_n^{k(j-i)}\\<br>&amp;=\sum\limits_{k=0}^{n-1}(\omega_n^{j-i})^k=0\\<br>\end{aligned}<br>\end{equation}<br>$$</p>
+<p>记单位矩阵为 \(I\)，所以 \(I=\frac{1}{n}E\)，即 \(\frac{1}{n}D=W^{-1}\)。<br>将由方程组推得那个矩阵左乘 \(\frac{1}{n}D\)，可得：</p>
+<p>$$<br>\begin{equation}<br>\begin{bmatrix}<br>a_0\\a_1\\ \vdots \\a_{n-1}<br>\end{bmatrix}=<br>\begin{bmatrix}<br>(\omega_n^0)^0&amp; (\omega_n^0)^1&amp;(\omega_n^0)^2 &amp;\cdots &amp;(\omega_n^0)^{n-1}\\<br>(\omega_n^{-1})^0&amp; (\omega_n^{-1})^1&amp;(\omega_n^{-1})^2&amp;\cdots &amp;(\omega_n^{-1})^{n-1}\\<br>\vdots&amp;\vdots &amp;\vdots &amp;\ddots &amp;\vdots \\<br>(\omega_n^{-(n-1)})^0 &amp; (\omega_n^{-(n-1)})^1&amp; (\omega_n^{-(n-1)})^2&amp;\cdots &amp; (\omega_n^{-(n-1)})^{n-1}<br>\end{bmatrix}<br>\times<br>\begin{bmatrix}<br>A(\omega_n^0)\\<br>A(\omega_n^1)\\<br>A(\omega_n^2)\\<br>\vdots \\<br>A(\omega_n^{n-1})\\<br>\end{bmatrix}<br>\end{equation}<br>$$</p>
+<p>这和 DFT 的操作很像，所以用 DFT 的过程实现 IDFT 即可。</p>
+<p>负号？把 \(\omega_n^1\) 改成 \(\omega_n^{-1}\) 即可；<br>\(\frac{1}{n}\)？做完之后再除个 \(n\) 即可。</p>
+<p>现在 IDFT 也是 \(\mathcal{O}(n\log n)\) 的了。</p>
+<p>至此，所有的时间都是 \(\mathcal{O}(n\log n)\) 的了！即 FFT 的复杂度为 \(\mathcal{O}(n\log n)\)！</p>
+<h1 id="NTT"><a href="#NTT" class="headerlink" title="NTT"></a>NTT</h1><p>我们学过了 FFT，发现很滋磁。但是 FFT 涉及浮点数，有可能有精度问题，所以这就很闹心了……发现精度问题出现在 DFT 和 IDFT 中求 \(\sin\) 和 \(\cos\) 导致精度问题和 IDFT 中乘以 \(\frac{1}{n}\) 的精度问题，所以我们考虑能否在整数范围内实现 FFT 的过程。</p>
+<p>那么整数范围内的问题需要数论解决，这就导致了 NTT（也叫 FNT）的诞生。</p>
+<p>可以说，精度问题主要由 \(n\) 次单位根引起。回顾 FFT，我们用了 \(n\) 次单位根，也就是 \(\omega_n^k\) 的哪些性质？</p>
+<p>好像也就是三个引理吧……<br>列出来所用的性质们：（一些条件有省略，具体请详见 FFT 学习笔记）</p>
+<ol>
+<li>\(\omega_n^n=e^{2k\pi i}=1\)；</li>
+<li>\(\forall i,j\in [0,n-1]\) 且 \(i,j\in \mathbb{Z},i\not =j\)，\(\omega_n^i\not =\omega_n^j\)；</li>
+<li>（折半引理）\((\omega_n^k)^2=\omega_{\frac{n}{2}}^k\)，\(\omega_n^{k+\frac{n}{2}}=-\omega_n^k\)；</li>
+<li>（求和引理）\(\sum\limits_{j=0}^{n-1}(\omega_n^k)^j=0\ \ (k\not =0)\)。</li>
+</ol>
+<p>所以，我们需要在整数范围内找到一个符合这四条性质的一种数。于是我们找到了一种特殊的数——原根。</p>
+<p>定义如果所有与 \(n\) 互质的数 \(a\) 等于 \(g^x\bmod n\)，其中 \(x\) 为一正整数，则 \(g\) 为在模 \(n\) 意义下的原根。</p>
+<p>为了方便计算，我们取模数为一个质数 \(P\)。</p>
+<p>然后，我们用 \(g^{r\frac{\varphi (P)}{n}} \) 代替 \(\omega_n^r \) 进行计算，由 \(\varphi (P)=P-1 \)，要求 \(\frac{\varphi (P)}{n} \) 为整数，\(n \) 还是 \(2 \) 的整数次幂，所以要求 \(P=k\times 2^q+1 \)，其中 \(2^q\ge n \)。</p>
+<p>然后我们验证一下性质是否符合。</p>
+<p>对于第一条，由 Fermat’s little theorem，\(g^{\varphi (P)}\equiv 1\ (\bmod P\ )\)，因此第一条满足。</p>
+<p>对于第二条，根据第一条可以看出，原根同单位根一样，构成了一个乘法群。具体可以用第一条证明。因此第二条也是满足的。</p>
+<p>对于第三条，化简一下指数，拆成两项相乘的形式，然后接着用第一条，还是可以得证。</p>
+<p>对于第四条，运用等比数列求和，然后也可以得证。</p>
+<p>如果模数任意呢？</p>
+<p>如果要模数是 \(P\)，那么多项式的所有系数和不会超过 \(n(P-1)^2\)。所以找出一组 \(p\)，使得 \(p_i=k_i\times 2^{q_i}+1\)，且：</p>
+<p>$$<br>\begin{equation}<br>\prod_{i=0}^{k-1}p_i&gt;n(P-1)^2<br>\end{equation}<br>$$</p>
+<p>然后按每个 \(p \) 做 NTT，然后 CRT 合并……</p>
+<p>又双叒叕 CRT 合并……</p>
+<p>本身 NTT 常数就比较大，和 FFT 差不多吧……（中间有快速幂）。</p>
+<p>Po 姐：「此外，一个答案模一个数的计数问题必须用 NTT。」</p>
+<p><a href="http://blog.miskcoo.com/2014/07/fft-prime-table" target="_blank" rel="noopener">这里</a>是一些常用质数的原根。</p>
+<h1 id="FWT"><a href="#FWT" class="headerlink" title="FWT"></a>FWT</h1><p>FWT 是一种类似于 FFT 的变换。我们都知道对于数组 \(a \) 与数组 \(b \) 的卷积 \(c \) 可以表示为：</p>
+<p>$$<br>\begin{equation}<br>c_j=\sum\limits_{i=1}^ja_ib_{j-i}<br>\end{equation}<br>$$</p>
+<p>那么 FWT 只是把计算下标的加减运算改为了逻辑运算（与、或、异或等）。</p>
+<p>比如与运算下的 FWT 表示为：</p>
+<p>$$<br>\begin{equation}<br>c_k=\sum\limits_{i \text{&amp;} j=k}a_ib_j<br>\end{equation}<br>$$</p>
+<p>那么怎么做……</p>
+<p>以下三位大爷写得已经足够好就不造轮子了……</p>
+<p><a href="http://picks.logdown.com/posts/179290-fast-walsh-hadamard-transform" target="_blank" rel="noopener">Fast Walsh-Hadamard Transform - Picks’s Blog</a><br><a href="https://blog.csdn.net/neither_nor/article/details/60335099" target="_blank" rel="noopener">FWT 详解 知识点 - neither_nor</a><br><a href="https://blog.csdn.net/popoqqq/article/details/52816762" target="_blank" rel="noopener">HDU 5909 Tree Cutting 树形 DP+快速沃尔什变换 - PoPoQQQ</a></p>
+<p>膜拜以上三位大爷%%%</p>
+<h1 id="实现问题"><a href="#实现问题" class="headerlink" title="实现问题"></a>实现问题</h1><p>说是一回事，写是另一回事。</p>
+<p>奇偶分组这个玩意就很坑，容易发现，设 \(r_i\) 为将 \(i\) 的高位翻转到低位得到的数字（如 \(0011\) 就变成 \(1100\)），那么初始位置为 \(i\) 的数就会被移动到 \(r_i\)，所以我们可以预先完成移动，然后合并计算。时间就会加快很多了。</p>
+<p>不过 FFT 本身常数巨大，主要因为 <code>double</code> 类型的计算时间，还有使用 \(\sin,\cos\) 函数带来的计算时间问题，所以常数问题一定要注意。</p>
+<p>我们看到，DFT 做完后，得到的是将 \(n\) 次单位根代入后表达式的点值表示，IDFT 做完后，得到的是两多项式相乘的系数表示。</p>
+<p>FFT 和 FWT 都在图像处理，音频处理方面有较大应用。</p>
+<p>终于把我的 flag 填完了我好开心啊！！！</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/FFT/">FFT</a>, <a class="has-link-grey -link" href="/tags/FWT/">FWT</a>, <a class="has-link-grey -link" href="/tags/NTT/">NTT</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/11/11/AFTER-STORY-HeRaNO-UESTC-and-more/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">AFTER STORY, HeRaNO@UESTC, and more</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2017/03/31/「HLOI2016」幸运数字/">
+                <span class="level-item">「HLOI2016」幸运数字</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDk0NS8xNzQ3MA==">
+    <script type="text/javascript">
+        (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+
+            if (typeof LivereTower === 'function') { return; }
+
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+    </script>
+    <noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+
+    </div>
+</div>
+</div>
                 
 
 
@@ -423,6 +498,125 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#为什么学-FFT">
+        <span class="has-mr-6">1</span>
+        <span>为什么学 FFT</span>
+        </a></li><li>
+        <a class="is-flex" href="#什么是-FFT？为什么-FFT？">
+        <span class="has-mr-6">2</span>
+        <span>什么是 FFT？为什么 FFT？</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是-FFT？">
+        <span class="has-mr-6">2.1</span>
+        <span>什么是 FFT？</span>
+        </a></li><li>
+        <a class="is-flex" href="#为什么-FFT？">
+        <span class="has-mr-6">2.2</span>
+        <span>为什么 FFT？</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#（初中知识）多项式">
+        <span class="has-mr-6">3</span>
+        <span>（初中知识）多项式</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#定义">
+        <span class="has-mr-6">3.1</span>
+        <span>定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#多项式的两种表示法">
+        <span class="has-mr-6">3.2</span>
+        <span>多项式的两种表示法</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#系数（插值）表示法">
+        <span class="has-mr-6">3.2.1</span>
+        <span>系数（插值）表示法</span>
+        </a></li><li>
+        <a class="is-flex" href="#点值表示法">
+        <span class="has-mr-6">3.2.2</span>
+        <span>点值表示法</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#多项式的运算">
+        <span class="has-mr-6">3.3</span>
+        <span>多项式的运算</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#多项式求值">
+        <span class="has-mr-6">3.3.1</span>
+        <span>多项式求值</span>
+        </a></li><li>
+        <a class="is-flex" href="#多项式加法">
+        <span class="has-mr-6">3.3.2</span>
+        <span>多项式加法</span>
+        </a></li><li>
+        <a class="is-flex" href="#多项式乘法">
+        <span class="has-mr-6">3.3.3</span>
+        <span>多项式乘法</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#插值-点值转换">
+        <span class="has-mr-6">3.4</span>
+        <span>插值 - 点值转换</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#（高中知识）复数">
+        <span class="has-mr-6">4</span>
+        <span>（高中知识）复数</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#定义-1">
+        <span class="has-mr-6">4.1</span>
+        <span>定义</span>
+        </a></li><li>
+        <a class="is-flex" href="#单位根">
+        <span class="has-mr-6">4.2</span>
+        <span>单位根</span>
+        </a></li><li>
+        <a class="is-flex" href="#欧拉公式">
+        <span class="has-mr-6">4.3</span>
+        <span>欧拉公式</span>
+        </a></li><li>
+        <a class="is-flex" href="#三个引理">
+        <span class="has-mr-6">4.4</span>
+        <span>三个引理</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#消去引理">
+        <span class="has-mr-6">4.4.1</span>
+        <span>消去引理</span>
+        </a></li><li>
+        <a class="is-flex" href="#折半引理">
+        <span class="has-mr-6">4.4.2</span>
+        <span>折半引理</span>
+        </a></li><li>
+        <a class="is-flex" href="#求和引理">
+        <span class="has-mr-6">4.4.3</span>
+        <span>求和引理</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#离散傅里叶变换（DFT）">
+        <span class="has-mr-6">5</span>
+        <span>离散傅里叶变换（DFT）</span>
+        </a></li><li>
+        <a class="is-flex" href="#逆离散傅里叶变换（IDFT）">
+        <span class="has-mr-6">6</span>
+        <span>逆离散傅里叶变换（IDFT）</span>
+        </a></li><li>
+        <a class="is-flex" href="#NTT">
+        <span class="has-mr-6">7</span>
+        <span>NTT</span>
+        </a></li><li>
+        <a class="is-flex" href="#FWT">
+        <span class="has-mr-6">8</span>
+        <span>FWT</span>
+        </a></li><li>
+        <a class="is-flex" href="#实现问题">
+        <span class="has-mr-6">9</span>
+        <span>实现问题</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 

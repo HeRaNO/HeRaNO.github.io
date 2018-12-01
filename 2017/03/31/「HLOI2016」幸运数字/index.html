@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="HeRaNO">
 <meta property="og:description" content="HLOI2016 Day2 T3">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-20T12:48:11.764Z">
+<meta property="og:updated_time" content="2018-12-01T12:42:55.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「HLOI2016」幸运数字">
 <meta name="twitter:description" content="HLOI2016 Day2 T3">
@@ -150,7 +150,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 900 个字)
+                    6 分钟 读完 (大约 906 个字)
                 </span>
                 
             </div>
@@ -174,10 +174,10 @@
 <h2 id="时间与空间限制"><a href="#时间与空间限制" class="headerlink" title="时间与空间限制"></a>时间与空间限制</h2><p>时间限制：\(1000\text{ms}\)，空间限制：\(128\text{MB}\)。</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>HLOI2016 全 AC 达成。</p>
 <p>\(l \) 和 \(r \) 太大了，典型数位 DP 题。<br>于是这就成为本蒟蒻第一道数位 DP……</p>
-<p>两个 DP 数组，用 \(K_{i,j,0/1/2} \) 表示 \([1,K] \) 中，前 \(i \) 位组成的数余数为 \(j \)，且组成的数大于/等于/小于左或右区间的数。</p>
+<p>两个 DP 数组，用 \(f(i,j,k) \) 表示 \([1,f] \) 中，前 \(i \) 位组成的数余数为 \(j \)，且组成的数大于 \((k=0)\)，等于 \((k=1)\) 或小于  \((k=2)\) 左或右区间的数。</p>
 <p>每次加入一位数，比前 \(i-1 \) 位大的转移到比前 \(i \) 位大，小的同理。相等的可以自行意会……</p>
 <p>初值就是把 \(1 \sim 9 \) 扫一遍，加到 DP 数组里。</p>
-<p>答案是 \(R_{n,0,2}+R_{n,0,1}-L_{n,0,2} \)。具体转移和答案参见代码。</p>
+<p>答案是 \(R(n,0,2)+R(n,0,1)-L(n,0,2) \)。具体转移和答案参见代码。</p>
 <p><del>题解说了跟没说一样。</del></p>
 <p>然后不知为何貌似数据错了？</p>
 <p><del>省选题数据会错？</del></p>

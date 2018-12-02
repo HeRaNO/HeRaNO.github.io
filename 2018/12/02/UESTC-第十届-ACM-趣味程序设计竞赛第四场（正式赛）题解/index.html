@@ -2,18 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>分类: OI/ACM - HeRaNO</title>
+<title>UESTC 第十届 ACM 趣味程序设计竞赛第四场（正式赛）题解 - HeRaNO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="HeRaNO">
-<meta property="og:url" content="https://herano.github.io/categories/OI-ACM/index.html">
+    <meta name="description" content="2/5 Penalty: 02:15:58 Rank 94">
+<meta name="keywords" content="模拟,数学,概率与期望">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UESTC 第十届 ACM 趣味程序设计竞赛第四场（正式赛）题解">
+<meta property="og:url" content="https://herano.github.io/2018/12/02/UESTC-第十届-ACM-趣味程序设计竞赛第四场（正式赛）题解/index.html">
 <meta property="og:site_name" content="HeRaNO">
+<meta property="og:description" content="2/5 Penalty: 02:15:58 Rank 94">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-02T10:42:29.153Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HeRaNO">
+<meta name="twitter:title" content="UESTC 第十届 ACM 趣味程序设计竞赛第四场（正式赛）题解">
+<meta name="twitter:description" content="2/5 Penalty: 02:15:58 Rank 94">
 
 
 
@@ -126,18 +131,6 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">分类</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">OI/ACM</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
@@ -161,480 +154,99 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/12/02/UESTC-第十届-ACM-趣味程序设计竞赛第四场（正式赛）题解/">UESTC 第十届 ACM 趣味程序设计竞赛第四场（正式赛）题解</a>
+                UESTC 第十届 ACM 趣味程序设计竞赛第四场（正式赛）题解
             
         </h1>
         <div class="content">
-            <p>2/5 Penalty: 02:15:58 Rank 94<br></p>
+            <p>2/5 Penalty: 02:15:58 Rank 94<br><a id="more"></a></p>
+<p><del>我不露一手你们真的以为我很强？</del></p>
+<p>被第二题打自闭（第二题是大一大爷出的不敢说话），然后就出现了 \(26\) 个 AK 的……</p>
+<p>今天智商不在线实锤，滚去写微积分作业。</p>
+<p>我有毒，真的，我觉得别人觉得简单的场很难，我觉得别人觉得比较难的场简单……<br>包括数学考试，英语考试，全部应验……</p>
+<p>比赛链接在<a href="https://lutece.xyz/contest/detail/9/" target="_blank" rel="noopener">这里</a>。</p>
+<h2 id="A-就是要众生平等"><a href="#A-就是要众生平等" class="headerlink" title="A. 就是要众生平等"></a>A. 就是要众生平等</h2><p>题目大意：一个数列的所有元素和要编程 \(nk\)，最少要加多少？</p>
+<p>mdzz</p>
+<p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
+<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 1010</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,k,x,sum;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>,&amp;n,&amp;k);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;x);</span><br><span class="line">		sum+=x;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,max(n*k-sum,<span class="hljs-number">0</span>));</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="B-Sindar家的气球"><a href="#B-Sindar家的气球" class="headerlink" title="B. Sindar家的气球"></a>B. Sindar家的气球</h2><p>题目大意：有一些气球排成一列做匀速直线运动，气球的质量都相等，并且有一个速度。求经过碰撞后最快与最慢的气球到达终点的用时。</p>
+<p>mdzz 我 TM 直接去想动量定理了。</p>
+<p>不就是交换速度吗，可以看成两个气球位置交换……</p>
+<p>所以就当没有碰撞就好了……</p>
+<p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
+<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,v,L,h,a;</span><br><span class="line"><span class="hljs-keyword">double</span> t,mx,mn=<span class="hljs-number">1e18</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d %d"</span>,&amp;n,&amp;L,&amp;v);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>,&amp;h,&amp;a);</span><br><span class="line">		t=(<span class="hljs-keyword">double</span>)(L-h)/(v+a);</span><br><span class="line">		mx=max(mx,t);mn=min(mn,t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%.2lf %.2lf\n"</span>,mn,mx);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="C-蚂蚁的旅途"><a href="#C-蚂蚁的旅途" class="headerlink" title="C. 蚂蚁的旅途"></a>C. 蚂蚁的旅途</h2><p>题目大意：一个点从数轴上的原点出发，每一秒等概率地向左或向右移动一个单位长度，求 \(t\) 秒后在 \(m\) 位置的概率。</p>
+<p>数据不满，跑暴力。</p>
+<p>时间复杂度：\(\mathcal{O}(T2^t)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
+<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>&#123;<span class="hljs-keyword">return</span> !b?a:gcd(b,a%b);&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> T,t,m,cnt,r;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> dep,<span class="hljs-keyword">int</span> p)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> (dep==t)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span> (p==m) ++cnt;</span><br><span class="line">		<span class="hljs-keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(dep+<span class="hljs-number">1</span>,p<span class="hljs-number">-1</span>);dfs(dep+<span class="hljs-number">1</span>,p+<span class="hljs-number">1</span>);</span><br><span class="line">	<span class="hljs-keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;T);</span><br><span class="line">	<span class="hljs-keyword">while</span> (T--)</span><br><span class="line">	&#123;</span><br><span class="line">		cnt=<span class="hljs-number">0</span>;</span><br><span class="line">		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>,&amp;t,&amp;m);r=<span class="hljs-number">1</span>&lt;&lt;t;</span><br><span class="line">		dfs(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>);</span><br><span class="line">		<span class="hljs-keyword">int</span> q=gcd(cnt,r);cnt/=q;r/=q;</span><br><span class="line">		<span class="hljs-keyword">if</span> (cnt==<span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">"0\n"</span>);</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cnt==r) <span class="hljs-built_in">printf</span>(<span class="hljs-string">"1\n"</span>);</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d/%d\n"</span>,cnt,r);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="D-XOR-最长路径"><a href="#D-XOR-最长路径" class="headerlink" title="D. XOR 最长路径"></a>D. XOR 最长路径</h2><p>这道题排版满分，点名表扬。</p>
+<p>题目大意：求 \(0\) 到 \(n\) 的一个字典序最小的排列，使得所有相邻两个数的异或的 NIM 和最大。</p>
+<p>暴力打错，手动再见。</p>
+<p>写出这个式子，因为异或具有结合律，并且 \(a\oplus a=0\)，因此就令第一个数与最后一个数的异或值最大即可。</p>
+<p>一列数中选两个数异或值最大有经典的 Trie 树做法，直接上即可，但要记录这两个数的值。最后把这两个数排序放在序列的头尾，剩下的数排个序即可。</p>
+<p>但是观察一下，选的这两个数的异或应该是 \(2^p-1\) 这样，因为要使第一个数尽可能小，所以要使最后一个数尽可能大，一直大到 \(n\) 就行。</p>
+<p>然后就不用 Trie 树了，直接做就好了……</p>
+<p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(n)\)。</p>
+<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> n,L=<span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x=n;x;x&gt;&gt;=<span class="hljs-number">1</span>) ++L;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,(<span class="hljs-number">1</span>&lt;&lt;L)<span class="hljs-number">-1</span>);</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d"</span>,(<span class="hljs-number">1</span>&lt;&lt;L)<span class="hljs-number">-1</span>-n);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)</span><br><span class="line">		<span class="hljs-keyword">if</span> (i!=(<span class="hljs-number">1</span>&lt;&lt;L)<span class="hljs-number">-1</span>-n)</span><br><span class="line">			<span class="hljs-built_in">printf</span>(<span class="hljs-string">" %d"</span>,i);</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">" %d\n"</span>,n);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="E-奥本海姆的衣柜"><a href="#E-奥本海姆的衣柜" class="headerlink" title="E. 奥本海姆的衣柜"></a>E. 奥本海姆的衣柜</h2><p>题目大意：还是题解写得明白……</p>
+<p>不想说话，直接粘<a href="https://blog.csdn.net/qq_39471664/article/details/84719578" target="_blank" rel="noopener">题解</a>……</p>
+<p>时间复杂度：\(\mathcal{O}(nk)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
+<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> n,k;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>,&amp;n,&amp;k);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n*(k<span class="hljs-number">-1</span>);i++) <span class="hljs-built_in">putchar</span>(<span class="hljs-string">'1'</span>);</span><br><span class="line">	<span class="hljs-built_in">putchar</span>(<span class="hljs-string">'\n'</span>);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/12/02/UESTC-第十届-ACM-趣味程序设计竞赛第四场（正式赛）题解/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/数学/">数学</a>, <a class="has-link-grey -link" href="/tags/概率与期望/">概率与期望</a>, <a class="has-link-grey -link" href="/tags/模拟/">模拟</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
 </div>
 
 
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-24T08:49:52.000Z">2018-11-24</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 760 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/11/24/UESTC-第十届-ICPC-趣味程序设计竞赛第三场（正式赛）题解/">UESTC 第十届 ICPC 趣味程序设计竞赛第三场（正式赛）题解</a>
-            
-        </h1>
-        <div class="content">
-            <p>4/5 Penalty: 09:23:54 Rank 20<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/11/24/UESTC-第十届-ICPC-趣味程序设计竞赛第三场（正式赛）题解/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-17T09:00:00.000Z">2018-11-17</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 708 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/">UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解</a>
-            
-        </h1>
-        <div class="content">
-            <p>5/5 Penalty: 03:36:41 Rank 5<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-05-05T15:07:06.000Z">2017-05-05</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    38 分钟 读完 (大约 5695 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2017/05/05/FFT-NTT-FWT-学习笔记/">FFT, NTT, FWT 学习笔记</a>
-            
-        </h1>
-        <div class="content">
-            <p>前方高能！慎入！<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/05/05/FFT-NTT-FWT-学习笔记/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-03-31T14:22:34.000Z">2017-03-31</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 906 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2017/03/31/「HLOI2016」幸运数字/">「HLOI2016」幸运数字</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI2016 Day2 T3<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/03/31/「HLOI2016」幸运数字/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-02-18T11:54:35.000Z">2017-02-18</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 分钟 读完 (大约 1387 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2017/02/18/「HLOI2016」序列问题/">「HLOI2016」序列问题</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI2016 Day2 T2<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/02/18/「HLOI2016」序列问题/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-02-18T08:42:00.000Z">2017-02-18</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 分钟 读完 (大约 643 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2017/02/18/「HLOI2016」农场修路/">「HLOI2016」农场修路</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI2016 Day2 T1<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/02/18/「HLOI2016」农场修路/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-02-18T08:31:39.000Z">2017-02-18</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 1085 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2017/02/18/「HLOI2016」黑白棋/">「HLOI2016」黑白棋</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI2016 Day1 T3<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/02/18/「HLOI2016」黑白棋/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-02-18T08:12:16.000Z">2017-02-18</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 789 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2017/02/18/「HLOI2016」小明的智力游戏/">「HLOI2016」小明的智力游戏</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI2016 Day1 T2<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/02/18/「HLOI2016」小明的智力游戏/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-02-18T07:55:39.000Z">2017-02-18</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 686 个字)
-                </span>
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2017/02/18/「HLOI2016」字符串问题/">「HLOI2016」字符串问题</a>
-            
-        </h1>
-        <div class="content">
-            <p>HLOI2016 Day1 T1<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/02/18/「HLOI2016」字符串问题/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-    
 <div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/OI-ACM/page/0/">上一页</a>
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/11/27/中日甲午战争/">
+                <span class="level-item">中日甲午战争</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/OI-ACM/page/2/">下一页</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link is-current" href="/categories/OI-ACM/">1</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/categories/OI-ACM/page/2/">2</a></li>
-            
-        </ul>
-    </nav>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDk0NS8xNzQ3MA==">
+    <script type="text/javascript">
+        (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+
+            if (typeof LivereTower === 'function') { return; }
+
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+    </script>
+    <noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+
+    </div>
 </div>
 </div>
                 

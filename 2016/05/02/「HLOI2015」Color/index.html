@@ -16,7 +16,7 @@
 <meta property="og:description" content="HLOI2015 Day1 T2">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/HLOI2015-color.jpg">
-<meta property="og:updated_time" content="2018-11-11T15:03:17.767Z">
+<meta property="og:updated_time" content="2018-12-31T10:10:00.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「HLOI2015」Color">
 <meta name="twitter:description" content="HLOI2015 Day1 T2">
@@ -152,7 +152,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 845 个字)
+                    5 分钟 读完 (大约 689 个字)
                 </span>
                 
             </div>
@@ -182,7 +182,8 @@
 <p>\(f(k,i,j) \) 代表在已经确定前 \(k-1 \) 个格子中有 \(i \) 个起点和 \(j \) 个终点，第 \(k \) 个格子为确定四种状态之一：起点，终点，既是起点又是终点，不是起点也不是终点。</p>
 <p>时间复杂度为 \(\mathcal{O}(n^2m) \)。</p>
 <p>对于 \(n\times m\le 10^5 \)，考虑到如果 \(n&gt;m \)，则无解，故 \(n\le m \)，由此推出 \(n^2\le n\times m\le 10^5 \)，则 \(n&lt;333 \)，则 \(n^2m\le 3.33\times 10^7 \)，可以在时限内运行完。因为一个格子的状态只与上一个格子的状态有关，可以用滚动数组优化内存空间。</p>
-<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> M 1000000007</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,m,f[<span class="hljs-number">2</span>][<span class="hljs-number">333</span>][<span class="hljs-number">333</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>,&amp;n,&amp;m);</span><br><span class="line">	<span class="hljs-keyword">if</span>(n&gt;m)<span class="hljs-comment">//特判</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">puts</span>(<span class="hljs-string">"0"</span>);</span><br><span class="line">		<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	f[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;<span class="hljs-comment">//初始</span></span><br><span class="line">	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">1</span>;k&lt;=m;k++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=n;i++)<span class="hljs-comment">//运用与运算压缩空间，k&amp;1 的结果为 k%2</span></span><br><span class="line">			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;=i;j++)<span class="hljs-comment">//终点数应小于等于起点数</span></span><br><span class="line">			&#123;</span><br><span class="line">				f[k&amp;<span class="hljs-number">1</span>][i][j]=f[k<span class="hljs-number">-1</span>&amp;<span class="hljs-number">1</span>][i][j];</span><br><span class="line">				<span class="hljs-comment">//这一格既不是起点也不是终点</span></span><br><span class="line">				<span class="hljs-keyword">if</span>(i) f[k&amp;<span class="hljs-number">1</span>][i][j]=(f[k<span class="hljs-number">-1</span>&amp;<span class="hljs-number">1</span>][i<span class="hljs-number">-1</span>][j]+f[k&amp;<span class="hljs-number">1</span>][i][j])%M;</span><br><span class="line">				<span class="hljs-comment">//以这一格为起点</span></span><br><span class="line">				<span class="hljs-keyword">if</span>(j) f[k&amp;<span class="hljs-number">1</span>][i][j]=(f[k<span class="hljs-number">-1</span>&amp;<span class="hljs-number">1</span>][i][j<span class="hljs-number">-1</span>]+f[k&amp;<span class="hljs-number">1</span>][i][j])%M;</span><br><span class="line">				<span class="hljs-comment">//以这一格为终点</span></span><br><span class="line">				<span class="hljs-keyword">if</span>(i&amp;&amp;j) f[k&amp;<span class="hljs-number">1</span>][i][j]=(f[k<span class="hljs-number">-1</span>&amp;<span class="hljs-number">1</span>][i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>]+f[k&amp;<span class="hljs-number">1</span>][i][j])%M;</span><br><span class="line">				<span class="hljs-comment">//既以这一格为起点，又以这一格为终点</span></span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d"</span>,f[m&amp;<span class="hljs-number">1</span>][n][n]%M);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/HSAHRBNUOJ/P20xx/P2074.cpp" target="_blank" rel="noopener">这里</a>。</p>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -286,7 +287,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        16
+                        18
                     </p>
                 </div>
             </div>
@@ -576,7 +577,7 @@
                 <span class="level-item">OI/ACM</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">14</span>
+                <span class="level-item tag">15</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/历史/">
@@ -592,7 +593,7 @@
                 <span class="level-item">杂言</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li>
             </ul>
@@ -606,7 +607,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DFS-序/" style="font-size: 10px;">DFS 序</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/FFT/" style="font-size: 10px;">FFT</a> <a href="/tags/FWT/" style="font-size: 10px;">FWT</a> <a href="/tags/HLOI/" style="font-size: 20px;">HLOI</a> <a href="/tags/NTT/" style="font-size: 10px;">NTT</a> <a href="/tags/历史/" style="font-size: 10px;">历史</a> <a href="/tags/数位-DP/" style="font-size: 10px;">数位 DP</a> <a href="/tags/数学/" style="font-size: 17.5px;">数学</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 12.5px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/杂言/" style="font-size: 10px;">杂言</a> <a href="/tags/概率与期望/" style="font-size: 17.5px;">概率与期望</a> <a href="/tags/模拟/" style="font-size: 17.5px;">模拟</a> <a href="/tags/矩阵/" style="font-size: 12.5px;">矩阵</a> <a href="/tags/线段树/" style="font-size: 15px;">线段树</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a>
+        <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DFS-序/" style="font-size: 10px;">DFS 序</a> <a href="/tags/DP/" style="font-size: 17.5px;">DP</a> <a href="/tags/FFT/" style="font-size: 10px;">FFT</a> <a href="/tags/FWT/" style="font-size: 10px;">FWT</a> <a href="/tags/HLOI/" style="font-size: 20px;">HLOI</a> <a href="/tags/NTT/" style="font-size: 10px;">NTT</a> <a href="/tags/历史/" style="font-size: 10px;">历史</a> <a href="/tags/数位-DP/" style="font-size: 10px;">数位 DP</a> <a href="/tags/数学/" style="font-size: 17.5px;">数学</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 12.5px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/杂言/" style="font-size: 12.5px;">杂言</a> <a href="/tags/概率与期望/" style="font-size: 17.5px;">概率与期望</a> <a href="/tags/模拟/" style="font-size: 17.5px;">模拟</a> <a href="/tags/矩阵/" style="font-size: 12.5px;">矩阵</a> <a href="/tags/线段树/" style="font-size: 15px;">线段树</a> <a href="/tags/贪心/" style="font-size: 12.5px;">贪心</a>
     </div>
 </div>
 
@@ -620,6 +621,44 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2018/12/31/2018-年都干了啥/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2018 年都干了啥">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-31T15:59:59.000Z">2018-12-31</time></div>
+                    <a href="/2018/12/31/2018-年都干了啥/" class="has-link-black-ter is-size-6">2018 年都干了啥</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/杂言/">杂言</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/12/30/「ZJOI2015」幻想乡-Wi-Fi-搭建计划/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="「ZJOI2015」幻想乡 Wi-Fi 搭建计划">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-30T14:00:00.000Z">2018-12-30</time></div>
+                    <a href="/2018/12/30/「ZJOI2015」幻想乡-Wi-Fi-搭建计划/" class="has-link-black-ter is-size-6">「ZJOI2015」幻想乡 Wi-Fi 搭建计划</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -678,44 +717,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/11/24/UESTC-第十届-ICPC-趣味程序设计竞赛第三场（正式赛）题解/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="UESTC 第十届 ICPC 趣味程序设计竞赛第三场（正式赛）题解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-24T08:49:52.000Z">2018-11-24</time></div>
-                    <a href="/2018/11/24/UESTC-第十届-ICPC-趣味程序设计竞赛第三场（正式赛）题解/" class="has-link-black-ter is-size-6">UESTC 第十届 ICPC 趣味程序设计竞赛第三场（正式赛）题解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-17T09:00:00.000Z">2018-11-17</time></div>
-                    <a href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/" class="has-link-black-ter is-size-6">UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -734,7 +735,7 @@
                     <span class="level-item">十二月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -846,7 +847,7 @@
                             <span class="level-item">DP</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">3</span>
+                            <span class="level-item tag">4</span>
                         </span>
                     </a>
                 </li>
@@ -967,7 +968,7 @@
                             <span class="level-item">杂言</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">1</span>
+                            <span class="level-item tag">2</span>
                         </span>
                     </a>
                 </li>
@@ -1022,7 +1023,7 @@
                             <span class="level-item">贪心</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">1</span>
+                            <span class="level-item tag">2</span>
                         </span>
                     </a>
                 </li>
@@ -1051,6 +1052,44 @@
         
         <article class="media">
             
+            <a href="/2018/12/31/2018-年都干了啥/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2018 年都干了啥">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-31T15:59:59.000Z">2018-12-31</time></div>
+                    <a href="/2018/12/31/2018-年都干了啥/" class="has-link-black-ter is-size-6">2018 年都干了啥</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/杂言/">杂言</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/12/30/「ZJOI2015」幻想乡-Wi-Fi-搭建计划/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="「ZJOI2015」幻想乡 Wi-Fi 搭建计划">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-30T14:00:00.000Z">2018-12-30</time></div>
+                    <a href="/2018/12/30/「ZJOI2015」幻想乡-Wi-Fi-搭建计划/" class="has-link-black-ter is-size-6">「ZJOI2015」幻想乡 Wi-Fi 搭建计划</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2018/12/08/UESTC-第十届-ICPC-趣味程序设计竞赛第五场（正式赛）题解/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="UESTC 第十届 ICPC 趣味程序设计竞赛第五场（正式赛）题解">
@@ -1106,44 +1145,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/11/24/UESTC-第十届-ICPC-趣味程序设计竞赛第三场（正式赛）题解/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="UESTC 第十届 ICPC 趣味程序设计竞赛第三场（正式赛）题解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-24T08:49:52.000Z">2018-11-24</time></div>
-                    <a href="/2018/11/24/UESTC-第十届-ICPC-趣味程序设计竞赛第三场（正式赛）题解/" class="has-link-black-ter is-size-6">UESTC 第十届 ICPC 趣味程序设计竞赛第三场（正式赛）题解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-17T09:00:00.000Z">2018-11-17</time></div>
-                    <a href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/" class="has-link-black-ter is-size-6">UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1162,7 +1163,7 @@
                     <span class="level-item">十二月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1274,7 +1275,7 @@
                             <span class="level-item">DP</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">3</span>
+                            <span class="level-item tag">4</span>
                         </span>
                     </a>
                 </li>
@@ -1395,7 +1396,7 @@
                             <span class="level-item">杂言</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">1</span>
+                            <span class="level-item tag">2</span>
                         </span>
                     </a>
                 </li>
@@ -1450,7 +1451,7 @@
                             <span class="level-item">贪心</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">1</span>
+                            <span class="level-item tag">2</span>
                         </span>
                     </a>
                 </li>

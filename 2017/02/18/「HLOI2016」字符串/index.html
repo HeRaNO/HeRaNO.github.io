@@ -2,23 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>「HLOI2016」小明的智力游戏 - HeRaNO</title>
+<title>「HLOI2016」字符串 - HeRaNO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="HLOI2016 Day1 T2">
-<meta name="keywords" content="概率与期望,HLOI,DP">
+    <meta name="description" content="HLOI2016 Day1 T1">
+<meta name="keywords" content="HLOI,线段树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「HLOI2016」小明的智力游戏">
-<meta property="og:url" content="https://herano.github.io/2017/02/18/「HLOI2016」小明的智力游戏/index.html">
+<meta property="og:title" content="「HLOI2016」字符串">
+<meta property="og:url" content="https://herano.github.io/2017/02/18/「HLOI2016」字符串/index.html">
 <meta property="og:site_name" content="HeRaNO">
-<meta property="og:description" content="HLOI2016 Day1 T2">
+<meta property="og:description" content="HLOI2016 Day1 T1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-31T10:15:15.691Z">
+<meta property="og:updated_time" content="2018-12-31T10:14:16.439Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="「HLOI2016」小明的智力游戏">
-<meta name="twitter:description" content="HLOI2016 Day1 T2">
+<meta name="twitter:title" content="「HLOI2016」字符串">
+<meta name="twitter:description" content="HLOI2016 Day1 T1">
 
 
 
@@ -140,7 +140,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-02-18T08:12:16.000Z">2017-02-18</time>
+                <time class="level-item has-text-grey" datetime="2017-02-18T07:55:39.000Z">2017-02-18</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
@@ -150,7 +150,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 711 个字)
+                    3 分钟 读完 (大约 497 个字)
                 </span>
                 
             </div>
@@ -158,29 +158,26 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                「HLOI2016」小明的智力游戏
+                「HLOI2016」字符串
             
         </h1>
         <div class="content">
-            <p>HLOI2016 Day1 T2<br><a id="more"></a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>小明喜欢玩一些智力游戏。假设有一个一维棋盘，在该棋盘上从左至右共有 \(N+1 \) 个格子，编号从 \(0 \) 到 \(N \)。小明有一个棋子，最初在编号为 \(0 \) 的格子中。他每次掷两个骰子，每个骰子都有六个面，而且掷到每个面的概率都相同，骰子的点数分别是 \(1 ,\ 2 ,\ 3 ,\ 4 ,\ 5 ,\ 6 \)。 当棋子在编号为 \(a \) 的格子中时，掷到的两个骰子点数分别是 \(x \) 和 \(y \)，那么棋子将会移动到编号为  \(a+x+y \) 的格子中。当 \(a+x+y \) 大于或等于 \(N \) 的时候，小明就结束游戏。</p>
-<p>小明是一个比较喜欢偷懒的人，他不喜欢掷那么多次骰子，所以在棋盘中有 \(M \) 条飞行线路，对于第 \(i \) 条飞行线路来说，可以不用掷骰子直接从编号为 \(u \) 的格子跳到编号为 \(v \) 的格子。如果还有另一条飞行线路起点是编号 \(v \) 的格子，那么小明就可以按照这条线路继续向前跳动。保证每个格子只可以作为一条飞行路线的起点。</p>
-<p>现在想知道完成这个游戏需要掷骰子的次数期望值是多少。</p>
-<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>第一行给出 \(N \)， \(M \)；<br>接下来 \(M \) 行，每行包括两个整数 \(u,v \)，表示格子 \(u \) 到格子 \(v \) 有一条飞行线路。</p>
-<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>输出包含一个整数，即相应输入的答案。输出完成这个游戏需要掷骰子的次数期望值是多少，结果保留小数点后 \(4 \) 位。</p>
-<h2 id="样例-1"><a href="#样例-1" class="headerlink" title="样例 1"></a>样例 1</h2><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 0</span><br></pre></td></tr></table></figure>
-<h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.0000</span><br></pre></td></tr></table></figure>
-<h2 id="样例-2"><a href="#样例-2" class="headerlink" title="样例 2"></a>样例 2</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入"></a>样例输入</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">8 3</span><br><span class="line">2 4</span><br><span class="line">4 5</span><br><span class="line">7 8</span><br></pre></td></tr></table></figure>
-<h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出"></a>样例输出</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.4213</span><br></pre></td></tr></table></figure>
-<h2 id="数据范围及约定"><a href="#数据范围及约定" class="headerlink" title="数据范围及约定"></a>数据范围及约定</h2><p>对于 \(30\%\) 的数据，保证 \(1\le N\le 100,0\le M\le 10 \)；<br>对于 \(60\%\) 的数据，保证 \(1\le N\le 10^3,0\le M\le 100 \)；<br>对于 \(100\%\) 的数据，保证 \(1\le N\le 10^5,0\le M\le 10^3,0\lt u\lt v\le n \)。</p>
-<h2 id="时间限制与空间限制"><a href="#时间限制与空间限制" class="headerlink" title="时间限制与空间限制"></a>时间限制与空间限制</h2><p>时间限制：\(1000\text{ms}\)，空间限制：\(128\text{MB}\)。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>半黑历史题……期望 DP。</p>
-<p>如果直接从前向后推的话，因为飞行路线的存在推不了。所以倒着推，就可以避免这个问题。<br>所以，DP 转移方程为：</p>
-<p>$$<br>\begin{equation}<br>f_i=\sum_{j=2}^{12}(f_{i+j}+1)\times p_j<br>\end{equation}<br>$$</p>
-<p>还有，题目中貌似没说，每个格子的出度为 \(1\)……</p>
-<p>如果有飞行路线，直接继承终点的期望值即可。</p>
-<p>时间复杂度 \(\mathcal{O}(n) \)，空间复杂度 \(\mathcal{O}(n) \)。</p>
-<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/HSAHRBNUOJ/P38xx/P3872.cpp" target="_blank" rel="noopener">这里</a>。</p>
+            <p>HLOI2016 Day1 T1<br><a id="more"></a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>我们知道，哈希 (<em>hash</em>) 算法被广泛应用于字符串处理领域之中。现有如下哈希函数：</p>
+<p>$$f(s,l,r)=\prod_{i=l}^r \text{ord}(s_i) \bmod p$$</p>
+<p>公式中，\(\text{ord}\) 代表的是字符的 ASCII 码，\(\bmod\) 代表的是求余操作，\(\prod\) 则是求积操作，意为求 \(l\) 到 \(r\) 之间所有字符的 ASCII 码的积。</p>
+<p>现在给定一个长度为 \(N\) 的字符串，并给出 \(p\)，之后会有若干组询问，每次询问这个字符串相对于那个区间的子串的哈希值。</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>输入包括若干行，其中第一行是一个字符串 ，数据保证其中只会出现小写英文字母；<br>第二行是一个整数 \(p\)；<br>第三行是一个整数 \(m\)，表示询问的次数；<br>接下来的 \(m\) 行，每行有两个整数 \(l,r\)，表示询问从第 \(l\) 位到第 \(r\) 位的哈希值。</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>输出包括 \(m\) 行，依次给出输入文件中相应的询问对应的答案.</p>
+<h2 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">efqzvcowdormnslhjzznubn</span><br><span class="line">56</span><br><span class="line">4</span><br><span class="line">17 18</span><br><span class="line">7 20</span><br><span class="line">14 16</span><br><span class="line">15 23</span><br></pre></td></tr></table></figure>
+<h2 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">52</span><br><span class="line">0</span><br><span class="line">40</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<h2 id="数据范围及约定"><a href="#数据范围及约定" class="headerlink" title="数据范围及约定"></a>数据范围及约定</h2><p>对于 \(30\%\) 的数据，\(1\le N\le 100 ，1\le m\le 10\)；<br>对于 \(70\%\) 的数据，\(1\le N\le 10^5 ，1\le m\le 10^4\)；<br>对于 \(100\%\) 的数据，\(1\le N\le 10^5 ，1\le m\le 10^5,1\le l\le r\le n\)。</p>
+<h2 id="时间与空间限制"><a href="#时间与空间限制" class="headerlink" title="时间与空间限制"></a>时间与空间限制</h2><p>时间限制：\(1000\text{ms}\)，空间限制：\(128\text{MB}\)。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>黑历史题，只有查询的线段树……</p>
+<p>只有查询？先求前缀积，再求个逆元，搞一搞就好了……</p>
+<p>但是并不知道 \(p\) 有多大，题中也没说，<del>题解说可以写</del>也是一种优化方法吧。</p>
+<p>时间复杂度为 \(\mathcal{O}(n+T\log n)\)，空间复杂度为 \(\mathcal{O}(n)\)。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/HSAHRBNUOJ/P38xx/P3871.cpp" target="_blank" rel="noopener">这里</a>。</p>
 
         </div>
         
@@ -188,7 +185,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/DP/">DP</a>, <a class="has-link-grey -link" href="/tags/HLOI/">HLOI</a>, <a class="has-link-grey -link" href="/tags/概率与期望/">概率与期望</a>
+                    <a class="has-link-grey -link" href="/tags/HLOI/">HLOI</a>, <a class="has-link-grey -link" href="/tags/线段树/">线段树</a>
                 </div>
             </div>
         </div>
@@ -203,16 +200,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2017/02/18/「HLOI2016」黑白棋/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2017/02/18/「HLOI2016」小明的智力游戏/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">「HLOI2016」黑白棋</span>
+                <span class="level-item">「HLOI2016」小明的智力游戏</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2017/02/18/「HLOI2016」字符串/">
-                <span class="level-item">「HLOI2016」字符串</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2016/05/02/「HLOI2015」Tree/">
+                <span class="level-item">「HLOI2015」Tree</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -363,37 +360,21 @@
         <span class="has-mr-6">3</span>
         <span>输出</span>
         </a></li><li>
-        <a class="is-flex" href="#样例-1">
-        <span class="has-mr-6">4</span>
-        <span>样例 1</span>
-        </a><ul class="menu-list"><li>
         <a class="is-flex" href="#样例输入">
-        <span class="has-mr-6">4.1</span>
+        <span class="has-mr-6">4</span>
         <span>样例输入</span>
         </a></li><li>
         <a class="is-flex" href="#样例输出">
-        <span class="has-mr-6">4.2</span>
-        <span>样例输出</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#样例-2">
         <span class="has-mr-6">5</span>
-        <span>样例 2</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#样例输入-1">
-        <span class="has-mr-6">5.1</span>
-        <span>样例输入</span>
-        </a></li><li>
-        <a class="is-flex" href="#样例输出-1">
-        <span class="has-mr-6">5.2</span>
         <span>样例输出</span>
-        </a></li></ul></li><li>
+        </a></li><li>
         <a class="is-flex" href="#数据范围及约定">
         <span class="has-mr-6">6</span>
         <span>数据范围及约定</span>
         </a></li><li>
-        <a class="is-flex" href="#时间限制与空间限制">
+        <a class="is-flex" href="#时间与空间限制">
         <span class="has-mr-6">7</span>
-        <span>时间限制与空间限制</span>
+        <span>时间与空间限制</span>
         </a></li><li>
         <a class="is-flex" href="#题解">
         <span class="has-mr-6">8</span>

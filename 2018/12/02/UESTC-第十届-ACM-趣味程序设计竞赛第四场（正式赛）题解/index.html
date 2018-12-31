@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="HeRaNO">
 <meta property="og:description" content="2/5 Penalty: 02:15:58 Rank 94">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-02T10:46:05.875Z">
+<meta property="og:updated_time" content="2018-12-31T10:31:26.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UESTC 第十届 ACM 趣味程序设计竞赛第四场（正式赛）题解">
 <meta name="twitter:description" content="2/5 Penalty: 02:15:58 Rank 94">
@@ -150,7 +150,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 621 个字)
+                    6 分钟 读完 (大约 836 个字)
                 </span>
                 
             </div>
@@ -171,17 +171,17 @@
 <h2 id="A-就是要众生平等"><a href="#A-就是要众生平等" class="headerlink" title="A. 就是要众生平等"></a>A. 就是要众生平等</h2><p>题目大意：一个数列的所有元素和要变成 \(nk\)，最少要加多少？</p>
 <p>mdzz</p>
 <p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
-<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXN 1010</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,k,x,sum;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>,&amp;n,&amp;k);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;x);</span><br><span class="line">		sum+=x;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,max(n*k-sum,<span class="hljs-number">0</span>));</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/69.cpp" target="_blank" rel="noopener">这里</a>。</p>
 <h2 id="B-Sindar家的气球"><a href="#B-Sindar家的气球" class="headerlink" title="B. Sindar家的气球"></a>B. Sindar家的气球</h2><p>题目大意：有一些气球排成一列做匀速直线运动，气球的质量都相等，并且有一个速度。求经过碰撞后最快与最慢的气球到达终点的用时。</p>
 <p>mdzz 我 TM 直接去想动量定理了。</p>
 <p>不就是交换速度吗，可以看成两个气球位置交换……</p>
 <p>所以就当没有碰撞就好了……</p>
 <p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
-<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n,v,L,h,a;</span><br><span class="line"><span class="hljs-keyword">double</span> t,mx,mn=<span class="hljs-number">1e18</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d %d"</span>,&amp;n,&amp;L,&amp;v);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>,&amp;h,&amp;a);</span><br><span class="line">		t=(<span class="hljs-keyword">double</span>)(L-h)/(v+a);</span><br><span class="line">		mx=max(mx,t);mn=min(mn,t);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%.2lf %.2lf\n"</span>,mn,mx);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/68.cpp" target="_blank" rel="noopener">这里</a>。</p>
 <h2 id="C-蚂蚁的旅途"><a href="#C-蚂蚁的旅途" class="headerlink" title="C. 蚂蚁的旅途"></a>C. 蚂蚁的旅途</h2><p>题目大意：一个点从数轴上的原点出发，每一秒等概率地向左或向右移动一个单位长度，求 \(t\) 秒后在 \(m\) 位置的概率。</p>
 <p>数据不满，跑暴力。</p>
 <p>时间复杂度：\(\mathcal{O}(T2^t)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
-<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">gcd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a,<span class="hljs-keyword">int</span> b)</span></span>&#123;<span class="hljs-keyword">return</span> !b?a:gcd(b,a%b);&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> T,t,m,cnt,r;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> dep,<span class="hljs-keyword">int</span> p)</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> (dep==t)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="hljs-keyword">if</span> (p==m) ++cnt;</span><br><span class="line">		<span class="hljs-keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(dep+<span class="hljs-number">1</span>,p<span class="hljs-number">-1</span>);dfs(dep+<span class="hljs-number">1</span>,p+<span class="hljs-number">1</span>);</span><br><span class="line">	<span class="hljs-keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;T);</span><br><span class="line">	<span class="hljs-keyword">while</span> (T--)</span><br><span class="line">	&#123;</span><br><span class="line">		cnt=<span class="hljs-number">0</span>;</span><br><span class="line">		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>,&amp;t,&amp;m);r=<span class="hljs-number">1</span>&lt;&lt;t;</span><br><span class="line">		dfs(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>);</span><br><span class="line">		<span class="hljs-keyword">int</span> q=gcd(cnt,r);cnt/=q;r/=q;</span><br><span class="line">		<span class="hljs-keyword">if</span> (cnt==<span class="hljs-number">0</span>) <span class="hljs-built_in">printf</span>(<span class="hljs-string">"0\n"</span>);</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cnt==r) <span class="hljs-built_in">printf</span>(<span class="hljs-string">"1\n"</span>);</span><br><span class="line">		<span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d/%d\n"</span>,cnt,r);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/70.cpp" target="_blank" rel="noopener">这里</a>。</p>
 <h2 id="D-XOR-最长路径"><a href="#D-XOR-最长路径" class="headerlink" title="D. XOR 最长路径"></a>D. XOR 最长路径</h2><p>这道题排版满分，点名表扬。</p>
 <p>题目大意：求 \(0\) 到 \(n\) 的一个字典序最小的排列，使得所有相邻两个数的异或的 NIM 和最大。</p>
 <p>暴力打错，手动再见。</p>
@@ -190,11 +190,11 @@
 <p>但是观察一下，选的这两个数的异或应该是 \(2^p-1\) 这样，因为要使第一个数尽可能小，所以要使最后一个数尽可能大，一直大到 \(n\) 就行。</p>
 <p>然后就不用 Trie 树了，直接做就好了……</p>
 <p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(n)\)。</p>
-<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> n,L=<span class="hljs-number">0</span>;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;n);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x=n;x;x&gt;&gt;=<span class="hljs-number">1</span>) ++L;</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,(<span class="hljs-number">1</span>&lt;&lt;L)<span class="hljs-number">-1</span>);</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d"</span>,(<span class="hljs-number">1</span>&lt;&lt;L)<span class="hljs-number">-1</span>-n);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)</span><br><span class="line">		<span class="hljs-keyword">if</span> (i!=(<span class="hljs-number">1</span>&lt;&lt;L)<span class="hljs-number">-1</span>-n)</span><br><span class="line">			<span class="hljs-built_in">printf</span>(<span class="hljs-string">" %d"</span>,i);</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">" %d\n"</span>,n);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/71.cpp" target="_blank" rel="noopener">这里</a>。</p>
 <h2 id="E-奥本海姆的衣柜"><a href="#E-奥本海姆的衣柜" class="headerlink" title="E. 奥本海姆的衣柜"></a>E. 奥本海姆的衣柜</h2><p>题目大意：还是题解写得明白……</p>
 <p>不想说话，直接粘<a href="https://blog.csdn.net/qq_39471664/article/details/84719578" target="_blank" rel="noopener">题解</a>……</p>
 <p>时间复杂度：\(\mathcal{O}(nk)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
-<p>代码：<br><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">int</span> n,k;</span><br><span class="line">	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>,&amp;n,&amp;k);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;=n*(k<span class="hljs-number">-1</span>);i++) <span class="hljs-built_in">putchar</span>(<span class="hljs-string">'1'</span>);</span><br><span class="line">	<span class="hljs-built_in">putchar</span>(<span class="hljs-string">'\n'</span>);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/72.cpp" target="_blank" rel="noopener">这里</a>。</p>
 
         </div>
         
@@ -299,7 +299,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        16
+                        18
                     </p>
                 </div>
             </div>
@@ -573,7 +573,7 @@
                 <span class="level-item">OI/ACM</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">14</span>
+                <span class="level-item tag">15</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/历史/">
@@ -589,7 +589,7 @@
                 <span class="level-item">杂言</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li>
             </ul>
@@ -603,7 +603,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DFS-序/" style="font-size: 10px;">DFS 序</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/FFT/" style="font-size: 10px;">FFT</a> <a href="/tags/FWT/" style="font-size: 10px;">FWT</a> <a href="/tags/HLOI/" style="font-size: 20px;">HLOI</a> <a href="/tags/NTT/" style="font-size: 10px;">NTT</a> <a href="/tags/历史/" style="font-size: 10px;">历史</a> <a href="/tags/数位-DP/" style="font-size: 10px;">数位 DP</a> <a href="/tags/数学/" style="font-size: 17.5px;">数学</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 12.5px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/杂言/" style="font-size: 10px;">杂言</a> <a href="/tags/概率与期望/" style="font-size: 17.5px;">概率与期望</a> <a href="/tags/模拟/" style="font-size: 17.5px;">模拟</a> <a href="/tags/矩阵/" style="font-size: 12.5px;">矩阵</a> <a href="/tags/线段树/" style="font-size: 15px;">线段树</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a>
+        <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DFS-序/" style="font-size: 10px;">DFS 序</a> <a href="/tags/DP/" style="font-size: 17.5px;">DP</a> <a href="/tags/FFT/" style="font-size: 10px;">FFT</a> <a href="/tags/FWT/" style="font-size: 10px;">FWT</a> <a href="/tags/HLOI/" style="font-size: 20px;">HLOI</a> <a href="/tags/NTT/" style="font-size: 10px;">NTT</a> <a href="/tags/历史/" style="font-size: 10px;">历史</a> <a href="/tags/数位-DP/" style="font-size: 10px;">数位 DP</a> <a href="/tags/数学/" style="font-size: 17.5px;">数学</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 12.5px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/杂言/" style="font-size: 12.5px;">杂言</a> <a href="/tags/概率与期望/" style="font-size: 17.5px;">概率与期望</a> <a href="/tags/模拟/" style="font-size: 17.5px;">模拟</a> <a href="/tags/矩阵/" style="font-size: 12.5px;">矩阵</a> <a href="/tags/线段树/" style="font-size: 15px;">线段树</a> <a href="/tags/贪心/" style="font-size: 12.5px;">贪心</a>
     </div>
 </div>
 
@@ -617,6 +617,44 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2018/12/31/2018-年都干了啥/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2018 年都干了啥">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-31T15:59:59.000Z">2018-12-31</time></div>
+                    <a href="/2018/12/31/2018-年都干了啥/" class="has-link-black-ter is-size-6">2018 年都干了啥</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/杂言/">杂言</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/12/30/「ZJOI2015」幻想乡-Wi-Fi-搭建计划/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="「ZJOI2015」幻想乡 Wi-Fi 搭建计划">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-30T14:00:00.000Z">2018-12-30</time></div>
+                    <a href="/2018/12/30/「ZJOI2015」幻想乡-Wi-Fi-搭建计划/" class="has-link-black-ter is-size-6">「ZJOI2015」幻想乡 Wi-Fi 搭建计划</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -675,44 +713,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/11/24/UESTC-第十届-ICPC-趣味程序设计竞赛第三场（正式赛）题解/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="UESTC 第十届 ICPC 趣味程序设计竞赛第三场（正式赛）题解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-24T08:49:52.000Z">2018-11-24</time></div>
-                    <a href="/2018/11/24/UESTC-第十届-ICPC-趣味程序设计竞赛第三场（正式赛）题解/" class="has-link-black-ter is-size-6">UESTC 第十届 ICPC 趣味程序设计竞赛第三场（正式赛）题解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-17T09:00:00.000Z">2018-11-17</time></div>
-                    <a href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/" class="has-link-black-ter is-size-6">UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -731,7 +731,7 @@
                     <span class="level-item">十二月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -843,7 +843,7 @@
                             <span class="level-item">DP</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">3</span>
+                            <span class="level-item tag">4</span>
                         </span>
                     </a>
                 </li>
@@ -964,7 +964,7 @@
                             <span class="level-item">杂言</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">1</span>
+                            <span class="level-item tag">2</span>
                         </span>
                     </a>
                 </li>
@@ -1019,7 +1019,7 @@
                             <span class="level-item">贪心</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">1</span>
+                            <span class="level-item tag">2</span>
                         </span>
                     </a>
                 </li>
@@ -1048,6 +1048,44 @@
         
         <article class="media">
             
+            <a href="/2018/12/31/2018-年都干了啥/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2018 年都干了啥">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-31T15:59:59.000Z">2018-12-31</time></div>
+                    <a href="/2018/12/31/2018-年都干了啥/" class="has-link-black-ter is-size-6">2018 年都干了啥</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/杂言/">杂言</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2018/12/30/「ZJOI2015」幻想乡-Wi-Fi-搭建计划/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="「ZJOI2015」幻想乡 Wi-Fi 搭建计划">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-30T14:00:00.000Z">2018-12-30</time></div>
+                    <a href="/2018/12/30/「ZJOI2015」幻想乡-Wi-Fi-搭建计划/" class="has-link-black-ter is-size-6">「ZJOI2015」幻想乡 Wi-Fi 搭建计划</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2018/12/08/UESTC-第十届-ICPC-趣味程序设计竞赛第五场（正式赛）题解/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="UESTC 第十届 ICPC 趣味程序设计竞赛第五场（正式赛）题解">
@@ -1103,44 +1141,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/11/24/UESTC-第十届-ICPC-趣味程序设计竞赛第三场（正式赛）题解/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="UESTC 第十届 ICPC 趣味程序设计竞赛第三场（正式赛）题解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-24T08:49:52.000Z">2018-11-24</time></div>
-                    <a href="/2018/11/24/UESTC-第十届-ICPC-趣味程序设计竞赛第三场（正式赛）题解/" class="has-link-black-ter is-size-6">UESTC 第十届 ICPC 趣味程序设计竞赛第三场（正式赛）题解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-17T09:00:00.000Z">2018-11-17</time></div>
-                    <a href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/" class="has-link-black-ter is-size-6">UESTC 第十届 ACM 趣味程序设计竞赛第一场（热身赛）题解</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-ACM/">OI/ACM</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1159,7 +1159,7 @@
                     <span class="level-item">十二月 2018</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -1271,7 +1271,7 @@
                             <span class="level-item">DP</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">3</span>
+                            <span class="level-item tag">4</span>
                         </span>
                     </a>
                 </li>
@@ -1392,7 +1392,7 @@
                             <span class="level-item">杂言</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">1</span>
+                            <span class="level-item tag">2</span>
                         </span>
                     </a>
                 </li>
@@ -1447,7 +1447,7 @@
                             <span class="level-item">贪心</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">1</span>
+                            <span class="level-item tag">2</span>
                         </span>
                     </a>
                 </li>

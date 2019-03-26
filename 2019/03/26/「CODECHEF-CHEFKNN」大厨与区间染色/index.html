@@ -2,18 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>分类: 历史 - HeRaNO</title>
+<title>「CODECHEF CHEFKNN」大厨与区间染色 - HeRaNO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="HeRaNO">
-<meta property="og:url" content="https://herano.github.io/categories/历史/index.html">
+    <meta name="description" content="本题为题解翻译，原题解详见这里。">
+<meta name="keywords" content="数学,NTT,多项式相关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「CODECHEF CHEFKNN」大厨与区间染色">
+<meta property="og:url" content="https://herano.github.io/2019/03/26/「CODECHEF-CHEFKNN」大厨与区间染色/index.html">
 <meta property="og:site_name" content="HeRaNO">
+<meta property="og:description" content="本题为题解翻译，原题解详见这里。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-26T11:05:27.566Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HeRaNO">
+<meta name="twitter:title" content="「CODECHEF CHEFKNN」大厨与区间染色">
+<meta name="twitter:description" content="本题为题解翻译，原题解详见这里。">
 
 
 
@@ -112,6 +117,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -126,34 +135,22 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">分类</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">历史</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-27T00:30:00.000Z">2018-11-27</time>
+                <time class="level-item has-text-grey" datetime="2019-03-26T10:33:50.000Z">2019-03-26</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/历史/">历史</a>
+                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 46 个字)
+                    15 分钟 读完 (大约 2239 个字)
                 </span>
                 
             </div>
@@ -161,14 +158,80 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/11/27/中日甲午战争/">中日甲午战争</a>
+                「CODECHEF CHEFKNN」大厨与区间染色
             
         </h1>
         <div class="content">
-            <a id="more"></a>
-<p>中国近现代史纲要课前演讲的 PPT，可以<a href="/downloads/中日甲午战争.pptx">在这里</a>下载。</p>
-<p>如有缺漏敬请指正，不胜感激。</p>
+            <p>本题为题解翻译，原题解详见<a href="https://discuss.codechef.com/questions/123905/chefknn-editorial" target="_blank" rel="noopener">这里</a>。</p>
+<a id="more"></a>
+<p>这道题被 Lutece 搬运了，在<a href="https://acm.uestc.edu.cn/problem/zhu-ye-gao-gao-gao-gao-gao-du-du-du-du-du-liu-liu-liu-liu-liu-legendary-version/description" target="_blank" rel="noopener">这里</a>。</p>
+<p>原题面在<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/CodeChef/March%20Challenge%202018/CHEFKNN.pdf" target="_blank" rel="noopener">这里</a>。</p>
+<h2 id="难度"><a href="#难度" class="headerlink" title="难度"></a>难度</h2><p>困难</p>
+<h2 id="前置技能"><a href="#前置技能" class="headerlink" title="前置技能"></a>前置技能</h2><p>数论变换（NTT），组合数学</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>给出一个长为 \(N\) 的数组，最初，每一个数组中的元素都用颜色 \(0\) 染色。给你 \(K\) 次机会。在第 \(i\) 次机会你可以把任何一个非空子数组全部染成颜色 \(i\)，这个操作可以覆盖任何已经存在的颜色。你需要回答最后的数组有多少种不同的颜色，答案对 \(163577857\) 取模。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>让我们尝试找到 \(F(K,N)\) 的表达式。此处 \(F(K,N)\) 代表对于我们的问题的答案。</p>
+<p>为了转化这个问题，我们遍历最后可见的颜色数。我们设最后数组有 \(r\) 种可见的颜色。那么，从 \(K\) 种给定颜色中选取 \(r\) 种的方案数就是 \(\binom {K-1}{r-1}\)，这是由于你只需要从 \(K-1\) 种颜色中选择 \(r-1\) 种，因为第 \(K\) 次涂的颜色永远是可见的。</p>
+<p>这样，我们能写出如下公式：</p>
+<p>$$<br>F(K,N) = \sum_{r=1}^{K} \binom {K-1}{r-1} e(r,N)<br>$$</p>
+<p>此处，\(e(r,N)\) 表示在最后长度为 \(N\) 的数组中有 \(r\) 种颜色可见的方案数。</p>
+<h3 id="找到-e-r-N-的表达式"><a href="#找到-e-r-N-的表达式" class="headerlink" title="找到 \(e(r,N)\) 的表达式"></a>找到 \(e(r,N)\) 的表达式</h3><p>让我们逆向考虑。设第 \(r\) 种颜色占据了长为 \(x_1\) 的区间。做到同样效果的方案数为 \(N-x_1+1\)。现在设第 \(r-1\) 种颜色在剩下的 \(N-x_1\) 长度中占据了长为 \(x_2\) 的区间。需要注意 \(x_1\) 不会影响 \(x_2\)。一般地，有如下公式：</p>
+<p>$$<br>e(r,N) = \sum_{x_1=1}^{N-r+1} (N-x_1+1) \times e(r-1,N-x_1)<br>$$</p>
+<p>尝试展开这个公式，可以写成如下形式：</p>
+<p>$$<br>e(r,N) = \sum \limits_{x_1=1} \sum \limits_{x_2=1}\cdots \sum \limits_{x_r=1} (N-x_1+1)(N-x_1-x_2+1)\cdots (N-x_1-x_2-\cdots -x_r+1)<br>$$</p>
+<p>如果你仔细观察，你会发现这是从集合 \(\{1,2,3,\cdots, n\}\) 中取出 \(r\) 个数的乘积的和。因此，我们可以判定 \(e(r,N)\) 是多项式 \(P_N(x)\) 中 \(x^{n-r}\) 项的系数。并且 \(P_N(x)\) 如下：</p>
+<p>$$<br>P_N(x) = (x+1)(x+2)(x+3)\cdots (x+N)<br>$$</p>
+<p>我们现在剩下的就只是计算多项式 \(P_N(x)\) 然后我们就做完了。</p>
+<p>（OI 选手：woc 这不就是个 sb Stirling 数吗水了水了）</p>
+<h3 id="计算-P-N-x"><a href="#计算-P-N-x" class="headerlink" title="计算 \(P_N(x)\)"></a>计算 \(P_N(x)\)</h3><h4 id="子任务-1-和子任务-2"><a href="#子任务-1-和子任务-2" class="headerlink" title="子任务 1 和子任务 2"></a>子任务 1 和子任务 2</h4><p>我们可以暴力计算每一项，可以在 \(\mathcal{O}(n^2)\) 的复杂度下通过这两个子任务。</p>
+<h4 id="子任务-3"><a href="#子任务-3" class="headerlink" title="子任务 3"></a>子任务 3</h4><p>这个子任务能用 NTT 和分治法在 \(\mathcal{O}(n\log ^2 n)​\) 的时间复杂度下通过。</p>
+<p>目前的任务是计算 \(n​\) 次形如 \((x+i)​\) 的多项式乘积。设 \(A(x)​\) 为前一半 \((x+i)​\) 的乘积，\(B(x)​\) 为剩下部分的乘积。我们递归计算 \(A(x)​\) 和 \(B(x)​\)，然后用 NTT 计算 \(A(x)\cdot B(x)​\)。这样时间复杂度为：</p>
+<p>$$<br>\mathcal{T}(n)=2\mathcal{T}(\frac{n}{2})+\mathcal{O}(n\log n)<br>$$</p>
+<p>因此 \(\mathcal{T}(n)=\mathcal{O}(n\log ^2 n)\)，这个想法由下面的伪代码表述：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MUL(L,R) // computes (x+L)(x+L+1)...(x+R)</span><br><span class="line">  if (L==R) then return (x+L)</span><br><span class="line">  mid = (L+R)/2</span><br><span class="line">  A = MUL(L,mid)</span><br><span class="line">  B = MUL(mid+1,R)</span><br><span class="line">  return A*B //A*B is computed by FFT</span><br></pre></td></tr></table></figure>
+<h3 id="子任务-4"><a href="#子任务-4" class="headerlink" title="子任务 4"></a>子任务 4</h3><p>我们将会提出一个 \(\mathcal{O}(n\log n)\) 的解法，因为 \(\mathcal{O}(n\log^2 n)\) 的解法会因为严格的时间限制而无法通过。</p>
+<h4 id="非正式的解法"><a href="#非正式的解法" class="headerlink" title="非正式的解法"></a>非正式的解法</h4><p>让我们仔细观察这个分治算法的时间复杂度：</p>
+<p>$$<br>\mathcal{T}(n)=\mathcal{T}(\text{left}_{\text{half}})+\mathcal{T}(\text{right}_{\text{half}})+\mathcal{O}(\text{merge})<br>$$</p>
+<p>因为这里合并过程的复杂度为 \(n\log n\)，\(\mathcal{T}(n)\) 最后的结果就是 \(\mathcal{O}(n\log ^2 n)\)。但是如果我们能够用一些方法，使得在 \(\mathcal{O}(\text{merge})\) 的时间内能用左半部分计算出右半部分的答案就好了。这样递归关系将为：</p>
+<p>$$<br>\begin{align}<br>\mathcal{T}(n)&amp;=\mathcal{T}(\text{left}_{\text{half}})+\mathcal{O}(\text{merge})+\mathcal{O}(\text{merge})\\<br>&amp;\Rightarrow \mathcal{T}(n)=\mathcal{T}(\frac{n}{2})+\mathcal{O}(n\log n)<br>\end{align}<br>$$</p>
+<p>所以最后的结果为 \(\mathcal{T}(n)=\mathcal{O}(n\log n)\)，但是有些常数因子。所以我们只剩下如何用左半部分计算出右半部分的答案了。</p>
+<h4 id="正式解法"><a href="#正式解法" class="headerlink" title="正式解法"></a>正式解法</h4><p>我们可以用这个特征计算：</p>
+<p>$$<br>P_{2N}(x)=P_N(x)\times P_N(x+N)<br>$$</p>
+<p>主要问题是，当知道了 \(P_N(x)\) 已知时，需要找到 \(P_N(x+N)\) 的表达式。定义：</p>
+<p>$$<br>P_N(x) = \prod \limits_{i=1}^N (x+i) = \sum_{i=0}^N c_ix^i<br>$$</p>
+<p>这里的 \(c_i\) 均已知。然后，</p>
+<p>$$<br>\begin{align}<br>&amp;P_N(x+N) = \prod \limits_{i=1}^N (x+N+i) = \sum_{i=0}^N c_i(x+N)^i\\<br>\Rightarrow &amp;P_N(x+N) = \sum_{i=0}^N h_ix^i<br>\end{align}<br>$$</p>
+<p>这里，</p>
+<p>$$<br>\begin{align}<br>h_i &amp;= \sum \limits_{j=i}^N c_j  \binom{j}{i}  N^{j-i}\\<br>\Rightarrow h_i &amp;= \frac{1}{i!} \sum \limits_{j=i}^N (c_j j!)\left (\frac{n^{j-i}}{(j-i)!} \right )\\<br>\Rightarrow h_i &amp;= \frac{1}{i!} (\text{coefficient of}\  x^{N-i} \ \text{in}\  A(x)B(x))<br>\end{align}<br>$$</p>
+<p>这里，</p>
+<p>$$<br>\begin{align}<br>A(x) &amp;= \sum \limits_{i=0}^{N} (c_{N-i}(N-i)!)  x^i\\<br>B(x) &amp;= \sum \limits_{i=0}^{N} \left( \frac {N^i}{i!} \right)  x^i<br>\end{align}<br>$$</p>
+<p>现在我们就有了一个当 \(P_N(x)\) 已知时，利用 \(A(x)\) 与 \(B(x)\) 的卷积在 \(\mathcal{O}(n\log n)\) 的时间内找到 \(P_N(x+N)\) 的表达式的算法。现在我们看一下解决这个子任务的伪代码：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">MUL(N) // computes (x+1)(x+2)...(x+N) in O(NlogN)</span><br><span class="line">  if N==1: </span><br><span class="line">    return (x+1)</span><br><span class="line">  C = MUL(N/2)</span><br><span class="line">  H = convolute(A,B) // use C to obtain A</span><br><span class="line">  ANS = convolute(C,H)</span><br><span class="line">  if N is odd:</span><br><span class="line">    ANS *= (x+N) // naive multiplication will do - O(N)</span><br><span class="line">  return ANS</span><br></pre></td></tr></table></figure>
+<p>最后一件事是如何计算两个多项式的乘积对 \(163577857\) 取模。注意到 \(163577857 = 39\times 2^{22} + 1\)，这个数是 NTT 友好的。这就减轻了我们的负担。对于不了解 NTT 的人来说可以参考<a href="http://www.apfloat.org/ntt.html" target="_blank" rel="noopener">这个链接</a>。</p>
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>当你暴力模拟这个算法的时候，你会发现处理 \(N=10^6\) 的数据花费时间过多。不幸的是，大 $\mathcal{O}$ 记号里隐藏的常数因子太高了！这个时间复杂度是正确的，所以我们需要附加的技巧与消除这部分常数并且能够把这个解法卡到时限里去。这里有一些优化方法：</p>
+<ul>
+<li>尝试减少取模操作；</li>
+<li>用数组代替 <code>vector</code> 来做 NTT，简单来说，找个跑得快的 NTT 板子；</li>
+<li>内存使用：不要用多余的内存，因为这会减慢运行速度。用 130M 内存和用 70M 内存时间相差 0.5 秒以上（当然也取决于其他参数）；</li>
+<li>除此之外，如果还是卡不进去，你可能还需要变换数据类型等其他优化方法。</li>
+</ul>
+<h2 id="其他解法"><a href="#其他解法" class="headerlink" title="其他解法"></a>其他解法</h2><p>这个解法出乎意料，然而，有 \(40\%\) 的选手用了这个技巧。这个想法是子任务 3 的解法通过子任务 4。一个暴力的子任务 3 的实现时间复杂度是 \(\mathcal{O}(TN\log^2 N)\)。如果我们能够消除复杂度里的 \(T\)，然后加一些优化，我们同样能够通过子任务 4。</p>
+<p>如何消除这个 \(T\) 呢？我们设不同的测试点的 \(N\) 值为 \(N_1,N_2,\cdots, N_T \)。我们一次性输入这些数，然后按 \(N\) 的升序排序。设 \(n_i\) 是排序后的序列 \(N\)。我们可以调用 \(\texttt{MUL}(1,n_1)\)，\(\texttt{MUL}(n_1,n_2)\)，……，\(\texttt{MUL}(n_{T-1}+1,n_T)\)。现在，我们可以用前缀积计算这些项，并且求出所有测试点的答案。这个的时间复杂度可以近似用下面的求和计算：</p>
+<p>$$<br>\mathcal{O}(N_1\log^2N) + \mathcal{O}((N_2-N_1)\log^2N) + \cdots + \mathcal{O}((N_T-N_{T-1})\log^2N) = \mathcal{O}(N\log^2N)<br>$$</p>
+<p>时间复杂度：\(\mathcal{O}(TN\log N)\) 或 \(\mathcal{O}(N\log^2 N)\)。</p>
+<p><a href="www.codechef.com/download/Solutions/MARCH18/Setter/CHEFKNN.cpp">出题人解法</a>，打不开见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/CodeChef/March%20Challenge%202018/CHEFKNNA.cpp" target="_blank" rel="noopener">这里</a>。</p>
+<p><a href="http://www.codechef.com/download/Solutions/MARCH18/Tester/CHEFKNN.cpp" target="_blank" rel="noopener">验题人解法</a>，打不开见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/CodeChef/March%20Challenge%202018/CHEFKNNB.cpp" target="_blank" rel="noopener">这里</a>。</p>
+<p><a href="http://www.codechef.com/download/Solutions/MARCH18/Editorialist/CHEFKNN.cpp" target="_blank" rel="noopener">原题解作者解法</a>，打不开见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/CodeChef/March%20Challenge%202018/CHEFKNNC.cpp" target="_blank" rel="noopener">这里</a>。</p>
+<p>由于只是题解搬运，就不给出我写的了（意思是我不写了）……</p>
 
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/NTT/">NTT</a>, <a class="has-link-grey -link" href="/tags/多项式相关/">多项式相关</a>, <a class="has-link-grey -link" href="/tags/数学/">数学</a>
+                </div>
+            </div>
         </div>
         
         
@@ -177,9 +240,45 @@
 </div>
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/11/Codeforces-Round-538-Div-2-题解/">
+                <span class="level-item">Codeforces Round #538 Div. 2 题解</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDk0NS8xNzQ3MA==">
+    <script type="text/javascript">
+        (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+
+            if (typeof LivereTower === 'function') { return; }
+
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+    </script>
+    <noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+
+    </div>
+</div>
 </div>
                 
 
@@ -279,6 +378,69 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#难度">
+        <span class="has-mr-6">1</span>
+        <span>难度</span>
+        </a></li><li>
+        <a class="is-flex" href="#前置技能">
+        <span class="has-mr-6">2</span>
+        <span>前置技能</span>
+        </a></li><li>
+        <a class="is-flex" href="#问题">
+        <span class="has-mr-6">3</span>
+        <span>问题</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解">
+        <span class="has-mr-6">4</span>
+        <span>题解</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#找到-e-r-N-的表达式">
+        <span class="has-mr-6">4.1</span>
+        <span>找到 \(e(r,N)\) 的表达式</span>
+        </a></li><li>
+        <a class="is-flex" href="#计算-P-N-x">
+        <span class="has-mr-6">4.2</span>
+        <span>计算 \(P_N(x)\)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#子任务-1-和子任务-2">
+        <span class="has-mr-6">4.2.1</span>
+        <span>子任务 1 和子任务 2</span>
+        </a></li><li>
+        <a class="is-flex" href="#子任务-3">
+        <span class="has-mr-6">4.2.2</span>
+        <span>子任务 3</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#子任务-4">
+        <span class="has-mr-6">4.3</span>
+        <span>子任务 4</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#非正式的解法">
+        <span class="has-mr-6">4.3.1</span>
+        <span>非正式的解法</span>
+        </a></li><li>
+        <a class="is-flex" href="#正式解法">
+        <span class="has-mr-6">4.3.2</span>
+        <span>正式解法</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#优化">
+        <span class="has-mr-6">4.4</span>
+        <span>优化</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#其他解法">
+        <span class="has-mr-6">5</span>
+        <span>其他解法</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 

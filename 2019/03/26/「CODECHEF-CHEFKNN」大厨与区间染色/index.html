@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="HeRaNO">
 <meta property="og:description" content="这篇文章为题解翻译，原题解详见这里。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-30T07:22:17.414Z">
+<meta property="og:updated_time" content="2019-03-30T09:26:26.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「CODECHEF CHEFKNN」大厨与区间染色">
 <meta name="twitter:description" content="这篇文章为题解翻译，原题解详见这里。">
@@ -150,7 +150,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 分钟 读完 (大约 2241 个字)
+                    15 分钟 读完 (大约 2242 个字)
                 </span>
                 
             </div>
@@ -218,7 +218,7 @@
 <p>如何消除这个 \(T\) 呢？我们设不同的测试点的 \(N\) 值为 \(N_1,N_2,\cdots, N_T \)。我们一次性输入这些数，然后按 \(N\) 的升序排序。设 \(n_i\) 是排序后的序列 \(N\)。我们可以调用 \(\texttt{MUL}(1,n_1)\)，\(\texttt{MUL}(n_1,n_2)\)，……，\(\texttt{MUL}(n_{T-1}+1,n_T)\)。现在，我们可以用前缀积计算这些项，并且求出所有测试点的答案。这个的时间复杂度可以近似用下面的求和计算：</p>
 <p>$$<br>\mathcal{O}(N_1\log^2N) + \mathcal{O}((N_2-N_1)\log^2N) + \cdots + \mathcal{O}((N_T-N_{T-1})\log^2N) = \mathcal{O}(N\log^2N)<br>$$</p>
 <p>时间复杂度：\(\mathcal{O}(TN\log N)\) 或 \(\mathcal{O}(N\log^2 N)\)。</p>
-<p><a href="www.codechef.com/download/Solutions/MARCH18/Setter/CHEFKNN.cpp">出题人解法</a>，打不开见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/CodeChef/March%20Challenge%202018/CHEFKNNA.cpp" target="_blank" rel="noopener">这里</a>。</p>
+<p><a href="http://www.codechef.com/download/Solutions/MARCH18/Setter/CHEFKNN.cpp" target="_blank" rel="noopener">出题人解法</a>，打不开见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/CodeChef/March%20Challenge%202018/CHEFKNNA.cpp" target="_blank" rel="noopener">这里</a>。</p>
 <p><a href="http://www.codechef.com/download/Solutions/MARCH18/Tester/CHEFKNN.cpp" target="_blank" rel="noopener">验题人解法</a>，打不开见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/CodeChef/March%20Challenge%202018/CHEFKNNB.cpp" target="_blank" rel="noopener">这里</a>。</p>
 <p><a href="http://www.codechef.com/download/Solutions/MARCH18/Editorialist/CHEFKNN.cpp" target="_blank" rel="noopener">原题解作者解法</a>，打不开见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/CodeChef/March%20Challenge%202018/CHEFKNNC.cpp" target="_blank" rel="noopener">这里</a>。</p>
 <p>由于只是题解搬运，就不给出我写的了（意思是我不写了）……</p>

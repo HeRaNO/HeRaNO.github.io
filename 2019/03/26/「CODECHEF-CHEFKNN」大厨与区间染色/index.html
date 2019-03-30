@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="本题为题解翻译，原题解详见这里。">
+    <meta name="description" content="这篇文章为题解翻译，原题解详见这里。">
 <meta name="keywords" content="数学,NTT,多项式相关">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「CODECHEF CHEFKNN」大厨与区间染色">
 <meta property="og:url" content="https://herano.github.io/2019/03/26/「CODECHEF-CHEFKNN」大厨与区间染色/index.html">
 <meta property="og:site_name" content="HeRaNO">
-<meta property="og:description" content="本题为题解翻译，原题解详见这里。">
+<meta property="og:description" content="这篇文章为题解翻译，原题解详见这里。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-26T11:05:27.566Z">
+<meta property="og:updated_time" content="2019-03-30T07:22:17.414Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「CODECHEF CHEFKNN」大厨与区间染色">
-<meta name="twitter:description" content="本题为题解翻译，原题解详见这里。">
+<meta name="twitter:description" content="这篇文章为题解翻译，原题解详见这里。">
 
 
 
@@ -150,7 +150,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    15 分钟 读完 (大约 2239 个字)
+                    15 分钟 读完 (大约 2241 个字)
                 </span>
                 
             </div>
@@ -162,7 +162,7 @@
             
         </h1>
         <div class="content">
-            <p>本题为题解翻译，原题解详见<a href="https://discuss.codechef.com/questions/123905/chefknn-editorial" target="_blank" rel="noopener">这里</a>。</p>
+            <p>这篇文章为题解翻译，原题解详见<a href="https://discuss.codechef.com/questions/123905/chefknn-editorial" target="_blank" rel="noopener">这里</a>。</p>
 <a id="more"></a>
 <p>这道题被 Lutece 搬运了，在<a href="https://acm.uestc.edu.cn/problem/zhu-ye-gao-gao-gao-gao-gao-du-du-du-du-du-liu-liu-liu-liu-liu-legendary-version/description" target="_blank" rel="noopener">这里</a>。</p>
 <p>原题面在<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/CodeChef/March%20Challenge%202018/CHEFKNN.pdf" target="_blank" rel="noopener">这里</a>。</p>
@@ -207,7 +207,7 @@
 <p>现在我们就有了一个当 \(P_N(x)\) 已知时，利用 \(A(x)\) 与 \(B(x)\) 的卷积在 \(\mathcal{O}(n\log n)\) 的时间内找到 \(P_N(x+N)\) 的表达式的算法。现在我们看一下解决这个子任务的伪代码：</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">MUL(N) // computes (x+1)(x+2)...(x+N) in O(NlogN)</span><br><span class="line">  if N==1: </span><br><span class="line">    return (x+1)</span><br><span class="line">  C = MUL(N/2)</span><br><span class="line">  H = convolute(A,B) // use C to obtain A</span><br><span class="line">  ANS = convolute(C,H)</span><br><span class="line">  if N is odd:</span><br><span class="line">    ANS *= (x+N) // naive multiplication will do - O(N)</span><br><span class="line">  return ANS</span><br></pre></td></tr></table></figure>
 <p>最后一件事是如何计算两个多项式的乘积对 \(163577857\) 取模。注意到 \(163577857 = 39\times 2^{22} + 1\)，这个数是 NTT 友好的。这就减轻了我们的负担。对于不了解 NTT 的人来说可以参考<a href="http://www.apfloat.org/ntt.html" target="_blank" rel="noopener">这个链接</a>。</p>
-<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>当你暴力模拟这个算法的时候，你会发现处理 \(N=10^6\) 的数据花费时间过多。不幸的是，大 $\mathcal{O}$ 记号里隐藏的常数因子太高了！这个时间复杂度是正确的，所以我们需要附加的技巧与消除这部分常数并且能够把这个解法卡到时限里去。这里有一些优化方法：</p>
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>当你暴力模拟这个算法的时候，你会发现处理 \(N=10^6\) 的数据花费时间过多。不幸的是，大 \(\mathcal{O}\) 记号里隐藏的常数因子太高了！这个时间复杂度是正确的，所以我们需要附加的技巧与消除这部分常数并且能够把这个解法卡到时限里去。这里有一些优化方法：</p>
 <ul>
 <li>尝试减少取模操作；</li>
 <li>用数组代替 <code>vector</code> 来做 NTT，简单来说，找个跑得快的 NTT 板子；</li>
@@ -242,6 +242,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/30/ContestSonic-开发笔记（一）/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">ContestSonic 开发笔记（一）</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -319,7 +326,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        21
+                        22
                     </p>
                 </div>
             </div>
@@ -329,7 +336,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        4
                     </p>
                 </div>
             </div>
@@ -339,7 +346,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        24
+                        27
                     </p>
                 </div>
             </div>
@@ -676,6 +683,14 @@
                 <span class="level-item tag">1</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/开发/">
+            <span class="level-start">
+                <span class="level-item">开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/杂言/">
             <span class="level-start">
                 <span class="level-item">杂言</span>
@@ -701,6 +716,25 @@
         
         <article class="media">
             
+            <a href="/2019/03/30/ContestSonic-开发笔记（一）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ContestSonic 开发笔记（一）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-30T08:22:56.000Z">2019-03-30</time></div>
+                    <a href="/2019/03/30/ContestSonic-开发笔记（一）/" class="has-link-black-ter is-size-6">ContestSonic 开发笔记（一）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/开发/">开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/03/26/「CODECHEF-CHEFKNN」大厨与区间染色/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="「CODECHEF CHEFKNN」大厨与区间染色">
@@ -770,25 +804,6 @@
                     <a href="/2018/12/31/2018-年都干了啥/" class="has-link-black-ter is-size-6">2018 年都干了啥</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/杂言/">杂言</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/12/30/「ZJOI2015」幻想乡-Wi-Fi-搭建计划/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="「ZJOI2015」幻想乡 Wi-Fi 搭建计划">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-30T14:00:00.000Z">2018-12-30</time></div>
-                    <a href="/2018/12/30/「ZJOI2015」幻想乡-Wi-Fi-搭建计划/" class="has-link-black-ter is-size-6">「ZJOI2015」幻想乡 Wi-Fi 搭建计划</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
                     </p>
                 </div>
             </div>
@@ -812,7 +827,7 @@
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -927,7 +942,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DFS-序/" style="font-size: 10px;">DFS 序</a> <a href="/tags/DP/" style="font-size: 16px;">DP</a> <a href="/tags/FFT/" style="font-size: 10px;">FFT</a> <a href="/tags/FWT/" style="font-size: 10px;">FWT</a> <a href="/tags/HLOI/" style="font-size: 20px;">HLOI</a> <a href="/tags/NTT/" style="font-size: 12px;">NTT</a> <a href="/tags/SHOI/" style="font-size: 10px;">SHOI</a> <a href="/tags/ZJOI/" style="font-size: 10px;">ZJOI</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/历史/" style="font-size: 10px;">历史</a> <a href="/tags/多项式相关/" style="font-size: 10px;">多项式相关</a> <a href="/tags/数位-DP/" style="font-size: 10px;">数位 DP</a> <a href="/tags/数学/" style="font-size: 18px;">数学</a> <a href="/tags/数论/" style="font-size: 12px;">数论</a> <a href="/tags/旋转卡壳/" style="font-size: 10px;">旋转卡壳</a> <a href="/tags/最小生成树/" style="font-size: 12px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/杂言/" style="font-size: 12px;">杂言</a> <a href="/tags/概率与期望/" style="font-size: 16px;">概率与期望</a> <a href="/tags/模拟/" style="font-size: 18px;">模拟</a> <a href="/tags/矩阵/" style="font-size: 12px;">矩阵</a> <a href="/tags/线段树/" style="font-size: 16px;">线段树</a> <a href="/tags/贪心/" style="font-size: 14px;">贪心</a>
+        <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/ContestSonic/" style="font-size: 10px;">ContestSonic</a> <a href="/tags/DFS-序/" style="font-size: 10px;">DFS 序</a> <a href="/tags/DP/" style="font-size: 16px;">DP</a> <a href="/tags/FFT/" style="font-size: 10px;">FFT</a> <a href="/tags/FWT/" style="font-size: 10px;">FWT</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/HLOI/" style="font-size: 20px;">HLOI</a> <a href="/tags/NTT/" style="font-size: 12px;">NTT</a> <a href="/tags/SHOI/" style="font-size: 10px;">SHOI</a> <a href="/tags/ZJOI/" style="font-size: 10px;">ZJOI</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/历史/" style="font-size: 10px;">历史</a> <a href="/tags/多项式相关/" style="font-size: 10px;">多项式相关</a> <a href="/tags/开发/" style="font-size: 10px;">开发</a> <a href="/tags/数位-DP/" style="font-size: 10px;">数位 DP</a> <a href="/tags/数学/" style="font-size: 18px;">数学</a> <a href="/tags/数论/" style="font-size: 12px;">数论</a> <a href="/tags/旋转卡壳/" style="font-size: 10px;">旋转卡壳</a> <a href="/tags/最小生成树/" style="font-size: 12px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/杂言/" style="font-size: 12px;">杂言</a> <a href="/tags/概率与期望/" style="font-size: 16px;">概率与期望</a> <a href="/tags/模拟/" style="font-size: 18px;">模拟</a> <a href="/tags/矩阵/" style="font-size: 12px;">矩阵</a> <a href="/tags/线段树/" style="font-size: 16px;">线段树</a> <a href="/tags/贪心/" style="font-size: 14px;">贪心</a>
     </div>
 </div>
 
@@ -948,6 +963,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/03/30/ContestSonic-开发笔记（一）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ContestSonic 开发笔记（一）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-30T08:22:56.000Z">2019-03-30</time></div>
+                    <a href="/2019/03/30/ContestSonic-开发笔记（一）/" class="has-link-black-ter is-size-6">ContestSonic 开发笔记（一）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/开发/">开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1025,25 +1059,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2018/12/30/「ZJOI2015」幻想乡-Wi-Fi-搭建计划/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="「ZJOI2015」幻想乡 Wi-Fi 搭建计划">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-30T14:00:00.000Z">2018-12-30</time></div>
-                    <a href="/2018/12/30/「ZJOI2015」幻想乡-Wi-Fi-搭建计划/" class="has-link-black-ter is-size-6">「ZJOI2015」幻想乡 Wi-Fi 搭建计划</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1062,7 +1077,7 @@
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1177,7 +1192,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DFS-序/" style="font-size: 10px;">DFS 序</a> <a href="/tags/DP/" style="font-size: 16px;">DP</a> <a href="/tags/FFT/" style="font-size: 10px;">FFT</a> <a href="/tags/FWT/" style="font-size: 10px;">FWT</a> <a href="/tags/HLOI/" style="font-size: 20px;">HLOI</a> <a href="/tags/NTT/" style="font-size: 12px;">NTT</a> <a href="/tags/SHOI/" style="font-size: 10px;">SHOI</a> <a href="/tags/ZJOI/" style="font-size: 10px;">ZJOI</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/历史/" style="font-size: 10px;">历史</a> <a href="/tags/多项式相关/" style="font-size: 10px;">多项式相关</a> <a href="/tags/数位-DP/" style="font-size: 10px;">数位 DP</a> <a href="/tags/数学/" style="font-size: 18px;">数学</a> <a href="/tags/数论/" style="font-size: 12px;">数论</a> <a href="/tags/旋转卡壳/" style="font-size: 10px;">旋转卡壳</a> <a href="/tags/最小生成树/" style="font-size: 12px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/杂言/" style="font-size: 12px;">杂言</a> <a href="/tags/概率与期望/" style="font-size: 16px;">概率与期望</a> <a href="/tags/模拟/" style="font-size: 18px;">模拟</a> <a href="/tags/矩阵/" style="font-size: 12px;">矩阵</a> <a href="/tags/线段树/" style="font-size: 16px;">线段树</a> <a href="/tags/贪心/" style="font-size: 14px;">贪心</a>
+        <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/ContestSonic/" style="font-size: 10px;">ContestSonic</a> <a href="/tags/DFS-序/" style="font-size: 10px;">DFS 序</a> <a href="/tags/DP/" style="font-size: 16px;">DP</a> <a href="/tags/FFT/" style="font-size: 10px;">FFT</a> <a href="/tags/FWT/" style="font-size: 10px;">FWT</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/HLOI/" style="font-size: 20px;">HLOI</a> <a href="/tags/NTT/" style="font-size: 12px;">NTT</a> <a href="/tags/SHOI/" style="font-size: 10px;">SHOI</a> <a href="/tags/ZJOI/" style="font-size: 10px;">ZJOI</a> <a href="/tags/凸包/" style="font-size: 10px;">凸包</a> <a href="/tags/历史/" style="font-size: 10px;">历史</a> <a href="/tags/多项式相关/" style="font-size: 10px;">多项式相关</a> <a href="/tags/开发/" style="font-size: 10px;">开发</a> <a href="/tags/数位-DP/" style="font-size: 10px;">数位 DP</a> <a href="/tags/数学/" style="font-size: 18px;">数学</a> <a href="/tags/数论/" style="font-size: 12px;">数论</a> <a href="/tags/旋转卡壳/" style="font-size: 10px;">旋转卡壳</a> <a href="/tags/最小生成树/" style="font-size: 12px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/杂言/" style="font-size: 12px;">杂言</a> <a href="/tags/概率与期望/" style="font-size: 16px;">概率与期望</a> <a href="/tags/模拟/" style="font-size: 18px;">模拟</a> <a href="/tags/矩阵/" style="font-size: 12px;">矩阵</a> <a href="/tags/线段树/" style="font-size: 16px;">线段树</a> <a href="/tags/贪心/" style="font-size: 14px;">贪心</a>
     </div>
 </div>
 

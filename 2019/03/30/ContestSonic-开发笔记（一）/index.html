@@ -2,18 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: ZJOI - HeRaNO</title>
+<title>ContestSonic 开发笔记（一） - HeRaNO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="HeRaNO">
-<meta property="og:url" content="https://herano.github.io/tags/ZJOI/index.html">
+    <meta name="description" content="ContestSonic 开发的幕后与吐槽（一）">
+<meta name="keywords" content="Golang,ContestSonic,开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ContestSonic 开发笔记（一）">
+<meta property="og:url" content="https://herano.github.io/2019/03/30/ContestSonic-开发笔记（一）/index.html">
 <meta property="og:site_name" content="HeRaNO">
+<meta property="og:description" content="ContestSonic 开发的幕后与吐槽（一）">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-30T08:51:48.031Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HeRaNO">
+<meta name="twitter:title" content="ContestSonic 开发笔记（一）">
+<meta name="twitter:description" content="ContestSonic 开发的幕后与吐槽（一）">
 
 
 
@@ -112,6 +117,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -126,33 +135,22 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">ZJOI</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-30T14:00:00.000Z">2018-12-30</time>
+                <time class="level-item has-text-grey" datetime="2019-03-30T08:22:56.000Z">2019-03-30</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
+                <a class="has-link-grey -link" href="/categories/开发/">开发</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 443 个字)
+                    7 分钟 读完 (大约 1026 个字)
                 </span>
                 
             </div>
@@ -160,30 +158,103 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2018/12/30/「ZJOI2015」幻想乡-Wi-Fi-搭建计划/">「ZJOI2015」幻想乡 Wi-Fi 搭建计划</a>
+                ContestSonic 开发笔记（一）
             
         </h1>
         <div class="content">
-            <p>ZJOI 2015 Day2 T3<br></p>
+            <p>ContestSonic 开发的幕后与吐槽（一）<br><a id="more"></a></p>
+<p>这个会不定时更新……</p>
+<p>报上这个项目上去真的是脑袋抽了，真的。</p>
+<p>2018 年 12 月，学校发通知报项目，我觉得这个写起来还可以，于是报了，报了就后悔，后悔还没后悔药，于是硬着头皮做，做得头皮发麻。</p>
+<p>1 月做了一下项目调查，回收到了 65 份答卷，有 8 份无效的，分析了一下剩余部分。</p>
+<p>简单介绍一下调查结果吧：</p>
+<p>第一个是问身份，以此来判断问卷的有效性，调查到两名教练，不确定真实身份……37 位现役 OIer / ICPCer，18 位退役 OIer / ICPCer，以此分配考虑加权。</p>
+<p>第二项是问是否用过线下测评系统，近 90% 的调查者，说明写这玩意是有人用的……</p>
+<p>第三项是问选手端与测评端分别需不需要全平台，大多数倾向于选手端全平台测评端 Linux 这样的方案，也是我预想的方案。</p>
+<p>第四项是问需不需要分布式测评，现役 OIer / ICPCer 19 人支持只用一台测评机，但是退役 OIer / ICPCer 大多支持用多台测评机……所以考虑分布式测评。</p>
+<p>第五项调查了用户行为会不会像用 Cena 一样不测比赛只是自测，发现现役 OIer / ICPCer 和退役 OIer / ICPCer 使用习惯确实不一样……</p>
+<p>第六项是交互方式调查，大多数都倾向于网页交互，所以交互逻辑就定了。</p>
+<p>第七项是问反作弊系统是否多余，大多数人都认为是不多余的，因此还要就这个问题进行深入设计……但是至少还可以搞一个相似代码的这么一个判断（有现成的，不造轮子了）。</p>
+<p>第八个是时间限制的这个设定需不需要调整，大多数人认为不需要调整，我提出了用相对时间进行判断，发现其实没多少人支持……想想也是，首先相对标准没法制定，其次只要 std 跑得够快其他代码都跟不上它的 speed，这个就是没用的……</p>
+<p>第九项是调查是否需要用 testlib 重写一下 diff，发现更多人支持重写，泥萌都是魔鬼吗QAQ，工期拉满了啊QAQ</p>
+<p>第十项是调查有没有线上线下比赛联动的需求，发现是有的，需要设计 API 来实现。</p>
+<p>后面的调查是关于程序设计考试的调查，发现这个是可行的，可以设计程序设计考试的测评系统，这个和竞赛系统可以通用。</p>
+<p>然后就是直接调查需求了。</p>
+<p>总结一下需求：</p>
+<ul>
+<li>子任务捆绑（包括 Skipped）</li>
+<li>简单配置</li>
+<li>稳定更新</li>
+<li>扩展性强</li>
+<li>非传统题测评</li>
+<li>自动收取程序</li>
+<li>选手竞赛环境与测评环境不一致导致问题</li>
+<li>直观的错误提示</li>
+<li>线上线下联动</li>
+<li>页面可爱！</li>
+</ul>
+<p>emmmmm……争取做到最后一条吧……</p>
+<p>早自习设计了一下前端和后端模型，简要写了一下数据库结构，感觉界面可以挺简洁，感觉用无印的本子自己的设计都简洁了很多……（不是</p>
+<p>前端的想法是把所有功能只做到一页上，后端的功能想法是只推送不询问。尽可能合并状态更新，尽可能做到快速响应。</p>
+<p>原来其实是想把一些 OJ 的比赛功能扒下来随便改改就交上去的，但没有一个 OJ 比赛功能符合预期，于是自己写了……</p>
+<p>四月准备开工。</p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/12/30/「ZJOI2015」幻想乡-Wi-Fi-搭建计划/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/ContestSonic/">ContestSonic</a>, <a class="has-link-grey -link" href="/tags/Golang/">Golang</a>, <a class="has-link-grey -link" href="/tags/开发/">开发</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
 </div>
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/26/「CODECHEF-CHEFKNN」大厨与区间染色/">
+                <span class="level-item">「CODECHEF CHEFKNN」大厨与区间染色</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDk0NS8xNzQ3MA==">
+    <script type="text/javascript">
+        (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+
+            if (typeof LivereTower === 'function') { return; }
+
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+    </script>
+    <noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
+</div>
+
+    </div>
+</div>
 </div>
                 
 
@@ -283,6 +354,17 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            
+        </div>
+    </div>
+</div>
+
     
         
 

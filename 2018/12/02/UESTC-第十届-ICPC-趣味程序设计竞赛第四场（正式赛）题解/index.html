@@ -240,22 +240,21 @@
     <div class="card-content">
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
-<div id="lv-container" data-id="city" data-uid="MTAyMC80MDk0NS8xNzQ3MA==">
-    <script type="text/javascript">
-        (function(d, s) {
-            var j, e = d.getElementsByTagName(s)[0];
-
-            if (typeof LivereTower === 'function') { return; }
-
-            j = d.createElement(s);
-            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-            j.async = true;
-
-            e.parentNode.insertBefore(j, e);
-        })(document, 'script');
-    </script>
-    <noscript> Please activate JavaScript for write a comment in LiveRe</noscript>
-</div>
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+	var gitment = new Gitment({
+		id: '2018/12/02/UESTC-第十届-ICPC-趣味程序设计竞赛第四场（正式赛）题解/',
+		owner: 'HeRaNO',
+		repo: 'HeRaNO.github.io',
+		oauth: {
+			client_id: 'ee72bcab76c2f4174f33',
+			client_secret: '31d9ec1c309ad83b7aaae7b81e40c296dceb8ea2',
+		},
+	})
+	gitment.render('comment-container')
+</script>
 
     </div>
 </div>
@@ -491,7 +490,7 @@
             <li>
                 <a class="level is-mobile" href="https://blog.csdn.net/SidneyAustin/" target="_blank">
                     <span class="level-left">
-                        <span class="level-item">Sidney</span>
+                        <span class="level-item">Sidney@CMU</span>
                     </span>
                 </a>
             </li>

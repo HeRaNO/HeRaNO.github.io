@@ -36,30 +36,39 @@ textarea {
     padding: 1.5rem 1rem;
   }
 }
-.column-main,
-.column-left,
-.column-right {
-  align-self: flex-start;
+@media screen and (min-width: 769px) {
+  .column-main.is-sticky,
+  .column-left.is-sticky,
+  .column-right.is-sticky,
+  .column-right-shadow.is-sticky {
+    align-self: flex-start;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0.75rem;
+  }
+  .column-right-shadow.is-sticky {
+    top: 1.5rem;
+  }
 }
-.column-main.is-sticky,
-.column-left.is-sticky,
-.column-right.is-sticky {
-  position: sticky;
-  top: 0.75rem;
+.tag.is-grey {
+  background: #e7e7e7;
 }
 .card {
-  overflow: hidden;
   border-radius: 4px;
-  transform-origin: center top;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05), 0 0 1px rgba(0,0,0,0.1);
 }
-.card + .card {
+.card + .card,
+.card + .column-right-shadow {
   margin-top: 1.5rem;
 }
 .card.card-transparent {
-  overflow: visible;
   box-shadow: none;
   background: transparent;
+}
+.card .card-image {
+  overflow: hidden;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 img.thumbnail {
   object-fit: cover;
@@ -79,6 +88,7 @@ img.thumbnail {
   align-items: stretch;
   display: flex;
   padding: 0;
+  flex-shrink: 0;
 }
 .navbar-main .navbar-menu {
   flex-grow: 1;
@@ -204,6 +214,32 @@ img.thumbnail {
   margin-left: 0.75rem;
   margin-right: 0;
 }
+.donate {
+  position: relative;
+}
+.donate .qrcode {
+  display: none;
+  position: absolute;
+  z-index: 99;
+  bottom: 2.5em;
+  line-height: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1), 0 0 1px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+.donate .qrcode img {
+  max-width: 280px;
+}
+.donate:hover .qrcode {
+  display: block;
+}
+.donate:first-child:not(:last-child) .qrcode {
+  left: -0.75rem;
+}
+.donate:last-child:not(:first-child) .qrcode {
+  right: -0.75rem;
+}
 @media screen and (max-width: 768px) {
   #toc {
     display: none;
@@ -234,6 +270,9 @@ img.thumbnail {
 /* ---------------------------------
  *         Custom modifiers
  * --------------------------------- */
+.is-borderless {
+  border: none;
+}
 .is-size-7 {
   font-size: 0.85rem !important;
 }
@@ -363,6 +402,7 @@ img.thumbnail {
 figure.highlight {
   padding: 0;
   width: 100%;
+  position: relative;
   margin: 1em 0 1em !important;
 }
 figure.highlight pre,
@@ -415,6 +455,33 @@ figure.highlight .section {
   vertical-align: inherit;
   min-width: inherit;
   border-radius: inherit;
+}
+figure.highlight .copy {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+}
+figure.highlight:hover .copy {
+  display: block;
+}
+/* ---------------------------------
+ *        Fix Video
+ * --------------------------------- */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 /* ---------------------------------
  *        Fix Gist Snippet

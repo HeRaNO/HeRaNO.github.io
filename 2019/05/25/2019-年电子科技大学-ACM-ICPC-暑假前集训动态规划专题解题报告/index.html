@@ -2,19 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: 数学 - HeRaNO</title>
+<title>2019 年电子科技大学 ACM-ICPC 暑假前集训动态规划专题解题报告 - HeRaNO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="HeRaNO">
-<meta property="og:url" content="https://herano.github.io/tags/数学/index.html">
+    <meta name="description" content="8/12/13">
+<meta name="keywords" content="DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019 年电子科技大学 ACM-ICPC 暑假前集训动态规划专题解题报告">
+<meta property="og:url" content="https://herano.github.io/2019/05/25/2019-年电子科技大学-ACM-ICPC-暑假前集训动态规划专题解题报告/index.html">
 <meta property="og:site_name" content="HeRaNO">
+<meta property="og:description" content="8/12/13">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-05-24T10:38:35.707Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HeRaNO">
+<meta name="twitter:title" content="2019 年电子科技大学 ACM-ICPC 暑假前集训动态规划专题解题报告">
+<meta name="twitter:description" content="8/12/13">
 <meta name="twitter:image" content="https://herano.github.io/images/og_image.png">
 
 
@@ -87,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="HeRaNO" height="28">
+                <img src="/images/logo.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训动态规划专题解题报告" height="28">
             
             </a>
         </div>
@@ -110,6 +115,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -124,276 +133,259 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-24T16:00:00.000Z">2019-05-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    38 分钟 读完 (大约 5698 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                2019 年电子科技大学 ACM-ICPC 暑假前集训动态规划专题解题报告
+            
+        </h1>
+        <div class="content">
+            <p>8/12/13<br><a id="more"></a></p>
+<p>题目详见<a href="https://acm.uestc.edu.cn/contest/15/summary" target="_blank" rel="noopener">这里</a>。</p>
+<p>我 J 真的写不出来了……</p>
+<h2 id="A-oy-环游世界"><a href="#A-oy-环游世界" class="headerlink" title="A. oy 环游世界"></a>A. oy 环游世界</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>有 \(n\) 个城市，第 \(i\) 个城市坐标为 \((x_i,y_i)\)，定义两城市之间距离为两城市之间的曼哈顿距离，求从制定城市 \(s\) 出发遍历所有城市的最少代价，最后终点任意。</p>
+<p>数据范围：\(1\le n\le 17\)。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>TSP 板子，但是与 TSP 的唯一区别是不需要回到起点，稍微改动一下即可。</p>
+<p>记 \(S\) 为目前到过城市的状态，每次枚举一个到过的城市与未到过的城市，更新最短距离即可。利用记忆化搜索或用深度优先搜索实现 DP 过程也可。</p>
+<p>记 \(f_{S,i}\) 为已经到过的城市状态为 \(S\)，到过的最后一个城市为 \(i\)，则 DP 的转移方程为：</p>
+<p>$$<br>\large f_{S,i}=\min_{j\not \in S} \left \{f_{S\cup\{j\},j}+\text{dis}(i,j)\right\}<br>$$</p>
+<p>时间复杂度 \(\mathcal{O}(2^nn^2)\)，空间复杂度 \(\mathcal{O}(n2^n)\)。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2173.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="B-挖矿攻略"><a href="#B-挖矿攻略" class="headerlink" title="B. 挖矿攻略"></a>B. 挖矿攻略</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>\(n\times m\) 网格中每格点有两种权 \(a,b\)，现每个点必须向上或向左转移权值，将权值加在目标点上，但每次转移的贡献只是两种点权中的一种，求经过转移后最上和最左边点的权值和。</p>
+<p>数据范围：\(1\le n,m\le 500\)。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>考虑对于一个点的转移，如果这个点点权选择向左传递，那么它左边的点均向左转移，否则，它上面的的点均向上转移。这是一种贪心的思路，如果在传输过程中转换传递方向，将会丢失一种点权中的一部分，这比全部取同一种点权要劣，因此这种贪心是可行的。</p>
+<p>记 \(f_{i,j}\) 为到达点 \((i,j)\) 时以 \((i,j)\) 为矩形右下角的矩形区域中获得的最大点权。按照这种贪心思路，\(f_{i,j}\) 是由 \(f_{i,j-1}\) 或 \(f_{i,j-1}\) 通过扩展矩形的一列或一行得到的，不难写出如下转移方程：</p>
+<p>$$<br>f_{i,j}=\max\{f_{i,j-1}+\sum_{p=1}^i b_{p,j},f_{i-1,j}+\sum_{p=1}^j r_{i,p}\}<br>$$</p>
+<p>对于两个求和式，可以利用前缀和优化转移，降低时间复杂度。</p>
+<p>时间复杂度 \(\mathcal{O}(nm)\)，空间复杂度 \(\mathcal{O}(nm)\)。</p>
+<p>（其实感觉不用优化转移 \(\mathcal{O}(n^3)\) 也能过……）</p>
+<p>原题详见：<a href="https://www.luogu.org/problemnew/show/P2380" target="_blank" rel="noopener">Luogu 2780. 狗哥采矿</a></p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2174.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="C-手办"><a href="#C-手办" class="headerlink" title="C. 手办"></a>C. 手办</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>有 \(n\) 个手办，每个手办高度为 \(h_i\)，现从 \(n\) 个手办中最多取出 \(k\) 个，然后插回序列中。定义一个序列的混乱度为一个序列中高度相同的子串的个数。求这样整理可以达到的最小混乱度。</p>
+<p>数据范围：\(1\le k\le n\le 100,114514\le h_i\le 114521\)。</p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>注意到手办数较多，但高度种类很少，可以考虑对高度进行状压 DP。考虑到一个性质，如果序列中存在一个手办与要插入的手办高度相等，则可以把这个手办插入到序列中与这个手办高度相等的手办旁边，这样不影响答案，否则为了避免插入影响到已有段的连续性，只能放在后面或两相邻段中间，但是答案总是加一。于是，我们可以采用先用 DP 计算抽取过后剩余序列的最小混乱度，再把手办补回来更改答案的方式解决这个问题。</p>
+<p>据此，设状态 \(f_{i,s,j,p}\) 为处理到第 \(i\) 个位置，目前手办高度状态为 \(s\)，已经取出了 \(j\) 个手办，目前 \(1\sim i\) 序列中最后一个手办高度为 \(p\) 的最少操作次数。可知有三种转移：</p>
+<ol>
+<li><p>第 \(i\) 个手办和第 \(i-1\) 个高度相同，则：<br>$$<br>\large f_{i,s,j,p}=\min\left \{f_{i-1,j,s,p}\right\}<br>$$</p>
+</li>
+<li><p>第 \(i\) 个手办和第 \(i-1\) 个高度不同，且被抽掉，则：</p>
+</li>
+</ol>
+<p>$$<br>\large f_{i,s,j+1,p}=\min \left \{f_{i-1,j,s,p}\right\}<br>$$</p>
+<ol start="3">
+<li><p>第 \(i\) 个手办和第 \(i-1\) 个高度不同，但没被抽掉，则：</p>
+<p>$$<br>\large f_{i,s\cup\{h_i\},j,h_i}=\min\left\{f_{i-1,j,s,p}\right\}+1<br>$$</p>
+</li>
+</ol>
+<p>其中 \(p\) 是在 \(s\) 集合中出现的高度，\(s\) 可以通过枚举 \(1\sim i\) 所有手办的高度集合得到。</p>
+<p>最后，枚举 \(f_{n,s,j,p}\)，考虑所有出现的高度 \(S\) 与 \(s\) 的差集大小加入答案，取最小值即可。这里差集可以通过求 \(S \oplus s\) 中 \(1\) 的个数获得，\(\oplus\) 为异或运算，求 \(1\) 的个数可以利用 <code>__builtin_popcount()</code> 函数。注意到 DP 方程只与前一个位置有关，因此可以利用滚动数组优化空间。</p>
+<p>时间复杂度 \(\mathcal{O}(nkh2^h)\)，空间复杂度 \(\mathcal{O}(nh2^h)\)，其中 \(h\) 为序列中高度的种类数，\(h\le 8\)。</p>
+<p>原题来自：</p>
+<ul>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=244&amp;page=show_problem&amp;problem=3387" target="_blank" rel="noopener">UVa 12235. Help Bubu</a>；</li>
+<li><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3237" target="_blank" rel="noopener">HDU 3237. Help Bubu</a>。</li>
+</ul>
+<p>题外话：这道题是敝校 NOIP 训练题，但是因为偷懒当年没写，两年半后还是还了……</p>
+<p><img src="/images/bubu.png" alt=""></p>
+<p>（悬殊的 RunID 差距……）</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2175.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="D-序列"><a href="#D-序列" class="headerlink" title="D. 序列"></a>D. 序列</h2><h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个长度为 \(n\) 的序列，求其中对称的长度最长的山峰形子序列。这个山峰必须有尖峰。</p>
+<p>数据范围：\(1\le n\le 10^6\)。</p>
+<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>考虑这个山峰的每一半，都是求一个最长上升子序列，所以我们正着做一次 LIS，倒着做一次 LIS，然后枚举每个点，取以这个点为结尾的正向与逆向最长上升子序列长度的最小值，然后乘二减一即可。</p>
+<p>LIS 有优秀的 \(\mathcal{O}(n\log n)\) 做法，但是不知道为啥二分写挂了于是怒而 <code>lower_bound</code>……</p>
+<p>时间复杂度 \(\mathcal{O}(n\log n)\)，空间复杂度 \(\mathcal{O}(n)\)。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2176.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="E-神"><a href="#E-神" class="headerlink" title="E. 神"></a>E. 神</h2><h3 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个长度为 \(n\) 的小写字母串，按顺序每 \(k\) 个分成一块，块内可以重排，块间不能排序，求最少段数，段数和 C 题中的定义一致。共 \(T\) 组数据。</p>
+<p>数据范围：\(1\le T\le 100,1\le k\le n\le 10^3\)，保证 \(n\) 是 \(k\) 的整数倍。</p>
+<h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h3><p>考虑块内一段，最小段数为出现的字符种数，即把所有相同的字母放在一起为最优解。再考虑块间排序，可以证明，如果两块之间存在相同字母，那么这两块间答案为两块的答案和减一，最后考虑相邻三块之间的排序，如果三块都有相同字母，那么将中间一块的相同字母全部放前，放后和分开放置的答案是相同的，因此无需考虑分开放置的情况。</p>
+<p>记 \(f_{i,j}\) 为前 \(i\) 块已经排好序后，最后一块的末尾为 \(j\) 的最少段数。不难写出如下转移：</p>
+<p>$$<br>f_{i,j}=\min\left\{f_{i-1,k}+a_i-[k\in S_i]\right\}<br>$$</p>
+<p>其中，\(a_i\) 为第 \(i\) 块出现字母种数，\(S_i\) 为第 \(i\) 块出现的字母集合，\([]\) 为 Iverson 括号。需要注意只有一段的情况转移与多于一段的情况有区别。考虑不分开放置（如果考虑分开放置的话还需要考虑一块中字母出现次数），那么多于一个字母的情况需要块内开头和结尾字母不同，否则会答案有误。</p>
+<p>最后答案是 \(\min_{i\in \Sigma}\{f_{m,i}\}\)，其中 \(\Sigma\) 为字符集。</p>
+<p>时间复杂度：\(\mathcal{O}(T\times |\Sigma|^2n)\)，空间复杂度：\(\mathcal{O}(|\Sigma|n)\)。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2177.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="F-苇名欧一郎"><a href="#F-苇名欧一郎" class="headerlink" title="F. 苇名欧一郎"></a>F. 苇名欧一郎</h2><h3 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h3><p>一共有 \(n\) 个敌人，最初可以捶死一些敌人，捶死每个敌人之前需要捶死一些敌人之一，要求捶遍所有敌人，求捶人顺序有多少种。一共有 \(T\) 组数据。</p>
+<p>数据范围：\(1\le T\le 50,1\le n\le 16\)。</p>
+<h3 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h3><p>这道题是比较经典的拓扑序计数问题。记 \(f_{s}\) 为目前捶人状态为 \(s\)，捶成这种状态的顺序数。考虑再捶一个没捶过的人 \(i\)，判断一下是否已经锤过了一个为了锤他需要捶的人，或者是否是最初就可以捶掉他，然后转移一下即可：</p>
+<p>$$<br>\large f_{s\cup \{j\}}=\sum_{j\not \in s,d_j\cap s\neq \emptyset} f_{s}<br>$$</p>
+<p>其中，\(d_j\) 是为了捶 \(j\) 要捶的敌人集合。</p>
+<p>时间复杂度 \(\mathcal{O}(Tn2^n)\)，空间复杂度 \(\mathcal{O}(2^n)\)。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2178.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="G-子串"><a href="#G-子串" class="headerlink" title="G. 子串"></a>G. 子串</h2><h3 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h3><p>给出长度为 \(n\) 的数字串，请求出其中能被 \(k\) 整除的子串个数。</p>
+<p>数据范围：\(1\le n\times k\le 2\times 10^7\)。</p>
+<h3 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h3><p>虽然不是数位 DP 但是可以用类似思路解决。记 \(f_{i,j}\) 为以第 \(i\) 位结尾，得到子串对 \(k\) 取模为 \(j\) 的方案数。那么不难写出扩展一位得到的子串方案数：</p>
+<p>$$<br>f_{i+1,(j\times 10+a_i)\bmod k}=\sum_{j=0}^{k-1}f_{i,j}<br>$$</p>
+<p>注意先需要将所有长度为 \(1\) 的子串计入 DP 数组。</p>
+<p>最后答案是 \(\sum_{i=1}^n f_{i,0}\)。</p>
+<p>注意到这道题 \(n,k\) 范围不固定，但是 \(nk\le 2\times 10^7\)，因此开数组的时候可以采取 <code>vector</code> 嵌套或者开成一位数组，通过计算将二维数组的坐标映射到一位数组上。</p>
+<p><del>帮着测出了数据范围有问题的能不能给点加分啊</del></p>
+<p>时间复杂度 \(\mathcal{O}(nk)\)，空间复杂度 \(\mathcal{O}(nk)\)。</p>
+<p>（当然通过滚动数组和动态开数组可以做到 \(\mathcal{O}(k)\) 的空间复杂度）</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2179.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="H-van-游戏"><a href="#H-van-游戏" class="headerlink" title="H. van 游戏"></a>H. van 游戏</h2><h3 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h3><p>树上有权值，两人在树上博弈，一个人的策略是保证自己获得的权值尽可能大的情况下，对方获得尽可能小的权值，另一个人的策略是保证对方获得权值尽量小的情况下，对方获得尽可能大的权值。求最后两人获得权值之和。</p>
+<p>数据范围：\(1\le n\le 10^6,1\le x_i\le 10^9\)。</p>
+<h3 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h3><p><del>看到博弈论就不想做的就是我了……</del></p>
+<p>首先看上去是树形 DP，再看一眼确实是树形 DP。</p>
+<p>记 \(f_i\) 为两人取完以 \(i\) 为根的子树后获得的权值。对于第一种策略，选择子树中第一个值尽可能大的进行转移，如果有相同的，取第二个值小的转移；对于第二种策略，选择子树中第一个值尽可能小的进行转移，如果有相同的，取第二个值大的转移。</p>
+<p>需要注意的是，当用搜索写树形 DP 时需要注意选择的人和这一层是谁拿的恰好相反。</p>
+<p>时间复杂度 \(\mathcal{O}(n)\)，空间复杂度 \(\mathcal{O}(n)\)。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2180.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="I-攻略妹纸"><a href="#I-攻略妹纸" class="headerlink" title="I. 攻略妹纸"></a>I. 攻略妹纸</h2><h3 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h3><p>有 \(n\) 个物品装入体积为 \(m\) 的背包，每个价值 \(a_i\)，体积是 \(y\times \max\{c_i-b_i,0\}\)，另有附加限制，如果装入背包的物品中最大的 \(d_i\) 小于 \(k\)，则需额外占体积 \(x\times (d_i-k)\)，求最大价值。</p>
+<p>数据范围：\(1\le n,m\le 5\times 10^3\)。</p>
+<h3 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h3><p>如果去掉这个附加限制，就是一个 01 背包。</p>
+<p>考虑这个附加限制，显然对于 \(d_i\) 确定的情况，额外占的体积是一定的，那么我们可以预支出这一部分体积，并对 \(x(d_i-k)\) 从小到大排序，保证后更新的状态一定可以基于前面的状态得出。这样再做 01 背包即可满足附加限制了。</p>
+<p>注意数据范围要开 <code>long long</code>……</p>
+<p>时间复杂度：\(\mathcal{O}(nm)\)，空间复杂度 \(\mathcal{O}(m)\)。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2181.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="J-扫广场"><a href="#J-扫广场" class="headerlink" title="J. 扫广场"></a>J. 扫广场</h2><h3 id="题目描述-9"><a href="#题目描述-9" class="headerlink" title="题目描述"></a>题目描述</h3><p><del>下一站，下一站，是人民扫广场</del></p>
+<p>给出一个 \(n\times m\) 的 \(01\) 矩阵，求将多少个 \(1\) 改成 \(0\) 就能使得所有 \(0\) 是是四连通的。</p>
+<p>数据范围：\(1\le n\times m\le 80\)。</p>
+<h3 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h3><p>五进制状压加优化我佛了，插头 DP 显然过了。</p>
+<p>数据十分有毒，我第一遍 WA5 之后改了个大 bug 之后 WA4，调完 WA1……</p>
+<p>我也不知道 cjj Sugarrr 两位神仙怎么 A 过去的，LoliconAutomaton 说想写网络流但是不知道怎么建源汇点，我也想网络流但是感觉有毒，Decision 大爷 WA8 之后可能是被我数据毒到了，我写了九个小时啥用没有心态是真的炸了……</p>
+<p>不知道以后会不会补，反正先这样吧……</p>
+<p>已知 \(n\times m\le 80\)，根据基本不等式，\(\min\{n,m\}\lt 9\)，所以我们可以把最小的当做列，根据连通性进行状态压缩。最大只会有四个连通分量，形如 <code>10203040</code> 这样，因此我们采用五进制状态压缩，把所属连通分量的编号作为状态，还有 <code>0</code> 作为这个格子被占用的情况。</p>
+<p>然后对于每一行，枚举上一行状态和这一行状态，如果匹配合法则进行转移。就是这里判断合法十分难受，有很多特殊情况，还有全 <code>0</code> 的情况，第一行情况，我可能是这里写炸了就不说了……</p>
+<p>但是这样复杂度就炸了，枚举行 \(\mathcal{O}(n)\)，枚举上一行状态 \(\mathcal{O}(5^m)\)，枚举这行状态可以写成子集枚举 \(\mathcal{O}(2^n)\)，还有判断可行的复杂度 \(\mathcal{O}(m)\)，直接变成 \(\mathcal{O}(nm10^m)\)，复杂度炸了。</p>
+<p>注意到 <code>10203</code> 和 <code>10302</code> 这两个状态是本质相同的，<code>11223344</code> 这样的状态是本身不合法的，因此存在很多无用状态，我们可以把它们剪掉。出题人 oydy 剪到了不到 \(200\)，cjj 剪到 \(697\)，我剪到 \(2400+\)，但是只有我挂了……</p>
+<p>但是这样复杂度就不炸了，就可以尽情 WA on 1 了……</p>
+<p>时间复杂度 \(\mathcal{O}(nmk2^m)\)，空间复杂度 \(\mathcal{O}(nk)\)，其中 \(k\) 为合法状态数。</p>
+<h2 id="K-抽卡"><a href="#K-抽卡" class="headerlink" title="K. 抽卡"></a>K. 抽卡</h2><h3 id="题目描述-10"><a href="#题目描述-10" class="headerlink" title="题目描述"></a>题目描述</h3><p>玄学抽卡，每次有 \(x\) 的概率单抽出奇迹，一共有 \(m\) 个碎片，有 \(y\) 的概率出一个碎片，但是只有集齐 \(m\) 个碎片才能合成。问 \(n\) 次之内出货的概率。</p>
+<p>数据范围：\(n\le 10^9,m\le 100\)。</p>
+<h3 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h3><p>看题来说，能猜到是矩阵快速幂优化概率 DP，并且能猜到复杂度是 \(\mathcal{O}(n^3\log n)\) 的……</p>
+<p>可以把单抽奇迹的情况考虑成一次补齐所有碎片，记 \(f_{i,j}\) 为前 \(i\) 次一共出了 \(j\) 个互不相同的碎片的概率。对于 \(1\le j\lt m\) 有如下转移：</p>
+<p>$$<br>f_{i+1,j}=[1-x-(m-j)y]f_{i,j}+(m-j+1)yf_{i,j-1}<br>$$</p>
+<p>对于 \(j=0\) 只有一种转移：</p>
+<p>$$<br>f_{i+1,0}=(1-x-my)f_{i,0}<br>$$</p>
+<p>对于 \(j=m\) 有：</p>
+<p>$$<br>f_{i,m}=x\sum_{j=0}^{m-1}f_{i-1,j}+yf_{i-1,m-1}+f_{i-1,m}<br>$$</p>
+<p>于是我们将其写为矩阵，记为 \(A\)，则：</p>
+<p>$$<br>\begin{align}<br>A_{0,0}&amp;=1-x-my\\<br>A_{i,i-1}&amp;=(m-i+1)y &amp; 1\le i\lt m\\<br>A_{i,i}&amp;=1-x-(m-i)y&amp; 1\le i\lt m\\<br>A_{m,i}&amp;=x &amp; 0\le i\lt m\\<br>A_{m,m-1}&amp;=x+y\\<br>A_{m,m}&amp;=1<br>\end{align}<br>$$</p>
+<p>DP 矩阵如下：</p>
+<p>$$<br>\begin{align}<br>f_{0,0}&amp;=1-x-my\\<br>f_{1,0}&amp;=my\\<br>f_{m,0}&amp;=x+[m=1]\times my<br>\end{align}<br>$$</p>
+<p>其实 DP 矩阵只是一个列向量，但是为了偷懒矩阵乘法不想写那么多于是扩展成 \(m\) 阶方阵了……</p>
+<p>这样答案就是 \(A^{n-1}\times f\) 中坐标为 \((m,0)\) 的元素了。</p>
+<p>读入为了避免精度误差直接用整数形式读入，也不用最后乘 \(1000^n\) 了。</p>
+<p><del>感谢出题人没出 \(x=1\) 或者 \(y=1\) 的数据但是 \(n=0\) 是什么鬼数据下限不写的时候要考虑全……</del></p>
+<p>时间复杂度 \(\mathcal{O}(m^3\log n)\)，空间复杂度 \(\mathcal{O}(m^2)\)。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2190.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="L-zh-的奖杯"><a href="#L-zh-的奖杯" class="headerlink" title="L. zh 的奖杯"></a>L. zh 的奖杯</h2><h3 id="题目描述-11"><a href="#题目描述-11" class="headerlink" title="题目描述"></a>题目描述</h3><p>给了 \(n\) 个物品，每件物品容量为 \(v_i\)，每次选取一段连续物品放入箱子里。如果第 \(i\) 到第 \(j\) 个物品被放在箱子里，代价是 \(j-i+\sum_{p=i}^j v_p\)，记代价为 \(x\)，花费是 \((x-L)^2\)，求一个把所有物品装箱的最小花费。</p>
+<p>数据范围：\(1\le n\le 5\times 10^4,1\le v_i,L\le 10^7\)。</p>
+<h3 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h3><p>对于这道题，有一个显见的 DP 转移方程。记 \(f_i\) 为将 \(1\sim i\) 的物品全部装箱的最小花费。那么转移方程为：</p>
+<p>$$<br>f_i=\min_{j=1}^{i-1}\{f_j+(s_i-s_j+i-j-1-L)^2\}<br>$$</p>
+<p>其中，\(s_i\) 为 \(v_i\) 的前缀和。</p>
+<p>易知，这个状态转移得到的 DP 时间复杂度为 \(\mathcal{O}(n^2)\)，过不去。</p>
+<p>继续观察转移方程，令 \(g_i=s_i+i,c=L+1\)，这个转移方程即可写作：</p>
+<p>$$<br>f_i=\min_{j=1}^{i-1} \{f_j+(g_i-g_j-c)^2\}<br>$$</p>
+<p>很朴素的想法是，只要 \(|g_i-g_j-c|\) 很小，也就是 \(g_i-g_j\) 距离 \(c\) 越近越好，那么这样的话，当 \(f_i\) 要采取决策的时候，决策点位置应该在 \(f_j\) 的决策点之后，如果在 \(f_j\) 的决策点之前，由于 \(v\) 恒正，记决策点为 \(x\)，那么 \(g_i-g_x\) 的值就会距 \(c\) 变大，因此决策具有单调性。</p>
+<p><del>网上其实有很多证明黄学长也写过但是不想打唉算了还是打吧</del></p>
+<p>下面考虑证明这一决策单调性，假设 \(i\) 位置在 \(k\) 位置的决策优于 \(j\) 位置时 \(k&gt;j\)，那么根据 DP 方程，有：</p>
+<p>$$<br>f_k+(g_i-g_k-c)^2\lt f_j+(g_i-g_j-c)^2<br>$$</p>
+<p>对于决策单调性，需证对所有 \(i\) 之后的状态 \(x\)，都有：</p>
+<p>$$<br>f_k+(g_x-g_k-c)^2\lt f_j+(g_x-g_j-c)^2<br>$$</p>
+<p>由已知，\(f_x=f_i+\delta\)，其中 \(\delta &gt;0\)。代入上式：</p>
+<p>$$<br>f_k+(g_i-g_k-c+\delta)^2\lt f_j+(g_i-g_j-c+\delta)^2<br>$$</p>
+<p>左右两边展开，得：</p>
+<p>$$<br>f_k+(g_i-g_k-c)^2+2(g_i-g_k-c)\delta +\delta ^2\lt f_j+(g_i-g_j-c)^2+2(g_i-g_j-c)\delta +\delta ^2\\<br>f_k+(g_i-g_k-c)^2+2(g_i-g_k-c)\delta\lt f_j+(g_i-g_j-c)^2+2(g_i-g_j-c)\delta<br>$$</p>
+<p>由于 \(v&gt;0\) 恒成立，那么 \(g\) 为单调递增数列，由于 \(k&gt;j\)，则 \(g_k&gt;g_j\)，即 \(g_i-g_k-c\lt g_i-g_j-c\)，由 \(\delta &gt;0\) 知 \(2(g_i-g_k-c)\delta&lt;2(g_i-g_j-c)\delta\)，结合假设，与展开后大柿子符合，因此符合决策单调性。</p>
+<p>现在的关键就是怎么利用决策单调进行转移。</p>
+<p>我们将第一个不等柿平方打开：</p>
+<p>$$<br>f_k+g_i^2-2g_i(g_k+c)+(g_k+c)^2\lt f_j+g_i^2-2g_i(g_j+c)+(g_j+c)^2<br>$$</p>
+<p>移项，将 \(g_i\) 移至一边，注意 \(k&gt;j\)，得到：</p>
+<p>$$<br>g_i&gt;\frac{f_k-f_j+(g_k+c)^2-(g_j+c)^2}{2(g_k-g_j)}<br>$$</p>
+<p>这就是 \(k\) 位置转移优于 \(j\) 位置时情况。</p>
+<p>根据决策单调性，我们可以维护一个单调队列来维护 \(g_i\)，先把不优的状态弹掉，转移队头，然后把目前的状态插入队列尾并维护单调性。相当于维护一个单调增的队列。</p>
+<p>题外话：先卡精度，然后加大数据范围之后爆 <code>long long</code> 了，但是过了……</p>
+<p>原题来自：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1010" target="_blank" rel="noopener">HNOI 2008. 玩具装箱</a></p>
+<p>时间复杂度 \(\mathcal{O}(n)\)，空间复杂度 \(\mathcal{O}(n)\)。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2203.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="M-崭新龙狙，制霸全区"><a href="#M-崭新龙狙，制霸全区" class="headerlink" title="M. 崭新龙狙，制霸全区"></a>M. 崭新龙狙，制霸全区</h2><h3 id="题目描述-12"><a href="#题目描述-12" class="headerlink" title="题目描述"></a>题目描述</h3><p>记 \(f(i)\) 为数字 \(i\) 中出现 \(4750\) 的次数，求 \(\sum_{i=L}^R f(i)\)。</p>
+<p>数据范围：\(1\le L\le R\le 10^{10^5}\)。</p>
+<h3 id="题解-12"><a href="#题解-12" class="headerlink" title="题解"></a>题解</h3><p>典型数位 DP，考虑 \(g(i)=\sum_{i=1}^i f(i)\)，那么答案就变成了 \(g(R)-g(L-1)\)。</p>
+<p>考虑记忆化搜索，记状态 \(S_{x,p,l}\) 为搜索到第 \(x\) 位，在 \(x\) 位之前已经匹配了 \(p\) 位的状态，\(l=1\) 为上一位已到枚举上限，否则未到上限。然后根据上一位是否达到上限枚举数字转移。</p>
+<p>每当枚举到 \(S_{x,4,l}\) 这样的状态时，说明出现了一段连续的 \(4750\)，于是我们要处理答案了。当 \(l=1\) 时，由于已经到了枚举上限，所以加入的答案为第 \(x\) 位之后的数字串组成的数字，否则加 \(10^{L-x}\)，其中 \(L\) 为数字串的长度。</p>
+<p><del>这是第二次写数位 DP……</del></p>
+<p>时间复杂度 \(\mathcal{O}(kn)\)，空间复杂度 \(\mathcal{O}(n)\)。其中 \(k=10\)。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2202.cpp" target="_blank" rel="noopener">这里</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/DP/">DP</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/12/2019-年电子科技大学-ACM-ICPC-暑假前集训数据结构专题解题报告/">
+                <span class="level-item">2019 年电子科技大学 ACM-ICPC 暑假前集训数据结构专题解题报告</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">数学</a></li>
-        </ul>
-        </nav>
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'ee72bcab76c2f4174f33',
+        clientSecret: '31d9ec1c309ad83b7aaae7b81e40c296dceb8ea2',
+        id: '64d5c4f8a13f25950826a8b65ef02060',
+        repo: 'HeRaNO.github.io',
+        owner: 'HeRaNO',
+        admin: "HeRaNO"
+    })
+    gitalk.render('comment-container')
+</script>
+
     </div>
 </div>
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-26T10:33:50.000Z">2019-03-26</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    15 分钟 读完 (大约 2242 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/03/26/「CODECHEF-CHEFKNN」大厨与区间染色/">「CODECHEF CHEFKNN」大厨与区间染色</a>
-            
-        </h1>
-        <div class="content">
-            <p>这篇文章为题解翻译，原题解详见<a href="https://discuss.codechef.com/questions/123905/chefknn-editorial" target="_blank" rel="noopener">这里</a>。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/03/26/「CODECHEF-CHEFKNN」大厨与区间染色/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-08T09:30:43.000Z">2018-12-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 1038 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/08/UESTC-第十届-ICPC-趣味程序设计竞赛第五场（正式赛）题解/">UESTC 第十届 ICPC 趣味程序设计竞赛第五场（正式赛）题解</a>
-            
-        </h1>
-        <div class="content">
-            <p>3/5 Penalty: 04:00:50 Rank 14<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/12/08/UESTC-第十届-ICPC-趣味程序设计竞赛第五场（正式赛）题解/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-02T09:46:27.000Z">2018-12-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 836 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/02/UESTC-第十届-ICPC-趣味程序设计竞赛第四场（正式赛）题解/">UESTC 第十届 ICPC 趣味程序设计竞赛第四场（正式赛）题解</a>
-            
-        </h1>
-        <div class="content">
-            <p>2/5 Penalty: 02:15:58 Rank 94<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/12/02/UESTC-第十届-ICPC-趣味程序设计竞赛第四场（正式赛）题解/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-24T08:49:52.000Z">2018-11-24</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 1019 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/11/24/UESTC-第十届-ICPC-趣味程序设计竞赛第三场（正式赛）题解/">UESTC 第十届 ICPC 趣味程序设计竞赛第三场（正式赛）题解</a>
-            
-        </h1>
-        <div class="content">
-            <p>4/5 Penalty: 09:23:54 Rank 20<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/11/24/UESTC-第十届-ICPC-趣味程序设计竞赛第三场（正式赛）题解/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-17T09:00:00.000Z">2018-11-17</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 分钟 读完 (大约 1326 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/">UESTC 第十届 ICPC 趣味程序设计竞赛第一场（热身赛）题解</a>
-            
-        </h1>
-        <div class="content">
-            <p>5/5 Penalty: 03:36:41 Rank 5<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 </div>
                 
 
@@ -496,6 +488,173 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#A-oy-环游世界">
+        <span class="has-mr-6">1</span>
+        <span>A. oy 环游世界</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述">
+        <span class="has-mr-6">1.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解">
+        <span class="has-mr-6">1.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#B-挖矿攻略">
+        <span class="has-mr-6">2</span>
+        <span>B. 挖矿攻略</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-1">
+        <span class="has-mr-6">2.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-1">
+        <span class="has-mr-6">2.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C-手办">
+        <span class="has-mr-6">3</span>
+        <span>C. 手办</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-2">
+        <span class="has-mr-6">3.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-2">
+        <span class="has-mr-6">3.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#D-序列">
+        <span class="has-mr-6">4</span>
+        <span>D. 序列</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-3">
+        <span class="has-mr-6">4.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-3">
+        <span class="has-mr-6">4.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#E-神">
+        <span class="has-mr-6">5</span>
+        <span>E. 神</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-4">
+        <span class="has-mr-6">5.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-4">
+        <span class="has-mr-6">5.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#F-苇名欧一郎">
+        <span class="has-mr-6">6</span>
+        <span>F. 苇名欧一郎</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-5">
+        <span class="has-mr-6">6.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-5">
+        <span class="has-mr-6">6.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#G-子串">
+        <span class="has-mr-6">7</span>
+        <span>G. 子串</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-6">
+        <span class="has-mr-6">7.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-6">
+        <span class="has-mr-6">7.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#H-van-游戏">
+        <span class="has-mr-6">8</span>
+        <span>H. van 游戏</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-7">
+        <span class="has-mr-6">8.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-7">
+        <span class="has-mr-6">8.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#I-攻略妹纸">
+        <span class="has-mr-6">9</span>
+        <span>I. 攻略妹纸</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-8">
+        <span class="has-mr-6">9.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-8">
+        <span class="has-mr-6">9.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#J-扫广场">
+        <span class="has-mr-6">10</span>
+        <span>J. 扫广场</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-9">
+        <span class="has-mr-6">10.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-9">
+        <span class="has-mr-6">10.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#K-抽卡">
+        <span class="has-mr-6">11</span>
+        <span>K. 抽卡</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-10">
+        <span class="has-mr-6">11.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-10">
+        <span class="has-mr-6">11.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#L-zh-的奖杯">
+        <span class="has-mr-6">12</span>
+        <span>L. zh 的奖杯</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-11">
+        <span class="has-mr-6">12.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-11">
+        <span class="has-mr-6">12.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#M-崭新龙狙，制霸全区">
+        <span class="has-mr-6">13</span>
+        <span>M. 崭新龙狙，制霸全区</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-12">
+        <span class="has-mr-6">13.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-12">
+        <span class="has-mr-6">13.2</span>
+        <span>题解</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -1796,7 +1955,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="HeRaNO" height="28">
+                    <img src="/images/logo.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训动态规划专题解题报告" height="28">
                 
                 </a>
                 <p class="is-size-7">

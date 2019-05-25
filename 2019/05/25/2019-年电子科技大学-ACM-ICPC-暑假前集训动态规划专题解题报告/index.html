@@ -16,7 +16,7 @@
 <meta property="og:description" content="8/12/13">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-25T05:21:35.133Z">
+<meta property="og:updated_time" content="2019-05-25T17:18:38.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019 年电子科技大学 ACM-ICPC 暑假前集训动态规划专题解题报告">
 <meta name="twitter:description" content="8/12/13">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    38 分钟 读完 (大约 5698 个字)
+                    39 分钟 读完 (大约 5818 个字)
                 </span>
                 
                 
@@ -264,13 +264,16 @@
 <h3 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h3><p>五进制状压加优化我佛了，插头 DP 显然过了。</p>
 <p>数据十分有毒，我第一遍 WA5 之后改了个大 bug 之后 WA4，调完 WA1……</p>
 <p>我也不知道 cjj Sugarrr 两位神仙怎么 A 过去的，LoliconAutomaton 说想写网络流但是不知道怎么建源汇点，我也想网络流但是感觉有毒，Decision 大爷 WA8 之后可能是被我数据毒到了，我写了九个小时啥用没有心态是真的炸了……</p>
-<p>不知道以后会不会补，反正先这样吧……</p>
+<p><del>不知道以后会不会补，反正先这样吧……</del></p>
 <p>已知 \(n\times m\le 80\)，根据基本不等式，\(\min\{n,m\}\lt 9\)，所以我们可以把最小的当做列，根据连通性进行状态压缩。最大只会有四个连通分量，形如 <code>10203040</code> 这样，因此我们采用五进制状态压缩，把所属连通分量的编号作为状态，还有 <code>0</code> 作为这个格子被占用的情况。</p>
 <p>然后对于每一行，枚举上一行状态和这一行状态，如果匹配合法则进行转移。就是这里判断合法十分难受，有很多特殊情况，还有全 <code>0</code> 的情况，第一行情况，我可能是这里写炸了就不说了……</p>
 <p>但是这样复杂度就炸了，枚举行 \(\mathcal{O}(n)\)，枚举上一行状态 \(\mathcal{O}(5^m)\)，枚举这行状态可以写成子集枚举 \(\mathcal{O}(2^n)\)，还有判断可行的复杂度 \(\mathcal{O}(m)\)，直接变成 \(\mathcal{O}(nm10^m)\)，复杂度炸了。</p>
 <p>注意到 <code>10203</code> 和 <code>10302</code> 这两个状态是本质相同的，<code>11223344</code> 这样的状态是本身不合法的，因此存在很多无用状态，我们可以把它们剪掉。出题人 oydy 剪到了不到 \(200\)，cjj 剪到 \(697\)，我剪到 \(2400+\)，但是只有我挂了……</p>
 <p>但是这样复杂度就不炸了，就可以尽情 WA on 1 了……</p>
+<p>最后发现我构造状态像 cxk，直接枚举每个五进制状态然后判断一下合不合法就完事的事情被我硬生生的搞成了一个暴搜，还搜不出来最优的……</p>
+<p>实际上最后一次改的匹配合法状态和生成下一行状态是对的但是直接被我删了还没留备份……</p>
 <p>时间复杂度 \(\mathcal{O}(nmk2^m)\)，空间复杂度 \(\mathcal{O}(nk)\)，其中 \(k\) 为合法状态数。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2182.cpp" target="_blank" rel="noopener">这里</a></p>
 <h2 id="K-抽卡"><a href="#K-抽卡" class="headerlink" title="K. 抽卡"></a>K. 抽卡</h2><h3 id="题目描述-10"><a href="#题目描述-10" class="headerlink" title="题目描述"></a>题目描述</h3><p>玄学抽卡，每次有 \(x\) 的概率单抽出奇迹，一共有 \(m\) 个碎片，有 \(y\) 的概率出一个碎片，但是只有集齐 \(m\) 个碎片才能合成。问 \(n\) 次之内出货的概率。</p>
 <p>数据范围：\(n\le 10^9,m\le 100\)。</p>
 <h3 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h3><p>看题来说，能猜到是矩阵快速幂优化概率 DP，并且能猜到复杂度是 \(\mathcal{O}(n^3\log n)\) 的……</p>

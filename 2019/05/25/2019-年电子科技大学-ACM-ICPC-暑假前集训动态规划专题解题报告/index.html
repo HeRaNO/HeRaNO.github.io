@@ -16,7 +16,7 @@
 <meta property="og:description" content="8/12/13">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-24T10:38:35.707Z">
+<meta property="og:updated_time" content="2019-05-25T05:21:35.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019 年电子科技大学 ACM-ICPC 暑假前集训动态规划专题解题报告">
 <meta name="twitter:description" content="8/12/13">
@@ -187,15 +187,15 @@
 <h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>注意到手办数较多，但高度种类很少，可以考虑对高度进行状压 DP。考虑到一个性质，如果序列中存在一个手办与要插入的手办高度相等，则可以把这个手办插入到序列中与这个手办高度相等的手办旁边，这样不影响答案，否则为了避免插入影响到已有段的连续性，只能放在后面或两相邻段中间，但是答案总是加一。于是，我们可以采用先用 DP 计算抽取过后剩余序列的最小混乱度，再把手办补回来更改答案的方式解决这个问题。</p>
 <p>据此，设状态 \(f_{i,s,j,p}\) 为处理到第 \(i\) 个位置，目前手办高度状态为 \(s\)，已经取出了 \(j\) 个手办，目前 \(1\sim i\) 序列中最后一个手办高度为 \(p\) 的最少操作次数。可知有三种转移：</p>
 <ol>
-<li><p>第 \(i\) 个手办和第 \(i-1\) 个高度相同，则：<br>$$<br>\large f_{i,s,j,p}=\min\left \{f_{i-1,j,s,p}\right\}<br>$$</p>
+<li><p>第 \(i\) 个手办和第 \(i-1\) 个高度相同，则：<br>$$<br>\large f_{i,s,j,p}=\min\left \{f_{i-1,s,j,p}\right\}<br>$$</p>
 </li>
 <li><p>第 \(i\) 个手办和第 \(i-1\) 个高度不同，且被抽掉，则：</p>
 </li>
 </ol>
-<p>$$<br>\large f_{i,s,j+1,p}=\min \left \{f_{i-1,j,s,p}\right\}<br>$$</p>
+<p>$$<br>\large f_{i,s,j+1,p}=\min \left \{f_{i-1,s,j,p}\right\}<br>$$</p>
 <ol start="3">
 <li><p>第 \(i\) 个手办和第 \(i-1\) 个高度不同，但没被抽掉，则：</p>
-<p>$$<br>\large f_{i,s\cup\{h_i\},j,h_i}=\min\left\{f_{i-1,j,s,p}\right\}+1<br>$$</p>
+<p>$$<br>\large f_{i,s\cup\{h_i\},j,h_i}=\min\left\{f_{i-1,s,j,p}\right\}+1<br>$$</p>
 </li>
 </ol>
 <p>其中 \(p\) 是在 \(s\) 集合中出现的高度，\(s\) 可以通过枚举 \(1\sim i\) 所有手办的高度集合得到。</p>

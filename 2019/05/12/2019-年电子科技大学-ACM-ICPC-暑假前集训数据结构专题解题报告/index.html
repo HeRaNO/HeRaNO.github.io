@@ -16,7 +16,7 @@
 <meta property="og:description" content="14/15/15">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-05-11T15:32:27.319Z">
+<meta property="og:updated_time" content="2019-05-29T13:49:31.380Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019 年电子科技大学 ACM-ICPC 暑假前集训数据结构专题解题报告">
 <meta name="twitter:description" content="14/15/15">
@@ -164,7 +164,7 @@
             <p>14/15/15<br><a id="more"></a></p>
 <p>题目详见<a href="https://acm.uestc.edu.cn/contest/12/summary" target="_blank" rel="noopener">这里</a>。</p>
 <p>讲之前 14/15，之后补完了。</p>
-<h2 id="A-方差"><a href="#A-方差" class="headerlink" title="A. 方差"></a>A. 方差</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>维护一个数据结构，支持区间加法，区间乘法，区间置为同一个数，询问区间方差。</p>
+<h2 id="A-方差"><a href="#A-方差" class="headerlink" title="A. 方差"></a>A. 方差</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>维护一个数据结构，支持区间加法，区间乘法，区间置为同一个数，询问区间方差。</p>
 <p>数据范围：\(1\le n,Q\le 10^5\)。</p>
 <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>考虑方差公式：</p>
 <p>$$<br>\begin{align}<br>S^2&amp;=\frac{1}{n}\left[\sum_{i=1}^n (x_i-\bar x)^2\right]\\<br>\bar x&amp;=\frac{1}{n}\sum_{i=1}^n x_i<br>\end{align}<br>$$</p>
@@ -182,7 +182,7 @@
 <p>就这样，我们可以在只打两个标记的情况下完成维护三个修改操作了。</p>
 <p>时间复杂度 \(\mathcal{O}(n\log n)\)，空间复杂度 \(\mathcal{O}(n)\)。</p>
 <p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2143.cpp" target="_blank" rel="noopener">这里</a></p>
-<h2 id="B-吞吐量"><a href="#B-吞吐量" class="headerlink" title="B. 吞吐量"></a>B. 吞吐量</h2><h3 id="题目大意-1"><a href="#题目大意-1" class="headerlink" title="题目大意"></a>题目大意</h3><p>对于一棵有边权的树，多次询问两点间路径权的最小值。</p>
+<h2 id="B-吞吐量"><a href="#B-吞吐量" class="headerlink" title="B. 吞吐量"></a>B. 吞吐量</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>对于一棵有边权的树，多次询问两点间路径权的最小值。</p>
 <p>数据范围：\(2\le n,Q\le 10^5\)。</p>
 <h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>本题有一个显而易见的暴力做法，即每次从 \(u\) 走到 \(v\)，直接查询这个最小值，时间复杂度 \(\mathcal{O}(nQ)\)。</p>
 <p>考虑用倍增思想优化，预处理出每个点向上跳 \(2^j\) 步后的点和到这个点之间的路径权的最小值。然后每次查询的时候先将两个点调整至相同深度，然后同时向上跳，以求出最小值。</p>
@@ -203,7 +203,7 @@
 </ul>
 <p>（当然上面那道题主要是 Kruskal 重构树……）</p>
 <p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2144.cpp" target="_blank" rel="noopener">这里</a></p>
-<h2 id="C-人在地上走，锅从天上来"><a href="#C-人在地上走，锅从天上来" class="headerlink" title="C. 人在地上走，锅从天上来"></a>C. 人在地上走，锅从天上来</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>原来一条线段均为白色，每次对一个区间染黑，问有多少个黑色区间。</p>
+<h2 id="C-人在地上走，锅从天上来"><a href="#C-人在地上走，锅从天上来" class="headerlink" title="C. 人在地上走，锅从天上来"></a>C. 人在地上走，锅从天上来</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>原来一条线段均为白色，每次对一个区间染黑，问有多少个黑色区间。</p>
 <p>数据范围：\(1\le n\le 10^5,1\le l\le r\le 10^9\)。</p>
 <h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>对于区间染色问题，可以考虑用线段树方法实现。但是本题合并不满足区间可加性，因此需要增加维护的信息。</p>
 <p>对于一个区间 \([l,r]\)，维护 \(l,r\) 两点的颜色与区间内部黑色区间段数。合并的时候，只需要判断左区间的右端点和右区间的左端点是否同为黑色，如果都是黑色的话，大区间的答案为两小区间答案和减一，否则直接求和不需要减一。对于查询，直接取出最大的区间的答案即可。</p>
@@ -211,14 +211,14 @@
 <p>对于 \(l,r\) 范围过大的问题，可以采用离散化的方式将其降到 \(n\) 的规模。</p>
 <p>时间复杂度 \(\mathcal{O}(n\log n)\)，空间复杂度 \(\mathcal{O}(n)\)。</p>
 <p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2145.cpp" target="_blank" rel="noopener">这里</a></p>
-<h2 id="D-密码"><a href="#D-密码" class="headerlink" title="D. 密码"></a>D. 密码</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>对于一个数列，留下 \(k\) 个数，使得其相对位置不变并且表示的十六进制数值最大。</p>
+<h2 id="D-密码"><a href="#D-密码" class="headerlink" title="D. 密码"></a>D. 密码</h2><h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><p>对于一个数列，留下 \(k\) 个数，使得其相对位置不变并且表示的十六进制数值最大。</p>
 <p>数据范围：\(0\le k\le 10^5,1\le n\le 10^5\)。</p>
 <h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>对于保留 \(k\) 个数，我们可以看做删除 \(n-k\) 个数。那么这就是一个经典的贪心问题，原题为：对于一个十进制大整数 \(p\)，从左到右依次删除 \(k\) 个数，使其剩下的数组合成的新数最小。本题将原问题的两个要求「删去」「最小」均反过来了。</p>
 <p>对于保留 \(k\) 个数，即删去 \(n-k\) 个数，这个改变对于贪心并不大碍。</p>
 <p>对于求最大值，原题采用的是最近下降点优先删除的策略，那么这里将其反过来，采用最近上升点优先删除的策略即可，我们可以用单调栈快速实现，并且代码十分简单。</p>
 <p>时间复杂度 \(\mathcal{O}(n)\)，空间复杂度 \(\mathcal{O}(n)\)。</p>
 <p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2146.cpp" target="_blank" rel="noopener">这里</a></p>
-<h2 id="E-冬马和纱天下第一"><a href="#E-冬马和纱天下第一" class="headerlink" title="E. 冬马和纱天下第一"></a>E. 冬马和纱天下第一</h2><h3 id="题目大意-2"><a href="#题目大意-2" class="headerlink" title="题目大意"></a>题目大意</h3><p>给出一个数列，问 \([l_i,r_i]\) 中的数最少可以组成多少个严格上升的序列。</p>
+<h2 id="E-冬马和纱天下第一"><a href="#E-冬马和纱天下第一" class="headerlink" title="E. 冬马和纱天下第一"></a>E. 冬马和纱天下第一</h2><h3 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h3><p>给出一个数列，问 \([l_i,r_i]\) 中的数最少可以组成多少个严格上升的序列。</p>
 <p>转化题意，因为可以数字重排，于是我们可以统计这个区间的数字出现次数，为了使严格上升的序列最少，我们需要把出现最多的数字安排进每一个对答案有贡献的序列里，如果出现次数最多的数字都被安排进贡献中，那么出现次数少的数字一定可以全部被安排完毕。因此答案即为出现次数最多的数字的出现次数，即区间众数的出现次数。</p>
 <p>因此最终题意为：多次询问区间内数字出现最多的次数，强制在线。</p>
 <p>数据范围：\(1\le n,m\le 4\times 10^4\)。</p>
@@ -226,7 +226,7 @@
 <p>时间复杂度 \(\mathcal{O}((n+m)\sqrt n)\)，空间复杂度 \(\mathcal{O}(n\sqrt n)\)。</p>
 <p>原题详见：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2724" target="_blank" rel="noopener">BZOJ 2724. [Violet 6] 蒲公英</a></p>
 <p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2157.cpp" target="_blank" rel="noopener">这里</a></p>
-<h2 id="F-我永远喜欢冬马和纱"><a href="#F-我永远喜欢冬马和纱" class="headerlink" title="F. 我永远喜欢冬马和纱"></a>F. 我永远喜欢冬马和纱</h2><h3 id="题目大意-3"><a href="#题目大意-3" class="headerlink" title="题目大意"></a>题目大意</h3><p>同 E 题，但是本题允许离线。</p>
+<h2 id="F-我永远喜欢冬马和纱"><a href="#F-我永远喜欢冬马和纱" class="headerlink" title="F. 我永远喜欢冬马和纱"></a>F. 我永远喜欢冬马和纱</h2><h3 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h3><p>同 E 题，但是本题允许离线。</p>
 <p>数据范围：\(1\le n,m\le 2\times 10^5\)。</p>
 <h3 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h3><p>本题也可以像上一题一样分块求解，时间复杂度为 \(\mathcal{O}((n+m)\sqrt n)\)，实际上复杂度并不在 1500ms 可接受的运行时间范围内。通过多次调参，加入时间戳减少清空数组的次数等方法卡常，发现数据是造得是真的好。对于第 31, 38, 41 组数据，可能都是通过卡到分块边界来实现的。网络上有一种 \(\mathcal{O}(n\sqrt n+m\sqrt n\log n)\) 的方法，虽然多了一个 \(\log\) 但是跑得挺快，但是不能通过第 51 组数据，猜测是通过减少区间内部数字种类实现的。</p>
 <p>正确解法是采用莫队算法。需要统计一个区间内数字出现的次数和出现次数的次数，这些都可以在 \(\mathcal{O}(1)\) 的时间复杂度下维护，但是对于区间内数字出现次数的次数，可能是因为区间左右端点移动的连续性导致最大值每次只移动一位而不会移动多位，我在代码里写的是 <code>while</code> 循环，没有超出时间限制。</p>
@@ -234,7 +234,7 @@
 <p>事实上，分块最大的问题在于空间上过不去，但是因为 OJ 对于空间限制有 Bug 并没有 MLE……</p>
 <p>时间复杂度 \(\mathcal{O}(n\sqrt n)\)，空间复杂度 \(\mathcal{O}(n)\)。</p>
 <p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2158.cpp" target="_blank" rel="noopener">这里</a></p>
-<h2 id="G-线段树教做人"><a href="#G-线段树教做人" class="headerlink" title="G. 线段树教做人"></a>G. 线段树教做人</h2><h3 id="题目大意-4"><a href="#题目大意-4" class="headerlink" title="题目大意"></a>题目大意</h3><p>维护一个数据结构，支持维护单点加，修改数列相邻两项差不小于 \(b_i\)（\(b_i\) 给定），查询 \(a\) 的区间和。</p>
+<h2 id="G-线段树教做人"><a href="#G-线段树教做人" class="headerlink" title="G. 线段树教做人"></a>G. 线段树教做人</h2><h3 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h3><p>维护一个数据结构，支持维护单点加，修改数列相邻两项差不小于 \(b_i\)（\(b_i\) 给定），查询 \(a\) 的区间和。</p>
 <p>数据范围：\(2\le n\le 10^5,1\le q\le 10^5\)，并且 \(a\) 数列中元素只增不减。</p>
 <h3 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h3><p>首先我口胡了一个差分，结果被 Decision 大爷暴过去了。详细过程见 Decision 大爷的题解。</p>
 <p>我目测这个差分不是那么好差的，但是我还在线段树上维护六个东西的时候，Decision 大爷说「暴力」。</p>
@@ -246,7 +246,7 @@
 <p>对于查询操作，我们查询 \(t,s\) 两个数组的区间和，将它们相加即为答案。</p>
 <p>时间复杂度 \(\mathcal{O}(n\log n)\)，空间复杂度 \(\mathcal{O}(n)\)。</p>
 <p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2149.cpp" target="_blank" rel="noopener">这里</a></p>
-<h2 id="H-拍照"><a href="#H-拍照" class="headerlink" title="H. 拍照"></a>H. 拍照</h2><h3 id="题目大意-5"><a href="#题目大意-5" class="headerlink" title="题目大意"></a>题目大意</h3><p>对于一个数列，求区间长度小于等于 \(m\) 的最大子区间和。</p>
+<h2 id="H-拍照"><a href="#H-拍照" class="headerlink" title="H. 拍照"></a>H. 拍照</h2><h3 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h3><p>对于一个数列，求区间长度小于等于 \(m\) 的最大子区间和。</p>
 <p>数据范围：\(1\le n,m\le 10^5\)。</p>
 <h3 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h3><p>对于本题，有一个显而易见的动态规划解法。设 \(\{s_n\}\) 为 \(a\) 数列的前缀和，并记 \(s_0=0\)，\(f_i\) 为以 \(a_i\) 为结尾，长度小于等于 \(m\) 的最大子区间和。那么有如下转移：</p>
 <p>$$<br>f_i=<br>\begin{cases}<br>s_i-\min_{j=i-m}^{i-1} s_j \ \ \ \ (i\ge m)\\<br>s_i-\min_{j=0}^{i-1} s_j \ \ \ \ \ \ \ \ (i &lt; m)<br>\end{cases}<br>$$</p>
@@ -255,28 +255,28 @@
 <p>注意边界，否则会 WA 在最后一个点上。</p>
 <p>实际上，本题可以用单调队列优化求区间最小值的过程，时间复杂度可降至 \(\mathcal{O}(n)\)。</p>
 <p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2150.cpp" target="_blank" rel="noopener">这里</a></p>
-<h2 id="I-排名"><a href="#I-排名" class="headerlink" title="I. 排名"></a>I. 排名</h2><h3 id="题目大意-6"><a href="#题目大意-6" class="headerlink" title="题目大意"></a>题目大意</h3><p>维护一个数据结构，支持动态插入，删除元素，并查询元素的排名。</p>
+<h2 id="I-排名"><a href="#I-排名" class="headerlink" title="I. 排名"></a>I. 排名</h2><h3 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h3><p>维护一个数据结构，支持动态插入，删除元素，并查询元素的排名。</p>
 <p>数据范围：\(1\le n\le 10^5\)。</p>
 <h3 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h3><p>本题的元素虽然不是一个整数，但是是全序关系，可以进行比较。</p>
 <p>需要维护的操作是平衡树可以完成的，但是不能用 <code>set</code>，因为 <code>set</code> 查询元素排名是 \(\mathcal{O}(n)\) 的。因此考虑手写平衡树。Treap，Splay 都可以，这里选择 SBT 作为平衡树。</p>
 <p>修改一个元素可以看做先删除原来的元素，进行修改后再插入进去。</p>
 <p>时间复杂度 \(\mathcal{O}(n\log n)\)，空间复杂度 \(\mathcal{O}(n)\)。</p>
 <p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2151.cpp" target="_blank" rel="noopener">这里</a></p>
-<h2 id="J-种海带"><a href="#J-种海带" class="headerlink" title="J. 种海带"></a>J. 种海带</h2><h3 id="题目大意-7"><a href="#题目大意-7" class="headerlink" title="题目大意"></a>题目大意</h3><p>求一个环上选择 \(m\) 个不相邻的元素之和的最大值。</p>
+<h2 id="J-种海带"><a href="#J-种海带" class="headerlink" title="J. 种海带"></a>J. 种海带</h2><h3 id="题目描述-9"><a href="#题目描述-9" class="headerlink" title="题目描述"></a>题目描述</h3><p>求一个环上选择 \(m\) 个不相邻的元素之和的最大值。</p>
 <p>数据范围：\(1\le n,m\le 2\times 10^5\)。</p>
 <h3 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h3><p>对于 \(m\gt \frac{n}{2}\)，无解。</p>
 <p>对于有解的情况，如果不考虑相邻，可以考虑用堆贪心，但是需要考虑不相邻这一限制条件。可以发现，要么是一个最大值计入对答案的贡献，要么是最大值两边的元素和计入对答案的贡献。即最大值两边元素和大于最大值或小于等于最大值。这样我们就需要撤销之前的贪心操作，因此在维护时，记录一个点之前的点和之后的点，每次取最大值时将其前驱后继删除，并把这点权值改为两边权值和减去原该点权值，再把它插入堆中。这样如果该点被再次查到，那么就是需要将最大值两端计入贡献中的情况，并且可以保证不相邻。</p>
 <p>时间复杂度 \(\mathcal{O}(n\log n)\)，空间复杂度 \(\mathcal{O}(n)\)。</p>
 <p>原题详见：JZOJ 4726. 种花</p>
 <p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2152.cpp" target="_blank" rel="noopener">这里</a></p>
-<h2 id="K-对答案"><a href="#K-对答案" class="headerlink" title="K. 对答案"></a>K. 对答案</h2><h3 id="题目大意-8"><a href="#题目大意-8" class="headerlink" title="题目大意"></a>题目大意</h3><p>给出一些连续子串和的奇偶性，判断是否能满足要求。</p>
+<h2 id="K-对答案"><a href="#K-对答案" class="headerlink" title="K. 对答案"></a>K. 对答案</h2><h3 id="题目描述-10"><a href="#题目描述-10" class="headerlink" title="题目描述"></a>题目描述</h3><p>给出一些连续子串和的奇偶性，判断是否能满足要求。</p>
 <p>数据范围：\(1\le n\le 10^6,1\le m\le 2\times 10^4\)。</p>
 <h3 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h3><p>本题可以将子串分为两类，子串和为奇数或偶数。考虑到子串和不方便维护，我们可以维护前缀和，子串和即为两个前缀和之差，即 \(s_r-s_{l-1}\)。</p>
 <p>我们可以讨论 \(s_r\) 与 \(s_{l-1}\) 的奇偶性。如果 \(s_r-s_{l-1}\) 为奇数，那么 \(s_r\) 与 \(s_{l-1}\) 的奇偶性不同，如果 \(s_r-s_{l-1}\) 为偶数，那么 \(s_r\) 与 \(s_{l-1}\) 奇偶性相同。于是维护两个并查集即可。对于奇偶性不同的元素在并查集之间连边，对于奇偶性相同的元素在两并查集内部连边。在查询时，需要先查询是否已经能判断出奇偶性，如果输入与已经给定的输入判断相反，则输出错误信息，如果一直到最后都能满足条件，则输出 <code>ORZQHQH</code>。</p>
 <p>时间复杂度 \(\mathcal{O}(m\log m)\)（只路径压缩）或 \(\mathcal{O}(m\alpha(m))\)（按秩合并且路径压缩），空间复杂度 \(\mathcal{O}(m)\)。</p>
 <p>原题来自：<a href="http://poj.org/problem?id=1733" target="_blank" rel="noopener">POJ 1733. Parity Game</a>（为原题弱化）</p>
 <p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2153.cpp" target="_blank" rel="noopener">这里</a></p>
-<h2 id="L-我的题面最简单，快来做！"><a href="#L-我的题面最简单，快来做！" class="headerlink" title="L. 我的题面最简单，快来做！"></a>L. 我的题面最简单，快来做！</h2><h3 id="题目大意-9"><a href="#题目大意-9" class="headerlink" title="题目大意"></a>题目大意</h3><p>维护一个数据结构，支持区间加两段等差数列（组合起来为山峰形），求区间最长等差数列长度。</p>
+<h2 id="L-我的题面最简单，快来做！"><a href="#L-我的题面最简单，快来做！" class="headerlink" title="L. 我的题面最简单，快来做！"></a>L. 我的题面最简单，快来做！</h2><h3 id="题目描述-11"><a href="#题目描述-11" class="headerlink" title="题目描述"></a>题目描述</h3><p>维护一个数据结构，支持区间加两段等差数列（组合起来为山峰形），求区间最长等差数列长度。</p>
 <p>数据范围：\(3\le n,m\le 10^5\)。</p>
 <h3 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h3><p>对于区间求最长等差数列长度，可以维护这个数列的一阶差分数组，转化为区间最长相同数字的长度，也可转化为二阶差分维护区间最长 \(0\) 的长度。这里考虑维护一阶差分数组。对于区间加等差数列，通过计算可知，若区间加等差数列 \(a+(i-1)k\)，则差分数组 \(d_l\) 需加上 \(a\)，\(d_{l+1}\sim d_{p}\) 区间加 \(k\)，\(d_{p+1}\sim d_r\) 区间加 \(-k\)，\(d_{r+1}\) 位置加 \(-a-k(2p-l-r)\)。</p>
 <p>对于维护最长相同数字长度，这个可以如同 C 题一样维护区间左右端点数字，区间左起最长连续数字长度，区间右起最长连续长度，区间内数字是否均相同和区间内部答案。通过考虑左区间的右端点和右区间的左端点即可合并答案。</p>
@@ -287,7 +287,7 @@
 <p><del>（反正这里是熊猫头，下面是脏话）</del></p>
 <p>时间复杂度 \(\mathcal{O}(n\log n)\)，空间复杂度 \(\mathcal{O}(n)\)。</p>
 <p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2154.cpp" target="_blank" rel="noopener">这里</a></p>
-<h2 id="M-My-description-is-the-most-単純な-one-come-on"><a href="#M-My-description-is-the-most-単純な-one-come-on" class="headerlink" title="M. My description is the most 単純な one,come on!"></a>M. My description is the most 単純な one,come on!</h2><h3 id="题目大意-10"><a href="#题目大意-10" class="headerlink" title="题目大意"></a>题目大意</h3><p>给定一个树，树的节点非红即蓝，初始只有 $1$ 号点为红色，其余点均为蓝色。要求支持将一个点改为红色，查询一个点到最近红点的距离。</p>
+<h2 id="M-My-description-is-the-most-単純な-one-come-on"><a href="#M-My-description-is-the-most-単純な-one-come-on" class="headerlink" title="M. My description is the most 単純な one,come on!"></a>M. My description is the most 単純な one,come on!</h2><h3 id="题目描述-12"><a href="#题目描述-12" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个树，树的节点非红即蓝，初始只有 $1$ 号点为红色，其余点均为蓝色。要求支持将一个点改为红色，查询一个点到最近红点的距离。</p>
 <p>数据范围：\(n=m=10^5\)。</p>
 <h3 id="题解-12"><a href="#题解-12" class="headerlink" title="题解"></a>题解</h3><p>很显然的一个想法是 LCT，因为这棵树是动态的……但是不会 LCT 作罢。</p>
 <p>考虑利用动态树分治来进行求解，我们保存树分治时所有求出的重心，可以建立一棵深度不超过 \(\log n\) 的点分树。考虑点分治的过程，其实相当于不断倍增，求比自己大一倍的块之内的红点到他的最小距离，为块内距离的最小值与以重心为根的块间距离的最小值。因此我们对每个重心节点都用堆维护与其最近的红点即到其距离。查询时，查询该点到支配该点的每个重心维护的最近红点距离，取最小值即可。</p>
@@ -295,12 +295,12 @@
 <p>对于修改操作，单次时间复杂度为 \(\mathcal{O}(\log^2 n)\)，对于查询操作，单次时间复杂度为 \(\mathcal{O}(\log n)\)。因此，总时间复杂度为 \(\mathcal{O}(m\log ^2n)\)，空间复杂度 \(\mathcal{O}(n\log n)\)。</p>
 <p>原题详见：<a href="https://www.spoj.com/problems/QTREE4/" target="_blank" rel="noopener">SPOJ QTREE4</a></p>
 <p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2159.cpp" target="_blank" rel="noopener">这里</a></p>
-<h2 id="N-数理统计"><a href="#N-数理统计" class="headerlink" title="N. 数理统计"></a>N. 数理统计</h2><h3 id="题目大意-11"><a href="#题目大意-11" class="headerlink" title="题目大意"></a>题目大意</h3><p>维护一个数据结构，支持区间加法，查询区间和，区间极差。</p>
+<h2 id="N-数理统计"><a href="#N-数理统计" class="headerlink" title="N. 数理统计"></a>N. 数理统计</h2><h3 id="题目描述-13"><a href="#题目描述-13" class="headerlink" title="题目描述"></a>题目描述</h3><p>维护一个数据结构，支持区间加法，查询区间和，区间极差。</p>
 <p>数据范围：\(1\le n,Q\le 10^6\)。</p>
 <h3 id="题解-13"><a href="#题解-13" class="headerlink" title="题解"></a>题解</h3><p>对于本题，可以直接利用线段树解决。维护区间和，区间最大值和区间最小值即可。易知上述三个维护项均具有区间可加性，区间加法也可以利用打标记降低复杂度。</p>
 <p>时间复杂度 \(\mathcal{O}(n\log n)\)，空间复杂度 \(\mathcal{O}(n)\)。</p>
 <p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2156.cpp" target="_blank" rel="noopener">这里</a></p>
-<h2 id="O-战争"><a href="#O-战争" class="headerlink" title="O. 战争"></a>O. 战争</h2><h3 id="题目大意-12"><a href="#题目大意-12" class="headerlink" title="题目大意"></a>题目大意</h3><p>维护一个数据结构，支持插入一个数，删除一个数，查询 \(x\) 对这些数异或的最大值与最小值。</p>
+<h2 id="O-战争"><a href="#O-战争" class="headerlink" title="O. 战争"></a>O. 战争</h2><h3 id="题目描述-14"><a href="#题目描述-14" class="headerlink" title="题目描述"></a>题目描述</h3><p>维护一个数据结构，支持插入一个数，删除一个数，查询 \(x\) 对这些数异或的最大值与最小值。</p>
 <p>数据范围：\(1\le n\le 5\times 10^5,1\le v\lt 2^{30}\)。</p>
 <h3 id="题解-14"><a href="#题解-14" class="headerlink" title="题解"></a>题解</h3><p>因为异或运算只与二进制本位有关，不会向下一位进位，因此可以分开考虑其对答案的贡献。</p>
 <p>事实上，对于本题有经典的 Trie 树方法维护。把一个数的二进制当做字符串插入 Trie 树中，插入删除操作同 Trie 树操作，询问时，每次贪心地维护答案即可。</p>
@@ -414,7 +414,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        25
+                        26
                     </p>
                 </div>
             </div>
@@ -434,7 +434,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        36
+                        42
                     </p>
                 </div>
             </div>
@@ -484,9 +484,9 @@
         <span class="has-mr-6">1</span>
         <span>A. 方差</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意">
+        <a class="is-flex" href="#题目描述">
         <span class="has-mr-6">1.1</span>
-        <span>题目大意</span>
+        <span>题目描述</span>
         </a></li><li>
         <a class="is-flex" href="#题解">
         <span class="has-mr-6">1.2</span>
@@ -496,9 +496,9 @@
         <span class="has-mr-6">2</span>
         <span>B. 吞吐量</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意-1">
+        <a class="is-flex" href="#题目描述-1">
         <span class="has-mr-6">2.1</span>
-        <span>题目大意</span>
+        <span>题目描述</span>
         </a></li><li>
         <a class="is-flex" href="#题解-1">
         <span class="has-mr-6">2.2</span>
@@ -508,7 +508,7 @@
         <span class="has-mr-6">3</span>
         <span>C. 人在地上走，锅从天上来</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目描述">
+        <a class="is-flex" href="#题目描述-2">
         <span class="has-mr-6">3.1</span>
         <span>题目描述</span>
         </a></li><li>
@@ -520,7 +520,7 @@
         <span class="has-mr-6">4</span>
         <span>D. 密码</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目描述-1">
+        <a class="is-flex" href="#题目描述-3">
         <span class="has-mr-6">4.1</span>
         <span>题目描述</span>
         </a></li><li>
@@ -532,9 +532,9 @@
         <span class="has-mr-6">5</span>
         <span>E. 冬马和纱天下第一</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意-2">
+        <a class="is-flex" href="#题目描述-4">
         <span class="has-mr-6">5.1</span>
-        <span>题目大意</span>
+        <span>题目描述</span>
         </a></li><li>
         <a class="is-flex" href="#题解-4">
         <span class="has-mr-6">5.2</span>
@@ -544,9 +544,9 @@
         <span class="has-mr-6">6</span>
         <span>F. 我永远喜欢冬马和纱</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意-3">
+        <a class="is-flex" href="#题目描述-5">
         <span class="has-mr-6">6.1</span>
-        <span>题目大意</span>
+        <span>题目描述</span>
         </a></li><li>
         <a class="is-flex" href="#题解-5">
         <span class="has-mr-6">6.2</span>
@@ -556,9 +556,9 @@
         <span class="has-mr-6">7</span>
         <span>G. 线段树教做人</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意-4">
+        <a class="is-flex" href="#题目描述-6">
         <span class="has-mr-6">7.1</span>
-        <span>题目大意</span>
+        <span>题目描述</span>
         </a></li><li>
         <a class="is-flex" href="#题解-6">
         <span class="has-mr-6">7.2</span>
@@ -568,9 +568,9 @@
         <span class="has-mr-6">8</span>
         <span>H. 拍照</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意-5">
+        <a class="is-flex" href="#题目描述-7">
         <span class="has-mr-6">8.1</span>
-        <span>题目大意</span>
+        <span>题目描述</span>
         </a></li><li>
         <a class="is-flex" href="#题解-7">
         <span class="has-mr-6">8.2</span>
@@ -580,9 +580,9 @@
         <span class="has-mr-6">9</span>
         <span>I. 排名</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意-6">
+        <a class="is-flex" href="#题目描述-8">
         <span class="has-mr-6">9.1</span>
-        <span>题目大意</span>
+        <span>题目描述</span>
         </a></li><li>
         <a class="is-flex" href="#题解-8">
         <span class="has-mr-6">9.2</span>
@@ -592,9 +592,9 @@
         <span class="has-mr-6">10</span>
         <span>J. 种海带</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意-7">
+        <a class="is-flex" href="#题目描述-9">
         <span class="has-mr-6">10.1</span>
-        <span>题目大意</span>
+        <span>题目描述</span>
         </a></li><li>
         <a class="is-flex" href="#题解-9">
         <span class="has-mr-6">10.2</span>
@@ -604,9 +604,9 @@
         <span class="has-mr-6">11</span>
         <span>K. 对答案</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意-8">
+        <a class="is-flex" href="#题目描述-10">
         <span class="has-mr-6">11.1</span>
-        <span>题目大意</span>
+        <span>题目描述</span>
         </a></li><li>
         <a class="is-flex" href="#题解-10">
         <span class="has-mr-6">11.2</span>
@@ -616,9 +616,9 @@
         <span class="has-mr-6">12</span>
         <span>L. 我的题面最简单，快来做！</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意-9">
+        <a class="is-flex" href="#题目描述-11">
         <span class="has-mr-6">12.1</span>
-        <span>题目大意</span>
+        <span>题目描述</span>
         </a></li><li>
         <a class="is-flex" href="#题解-11">
         <span class="has-mr-6">12.2</span>
@@ -628,9 +628,9 @@
         <span class="has-mr-6">13</span>
         <span>M. My description is the most 単純な one,come on!</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意-10">
+        <a class="is-flex" href="#题目描述-12">
         <span class="has-mr-6">13.1</span>
-        <span>题目大意</span>
+        <span>题目描述</span>
         </a></li><li>
         <a class="is-flex" href="#题解-12">
         <span class="has-mr-6">13.2</span>
@@ -640,9 +640,9 @@
         <span class="has-mr-6">14</span>
         <span>N. 数理统计</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意-11">
+        <a class="is-flex" href="#题目描述-13">
         <span class="has-mr-6">14.1</span>
-        <span>题目大意</span>
+        <span>题目描述</span>
         </a></li><li>
         <a class="is-flex" href="#题解-13">
         <span class="has-mr-6">14.2</span>
@@ -652,9 +652,9 @@
         <span class="has-mr-6">15</span>
         <span>O. 战争</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意-12">
+        <a class="is-flex" href="#题目描述-14">
         <span class="has-mr-6">15.1</span>
-        <span>题目大意</span>
+        <span>题目描述</span>
         </a></li><li>
         <a class="is-flex" href="#题解-14">
         <span class="has-mr-6">15.2</span>
@@ -896,7 +896,7 @@
                 <span class="level-item">OI/ICPC</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">20</span>
+                <span class="level-item tag">21</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/历史/">
@@ -940,6 +940,25 @@
         
         <article class="media">
             
+            <a href="/2019/06/09/2019-年电子科技大学-ACM-ICPC-暑假前集训图论专题解题报告/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-08T16:00:00.000Z">2019-06-09</time></div>
+                    <a href="/2019/06/09/2019-年电子科技大学-ACM-ICPC-暑假前集训图论专题解题报告/" class="has-link-black-ter is-size-6">2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/05/25/2019-年电子科技大学-ACM-ICPC-暑假前集训动态规划专题解题报告/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训动态规划专题解题报告">
@@ -1014,25 +1033,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/03/26/「CODECHEF-CHEFKNN」大厨与区间染色/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="「CODECHEF CHEFKNN」大厨与区间染色">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-26T10:33:50.000Z">2019-03-26</time></div>
-                    <a href="/2019/03/26/「CODECHEF-CHEFKNN」大厨与区间染色/" class="has-link-black-ter is-size-6">「CODECHEF CHEFKNN」大厨与区间染色</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1044,6 +1044,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/05/">
@@ -1180,6 +1191,13 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/01-分数规划/">
+                        <span class="tag">01 分数规划</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/BFS/">
                         <span class="tag">BFS</span>
                         <span class="tag is-grey">1</span>
@@ -1271,6 +1289,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/二分答案/">
+                        <span class="tag">二分答案</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/凸包/">
                         <span class="tag">凸包</span>
                         <span class="tag is-grey">1</span>
@@ -1320,6 +1345,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/差分约束系统/">
+                        <span class="tag">差分约束系统</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/平衡树/">
                         <span class="tag">平衡树</span>
                         <span class="tag is-grey">1</span>
@@ -1337,6 +1369,13 @@
                     <a class="tags has-addons" href="/tags/开发/">
                         <span class="tag">开发</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/拓扑排序/">
+                        <span class="tag">拓扑排序</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1371,14 +1410,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最小生成树/">
                         <span class="tag">最小生成树</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最短路/">
                         <span class="tag">最短路</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1404,6 +1443,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/欧拉路径/">
+                        <span class="tag">欧拉路径</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/矩阵/">
                         <span class="tag">矩阵</span>
                         <span class="tag is-grey">2</span>
@@ -1414,6 +1460,13 @@
                     <a class="tags has-addons" href="/tags/线段树/">
                         <span class="tag">线段树</span>
                         <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/网络流/">
+                        <span class="tag">网络流</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1456,6 +1509,25 @@
         
         <article class="media">
             
+            <a href="/2019/06/09/2019-年电子科技大学-ACM-ICPC-暑假前集训图论专题解题报告/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-08T16:00:00.000Z">2019-06-09</time></div>
+                    <a href="/2019/06/09/2019-年电子科技大学-ACM-ICPC-暑假前集训图论专题解题报告/" class="has-link-black-ter is-size-6">2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/05/25/2019-年电子科技大学-ACM-ICPC-暑假前集训动态规划专题解题报告/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训动态规划专题解题报告">
@@ -1530,25 +1602,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/03/26/「CODECHEF-CHEFKNN」大厨与区间染色/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="「CODECHEF CHEFKNN」大厨与区间染色">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-26T10:33:50.000Z">2019-03-26</time></div>
-                    <a href="/2019/03/26/「CODECHEF-CHEFKNN」大厨与区间染色/" class="has-link-black-ter is-size-6">「CODECHEF CHEFKNN」大厨与区间染色</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1560,6 +1613,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/05/">
@@ -1696,6 +1760,13 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/01-分数规划/">
+                        <span class="tag">01 分数规划</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/BFS/">
                         <span class="tag">BFS</span>
                         <span class="tag is-grey">1</span>
@@ -1787,6 +1858,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/二分答案/">
+                        <span class="tag">二分答案</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/凸包/">
                         <span class="tag">凸包</span>
                         <span class="tag is-grey">1</span>
@@ -1836,6 +1914,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/差分约束系统/">
+                        <span class="tag">差分约束系统</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/平衡树/">
                         <span class="tag">平衡树</span>
                         <span class="tag is-grey">1</span>
@@ -1853,6 +1938,13 @@
                     <a class="tags has-addons" href="/tags/开发/">
                         <span class="tag">开发</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/拓扑排序/">
+                        <span class="tag">拓扑排序</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1887,14 +1979,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最小生成树/">
                         <span class="tag">最小生成树</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最短路/">
                         <span class="tag">最短路</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1920,6 +2012,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/欧拉路径/">
+                        <span class="tag">欧拉路径</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/矩阵/">
                         <span class="tag">矩阵</span>
                         <span class="tag is-grey">2</span>
@@ -1930,6 +2029,13 @@
                     <a class="tags has-addons" href="/tags/线段树/">
                         <span class="tag">线段树</span>
                         <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/网络流/">
+                        <span class="tag">网络流</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 

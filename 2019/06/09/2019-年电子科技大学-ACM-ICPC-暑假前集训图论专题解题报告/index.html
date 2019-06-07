@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告 - HeRaNO</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="10/15/15">
+<meta name="keywords" content="最小生成树,最短路,网络流,欧拉路径,拓扑排序,二分答案,01 分数规划,差分约束系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告">
+<meta property="og:url" content="https://herano.github.io/2019/06/09/2019-年电子科技大学-ACM-ICPC-暑假前集训图论专题解题报告/index.html">
+<meta property="og:site_name" content="HeRaNO">
+<meta property="og:description" content="10/15/15">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://herano.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-06-01T19:00:16.549Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告">
+<meta name="twitter:description" content="10/15/15">
+<meta name="twitter:image" content="https://herano.github.io/images/og_image.png">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">Home</a>
+                
+                <a class="navbar-item" href="/archives">Archives</a>
+                
+                <a class="navbar-item" href="/categories">Categories</a>
+                
+                <a class="navbar-item" href="/tags">Tags</a>
+                
+                <a class="navbar-item" href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-06-08T16:00:00.000Z">2019-06-09</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    33 分钟 读完 (大约 4917 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告
+            
+        </h1>
+        <div class="content">
+            <p>10/15/15<br><a id="more"></a></p>
+<p>题目详见<a href="https://acm.uestc.edu.cn/contest/26/summary" target="_blank" rel="noopener">这里</a>。</p>
+<h2 id="A-迷宫"><a href="#A-迷宫" class="headerlink" title="A. 迷宫"></a>A. 迷宫</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给出一个有向图，反转一条有向边的代价为其边权，现在选出一些边进行边反向操作，代价为选出边权值的最大值，求一个最小代价使得有向图无环。</p>
+<p>数据范围：\(0\le n,m\le 2\times 10^5,0\le w\le 2\times 10^9\)。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>求一个最大值最小的问题一般考虑二分答案，判断有向图无环问题一般用拓扑排序解决。两者拼一下就过了……</p>
+<p>首先考虑到答案的可二分性质。考虑检查答案时，只保留边权大于要检查的答案的所有边，小于等于答案的所有边舍弃不加。如果这些边已经出现环的话，答案一定向大的方向调整，如果不存在环，那么考虑将剩余的边补回去，就按照已有的拓扑序补充即可，并且按照已有拓扑序，加入边要么正常加入，要么反向以满足拓扑序。所以答案一定是可以满足的，可以继续调整减小答案。</p>
+<p>原题题解中给出的一种 \(\mathcal{O}((n+m)\log m)\) 的做法其实是对边权进行离散化……</p>
+<p>时间复杂度 \(\mathcal{O}((n+m)\log w_m)\)，空间复杂度 \(\mathcal{O}(n+m)\)。</p>
+<p>原题详见：<a href="https://codeforces.com/contest/1100/problem/E" target="_blank" rel="noopener">Codeforces Round #532 (Div. 2) E. Andrew and Taxi</a></p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2214.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="B-oydy-的征途-I"><a href="#B-oydy-的征途-I" class="headerlink" title="B. oydy 的征途 I"></a>B. oydy 的征途 I</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>给出一个无向图，求其最小生成树边权和减去最大边的值，和有多少种选择第一条边的方案能使生成树边权和减去最大边权值等于第一问的答案。</p>
+<p>数据范围：\(2\le n\le 10^5,1\le m\le 2\times 10^5\)。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>对于第一问，显然直接做一遍最小生成树即可。</p>
+<p>对于第二问，如果我们保持原最小生成树小于最大边权的边不变，那么再加入大于等于这个最大边权的边答案一定是不变的（有多条最大边权的边时，存在方案补充边并保持答案不变），但是要保证树的性质，所以不能出现环。因此我们把原最小生成树中小于最大边权的边连起来，判断一下剩下的边是否连通即可。如果不连通，则说明这条边可以加入，并且边权和不变。</p>
+<p>时间复杂度 \(\mathcal{O}(m\log m)\)，空间复杂度 \(\mathcal{O}(n+m)\)。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2215.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="C-oydy-的征途-II"><a href="#C-oydy-的征途-II" class="headerlink" title="C. oydy 的征途 II"></a>C. oydy 的征途 II</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>给出一个有向图，求经过每条边恰好一次，经过点序列中字典序最小的一个。</p>
+<p>数据范围：\(1\le n\le 10^6,1\le m\le 2\times 10^6\)。</p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>欧拉路径板子题。有向图中存在欧拉路径的充分条件是：基图连通（把边当成无向边，不考虑度为 \(0\) 的点），每个顶点出度等于入度或者有且仅有一个点的出度比入度多 \(1\)，有且仅有一个点的出度比入度少 \(1\)，其余出度等于入度。</p>
+<p>如果存在欧拉路径的话，点序列长度一定是 \(m+1\)，那么就按照字典序遍历节点即可。</p>
+<p>先是存答案不按板子里存 WA on 8，然后判断是否连通 WA on 15，然后改掉 TLE on 28，最后加了一个丑陋的删边 RE on 29（拿队列删边真的我服了我自己……），能踩的坑都踩了一遍，最后心态炸了手写栈，过了。</p>
+<p>时间复杂度 \(\mathcal{O}(m\log m+m)\)，空间复杂度 \(\mathcal{O}(n+m)\)。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2216.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="D-oydy-的征途-III"><a href="#D-oydy-的征途-III" class="headerlink" title="D. oydy 的征途 III"></a>D. oydy 的征途 III</h2><h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><p>一个无向图，问按顺序经过给定 \(T\) 个点的最短路。</p>
+<p>数据范围：\(2\le n\le 10^5,m=n+k,-1\le k\le 30,1\le T\le 10^5\)。</p>
+<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>因为要求最短路程，所以走的距离一定是给出的要经过的相邻点之间的最短路。于是题目变成了 \(T\) 次询问两点之间最短路长度，最后输出的就是最短路长度之和。</p>
+<p>当 \(k=-1\) 时很容易处理，就是多次询问树上点之间的距离。</p>
+<p>当 \(k=0\) 时，即多了一条边的情况，那么这条边就有两种情况：对最短路有贡献和对最短路没贡献。如果对最短路没贡献，那么还是询问树上两点距离；如果有贡献，那么直接求这条边的两端点之一到询问两点的最短路长度之和就行了。</p>
+<p>对于边数更多的情况，实质上和 \(k=0\) 的情况一样。我们记一下「多出来」的边的一个端点，即加上这些「多出来」的边，树就会出现环。因为最短路改变只能由这些「多出来」的边引起，如果不变的话就是树上距离，因此正确性可以保证。</p>
+<p>对于树上询问两点间路径，可以用 LCA 解决。对于寻找这些「多出来」的边的一个端点，在 LCA 的准备阶段就可以解决。然后对于这些点跑单源最短路，用这些最短路更新答案即可。</p>
+<p>时间复杂度 \(\mathcal{O}(k(n+m)\log n+T(\log n+k))\)，空间复杂度 \(\mathcal{O}(n(\log n+k))\)。</p>
+<p>原题详见：<a href="https://codeforces.com/contest/1051/problem/F" target="_blank" rel="noopener">Educational Codeforces Round 51 (Rated for Div. 2) F. The Shortest Statement</a></p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2217.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="E-变色龙"><a href="#E-变色龙" class="headerlink" title="E. 变色龙"></a>E. 变色龙</h2><h3 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个无向图，每条边都有颜色，通过一条边的条件是目前颜色和要通过边的颜色一致，代价不计。变换颜色花费为 \(1\)，并且只能在一个点处变换颜色，求从 \(1\) 走到 \(n\) 的最小花费。</p>
+<p>数据范围：\(1\le n\le 10^5,1\le m\le 2\times 10^5\)。</p>
+<h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h3><p>看起来很像拆点建边，思路是一个点拆成三个点，其中一个点为入点，两个为出点，分别表示在这个点变换颜色还是不变颜色，然后一个水最短路就行了。但是建图不知道为啥爆炸了……</p>
+<p>于是对于点的每种状态重建图，对点的每个颜色状态建立一个点，原图中相连接的两点在新图中变成两端点分别向这条边对应的颜色状态建边权为 \(1\) 的边，表示转换颜色，然后两点相同颜色状态之间连边权为 \(0\) 的边，表示走这条路的代价。</p>
+<p>如果要转换颜色，则走边权为 \(1\) 的边就表示转换颜色了，否则可以走新点建立的边权为 \(0\) 的边越过边权为 \(1\) 的边。</p>
+<p>例如原图如下：</p>
+<p><img src="/images/chamel.png" alt=""></p>
+<p>边上的数字表示边的颜色。</p>
+<p>那么我们重建的图如下：</p>
+<p><img src="/images/chamel2.png" alt=""></p>
+<p>边上的数字表示边权。</p>
+<p>这样建图，点数最多为 \(n+2m\)，边数最多为 \(3m\)，还不算特别爆炸。</p>
+<p>注意最后答案需要除以 \(2\)，因为按照这样的拆点方法，原来距离为 \(1\) 的两点距离变成了 \(2\)（可以从 \(1\) 到 \(2\) 的路径中看出），原来距离为 \(0\) 的两点距离仍为 \(0\)，因此求完最短路是答案的二倍。</p>
+<p>时间复杂度 \(\mathcal{O}((n+m)\log n)\)，空间复杂度 \(\mathcal{O}(n+m)\)。</p>
+<p>原题来自：<a href="http://acm.csu.edu.cn:20080/csuoj/problemset/problem?pid=1808" target="_blank" rel="noopener">CSU 1808. 地铁</a></p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2218.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="F-zh-吃饭"><a href="#F-zh-吃饭" class="headerlink" title="F. zh 吃饭"></a>F. zh 吃饭</h2><h3 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h3><p>给出一个有向图，每个点都有点权，给出一个起点和一些终点，每次到达一个点能获得这个点的点权，但是这个点的点权在获得后变成 \(0\)，求从起点到终点可能获得的最大权值。</p>
+<p>数据范围：\(n,m\le 3\times 10^3\)。</p>
+<h3 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a>题解</h3><p>对于这个有向图，首先权是点权，其次只能获得一次点权，那么可以将这张图进行缩点，把强连通的点缩成一个，然后对于缩出来的 DAG 做一遍最长路 DP 即可。注意原图起点和终点缩进了强连通分量中，注意标号问题。最后取一个最大值即可。</p>
+<p>强连通分量的点一定可以互相可达，因此可以获得这些点的所有权值，统计出每个缩出来的点的权值后进行 DP，记忆化搜索爆栈了所以改成了 BFS……</p>
+<p>时间复杂度 \(\mathcal{O}(n+m)\)，空间复杂度 \(\mathcal{O}(n+m)\)。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2219.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="G-hqf-吹泡泡"><a href="#G-hqf-吹泡泡" class="headerlink" title="G. hqf 吹泡泡"></a>G. hqf 吹泡泡</h2><h3 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h3><p>给出 \(n\) 个点和 \(m\) 条边，并且给出一些可以连接的点连接起来的代价 \(w\)，求一个最小代价加边使得这 \(n\) 个点形成 \(k\) 个连通块。</p>
+<p>数据范围：\(1\le k\lt n\le 10^3,1\le m\le 5\times 10^5\)。</p>
+<h3 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h3><p>看起来是最小生成树，实际上加一行就行了……</p>
+<p>因为要求 \(k\) 个连通块，所以加入 \(n-k\) 条边即可。形成 \(k\) 棵树就是 \(k\) 个连通块。</p>
+<p>剩下的与最小生成树无异。</p>
+<p>时间复杂度 \(\mathcal{O}(m\log m)\)，空间复杂度 \(\mathcal{O}(n+m)\)。</p>
+<p>原题详见：<a href="https://www.luogu.org/problemnew/show/P1195" target="_blank" rel="noopener">Luogu P1195 口袋的天空</a></p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2220.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="H-毁灭东湖计划"><a href="#H-毁灭东湖计划" class="headerlink" title="H. 毁灭东湖计划"></a>H. 毁灭东湖计划</h2><h3 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h3><p><del>给出一些点和一些边，每条边有流量，求起点到终点的最大流量。</del></p>
+<p>求最大流。</p>
+<h3 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h3><p>Dinic 板子，用之前写的 EK 过不了可能是因为写错了……</p>
+<p>时间复杂度 \(\mathcal{O}(n^2m)\)，空间复杂度 \(\mathcal{O}(m)\)。</p>
+<p>原题来自：<a href="http://poj.org/problem?id=1273" target="_blank" rel="noopener">POJ 1273 Drainage Ditches</a></p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2221.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="I-cxx-仙女下凡"><a href="#I-cxx-仙女下凡" class="headerlink" title="I. cxx 仙女下凡"></a>I. cxx 仙女下凡</h2><h3 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h3><p>给一个 \(n\) 个点 \(m\) 条边的有向图，求 \(k\) 短路。每一条路都不能完全相同。</p>
+<p>数据范围：\(1\le n,k\le 1.5\times 10^3,1\le m\le 8\times 10^4\)。</p>
+<h3 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h3><p>最后那个条件让我 WA 好几遍……</p>
+<p>\(k\) 短路也是板子……结果板子调用错了……WA 到头秃……</p>
+<p>考虑利用 A* 算法搜出 \(k\) 短路，存一遍反图，跑反图的最短路并用其估价，这样跑 \(k\) 遍出来就是 \(k\) 短路了。</p>
+<p>注意起点与终点相同时需要 \(k\) 变成 \(k+1\)，因为首先搜出来的一定是一个 \(0\)，就是没动，但是这种情况不能计入答案。</p>
+<p>时间复杂度 \(\mathcal{O}(m\log n+F(n,m,k))\)，空间复杂度 \(\mathcal{O}(n+m)\)。其中 \(F(n,m,k)\) 用来描述 A* 的复杂度（实际上并没有啥意义……）。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2222.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="J-cxx-守株待兔"><a href="#J-cxx-守株待兔" class="headerlink" title="J. cxx 守株待兔"></a>J. cxx 守株待兔</h2><h3 id="题目描述-9"><a href="#题目描述-9" class="headerlink" title="题目描述"></a>题目描述</h3><p><del>啊不想概括了</del></p>
+<p>求二分图最小点覆盖。</p>
+<p>数据范围：\(n=a+b\le 10^5,m\le 3\times 10^5\)。</p>
+<h3 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h3><p>二分图最小点覆盖等于二分图最大匹配数。所以用 Dinic 做一遍二分图最大匹配即可。</p>
+<p>用 Dinic 做二分图最大匹配时间复杂度很好<del>，时间复杂度是一个大的取最小值式子但是我忘了……</del></p>
+<p>时间复杂度 \(\mathcal{O}(m\sqrt n)\)，空间复杂度 \(\mathcal{O}(m+n)\)。</p>
+<p><del>算了时间复杂度写 \(\mathcal{O}(\text{Dinic})\) 吧……</del></p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2223.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="K-cxx-承包鱼塘"><a href="#K-cxx-承包鱼塘" class="headerlink" title="K. cxx 承包鱼塘"></a>K. cxx 承包鱼塘</h2><h3 id="题目描述-10"><a href="#题目描述-10" class="headerlink" title="题目描述"></a>题目描述</h3><p>给出一个 \(n\) 个点 \(m\) 条边的无向图，边有边权，可以有 \(k\) 次机会令边权为 \(0\)，求 \(s\to t\) 的最短路。</p>
+<p>数据范围：\(1\le n\le 10^4,1\le m\le 2\times 10^5,0\le k\le 20\)。</p>
+<h3 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h3><p>\(k=0\) 的情况就是最短路，那么 \(k&gt;0\) 就可以有一个 DP。\(d_{i,k}\) 表示到第 \(i\) 个点，用了 \(k\) 次边权置为 \(0\) 的最短路，转移什么的过于显然不写了。总体就是决策用和不用置 \(0\) 的情况，取一个最小值即可。</p>
+<p>其实是一个比较板子的分层图，那个 DP 的转移直接写进最短路即可……</p>
+<p>时间复杂度 \(\mathcal{O}(mk\log n)\)，空间复杂度 \(\mathcal{O}(nk)\)。</p>
+<p>原题来自：<a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2763" target="_blank" rel="noopener">「JLOI 2011」飞行路线</a></p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2224.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="L-cxx-的压岁钱"><a href="#L-cxx-的压岁钱" class="headerlink" title="L. cxx 的压岁钱"></a>L. cxx 的压岁钱</h2><h3 id="题目描述-11"><a href="#题目描述-11" class="headerlink" title="题目描述"></a>题目描述</h3><p>有 \(n\) 个人 \(m\) 个电视频道，每个人有一些想要看的电视频道，如果这个人看到了所有想看的电视频道就会给一些钱，开通一个电视频道要花一些钱，求最大利润。</p>
+<p>数据范围：\(1\le n,m\le 10^4,\sum k\le 2\times 10^5\)。</p>
+<h3 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h3><p><del>把网络流 24 题都做了一遍也看不出来这个是太空飞行计划应该洗洗睡了……</del></p>
+<p>我们把电视频道和人都看成一个点，那么点有点权（电视频道的点权为负），人向想看的电视频道建边，最后补充超级源汇，可以转化为最大权闭合子图问题。刨坟把<a href="https://blog.csdn.net/HeRaNO/article/details/70180828" target="_blank" rel="noopener">原来写的题解</a>挖出来完事。</p>
+<p>于是一边最小割就完事了……</p>
+<p>但是我边空间开小了 \(10\) 倍还是过了不知道咋回事……</p>
+<p>时间复杂度 \(\mathcal{O}(\text{Dinic})\)，空间复杂度 \(\mathcal{O}(\sum k+n+m)\)。</p>
+<p>原题详见：<a href="https://loj.ac/problem/6001" target="_blank" rel="noopener">LibreOJ #6001. 太空飞行计划</a></p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2225.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="M-洁姐姐带找工作"><a href="#M-洁姐姐带找工作" class="headerlink" title="M. 洁姐姐带找工作"></a>M. 洁姐姐带找工作</h2><h3 id="题目描述-12"><a href="#题目描述-12" class="headerlink" title="题目描述"></a>题目描述</h3><p>有三种大小关系：\(x_i&gt;x_j,x_i\lt x_j,x_i=x_j\)，给出 \(n\) 个变量间的 \(m\) 组关系，求是否有方案可以满足全部关系，如果有，求最小的 \(\sum x\)。</p>
+<h3 id="题解-12"><a href="#题解-12" class="headerlink" title="题解"></a>题解</h3><p>转化为差分约束问题，对于 \(x_i&gt;x_j\) 就变成 \(x_i-x_j\ge 1\)，对于 \(x_i\lt x_j\) 变成 \(x_i-x_j\le 1\)，对于 \(x_i=x_j\) 就变成 \(x_i-x_j\ge 0,x_i-x_j\le 0\)。然后套差分约束板子即可。</p>
+<p>对于有无解判断，直接判断是否有负环即可，对于最小解的判断，可以加一个基准 \(x_0=0\)，可以发现 \(x_i-x_0\ge 1\)，还是符合差分约束条件的，一起差分约束即可。</p>
+<p>时间复杂度 \(\mathcal{O}(nm)\)，空间复杂度 \(\mathcal{O}(n+m)\)。</p>
+<p>原题来自：<a href="https://acm.uestc.edu.cn/problem/tang-guo/description" target="_blank" rel="noopener">SCOI 2011 糖果</a></p>
+<p>（实际上是弱化）</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2226.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="N-洁姐姐带我上分"><a href="#N-洁姐姐带我上分" class="headerlink" title="N. 洁姐姐带我上分"></a>N. 洁姐姐带我上分</h2><h3 id="题目描述-13"><a href="#题目描述-13" class="headerlink" title="题目描述"></a>题目描述</h3><p>狼羊过河，只不过狼羊关系不止一种。</p>
+<p>数据范围：\(1\le n,m\le 15,1\le k\le n\)。</p>
+<h3 id="题解-13"><a href="#题解-13" class="headerlink" title="题解"></a>题解</h3><p>考虑数据范围，可以利用状压解决。用二进制状态表示目前在低段位的人，那么初始状态就是 \(2^{n+1}-1\)，终了状态就是 \(0\)。</p>
+<p>首先筛选出合法状态，就是有狼羊关系的两人不能在第一个人不在的情况下同时处于低段位或高段位，这里注意要判两次，低段位判一次，此时的高段位情况就是 \(2^{n+1}-1-x\)，再对这个状态判断一次。</p>
+<p>然后就会筛出一些合法状态。然后合法状态相互连边，如果两个合法状态中，人状态改变量大于 \(k\) 则不能连边，因为要让第一个人带着去，所以第一个人的状态一定改变，不变的不能连边，最后还有如果要从低段位带到高段位，现有状态在高段位的人不能变成下一个状态在低段位，同理，从高段位带到低段位也是不能出现低段位有人跑到高段位上来。判断这个有一个巧妙的方法：令两个状态为 \(x,y\)，状态改变的情况可以用异或求出，即 \(d=x\oplus y\)，那么 \(\max\{x,y\}-\min\{x,y\}=d\)，则这两个状态可以互相转移。这个是利用二进制的操作进行的。边权为 \(d\) 的二进制中 \(1\) 的个数。</p>
+<p>于是跑一遍最短路就行了。数据没有很多 \(m=0\) 或者 \(m\) 很小的情况，因此跑不满……</p>
+<p>时间复杂度 \(\mathcal{O}(n4^n)\)，空间复杂度 \(\mathcal{O}(4^n)\)。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2227.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="O-洁姐姐带学画画"><a href="#O-洁姐姐带学画画" class="headerlink" title="O. 洁姐姐带学画画"></a>O. 洁姐姐带学画画</h2><h3 id="题目描述-14"><a href="#题目描述-14" class="headerlink" title="题目描述"></a>题目描述</h3><p>对于平面上的 \(n\) 个点，求一棵生成树，使得 \(\frac{\sum_{(u,v)\in E}|z_u-z_v|}{\sum_{(u,v)\in E}\text{dis}(u,v)}\) 最小，其中 \(\text{dis}(u,v)\) 表示 \(u,v\) 两点的水平距离。</p>
+<p>数据范围：\(1\le n\le 10^3\)。</p>
+<h3 id="题解-14"><a href="#题解-14" class="headerlink" title="题解"></a>题解</h3><p>看到那个比值式求最小……其实想到的是 01 分数规划……</p>
+<p>01 分数规划是用二分做的，所以相应的我们采用同样的方式，二分答案来做。</p>
+<p>对于二分到的答案 \(p\)，我们要令 \(\frac{\sum_{(u,v)\in E}|z_u-z_v|}{\sum_{(u,v)\in E}\text{dis}(u,v)}=p\)。这个分式看起来很不爽，于是将分母乘过去，得：</p>
+<p>$$<br>p\sum_{(u,v)\in E} \text{dis}(u,v)=\sum_{(u,v)\in E} |z_u-z_v|<br>$$</p>
+<p>移项，得：</p>
+<p>$$<br>\begin{align}<br>\sum_{(u,v)\in E} |z_u-z_v|-p\sum_{(u,v)\in E} \text{dis}(u,v)&amp;=0\\<br>\sum_{(u,v)\in E} \left [|z_u-z_v|-p\text{dis}(u,v) \right]&amp;=0<br>\end{align}<br>$$</p>
+<p>（如果移项移反了就能求最大值了……）</p>
+<p>对于检查这一答案是否合法的过程，令 \(w(u,v)=|z_u-z_v|-p\text{dis}(u,v)\)，如果对于这一边权建立最小生成树，权值和仍大于 \(0\)，那么这个 \(p\) 必定不合法，需要增大 \(p\) 以使权值减小，否则可以减小 \(p\) 来减小答案。二分至精度要求 \(\epsilon\) 即可。</p>
+<p>对于求一个完全图的最小生成树，利用 Prim 算法比 Kruskal 要更优秀，毕竟少个 \(\log\) 嘛……</p>
+<p>时间复杂度 \(\mathcal{O}(n^2\log (d_m+\frac{1}{\epsilon}))\)，空间复杂度 \(\mathcal{O}(n^2)\)。</p>
+<p>原题来自：<a href="http://poj.org/problem?id=2728" target="_blank" rel="noopener">POJ 2728 Desert King</a></p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2228.cpp" target="_blank" rel="noopener">这里</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/01-分数规划/">01 分数规划</a>, <a class="has-link-grey -link" href="/tags/二分答案/">二分答案</a>, <a class="has-link-grey -link" href="/tags/差分约束系统/">差分约束系统</a>, <a class="has-link-grey -link" href="/tags/拓扑排序/">拓扑排序</a>, <a class="has-link-grey -link" href="/tags/最小生成树/">最小生成树</a>, <a class="has-link-grey -link" href="/tags/最短路/">最短路</a>, <a class="has-link-grey -link" href="/tags/欧拉路径/">欧拉路径</a>, <a class="has-link-grey -link" href="/tags/网络流/">网络流</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/25/2019-年电子科技大学-ACM-ICPC-暑假前集训动态规划专题解题报告/">
+                <span class="level-item">2019 年电子科技大学 ACM-ICPC 暑假前集训动态规划专题解题报告</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'ee72bcab76c2f4174f33',
+        clientSecret: '31d9ec1c309ad83b7aaae7b81e40c296dceb8ea2',
+        id: '9fedb5ef5e562bbfc0ea916faea8887a',
+        repo: 'HeRaNO.github.io',
+        owner: 'HeRaNO',
+        admin: "HeRaNO"
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="https://www.gravatar.com/avatar/db46c601e36b86f9f275e9349e798149?s=128" alt="HeRaNO">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        HeRaNO
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Say thank you to the unreasonable life.
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>UESTC, Chengdu, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        26
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        4
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        42
+                    </p>
+                </div>
+            </div>
+        </nav>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/HeRaNO">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Zhihu" href="https://www.zhihu.com/people/HeRaNO/activities">
+                
+                <i class="fab fa-zhihu"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Mail" href="mailto:heran55@126.com">
+                
+                <i class="far fa-envelope"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="NeteaseMusic" href="https://music.163.com/#/user/home?id=428068590">
+                
+                <i class="fas fa-music"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#A-迷宫">
+        <span class="has-mr-6">1</span>
+        <span>A. 迷宫</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述">
+        <span class="has-mr-6">1.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解">
+        <span class="has-mr-6">1.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#B-oydy-的征途-I">
+        <span class="has-mr-6">2</span>
+        <span>B. oydy 的征途 I</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-1">
+        <span class="has-mr-6">2.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-1">
+        <span class="has-mr-6">2.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C-oydy-的征途-II">
+        <span class="has-mr-6">3</span>
+        <span>C. oydy 的征途 II</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-2">
+        <span class="has-mr-6">3.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-2">
+        <span class="has-mr-6">3.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#D-oydy-的征途-III">
+        <span class="has-mr-6">4</span>
+        <span>D. oydy 的征途 III</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-3">
+        <span class="has-mr-6">4.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-3">
+        <span class="has-mr-6">4.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#E-变色龙">
+        <span class="has-mr-6">5</span>
+        <span>E. 变色龙</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-4">
+        <span class="has-mr-6">5.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-4">
+        <span class="has-mr-6">5.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#F-zh-吃饭">
+        <span class="has-mr-6">6</span>
+        <span>F. zh 吃饭</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-5">
+        <span class="has-mr-6">6.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-5">
+        <span class="has-mr-6">6.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#G-hqf-吹泡泡">
+        <span class="has-mr-6">7</span>
+        <span>G. hqf 吹泡泡</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-6">
+        <span class="has-mr-6">7.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-6">
+        <span class="has-mr-6">7.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#H-毁灭东湖计划">
+        <span class="has-mr-6">8</span>
+        <span>H. 毁灭东湖计划</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-7">
+        <span class="has-mr-6">8.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-7">
+        <span class="has-mr-6">8.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#I-cxx-仙女下凡">
+        <span class="has-mr-6">9</span>
+        <span>I. cxx 仙女下凡</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-8">
+        <span class="has-mr-6">9.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-8">
+        <span class="has-mr-6">9.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#J-cxx-守株待兔">
+        <span class="has-mr-6">10</span>
+        <span>J. cxx 守株待兔</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-9">
+        <span class="has-mr-6">10.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-9">
+        <span class="has-mr-6">10.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#K-cxx-承包鱼塘">
+        <span class="has-mr-6">11</span>
+        <span>K. cxx 承包鱼塘</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-10">
+        <span class="has-mr-6">11.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-10">
+        <span class="has-mr-6">11.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#L-cxx-的压岁钱">
+        <span class="has-mr-6">12</span>
+        <span>L. cxx 的压岁钱</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-11">
+        <span class="has-mr-6">12.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-11">
+        <span class="has-mr-6">12.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#M-洁姐姐带找工作">
+        <span class="has-mr-6">13</span>
+        <span>M. 洁姐姐带找工作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-12">
+        <span class="has-mr-6">13.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-12">
+        <span class="has-mr-6">13.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#N-洁姐姐带我上分">
+        <span class="has-mr-6">14</span>
+        <span>N. 洁姐姐带我上分</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-13">
+        <span class="has-mr-6">14.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-13">
+        <span class="has-mr-6">14.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#O-洁姐姐带学画画">
+        <span class="has-mr-6">15</span>
+        <span>O. 洁姐姐带学画画</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-14">
+        <span class="has-mr-6">15.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-14">
+        <span class="has-mr-6">15.2</span>
+        <span>题解</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/herano" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">坟</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">学长们</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://twistoy.com/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">TwIStOy@HRBUST</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://slongle.github.io/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">slongle@HIT</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/slongle_amazing/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">slongle&#39;s previous blog</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://xr1s.me/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Xris@UESTC</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.cnblogs.com/autsky-jadek/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Autsky_JadeK@UESTC</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">曾经一起飙过车的队(da)友(ye)们</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://ferric.top/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Ferric@PKU</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/Balala_Energy/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">20150112@ZJU</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/peter_819/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">peter_819@WHU</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/SidneyAustin/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Sidney@CMU</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">---------萌萌哒的分割线---------</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://decision01.cn/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Decision@UESTC</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://loliconautomaton.github.io/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">LoliconAutomaton@NWPU</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">单向膜拜 Orz</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://twd2.me/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">twd2@THU</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/popoqqq" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PoPoQQQ@THU</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://oi.men.ci/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Menci@RUC</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://hahata.org/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">HaHaTa@THU</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">常用网站</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.ioi-jp.org/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">JOI</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="http://oeis.org/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">OEIS</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://git.thusaac.org/explore/projects" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">THUSAAC</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://ruanx.pw/bzojch/" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">BZOJCH (Thanks to rxz Orz)</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/OI-ICPC/">
+            <span class="level-start">
+                <span class="level-item">OI/ICPC</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">21</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/历史/">
+            <span class="level-start">
+                <span class="level-item">历史</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/开发/">
+            <span class="level-start">
+                <span class="level-item">开发</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/杂言/">
+            <span class="level-start">
+                <span class="level-item">杂言</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/06/09/2019-年电子科技大学-ACM-ICPC-暑假前集训图论专题解题报告/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-08T16:00:00.000Z">2019-06-09</time></div>
+                    <a href="/2019/06/09/2019-年电子科技大学-ACM-ICPC-暑假前集训图论专题解题报告/" class="has-link-black-ter is-size-6">2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/25/2019-年电子科技大学-ACM-ICPC-暑假前集训动态规划专题解题报告/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训动态规划专题解题报告">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-24T16:00:00.000Z">2019-05-25</time></div>
+                    <a href="/2019/05/25/2019-年电子科技大学-ACM-ICPC-暑假前集训动态规划专题解题报告/" class="has-link-black-ter is-size-6">2019 年电子科技大学 ACM-ICPC 暑假前集训动态规划专题解题报告</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/12/2019-年电子科技大学-ACM-ICPC-暑假前集训数据结构专题解题报告/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训数据结构专题解题报告">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-11T16:00:00.000Z">2019-05-12</time></div>
+                    <a href="/2019/05/12/2019-年电子科技大学-ACM-ICPC-暑假前集训数据结构专题解题报告/" class="has-link-black-ter is-size-6">2019 年电子科技大学 ACM-ICPC 暑假前集训数据结构专题解题报告</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/04/ContestSonic-开发笔记（二）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ContestSonic 开发笔记（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-04T14:51:45.000Z">2019-05-04</time></div>
+                    <a href="/2019/05/04/ContestSonic-开发笔记（二）/" class="has-link-black-ter is-size-6">ContestSonic 开发笔记（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/开发/">开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/30/ContestSonic-开发笔记（一）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ContestSonic 开发笔记（一）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-30T08:22:56.000Z">2019-03-30</time></div>
+                    <a href="/2019/03/30/ContestSonic-开发笔记（一）/" class="has-link-black-ter is-size-6">ContestSonic 开发笔记（一）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/开发/">开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/01-分数规划/">
+                        <span class="tag">01 分数规划</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BFS/">
+                        <span class="tag">BFS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ContestSonic/">
+                        <span class="tag">ContestSonic</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DFS-序/">
+                        <span class="tag">DFS 序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DP/">
+                        <span class="tag">DP</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/FFT/">
+                        <span class="tag">FFT</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/FWT/">
+                        <span class="tag">FWT</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Golang/">
+                        <span class="tag">Golang</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/HLOI/">
+                        <span class="tag">HLOI</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/LCA/">
+                        <span class="tag">LCA</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/NTT/">
+                        <span class="tag">NTT</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/SHOI/">
+                        <span class="tag">SHOI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Trie-树/">
+                        <span class="tag">Trie 树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ZJOI/">
+                        <span class="tag">ZJOI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/二分答案/">
+                        <span class="tag">二分答案</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/凸包/">
+                        <span class="tag">凸包</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/分块/">
+                        <span class="tag">分块</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/动态树分治/">
+                        <span class="tag">动态树分治</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/单调栈/">
+                        <span class="tag">单调栈</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/历史/">
+                        <span class="tag">历史</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/堆/">
+                        <span class="tag">堆</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/多项式相关/">
+                        <span class="tag">多项式相关</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/差分约束系统/">
+                        <span class="tag">差分约束系统</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/平衡树/">
+                        <span class="tag">平衡树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/并查集/">
+                        <span class="tag">并查集</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/开发/">
+                        <span class="tag">开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/拓扑排序/">
+                        <span class="tag">拓扑排序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数位-DP/">
+                        <span class="tag">数位 DP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数学/">
+                        <span class="tag">数学</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数论/">
+                        <span class="tag">数论</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/旋转卡壳/">
+                        <span class="tag">旋转卡壳</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最小生成树/">
+                        <span class="tag">最小生成树</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最短路/">
+                        <span class="tag">最短路</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/杂言/">
+                        <span class="tag">杂言</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/概率与期望/">
+                        <span class="tag">概率与期望</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/模拟/">
+                        <span class="tag">模拟</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/欧拉路径/">
+                        <span class="tag">欧拉路径</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/矩阵/">
+                        <span class="tag">矩阵</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/线段树/">
+                        <span class="tag">线段树</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/网络流/">
+                        <span class="tag">网络流</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/莫队/">
+                        <span class="tag">莫队</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/贪心/">
+                        <span class="tag">贪心</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/06/09/2019-年电子科技大学-ACM-ICPC-暑假前集训图论专题解题报告/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-08T16:00:00.000Z">2019-06-09</time></div>
+                    <a href="/2019/06/09/2019-年电子科技大学-ACM-ICPC-暑假前集训图论专题解题报告/" class="has-link-black-ter is-size-6">2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/25/2019-年电子科技大学-ACM-ICPC-暑假前集训动态规划专题解题报告/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训动态规划专题解题报告">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-24T16:00:00.000Z">2019-05-25</time></div>
+                    <a href="/2019/05/25/2019-年电子科技大学-ACM-ICPC-暑假前集训动态规划专题解题报告/" class="has-link-black-ter is-size-6">2019 年电子科技大学 ACM-ICPC 暑假前集训动态规划专题解题报告</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/12/2019-年电子科技大学-ACM-ICPC-暑假前集训数据结构专题解题报告/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训数据结构专题解题报告">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-11T16:00:00.000Z">2019-05-12</time></div>
+                    <a href="/2019/05/12/2019-年电子科技大学-ACM-ICPC-暑假前集训数据结构专题解题报告/" class="has-link-black-ter is-size-6">2019 年电子科技大学 ACM-ICPC 暑假前集训数据结构专题解题报告</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/04/ContestSonic-开发笔记（二）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ContestSonic 开发笔记（二）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-04T14:51:45.000Z">2019-05-04</time></div>
+                    <a href="/2019/05/04/ContestSonic-开发笔记（二）/" class="has-link-black-ter is-size-6">ContestSonic 开发笔记（二）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/开发/">开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/03/30/ContestSonic-开发笔记（一）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ContestSonic 开发笔记（一）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-30T08:22:56.000Z">2019-03-30</time></div>
+                    <a href="/2019/03/30/ContestSonic-开发笔记（一）/" class="has-link-black-ter is-size-6">ContestSonic 开发笔记（一）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/开发/">开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/01-分数规划/">
+                        <span class="tag">01 分数规划</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/BFS/">
+                        <span class="tag">BFS</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ContestSonic/">
+                        <span class="tag">ContestSonic</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DFS-序/">
+                        <span class="tag">DFS 序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DP/">
+                        <span class="tag">DP</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/FFT/">
+                        <span class="tag">FFT</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/FWT/">
+                        <span class="tag">FWT</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Golang/">
+                        <span class="tag">Golang</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/HLOI/">
+                        <span class="tag">HLOI</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/LCA/">
+                        <span class="tag">LCA</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/NTT/">
+                        <span class="tag">NTT</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/SHOI/">
+                        <span class="tag">SHOI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Trie-树/">
+                        <span class="tag">Trie 树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/ZJOI/">
+                        <span class="tag">ZJOI</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/二分答案/">
+                        <span class="tag">二分答案</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/凸包/">
+                        <span class="tag">凸包</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/分块/">
+                        <span class="tag">分块</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/动态树分治/">
+                        <span class="tag">动态树分治</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/单调栈/">
+                        <span class="tag">单调栈</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/历史/">
+                        <span class="tag">历史</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/堆/">
+                        <span class="tag">堆</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/多项式相关/">
+                        <span class="tag">多项式相关</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/差分约束系统/">
+                        <span class="tag">差分约束系统</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/平衡树/">
+                        <span class="tag">平衡树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/并查集/">
+                        <span class="tag">并查集</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/开发/">
+                        <span class="tag">开发</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/拓扑排序/">
+                        <span class="tag">拓扑排序</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数位-DP/">
+                        <span class="tag">数位 DP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数学/">
+                        <span class="tag">数学</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数论/">
+                        <span class="tag">数论</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/旋转卡壳/">
+                        <span class="tag">旋转卡壳</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最小生成树/">
+                        <span class="tag">最小生成树</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最短路/">
+                        <span class="tag">最短路</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/杂言/">
+                        <span class="tag">杂言</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/概率与期望/">
+                        <span class="tag">概率与期望</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/模拟/">
+                        <span class="tag">模拟</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/欧拉路径/">
+                        <span class="tag">欧拉路径</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/矩阵/">
+                        <span class="tag">矩阵</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/线段树/">
+                        <span class="tag">线段树</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/网络流/">
+                        <span class="tag">网络流</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/莫队/">
+                        <span class="tag">莫队</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/贪心/">
+                        <span class="tag">贪心</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Heran Yang&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -16,7 +16,7 @@
 <meta property="og:description" content="10/15/15">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-06-01T19:00:16.549Z">
+<meta property="og:updated_time" content="2019-06-08T03:58:23.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告">
 <meta name="twitter:description" content="10/15/15">
@@ -257,7 +257,7 @@
 <p>数据范围：\(1\le n,m\le 10^4,\sum k\le 2\times 10^5\)。</p>
 <h3 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h3><p><del>把网络流 24 题都做了一遍也看不出来这个是太空飞行计划应该洗洗睡了……</del></p>
 <p>我们把电视频道和人都看成一个点，那么点有点权（电视频道的点权为负），人向想看的电视频道建边，最后补充超级源汇，可以转化为最大权闭合子图问题。刨坟把<a href="https://blog.csdn.net/HeRaNO/article/details/70180828" target="_blank" rel="noopener">原来写的题解</a>挖出来完事。</p>
-<p>于是一边最小割就完事了……</p>
+<p>于是一遍最小割就完事了……</p>
 <p>但是我边空间开小了 \(10\) 倍还是过了不知道咋回事……</p>
 <p>时间复杂度 \(\mathcal{O}(\text{Dinic})\)，空间复杂度 \(\mathcal{O}(\sum k+n+m)\)。</p>
 <p>原题详见：<a href="https://loj.ac/problem/6001" target="_blank" rel="noopener">LibreOJ #6001. 太空飞行计划</a></p>

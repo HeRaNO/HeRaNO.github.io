@@ -8,7 +8,7 @@
 
 
     <meta name="description" content="11/19/19">
-<meta name="keywords" content="Trie 树,树上倍增,AC 自动机,后缀数组,后缀自动机,可持久化线段树,KMP&#x2F;exKMP,Manacher,回文自动机">
+<meta name="keywords" content="AC 自动机,后缀数组,后缀自动机,可持久化线段树,树上倍增,KMP&#x2F;exKMP,Manacher,回文自动机,Trie 树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2019 年电子科技大学 ACM-ICPC 暑假前集训字符串与搜索专题解题报告">
 <meta property="og:url" content="https://herano.github.io/2019/06/22/2019-年电子科技大学-ACM-ICPC-暑假前集训字符串与搜索专题解题报告/index.html">
@@ -16,7 +16,7 @@
 <meta property="og:description" content="11/19/19">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-06-20T19:17:26.976Z">
+<meta property="og:updated_time" content="2019-06-22T18:15:23.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019 年电子科技大学 ACM-ICPC 暑假前集训字符串与搜索专题解题报告">
 <meta name="twitter:description" content="11/19/19">
@@ -267,7 +267,7 @@
 <p>原题来自：<a href="https://codeforces.com/contest/1063/problem/B" target="_blank" rel="noopener">Codeforces Round #516 (Div. 1, by Moscow Team Olympiad) B. Labyrinth</a></p>
 <p>时间复杂度 \(\mathcal{O}(nm)\)，空间复杂度 \(\mathcal{O}(nm)\)。</p>
 <p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2257.cpp" target="_blank" rel="noopener">这里</a></p>
-<h2 id="O-第二个征程，拔起剪枝哀伤"><a href="#O-第二个征程，拔起剪枝哀伤" class="headerlink" title="O. 第二个征程，拔起剪枝哀伤"></a>O. 第二个征程，拔起剪枝哀伤</h2><h3 id="题目描述-13"><a href="#题目描述-13" class="headerlink" title="题目描述"></a>题目描述</h3><p>有一个数列 \(\{a_n\}\)，构造一个数列 \(\{b_m\}\)，使得 \(\forall i,\exist p,q,a_i=|b_q-b_p|\)，要求 \(\{b_m\}\) 项数尽量小，输出按递增方式输出。</p>
+<h2 id="O-第二个征程，拔起剪枝哀伤"><a href="#O-第二个征程，拔起剪枝哀伤" class="headerlink" title="O. 第二个征程，拔起剪枝哀伤"></a>O. 第二个征程，拔起剪枝哀伤</h2><h3 id="题目描述-13"><a href="#题目描述-13" class="headerlink" title="题目描述"></a>题目描述</h3><p>有一个数列 \(\{a_n\}\)，构造一个数列 \(\{b_m\}\)，使得 \(\forall i,\exists p,q,a_i=|b_q-b_p|\)，要求 \(\{b_m\}\) 项数尽量小，输出按递增方式输出。</p>
 <p>数据范围：\(1\le n\le 30,1\le a_i\le 10^6\)。</p>
 <h3 id="题解-13"><a href="#题解-13" class="headerlink" title="题解"></a>题解</h3><p>首先我们不知道 \(b\) 数列的长度，那么这就很尴尬，所以我们先枚举这个长度，也就是用加深迭代搜索。</p>
 <p>然后搜索 \(b\) 数列每一位应该放什么，因为最后 \(b\) 数列是单调增的，所以我们从前往后搜索的时候就可以不管绝对值，然后 \(q&gt;p\) 时，\(b_q=b_p+a_j\)，就可以枚举 \(a_j,b_p\) 然后得到 \(b_q\) 了，注意得到 \(b_q\) 后还需进一步更新能表示的 \(a_j\)。能表示的 \(a_j\) 这一集合可以用状态压缩的方法存储。</p>

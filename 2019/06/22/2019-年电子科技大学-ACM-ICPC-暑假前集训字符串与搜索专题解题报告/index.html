@@ -16,7 +16,7 @@
 <meta property="og:description" content="11/19/19">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-06-22T18:15:23.612Z">
+<meta property="og:updated_time" content="2019-06-24T09:23:40.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019 年电子科技大学 ACM-ICPC 暑假前集训字符串与搜索专题解题报告">
 <meta name="twitter:description" content="11/19/19">
@@ -287,7 +287,7 @@
 <p>若纳水輨，如转丸珠。夫岂可道，假体如愚。荒荒坤轴，悠悠天枢。<br>载要其端，载同其符。超超神明，返返冥无。来往千载，是之谓乎。</p>
 <p>——《二十四诗品 · 二十四 · 流动》</p>
 </blockquote>
-<h3 id="题目描述-15"><a href="#题目描述-15" class="headerlink" title="题目描述"></a>题目描述</h3><p>牌区初始有四张牌。有两个人 van ♂ you see，他♂们初始都有一些手牌，对于每次换牌，第一个人把自己的一张手牌放入牌区，然后扔掉牌区中的任意一张牌，第二个人会把自己的一张黑色手牌与牌区中的一张牌向交换。第一个人先手，每个人都可以在自己的轮内不换牌，除第一轮外，如果一个人不动，他就输了。如果牌区里的牌能凑出 24 点，则先手胜，否则后手胜。多次给出初始局面，问先手胜还是后手胜。</p>
+<h3 id="题目描述-15"><a href="#题目描述-15" class="headerlink" title="题目描述"></a>题目描述</h3><p>牌区初始有四张牌。有两个人 van ♂ you see，他♂们初始都有一些手牌，对于每次换牌，第一个人把自己的一张手牌放入牌区，然后扔掉牌区中的任意一张牌，第二个人会把自己的一张黑色手牌与牌区中的一张牌相交换。第一个人先手，每个人都可以在自己的轮内不换牌，除第一轮外，如果一个人不动，他就输了。如果牌区里的牌能凑出 24 点，则先手胜，否则后手胜。多次给出初始局面，问先手胜还是后手胜。</p>
 <p>数据范围：\(1\le n,m\le 6\)，牌上点数是 \(1\) 到 \(10\) 之间的正整数，其中 \(n,m\) 分别为两人的手牌数。</p>
 <h3 id="题解-15"><a href="#题解-15" class="headerlink" title="题解"></a>题解</h3><p>首先得打一个 24 点的表。嘿嘿，嘿嘿嘿。</p>
 <p>反正是个 Dirty work，首先跑个暴搜，枚举 \(1\sim 10\) 的所有长度为 \(4\) 的可重排列，再枚举运算符号，再处理一下运算优先级，复杂度算起来好像可以，但是最后还是直接打表。</p>
@@ -330,6 +330,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/06/25/ContestSonic-开发笔记（三）/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">ContestSonic 开发笔记（三）</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -408,7 +415,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        27
+                        28
                     </p>
                 </div>
             </div>
@@ -942,7 +949,7 @@
                 <span class="level-item">开发</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">3</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/杂言/">
@@ -967,6 +974,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/06/25/ContestSonic-开发笔记（三）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ContestSonic 开发笔记（三）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-24T17:00:00.000Z">2019-06-25</time></div>
+                    <a href="/2019/06/25/ContestSonic-开发笔记（三）/" class="has-link-black-ter is-size-6">ContestSonic 开发笔记（三）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/开发/">开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -1044,25 +1070,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/04/ContestSonic-开发笔记（二）/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ContestSonic 开发笔记（二）">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-04T14:51:45.000Z">2019-05-04</time></div>
-                    <a href="/2019/05/04/ContestSonic-开发笔记（二）/" class="has-link-black-ter is-size-6">ContestSonic 开发笔记（二）</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/开发/">开发</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1081,7 +1088,7 @@
                     <span class="level-item">六月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1244,7 +1251,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ContestSonic/">
                         <span class="tag">ContestSonic</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1279,7 +1286,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Golang/">
                         <span class="tag">Golang</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1440,7 +1447,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/开发/">
                         <span class="tag">开发</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1588,6 +1595,25 @@
         
         <article class="media">
             
+            <a href="/2019/06/25/ContestSonic-开发笔记（三）/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ContestSonic 开发笔记（三）">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-24T17:00:00.000Z">2019-06-25</time></div>
+                    <a href="/2019/06/25/ContestSonic-开发笔记（三）/" class="has-link-black-ter is-size-6">ContestSonic 开发笔记（三）</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/开发/">开发</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/06/22/2019-年电子科技大学-ACM-ICPC-暑假前集训字符串与搜索专题解题报告/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训字符串与搜索专题解题报告">
@@ -1662,25 +1688,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/05/04/ContestSonic-开发笔记（二）/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ContestSonic 开发笔记（二）">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-04T14:51:45.000Z">2019-05-04</time></div>
-                    <a href="/2019/05/04/ContestSonic-开发笔记（二）/" class="has-link-black-ter is-size-6">ContestSonic 开发笔记（二）</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/开发/">开发</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1699,7 +1706,7 @@
                     <span class="level-item">六月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
@@ -1862,7 +1869,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ContestSonic/">
                         <span class="tag">ContestSonic</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1897,7 +1904,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Golang/">
                         <span class="tag">Golang</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -2058,7 +2065,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/开发/">
                         <span class="tag">开发</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 

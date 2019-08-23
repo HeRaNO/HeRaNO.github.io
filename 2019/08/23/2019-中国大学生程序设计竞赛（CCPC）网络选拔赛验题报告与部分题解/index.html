@@ -16,7 +16,7 @@
 <meta property="og:description" content="2019.8.17 6/11">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-23T14:17:31.555Z">
+<meta property="og:updated_time" content="2019-08-23T16:43:39.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019 中国大学生程序设计竞赛（CCPC）网络选拔赛验题报告与部分题解">
 <meta name="twitter:description" content="2019.8.17 6/11">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    21 分钟 读完 (大约 3085 个字)
+                    21 分钟 读完 (大约 3102 个字)
                 </span>
                 
                 
@@ -198,7 +198,7 @@
 <p>然后修改操作就很轻松了，单点修改 \(a_i\) 的出现位置，改成无穷大就行了。</p>
 <p>于是并不需要主席树什么的，简单线段树就完事了。</p>
 <p>时间复杂度 \(\mathcal{O}(\sum m\log \sum n)\)，空间复杂度 $\mathcal{O}(n)$。</p>
-<p>代码在<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/HDU/HDU6702.cpp" target="_blank" rel="noopener">这里</a></p>
+<p>代码在<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/HDU/HDU6703.cpp" target="_blank" rel="noopener">这里</a></p>
 <h2 id="C-K-th-occurrence"><a href="#C-K-th-occurrence" class="headerlink" title="C. K-th occurrence"></a>C. K-th occurrence</h2><!-- 命题人：forgottencsc -->
 <h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个字符串 \(S\)，每次询问 \(S\) 中的一个子串 \(S[l\ldots r]\) 在 \(S\) 中第 \(k\) 次出现的起始位置。</p>
 <h3 id="验题过程-2"><a href="#验题过程-2" class="headerlink" title="验题过程"></a>验题过程</h3><p>Idea：HeRaNO，Code：NaN</p>
@@ -207,6 +207,7 @@
 <p>赛后说和 L 一样但是比 L 简单，查一个区间第 \(k\) 大就完事了……</p>
 <h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>SAM 的 parent 树拖下来，然后静态区间第 \(k\) 大……</p>
 <p>我不会字符串 QAQ</p>
+<p>代码在<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/HDU/HDU6704.cpp" target="_blank" rel="noopener">这里</a></p>
 <h2 id="D-path"><a href="#D-path" class="headerlink" title="D. path"></a>D. path</h2><!-- 命题人：QWsin -->
 <h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><p>一个 \(n\) 个点，\(m\) 条边的有向带权图，路径的权值为经过所有边权之和。\(q\) 次询问这张图的第 \(k\) 小路径权值。</p>
 <p>数据范围：\(T\le 100,\sum n,\sum m,\sum q\le 2.5\times 10^5\)，保证 \(k\) 合法。</p>

@@ -16,7 +16,7 @@
 <meta property="og:description" content="2019.8.17 6/11">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-23T16:48:37.358Z">
+<meta property="og:updated_time" content="2019-08-23T17:07:31.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019 中国大学生程序设计竞赛（CCPC）网络选拔赛验题报告与部分题解">
 <meta name="twitter:description" content="2019.8.17 6/11">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    21 分钟 读完 (大约 3125 个字)
+                    22 分钟 读完 (大约 3360 个字)
                 </span>
                 
                 
@@ -200,7 +200,8 @@
 <p>时间复杂度 \(\mathcal{O}(\sum m\log \sum n)\)，空间复杂度 $\mathcal{O}(n)$。</p>
 <p>代码在<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/HDU/HDU6703.cpp" target="_blank" rel="noopener">这里</a></p>
 <h2 id="C-K-th-occurrence"><a href="#C-K-th-occurrence" class="headerlink" title="C. K-th occurrence"></a>C. K-th occurrence</h2><!-- 命题人：forgottencsc -->
-<h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个字符串 \(S\)，每次询问 \(S\) 中的一个子串 \(S[l\ldots r]\) 在 \(S\) 中第 \(k\) 次出现的起始位置。</p>
+<h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个字符串 \(S\)，\(m\) 次询问 \(S\) 中的一个子串 \(S[l\ldots r]\) 在 \(S\) 中第 \(k\) 次出现的起始位置。</p>
+<p>数据范围：\(T\le 10,1\le n,m\le 10^5\)，只有五组数据 \(n\ge 10^3\)。</p>
 <h3 id="验题过程-2"><a href="#验题过程-2" class="headerlink" title="验题过程"></a>验题过程</h3><p>Idea：HeRaNO，Code：HeRaNO</p>
 <p>开场就看见一个字符串，再看好像是 SAM 乱搞，然后想到了暑假前集训的 L 题……</p>
 <p>感觉有点类似，但是不会维护第 \(k\) 次出现，于是放弃了……</p>
@@ -276,11 +277,13 @@
 <h3 id="题解-7"><a href="#题解-7" class="headerlink" title="题解"></a>题解</h3><p>不是我打的……直接上代码吧……</p>
 <p>代码在<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/HDU/HDU6709.cpp" target="_blank" rel="noopener">这里</a></p>
 <h2 id="I-Kaguya"><a href="#I-Kaguya" class="headerlink" title="I. Kaguya"></a>I. Kaguya</h2><!-- 命题人：UESTC_Sphinx -->
-<h3 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h3><p>一张二分图，左边 \(n\) 个点右边 \(m\) 个点，左右任意两点之间有一条边的概率为 \(\frac{1}{2}\)，求左右任意两点最短距离之和的期望。若不连通则认为距离为 \(0\)。</p>
+<h3 id="题目描述-8"><a href="#题目描述-8" class="headerlink" title="题目描述"></a>题目描述</h3><p>一张二分图，左边 \(n\) 个点右边 \(m\) 个点，左右任意两点之间有一条边的概率为 \(\frac{1}{2}\)，求左右任意两点最短距离之和的期望。若不连通则认为距离为 \(0\)。答案需要对 \(P\) 取模。</p>
+<p>数据范围：\(1\le n,m\le 30,772001\le P\le 10^9+7\)，保证 \(P\) 是质数。</p>
 <h3 id="验题过程-8"><a href="#验题过程-8" class="headerlink" title="验题过程"></a>验题过程</h3><p>Idea：Vingying &amp; HeRaNO，Code：NaN</p>
 <p>实际上 Vingying 大爷一直在那里想 I 但是没想出来……</p>
 <p>我最后也跟着一起想，没想出来……</p>
 <h3 id="题解-8"><a href="#题解-8" class="headerlink" title="题解"></a>题解</h3><p>直接看题解吧……后三道全是神题……</p>
+<p>这道题是 \(\mathcal{O}(n^5)\) 的 DP。</p>
 <h2 id="J-Touma-Kazusa’s-function"><a href="#J-Touma-Kazusa’s-function" class="headerlink" title="J. Touma Kazusa’s function"></a>J. Touma Kazusa’s function</h2><!-- 命题人：Forsaken -->
 <h3 id="题目描述-9"><a href="#题目描述-9" class="headerlink" title="题目描述"></a>题目描述</h3><p>定义：</p>
 <p>$$<br>S(l,r)=\sum_{i=l}^r\sum_{j=l}^r \varphi(\gcd(a_i,a_j))\text{lcm}(a_i,a_j)<br>$$</p>
@@ -293,13 +296,17 @@
 <h3 id="题解-9"><a href="#题解-9" class="headerlink" title="题解"></a>题解</h3><p>真就莫队……还有随机化……</p>
 <p>UOJ 群友 5 分钟正解 NB！</p>
 <p>rqy 分析期望 NB！</p>
+<p>是一个用期望分析复杂度的莫队，时间复杂度据说是 \(\mathcal{O}(11n\sqrt n)\) 的。</p>
 <h2 id="K-sakura"><a href="#K-sakura" class="headerlink" title="K. sakura"></a>K. sakura</h2><!-- 命题人：Mstdream -->
 <h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>一个三维网格空间，起始时刻 \(a_{i,j,k}=1\)，首先在起始时刻修改 \(m\) 个格子 \(a_{n,x_i,y_i}\) 的值为 \(v_i\)，然后每个时刻，每个格子变成题干里给出的那个形式，问 \(n\) 秒后 \(a_{0,0,0}\) 的值对 \(998244353\) 取模后的值。</p>
 <p>数据范围：\(1\le n\le 10^9,1\le \sum m\le 2\times 10^5\)。</p>
 <h3 id="验题过程-10"><a href="#验题过程-10" class="headerlink" title="验题过程"></a>验题过程</h3><p>Idea：HeRaNO，Code：NaN</p>
 <p>因为和某次队内赛的题有点像，已经知道肯定是算贡献了，但是不会往下搞了……</p>
-<h3 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h3><p>个人觉得出得质量比较高的一道题……</p>
+<h3 id="题解-10"><a href="#题解-10" class="headerlink" title="题解"></a>题解</h3><p>个人觉得出得质量比较高的一道题……（指数据）</p>
 <p>海星……我看不懂……</p>
+<p>算每一个修改的贡献时先用费马小定理降幂，然后一部分快速幂解决，另一部分还需要继续拆分模数变成两个卢卡斯定理和一个扩展卢卡斯定理，然后 CRT 合并，最后把每一个修改的贡献乘起来。</p>
+<p>使用扩展卢卡斯定理时因为模数为 \(2^{23}\) 可以用与运算继续优化时间。</p>
+<p>然后就成为了卡常<del>毒瘤</del>题……时间复杂度 \(m\log n\)，卡 \(\log^2 n\) 的。</p>
 
         </div>
         

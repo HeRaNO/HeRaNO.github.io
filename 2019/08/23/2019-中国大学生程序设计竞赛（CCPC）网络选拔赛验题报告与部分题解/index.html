@@ -16,7 +16,7 @@
 <meta property="og:description" content="2019.8.17 6/11">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-23T17:07:31.330Z">
+<meta property="og:updated_time" content="2019-08-24T14:37:35.862Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019 中国大学生程序设计竞赛（CCPC）网络选拔赛验题报告与部分题解">
 <meta name="twitter:description" content="2019.8.17 6/11">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    22 分钟 读完 (大约 3360 个字)
+                    23 分钟 读完 (大约 3487 个字)
                 </span>
                 
                 
@@ -222,6 +222,7 @@
 <h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>我只记得 \(\mathcal{O}(n^2)\) 咋写的，没那么多 <code>break</code> 就是 \(\mathcal{O}(n^2)\) 的……</p>
 <p>代码见上图……只是核心代码……（比如要对边权排序什么的……）</p>
 <p>时间复杂度 \(\mathcal{O}(k\log (m+k))\)，空间复杂度 \(\mathcal{O}(m+k)\)。</p>
+<p>代码在<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/HDU/HDU6705.cpp" target="_blank" rel="noopener">这里</a></p>
 <h2 id="E-huntian-oy"><a href="#E-huntian-oy" class="headerlink" title="E. huntian oy"></a>E. huntian oy</h2><!-- 命题人：moeis0 -->
 <h3 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h3><p>\(T\) 组数据，求</p>
 <p>$$<br>\sum_{i=1}^n\sum_{j=1}^i \gcd(i^a-j^a,i^b-j^b)[\gcd(i,j)=1]<br>$$</p>
@@ -266,7 +267,7 @@
 <p>开场这道题，手速慢了没抢上一血。</p>
 <p><del>因为把 CCPC 打成 CCCP 了直接同志伏特加了……</del></p>
 <h3 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a>题解</h3><p>这个是唯一没啥好说的……\(k\) 阶 CCPC 旗的大小是 \(2^k\times 2^k\) 的，直接模拟即可。</p>
-<p>时间复杂度 \(\mathcal{O}(T4^k)\)，空间复杂度 \(\mathcal{O}(4^k)\)。</p>
+<p>时间复杂度 \(\mathcal{O}(T4^k)\)，空间复杂度 \(\mathcal{O}(k4^k)\)。</p>
 <p>代码在<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/HDU/HDU6708.cpp" target="_blank" rel="noopener">这里</a></p>
 <h2 id="H-Fishing-Master"><a href="#H-Fishing-Master" class="headerlink" title="H. Fishing Master"></a>H. Fishing Master</h2><!-- 命题人：eom -->
 <h3 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h3><p>鱼塘里有 \(n\) 条鱼，炖一条鱼至少要 \(t_i\) 分钟，抓一条鱼要 \(k\) 分钟，每次只能抓一条鱼，锅也只有一个。你可以存鱼，但是抓鱼的时候不能对锅进行操作（也就是不能把锅里炖好的鱼拿出来后把抓上来并存起来的鱼放锅里）。问至少需要多长时间才能把这 \(n\) 条鱼全炖了。</p>
@@ -298,7 +299,7 @@
 <p>rqy 分析期望 NB！</p>
 <p>是一个用期望分析复杂度的莫队，时间复杂度据说是 \(\mathcal{O}(11n\sqrt n)\) 的。</p>
 <h2 id="K-sakura"><a href="#K-sakura" class="headerlink" title="K. sakura"></a>K. sakura</h2><!-- 命题人：Mstdream -->
-<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>一个三维网格空间，起始时刻 \(a_{i,j,k}=1\)，首先在起始时刻修改 \(m\) 个格子 \(a_{n,x_i,y_i}\) 的值为 \(v_i\)，然后每个时刻，每个格子变成题干里给出的那个形式，问 \(n\) 秒后 \(a_{0,0,0}\) 的值对 \(998244353\) 取模后的值。</p>
+<h3 id="题目描述-10"><a href="#题目描述-10" class="headerlink" title="题目描述"></a>题目描述</h3><p>一个三维网格空间，起始时刻 \(a_{i,j,k}=1\)，首先在起始时刻修改 \(m\) 个格子 \(a_{n,x_i,y_i}\) 的值为 \(v_i\)，然后每个时刻，每个格子变成题干里给出的那个形式，问 \(n\) 秒后 \(a_{0,0,0}\) 的值对 \(998244353\) 取模后的值。</p>
 <p>数据范围：\(1\le n\le 10^9,1\le \sum m\le 2\times 10^5\)。</p>
 <h3 id="验题过程-10"><a href="#验题过程-10" class="headerlink" title="验题过程"></a>验题过程</h3><p>Idea：HeRaNO，Code：NaN</p>
 <p>因为和某次队内赛的题有点像，已经知道肯定是算贡献了，但是不会往下搞了……</p>
@@ -306,7 +307,14 @@
 <p>海星……我看不懂……</p>
 <p>算每一个修改的贡献时先用费马小定理降幂，然后一部分快速幂解决，另一部分还需要继续拆分模数变成两个卢卡斯定理和一个扩展卢卡斯定理，然后 CRT 合并，最后把每一个修改的贡献乘起来。</p>
 <p>使用扩展卢卡斯定理时因为模数为 \(2^{23}\) 可以用与运算继续优化时间。</p>
-<p>然后就成为了卡常<del>毒瘤</del>题……时间复杂度 \(m\log n\)，卡 \(\log^2 n\) 的。</p>
+<p>然后就成为了卡常<del>毒瘤</del>题……时间复杂度 \(\mathcal{O}(m\log n)\)，卡 \(\log^2 n\) 的。</p>
+<p>代码在<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/HDU/HDU6712.cpp" target="_blank" rel="noopener">这里</a></p>
+<h2 id="L-zh-and-zz6d（并不存在）"><a href="#L-zh-and-zz6d（并不存在）" class="headerlink" title="L. zh and zz6d（并不存在）"></a>L. zh and zz6d（并不存在）</h2><!-- 命题人：zz6d -->
+<h3 id="题目描述-11"><a href="#题目描述-11" class="headerlink" title="题目描述"></a>题目描述</h3><p>题面过于毒瘤（但是据说做法很简单就是一个数学分析），被撤了。</p>
+<p>具体题目我也忘了……</p>
+<h3 id="验题过程-11"><a href="#验题过程-11" class="headerlink" title="验题过程"></a>验题过程</h3><p>看都没看，并且谁也没看</p>
+<p>嘿嘿嘿</p>
+<h3 id="题解-11"><a href="#题解-11" class="headerlink" title="题解"></a>题解</h3><p>被撤了，也没题解。</p>
 
         </div>
         
@@ -645,9 +653,9 @@
         <span class="has-mr-6">11</span>
         <span>K. sakura</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#题目大意">
+        <a class="is-flex" href="#题目描述-10">
         <span class="has-mr-6">11.1</span>
-        <span>题目大意</span>
+        <span>题目描述</span>
         </a></li><li>
         <a class="is-flex" href="#验题过程-10">
         <span class="has-mr-6">11.2</span>
@@ -655,6 +663,22 @@
         </a></li><li>
         <a class="is-flex" href="#题解-10">
         <span class="has-mr-6">11.3</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#L-zh-and-zz6d（并不存在）">
+        <span class="has-mr-6">12</span>
+        <span>L. zh and zz6d（并不存在）</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-11">
+        <span class="has-mr-6">12.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#验题过程-11">
+        <span class="has-mr-6">12.2</span>
+        <span>验题过程</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-11">
+        <span class="has-mr-6">12.3</span>
         <span>题解</span>
         </a></li></ul></li></ul>
         </div>

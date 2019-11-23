@@ -2,19 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: 拓扑排序 - HeRaNO</title>
+<title>电子科技大学第十一届 ACM 趣味程序设计竞赛第三场（正式赛）题解 - HeRaNO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="HeRaNO">
-<meta property="og:url" content="https://herano.github.io/tags/拓扑排序/index.html">
+    <meta name="description" content="正式赛第一场">
+<meta name="keywords" content="模拟,贪心,数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电子科技大学第十一届 ACM 趣味程序设计竞赛第三场（正式赛）题解">
+<meta property="og:url" content="https://herano.github.io/2019/11/23/电子科技大学第十一届-ACM-趣味程序设计竞赛第三场（正式赛）题解/index.html">
 <meta property="og:site_name" content="HeRaNO">
+<meta property="og:description" content="正式赛第一场">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-11-22T03:34:09.855Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HeRaNO">
+<meta name="twitter:title" content="电子科技大学第十一届 ACM 趣味程序设计竞赛第三场（正式赛）题解">
+<meta name="twitter:description" content="正式赛第一场">
 <meta name="twitter:image" content="https://herano.github.io/images/og_image.png">
 
 
@@ -87,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="HeRaNO" height="28">
+                <img src="/images/logo.svg" alt="电子科技大学第十一届 ACM 趣味程序设计竞赛第三场（正式赛）题解" height="28">
             
             </a>
         </div>
@@ -110,6 +115,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -124,23 +133,12 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">拓扑排序</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-08T16:00:00.000Z">2019-06-09</time>
+                <time class="level-item has-text-grey" datetime="2019-11-23T09:00:00.000Z">2019-11-23</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
@@ -150,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    33 分钟 读完 (大约 4917 个字)
+                    10 分钟 读完 (大约 1571 个字)
                 </span>
                 
                 
@@ -159,21 +157,67 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/06/09/2019-年电子科技大学-ACM-ICPC-暑假前集训图论专题解题报告/">2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告</a>
+                电子科技大学第十一届 ACM 趣味程序设计竞赛第三场（正式赛）题解
             
         </h1>
         <div class="content">
-            <p>10/15/15<br></p>
+            <p>正式赛第一场</p>
+<a id="more"></a>
+<h2 id="A-双十一"><a href="#A-双十一" class="headerlink" title="A. 双十一"></a>A. 双十一</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>有 \(n\) 个物品在 \(m\) 个商店出售，给出在每个商店的售价，问如何买才能使花费最小。输出最小花费。</p>
+<p>数据范围：\(1\le n,m\le 100,-1\le a_{i,j}\le 100\)。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>对于每种商品，在售价最便宜的商店中买即可。</p>
+<p>时间复杂度：\(\mathcal{O}(nm)\)，空间复杂度：\(\mathcal{O}(n)\)。</p>
+<p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2331.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2331.java" target="_blank" rel="noopener">Java</a>。</p>
+<p>Problem Setter: Macaron_lin</p>
+<h2 id="B-我们身边的狼"><a href="#B-我们身边的狼" class="headerlink" title="B. 我们身边的狼"></a>B. 我们身边的狼</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>有 \(n\) 个人分为好人和坏人，其中好人数量不少于坏人。好人只会说真话，坏人只会说假话，他们都知道每个人的身份。现在可以问他们任意一人（包括自己）的身份，他们一定会回答并只回答是或否。问能否在所有情况下通过一系列问题问出每个人的身份（好人或坏人）。</p>
+<p>数据范围：\(1\le n\le 10^9\)。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>根据样例可以推测，如果 \(n\) 为奇数即可推出，否则不能。</p>
+<p>我们假设好人有 \(a\) 个，坏人有 \(b\) 个。由题可知 \(a\ge b\)，且 \(a+b=n\)。</p>
+<p>现在分成三部分考虑，当 \(a&gt;b+1\) 时，无论怎样都可以判断出哪些是好人，哪些是坏人。我们可以随机挑选出一个人，问剩下的人这个人是好人吗？回答相同的人为一类，并且人数多的一方为好人。然后再找好人问选出的那一个人是好是坏即可。</p>
+<p>当 \(a=b\) 时，无论如何询问，都会出现因为不清楚被选出的那个人是好人还是坏人而无法判断人数多的那一方到底是好人还是坏人。所以 \(a=b\) 时永远不可能分清哪些是好人，哪些是坏人。</p>
+<p>当 \(a=b+1\) 时，我们可以同 \(a&gt;b+1\) 一样区分开，如果遇到选出的那个人为好人的情况，我们可以再挑选一个人，可以保证总有一次可以选到一个坏人，并区分开好人和坏人。</p>
+<p>综上所述，当存在一种情况需要区分 \(a=b\) 时，就永远无法分出来了。因此，当 \(n\) 为偶数时存在这种情况，而当 \(n\) 为奇数时不存在。所以有一开始的结论。</p>
+<p>题目样例说明可以提示证明方法。</p>
+<p>时间复杂度：\(\mathcal{O}(1)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
+<p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2346.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2346.java" target="_blank" rel="noopener">Java</a>。</p>
+<p>类似思路来自于 ICPC 2019 Nanjing Regional Onsite H. Prince and Princess</p>
+<p>Problem Setter: Vingying</p>
+<h2 id="C-BlackRed·Z"><a href="#C-BlackRed·Z" class="headerlink" title="C. %%BlackRed·Z"></a>C. %%BlackRed·Z</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定 \(a_1,a_2,\ldots ,a_n\)，求 \(f(x)=\sum_{i=1}^n (x\bmod a_i)\) 的最大值。</p>
+<p>数据范围：\(2\le n\le 3\times 10^3,2\le a_i\le 10^5\)。</p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>既然要 \(f(x)\) 最大，那么可能的最大值应该为 \(\sum_{i=1}^n (a_i-1)\)。也就是说下列同余方程组的解即为最大值点：</p>
+<p>$$<br>\begin{align}<br>x &amp;\equiv a_1-1 \pmod{a_1}\\<br>x &amp;\equiv a_2-1 \pmod{a_2}\\<br>&amp;\cdots \\<br>x &amp;\equiv a_n-1 \pmod{a_n}\\<br>\end{align}<br>$$</p>
+<p>可知，一个解为 \(\text{lcm}(a_1,a_2,\ldots ,a_n)-1\)，这个解是存在的。</p>
+<p>由 \(\text{lcm}(a_1,a_2,\ldots ,a_n) \bmod a_i =0\)，则 \((\text{lcm}(a_1,a_2,\ldots ,a_n)-1) \bmod a_i =-1\)，在模意义下 \(-1\equiv a_i-1\pmod {a_i}\)，因此有上述结论。</p>
+<p>因此，答案即为 \(\sum_{i=1}^n (a_i-1)\)。</p>
+<p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
+<p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2337.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2337.java" target="_blank" rel="noopener">Java</a>。</p>
+<p>Problem Setter: michaelshuoliu</p>
+<h2 id="D-炉石传说"><a href="#D-炉石传说" class="headerlink" title="D. 炉石传说"></a>D. 炉石传说</h2><h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><p>一共 \(n\) 个数 \(a_1,a_2,\ldots ,a_n\)，每次可以让其中一个数减 \(Y\)，或者让所有数都减 \(X\)，如果每一次减后某个数小于等于 \(0\) 则从这个序列中删除。问至少多少次能够使得所有数都被删除。</p>
+<p>数据范围：\(1\le n\le 5\times 10^3,1\le X,Y,a_i\le 5\times 10^3\)。</p>
+<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>对于本题，直接入手比较困难，但观察到每个数全部减 \(X\) 的话减的次数可能很少，多余的部分就可以用 \(Y\) 减掉。因此考虑枚举打全体伤害的次数，然后计算打单体伤害的次数。对于打了 \(i\) 次全体伤害，第 \(j\) 个数即为 \(a_j-Xi\)，然后计算 \(\lceil \frac{a_j-Xi}{Y} \rceil\) 即可。如果 \(a_j-Xi\) 是负数，则说明全体伤害已经伤害溢出，不需要再打单体了。答案即为对于每种打全体伤害的次数，两者和的最小值。</p>
+<p>时间复杂度：\(\mathcal{O}(nX)\)，空间复杂度：\(\mathcal{O}(n)\)。</p>
+<p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2329.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2329.java" target="_blank" rel="noopener">Java</a>。</p>
+<p>Problem Setter: hbji</p>
+<h2 id="E-大地的裂变"><a href="#E-大地的裂变" class="headerlink" title="E. 大地的裂变"></a>E. 大地的裂变</h2><h3 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h3><p>给出二维平面上的 \(n\) 条直线，问对于每个 \(t\ (2\le t\le n)\)，坐标值为非负整数的交点被 \(t\) 条直线经过的交点数量。</p>
+<p>数据范围：\(2\le n\le 10^4,0\le k,b\le 100\)。</p>
+<h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h3><p>考虑交点坐标的范围，设两条直线 \(y=k_1x+b_1\) 与 \(y=k_2x+b_2\)，联立后可解得：</p>
+<p>$$<br>x=\frac{b_1-b_2}{k_2-k_1}\\<br>y=\frac{k_2b_1-k_1b_2}{k_2-k_1}<br>$$</p>
+<p>由于要求的是非负整数坐标，那么根据数据范围，可知 \(0\le x\le 100,0\le y\le 10^4\)。因此统计这部分区域每个非负整数点有多少条直线经过即可。最后利用数组统计输出。</p>
+<p>时间复杂度：\(\mathcal{O}(kb^2)\)，空间复杂度：\(\mathcal{O}(kb)\)。</p>
+<p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2326.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2326.java" target="_blank" rel="noopener">Java</a>。</p>
+<p>Problem Setter: ZXyaang</p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/09/2019-年电子科技大学-ACM-ICPC-暑假前集训图论专题解题报告/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/数学/">数学</a>, <a class="has-link-grey -link" href="/tags/模拟/">模拟</a>, <a class="has-link-grey -link" href="/tags/贪心/">贪心</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -183,9 +227,43 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/10/13/ContestSonic-开发笔记（五）/">
+                <span class="level-item">ContestSonic 开发笔记（五）</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'ee72bcab76c2f4174f33',
+        clientSecret: '31d9ec1c309ad83b7aaae7b81e40c296dceb8ea2',
+        id: 'a834faeef67f85ce7721a52a99cbb728',
+        repo: 'HeRaNO.github.io',
+        owner: 'HeRaNO',
+        admin: "HeRaNO"
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
 </div>
                 
 
@@ -288,6 +366,77 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#A-双十一">
+        <span class="has-mr-6">1</span>
+        <span>A. 双十一</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述">
+        <span class="has-mr-6">1.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解">
+        <span class="has-mr-6">1.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#B-我们身边的狼">
+        <span class="has-mr-6">2</span>
+        <span>B. 我们身边的狼</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-1">
+        <span class="has-mr-6">2.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-1">
+        <span class="has-mr-6">2.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C-BlackRed·Z">
+        <span class="has-mr-6">3</span>
+        <span>C. %%BlackRed·Z</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-2">
+        <span class="has-mr-6">3.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-2">
+        <span class="has-mr-6">3.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#D-炉石传说">
+        <span class="has-mr-6">4</span>
+        <span>D. 炉石传说</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-3">
+        <span class="has-mr-6">4.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-3">
+        <span class="has-mr-6">4.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#E-大地的裂变">
+        <span class="has-mr-6">5</span>
+        <span>E. 大地的裂变</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-4">
+        <span class="has-mr-6">5.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-4">
+        <span class="has-mr-6">5.2</span>
+        <span>题解</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -1964,7 +2113,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="HeRaNO" height="28">
+                    <img src="/images/logo.svg" alt="电子科技大学第十一届 ACM 趣味程序设计竞赛第三场（正式赛）题解" height="28">
                 
                 </a>
                 <p class="is-size-7">

@@ -8,7 +8,7 @@
 
 
     <meta name="description" content="4/5 Penalty: 09:23:54 Rank 20">
-<meta name="keywords" content="模拟,数学,概率与期望">
+<meta name="keywords" content="模拟,概率与期望,数学">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UESTC 第十届 ICPC 趣味程序设计竞赛第三场（正式赛）题解">
 <meta property="og:url" content="https://herano.github.io/2018/11/24/UESTC-第十届-ICPC-趣味程序设计竞赛第三场（正式赛）题解/index.html">
@@ -16,7 +16,7 @@
 <meta property="og:description" content="4/5 Penalty: 09:23:54 Rank 20">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-02-11T08:09:11.304Z">
+<meta property="og:updated_time" content="2019-11-18T03:25:59.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UESTC 第十届 ICPC 趣味程序设计竞赛第三场（正式赛）题解">
 <meta name="twitter:description" content="4/5 Penalty: 09:23:54 Rank 20">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 1019 个字)
+                    7 分钟 读完 (大约 1021 个字)
                 </span>
                 
                 
@@ -163,29 +163,29 @@
         <div class="content">
             <p>4/5 Penalty: 09:23:54 Rank 20<br><a id="more"></a></p>
 <p>罚时爆炸，代码调不对，概率论不会，整段垮掉。</p>
-<p>比赛链接在<a href="https://lutece.xyz/contest/detail/8/" target="_blank" rel="noopener">这里</a>。</p>
+<p>比赛链接在<a href="https://acm.uestc.edu.cn/contest/57/summary" target="_blank" rel="noopener">这里</a>。</p>
 <h2 id="A-秦皇炒饭"><a href="#A-秦皇炒饭" class="headerlink" title="A. 秦皇炒饭"></a>A. 秦皇炒饭</h2><p>题目大意：将 \(1\sim n\) 分成最少的组，使得组内元素两两互质。求这个组数。</p>
 <p>第一眼就和 <a href="http://codeforces.com/problemset/problem/776/B" target="_blank" rel="noopener">Codeforces Round #400 B. Sherlock and his girlfiend</a> 混了，然后 XJB 调都不对，然后自闭了。</p>
 <p>最后打了个暴搜，找到了规律，交上去过了……</p>
 <p>结论：当 \(n&gt;1\) 时，分成最小组数为 \(\lfloor \frac{n}{2} \rfloor\)，当 \(n=1\) 的时候输出 \(1\) 次。</p>
 <p>证明：因为 \(2k\) 与 \(2k+1\) 互质，一定能放到一组，偶数不满足两两互质不能放在一组，编号为 \(1\) 的可以放在任意组。</p>
 <p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(1)\)</p>
-<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/63.cpp" target="_blank" rel="noopener">这里</a>。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2347.cpp" target="_blank" rel="noopener">这里</a>。</p>
 <h2 id="B-摩天乐"><a href="#B-摩天乐" class="headerlink" title="B. 摩天乐"></a>B. 摩天乐</h2><p>题目大意：一栋楼的左边和右边都有电梯，上下移动只能坐电梯，求一点到另一点的最小距离。</p>
 <p>这题 WA 了 \(5\) 遍真是没救了……</p>
 <p>只需要做出从左边电梯下楼和从右边电梯下楼的答案，然后输出小的即可。</p>
 <p>注意同层情况……</p>
 <p>时间复杂度：\(\mathcal{O}(T)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
-<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/64.cpp" target="_blank" rel="noopener">这里</a>。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2349.cpp" target="_blank" rel="noopener">这里</a>。</p>
 <h2 id="C-Akane"><a href="#C-Akane" class="headerlink" title="C. Akane"></a>C. Akane</h2><p>题目大意：给定长度为 \(n\) 的序列 \(A\)，重新排列 \(A\)，使有尽可能多的相邻数对，满足 \((A_i+A_{i+1})\bmod m \equiv 0\)。</p>
 <p>把式子拆开：\((A_i\bmod m+A_{i+1}\bmod m)\bmod m \equiv 0\)</p>
 <p>于是，我们对于每一对 \((i,j),\ i+j=m\) 进行配对即可。注意个数相等和个数等于 \(0\) 情况的判断。</p>
 <p>时间复杂度：\(\mathcal{O}(n+m)\)，空间复杂度：\(\mathcal{O}(m)\)。</p>
-<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/65.cpp" target="_blank" rel="noopener">这里</a>。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2350.cpp" target="_blank" rel="noopener">这里</a>。</p>
 <h2 id="D-强哥打电话"><a href="#D-强哥打电话" class="headerlink" title="D. 强哥打电话"></a>D. 强哥打电话</h2><p>题目大意：两个人会在一些时间段内打电话，另一个人给这两个中的一个打电话，他从一个时刻开始打，每次打会保持一段时间，如果没打通他会在挂断之后的一段时间后再打，求什么时候能打通。</p>
 <p>把时间转化成秒数做，然后暴力……</p>
 <p>时间复杂度：\(\mathcal{O}(Tn)\)，其中 \(T=86400\)，空间复杂度：\(\mathcal{O}(T)\)。</p>
-<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/66.cpp" target="_blank" rel="noopener">这里</a>。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2351.cpp" target="_blank" rel="noopener">这里</a>。</p>
 <h2 id="E-永远的X日之都—暴击猫"><a href="#E-永远的X日之都—暴击猫" class="headerlink" title="E. 永远的X日之都—暴击猫"></a>E. 永远的X日之都—暴击猫</h2><p>题目大意：打出暴击的概率是 \(p\)，无 buff 加成的普通暴击伤害倍率是 \(k\)，一层 buff 提供的暴击伤害倍率提高 \(a\)，buff 最多叠加层数 \(n\)。求攻击无限次，装备与不装备该装备的总期望伤害之比。</p>
 <p>不会概率论直接自闭了。</p>
 <p>其实可以取攻击次数为 \(10^7\) 等等大数，然后计算。</p>
@@ -201,7 +201,7 @@
 <p>$$<br>m=\sum_{i=0}^n [f_i\times (k+ia)\times p+f_i\times 1\times (1-p)]\\<br>n=pk+(1-p)<br>$$</p>
 <p>可得答案为 \(\frac{m}{n}\)。</p>
 <p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
-<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/67.cpp" target="_blank" rel="noopener">这里</a>。</p>
+<p>代码见<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2352.cpp" target="_blank" rel="noopener">这里</a>。</p>
 
         </div>
         
@@ -310,7 +310,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        34
                     </p>
                 </div>
             </div>
@@ -632,7 +632,7 @@
                 <span class="level-item">OI/ICPC</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">25</span>
+                <span class="level-item tag">26</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/历史/">
@@ -676,6 +676,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/23/电子科技大学第十一届-ACM-趣味程序设计竞赛第三场（正式赛）题解/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="电子科技大学第十一届 ACM 趣味程序设计竞赛第三场（正式赛）题解">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T09:00:00.000Z">2019-11-23</time></div>
+                    <a href="/2019/11/23/电子科技大学第十一届-ACM-趣味程序设计竞赛第三场（正式赛）题解/" class="has-link-black-ter is-size-6">电子科技大学第十一届 ACM 趣味程序设计竞赛第三场（正式赛）题解</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/13/ContestSonic-开发笔记（五）/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="ContestSonic 开发笔记（五）">
@@ -750,25 +769,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/03/2019-年电子科技大学-ACM-ICPC-暑假前集训数学与几何专题解题报告/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训数学与几何专题解题报告">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-02T16:00:00.000Z">2019-07-03</time></div>
-                    <a href="/2019/07/03/2019-年电子科技大学-ACM-ICPC-暑假前集训数学与几何专题解题报告/" class="has-link-black-ter is-size-6">2019 年电子科技大学 ACM-ICPC 暑假前集训数学与几何专题解题报告</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -780,6 +780,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/10/">
@@ -1221,7 +1232,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/数学/">
                         <span class="tag">数学</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
@@ -1291,7 +1302,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/模拟/">
                         <span class="tag">模拟</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
@@ -1340,7 +1351,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/贪心/">
                         <span class="tag">贪心</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
@@ -1369,6 +1380,25 @@
         
         <article class="media">
             
+            <a href="/2019/11/23/电子科技大学第十一届-ACM-趣味程序设计竞赛第三场（正式赛）题解/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="电子科技大学第十一届 ACM 趣味程序设计竞赛第三场（正式赛）题解">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-23T09:00:00.000Z">2019-11-23</time></div>
+                    <a href="/2019/11/23/电子科技大学第十一届-ACM-趣味程序设计竞赛第三场（正式赛）题解/" class="has-link-black-ter is-size-6">电子科技大学第十一届 ACM 趣味程序设计竞赛第三场（正式赛）题解</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
             <a href="/2019/10/13/ContestSonic-开发笔记（五）/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="ContestSonic 开发笔记（五）">
@@ -1443,25 +1473,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/07/03/2019-年电子科技大学-ACM-ICPC-暑假前集训数学与几何专题解题报告/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="2019 年电子科技大学 ACM-ICPC 暑假前集训数学与几何专题解题报告">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-02T16:00:00.000Z">2019-07-03</time></div>
-                    <a href="/2019/07/03/2019-年电子科技大学-ACM-ICPC-暑假前集训数学与几何专题解题报告/" class="has-link-black-ter is-size-6">2019 年电子科技大学 ACM-ICPC 暑假前集训数学与几何专题解题报告</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1473,6 +1484,17 @@
             归档
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/10/">
@@ -1914,7 +1936,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/数学/">
                         <span class="tag">数学</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
@@ -1984,7 +2006,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/模拟/">
                         <span class="tag">模拟</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
@@ -2033,7 +2055,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/贪心/">
                         <span class="tag">贪心</span>
-                        <span class="tag is-grey">5</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 

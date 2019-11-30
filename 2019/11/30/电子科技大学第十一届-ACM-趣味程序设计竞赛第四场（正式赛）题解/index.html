@@ -2,19 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: 分块 - HeRaNO</title>
+<title>电子科技大学第十一届 ACM 趣味程序设计竞赛第四场（正式赛）题解 - HeRaNO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="HeRaNO">
-<meta property="og:url" content="https://herano.github.io/tags/分块/index.html">
+    <meta name="description" content="正式赛第二场">
+<meta name="keywords" content="模拟,贪心,数学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电子科技大学第十一届 ACM 趣味程序设计竞赛第四场（正式赛）题解">
+<meta property="og:url" content="https://herano.github.io/2019/11/30/电子科技大学第十一届-ACM-趣味程序设计竞赛第四场（正式赛）题解/index.html">
 <meta property="og:site_name" content="HeRaNO">
+<meta property="og:description" content="正式赛第二场">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-11-29T05:28:26.292Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HeRaNO">
+<meta name="twitter:title" content="电子科技大学第十一届 ACM 趣味程序设计竞赛第四场（正式赛）题解">
+<meta name="twitter:description" content="正式赛第二场">
 <meta name="twitter:image" content="https://herano.github.io/images/og_image.png">
 
 
@@ -87,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="HeRaNO" height="28">
+                <img src="/images/logo.svg" alt="电子科技大学第十一届 ACM 趣味程序设计竞赛第四场（正式赛）题解" height="28">
             
             </a>
         </div>
@@ -110,6 +115,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -124,23 +133,12 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">分块</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-11T16:00:00.000Z">2019-05-12</time>
+                <time class="level-item has-text-grey" datetime="2019-11-30T09:00:00.000Z">2019-11-30</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
@@ -150,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    38 分钟 读完 (大约 5766 个字)
+                    14 分钟 读完 (大约 2058 个字)
                 </span>
                 
                 
@@ -159,21 +157,75 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/05/12/2019-年电子科技大学-ACM-ICPC-暑假前集训数据结构专题解题报告/">2019 年电子科技大学 ACM-ICPC 暑假前集训数据结构专题解题报告</a>
+                电子科技大学第十一届 ACM 趣味程序设计竞赛第四场（正式赛）题解
             
         </h1>
         <div class="content">
-            <p>14/15/15<br></p>
+            <p>正式赛第二场</p>
+<a id="more"></a>
+<h2 id="A-天气之子"><a href="#A-天气之子" class="headerlink" title="A. 天气之子"></a>A. 天气之子</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定 \(n\) 个数 \(a_1,a_2,\ldots ,a_n\)，从左到右模拟以下过程：如果这个数大于 \(w\)，计数器加 \(a_i-w\)，后面所有数加 \(k\)。询问最后计数器的值。</p>
+<p>数据范围：\(1\le n\le 2\times 10^5,1\le k,a_i\le 10^4\)。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>显然有一个 \(\mathcal{O}(n^2)\) 的做法，即直接模拟这个过程。</p>
+<p>仍然考虑从左向右枚举。对于后面的数整体加 \(k\) 的这个操作，考虑维护增量，即可将暴力地给后面所有数都加 \(k\) 的这部分时间省下。</p>
+<p>需要注意数据范围和数据类型的使用。</p>
+<p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
+<p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2345.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2345.java" target="_blank" rel="noopener">Java</a>。</p>
+<p>Problem Setter: Vingying</p>
+<p>P.S. P for Park ^ ^</p>
+<h2 id="B-夜路"><a href="#B-夜路" class="headerlink" title="B. 夜路"></a>B. 夜路</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个 \(n\times 2\) 的网格，如果上下两行出现不同列有障碍或者一行两个格子有障碍则无法通行。求从左上角走到底部有多少种方案。</p>
+<p>数据范围：\(1\le n\le 50\)。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>考虑如果可以走到一行，那么走到这行就有这行空位数那么多种方法。在判断掉非法状态后，利用乘法原理统计即可。如果能够走到底部，答案为 \(2\) 的 <code>..</code> 行数次方（除去第一行）。</p>
+<p>这道题有一个显而易见的 DP 做法。实际上，DP 与这样统计是等价的。还需要注意范围与数据类型的使用。</p>
+<p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(n)\) 或 \(\mathcal{O}(1)\)。</p>
+<p>（因为每行判断是否合法只取决于这一行与上一行的状态，可以只保存这两行的状态以达到空间最优，但是对于本题来说没有太大必要）</p>
+<p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2342.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2342.java" target="_blank" rel="noopener">Java</a>。</p>
+<p>Problem Setter: OrangeRain</p>
+<h2 id="C-蔚蓝"><a href="#C-蔚蓝" class="headerlink" title="C. 蔚蓝"></a>C. 蔚蓝</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定两个数列，每一个都有 \(n\) 个数，需要在两个数列中分别取出 \(\frac{n}{2}\) 个数，取出的数下标互不相同。这些数将组成一个长度为 \(n\) 的新数列，求这个新数列的所有元素之和的最小值。</p>
+<p>数据范围：\(1\le n\le 10^3,1\le a_i,b_i\le 10^4\)。</p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>本题可以看成一个集合划分问题，但是由于这道题的特殊性，我们可以换用其他解法。</p>
+<p>首先，我们把原数组中的一个当做最终的答案数组，这里不妨设将 \(\{a_i\}\) 作为最终的答案数组。但是显然这个答案是错的，因为要恰好挑出 \(\frac{n}{2}\) 个数组 \(\{b_i\}\) 中的元素，我们还需要把其中 \(\frac{n}{2}\) 个 \(a_i\) 换成 \(b_i\)。把一个 \(a_i\) 换成 \(b_i\)，所有元素和就会加上 \(b_i-a_i\)。为了使得这个和最小，我们肯定要让加的这个值尽可能小，那么根据贪心的思路，我们选择最小的 \(\frac{n}{2}\) 个 \(b_i-a_i\) 加到所有元素和里，所得的结果就是答案了。</p>
+<p>具体证明可以利用调整法，对于最优状态下任意一个被换走的 \(a_i\)，如果我们选择另一对 \(a_i,b_i\) 换，那么 \(b_i-a_i\) 的值将不小于目前这对，因此换走将可能会使答案变劣，换用相等的 \(b_i-a_i\) 的话对答案无影响，只是影响选择方案罢了。</p>
+<p><del>（这道题甚至可以输出方案，扩大范围或者问有多少种方案）（废话</del></p>
+<p>这里并没有卡排序，写复杂度合理的各种排序算法均可，根据题目数据范围写桶排序或者基数排序也可（但是需要注意负数的处理）。</p>
+<p>时间复杂度：\(\mathcal{O}(n^2)\) 或 \(\mathcal{O}(n\log n)\) 或 \(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(n)\) 或 \(\mathcal{O}(A)\)。</p>
+<p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2330.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2330.java" target="_blank" rel="noopener">Java</a>。</p>
+<p>Problem Setter: hbji</p>
+<h2 id="D-外星货币"><a href="#D-外星货币" class="headerlink" title="D. 外星货币"></a>D. 外星货币</h2><h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><p>求集合 \(S\) 的最小大小。这个集合内的数的子集进行加减运算，可以凑出 \(1\) 到 \(n\) 之间的所有整数，要求每个数不能和自己进行加减运算。</p>
+<p>数据范围：\(1\le n\le 10^{18}\)。</p>
+<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>考虑这个集合 \(S\)，假设它满足要求，那么它可以表示的数的范围为 \([1,p]\)，其中 \(p\) 为集合 \(S\) 内所有元素的和。如果再向其中加入一个数 \(a\)，那么与 \(a\) 组合能表示的数的范围为 \([a-p,a+p]\)。为了使加入 \(a\) 后满足要求，并且使得新表示的元素不与之前可以表示的数重复（即，不浪费新生成的数，这样可以使得集合尽可能小），则需要使得 \(a-p=p+1\)，因此 \(a=2p+1\)。</p>
+<p>这样考虑递推，根据性质，如果集合 \(S\) 内元素和为 \(p\)，那么集合 \(S\) 可以为 \(n\in [1,p]\) 时的答案。新加入的数永远为 \(2p+1\)。记 \(S_n\) 为当 \(|S|=n\) 时 \(S\) 内所有元素和，那么有如下递推关系：</p>
+<p>$$<br>S_{n+1}=S_n+2S_n+1=3S_n+1<br>$$</p>
+<p>当 \(n=1\) 时，\(S_1=1\)。</p>
+<p>因为要求最小数目，所以答案为第一个 \(n\le S_p\) 的位置 \(p\)。</p>
+<p>根据递推关系，可知通项为 \(S_n=\frac{3^n-1}{2}\)。这个数列在第 \(40\) 项时就已经超过了最大可能的 \(n\)，所以只需要求出这个数列的前 \(40\) 项进行比较即可。</p>
+<p>还有一份来自 ZXyaang 的题解。对于一种货币的面值，如果计入答案的话可以有三种选择：加，减或者不选。只要规定一个值是加，比他小的所有面值都可以选择三态中的一个，所以每多选一个货币新增 \(3^n\) 个状态。答案就是 \(3^n\) 的前缀和。</p>
+<p>时间复杂度：\(\mathcal{O}(\log n)\)，空间复杂度：\(\mathcal{O}(\log n)\)。</p>
+<p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2333.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2333.java" target="_blank" rel="noopener">Java</a>。</p>
+<p>Problem Setter: qqq17770027225</p>
+<h2 id="E-马拉松"><a href="#E-马拉松" class="headerlink" title="E. 马拉松"></a>E. 马拉松</h2><h3 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定 \(n\) 条匀速直线的运动轨迹，这些轨迹都经过 \(y=ax+b\) 上的互不相同的点。问所有人的总相遇次数。</p>
+<p>数据范围：\(1\le n\le 10^5,|a|,|v_x|,|v_y|\le 100\)。</p>
+<h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h3><p><del>是不是感觉和大地的裂变有点像？</del></p>
+<p>考虑两人相遇满足什么条件。考虑两人起始点分别为 \((p,ap+b),(q,aq+b)\)，位移向量为 \((v_{xp}t,v_{yp}t),(v_{xq}t,v_{yq}t)\)。则：</p>
+<p>$$<br>\begin{cases}<br>p+v_{xp}t=q+v_{xq}t\\<br>ap+b+v_{yp}t=aq+b+v_{yq}t<br>\end{cases}<br>$$</p>
+<p>对于第一个式子，移项可得 \((v_{xp}-v_{xq})t=q-p\)。由题，\(p\neq q\) 且 \(t\neq 0\)，由此 \(v_{xp}\neq v_{xq}\)。</p>
+<p>两式联立，可化简为 \(a(v_{xp}-v_{xq})=v_{yp}-v_{yq}\)，进一步地，\(av_{xq}-v_{yq}=av_{xp}-v_{yp}\)。</p>
+<p>即，如果两人相遇，需要满足：\(av_{xq}-v_{yq}=av_{xp}-v_{yp}\) 且 \(v_{xp}\neq v_{xq}\)。利用数组统计一下即可。注意负数的处理。</p>
+<p><del>（原来想卡 log 的但是被 Java 无情地拒绝了）</del></p>
+<p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(av_x^2)\)。</p>
+<p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2327.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2327.java" target="_blank" rel="noopener">Java</a>。</p>
+<p>Problem Setter: santongding</p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/05/12/2019-年电子科技大学-ACM-ICPC-暑假前集训数据结构专题解题报告/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/数学/">数学</a>, <a class="has-link-grey -link" href="/tags/模拟/">模拟</a>, <a class="has-link-grey -link" href="/tags/贪心/">贪心</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -183,9 +235,43 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/23/电子科技大学第十一届-ACM-趣味程序设计竞赛第三场（正式赛）题解/">
+                <span class="level-item">电子科技大学第十一届 ACM 趣味程序设计竞赛第三场（正式赛）题解</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'ee72bcab76c2f4174f33',
+        clientSecret: '31d9ec1c309ad83b7aaae7b81e40c296dceb8ea2',
+        id: '22ee8cf7ad89db2918bb7f3c91f0cf9f',
+        repo: 'HeRaNO.github.io',
+        owner: 'HeRaNO',
+        admin: "HeRaNO"
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
 </div>
                 
 
@@ -288,6 +374,77 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#A-天气之子">
+        <span class="has-mr-6">1</span>
+        <span>A. 天气之子</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述">
+        <span class="has-mr-6">1.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解">
+        <span class="has-mr-6">1.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#B-夜路">
+        <span class="has-mr-6">2</span>
+        <span>B. 夜路</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-1">
+        <span class="has-mr-6">2.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-1">
+        <span class="has-mr-6">2.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C-蔚蓝">
+        <span class="has-mr-6">3</span>
+        <span>C. 蔚蓝</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-2">
+        <span class="has-mr-6">3.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-2">
+        <span class="has-mr-6">3.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#D-外星货币">
+        <span class="has-mr-6">4</span>
+        <span>D. 外星货币</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-3">
+        <span class="has-mr-6">4.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-3">
+        <span class="has-mr-6">4.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#E-马拉松">
+        <span class="has-mr-6">5</span>
+        <span>E. 马拉松</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-4">
+        <span class="has-mr-6">5.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-4">
+        <span class="has-mr-6">5.2</span>
+        <span>题解</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -1964,7 +2121,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="HeRaNO" height="28">
+                    <img src="/images/logo.svg" alt="电子科技大学第十一届 ACM 趣味程序设计竞赛第四场（正式赛）题解" height="28">
                 
                 </a>
                 <p class="is-size-7">

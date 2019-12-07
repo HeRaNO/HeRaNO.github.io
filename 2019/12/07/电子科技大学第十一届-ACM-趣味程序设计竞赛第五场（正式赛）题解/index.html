@@ -16,7 +16,7 @@
 <meta property="og:description" content="正式赛第三场">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-12-02T09:39:23.143Z">
+<meta property="og:updated_time" content="2019-12-07T15:58:36.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="电子科技大学第十一届 ACM 趣味程序设计竞赛第五场（正式赛）题解">
 <meta name="twitter:description" content="正式赛第三场">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    13 分钟 读完 (大约 1923 个字)
+                    14 分钟 读完 (大约 2165 个字)
                 </span>
                 
                 
@@ -184,6 +184,11 @@
 <p>数据范围：\(n\ge 2\)。</p>
 <h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>结论是，\(E(X)=a_1-a_2\)。</p>
 <p>考虑这个过程进行到倒数第二步，即序列只剩下两个数的时候。可以发现，除了前两个数，后面的数对于每种情况正负出现次数相等。也就是说，对于 \(3\le i\le n\)，对最后期望的贡献 \(F(a_i)=-F(-a_i)\)，所以在计算期望的时候，后面的数没有贡献。第一个数的贡献恒正，第二个数由于在最后一步被减掉，所以贡献恒负。因此有之前的结论。</p>
+<p>下面是出题人给出的关于 \(i\ge 3\) 的元素贡献为 \(0\) 的证明：</p>
+<p>由于取数对是随机的，那么第一轮取数取到 \(a_i,a_{i+1}\) 与取到 \(a_{i+1},a_{i+2}\) 的概率是相等的。</p>
+<p>那么经过操作后，组成的序列为 \(a_1,a_2,\ldots ,a_i-a_{i+1},a_{i+2},\ldots ,a_n\) 与 \(a_1,a_2,\ldots ,a_i,a_{i+1}-a_{i+2},\ldots ,a_n\) 的概率是相等的。我们记前者为 (1) 式，后者为 (2) 式。</p>
+<p>在第二次操作中，在 (1) 式中选择 \(a_i-a_{i+1},a_{i+2}\) 与 在 (2) 式中选择 \(a_i,a_{i+1}-a_{i+2}\) 的概率是相等的，我们记为 \(p\)。这两种选择对于答案的贡献为 \((a_i-a_{i+1}-a_{i+2})p+(a_i-a_{i+1}+a_{i+2})p=2p(a_i-a_{i+1})\)，这也是区间 \([a_i,a_{i+2}]\) 的贡献。</p>
+<p>类似区间 DP 的思想，我们可以合并这些小区间得到整个区间的情况。</p>
 <p>这里不需要把 \(n\) 个数全部输入进来。只需要读入前两个数即可。</p>
 <p>时间复杂度：\(\mathcal{O}(1)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
 <p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2321.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2321.java" target="_blank" rel="noopener">Java</a>。</p>

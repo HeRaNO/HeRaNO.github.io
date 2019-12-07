@@ -2,19 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: 数学 - HeRaNO</title>
+<title>电子科技大学第十一届 ACM 趣味程序设计竞赛第五场（正式赛）题解 - HeRaNO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="HeRaNO">
-<meta property="og:url" content="https://herano.github.io/tags/数学/index.html">
+    <meta name="description" content="正式赛第三场">
+<meta name="keywords" content="模拟,贪心,数学,概率与期望,欧拉路径">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电子科技大学第十一届 ACM 趣味程序设计竞赛第五场（正式赛）题解">
+<meta property="og:url" content="https://herano.github.io/2019/12/07/电子科技大学第十一届-ACM-趣味程序设计竞赛第五场（正式赛）题解/index.html">
 <meta property="og:site_name" content="HeRaNO">
+<meta property="og:description" content="正式赛第三场">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2019-12-02T09:39:23.143Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HeRaNO">
+<meta name="twitter:title" content="电子科技大学第十一届 ACM 趣味程序设计竞赛第五场（正式赛）题解">
+<meta name="twitter:description" content="正式赛第三场">
 <meta name="twitter:image" content="https://herano.github.io/images/og_image.png">
 
 
@@ -87,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="HeRaNO" height="28">
+                <img src="/images/logo.svg" alt="电子科技大学第十一届 ACM 趣味程序设计竞赛第五场（正式赛）题解" height="28">
             
             </a>
         </div>
@@ -110,6 +115,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -124,17 +133,6 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">数学</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
@@ -159,21 +157,74 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/12/07/电子科技大学第十一届-ACM-趣味程序设计竞赛第五场（正式赛）题解/">电子科技大学第十一届 ACM 趣味程序设计竞赛第五场（正式赛）题解</a>
+                电子科技大学第十一届 ACM 趣味程序设计竞赛第五场（正式赛）题解
             
         </h1>
         <div class="content">
             <p>正式赛第三场</p>
+<a id="more"></a>
+<h2 id="A-Nico-Nico-Ni"><a href="#A-Nico-Nico-Ni" class="headerlink" title="A. Nico~Nico~Ni~"></a>A. Nico~Nico~Ni~</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个字符串，问字符串中 <code>NicoNicoNi</code> 这个子串有多少个。</p>
+<p>数据范围：\(1\le |S|\le 10^5\)。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>按题意模拟即可，按顺序每次取出长度为 \(10\) 的子串，判断它是否为 <code>NicoNicoNi</code> 即可。</p>
+<p><del>有没有写 KMP，AC 自动机，后缀数组，后缀自动机的童鞋啊。</del></p>
+<p>时间复杂度：\(\mathcal{O}(|S|)\)，空间复杂度：\(\mathcal{O}(|S|)\)。</p>
+<p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2317.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2317.java" target="_blank" rel="noopener">Java</a>。</p>
+<p><del>我曾经出过类似的题……</del></p>
+<p>Problem Setter: Sugarii</p>
+<h2 id="B-Help-Fat-Dog-Kill-Bugs"><a href="#B-Help-Fat-Dog-Kill-Bugs" class="headerlink" title="B. Help Fat_Dog Kill Bugs"></a>B. Help Fat_Dog Kill Bugs</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>有 \(n\) 个数 \(a_i\)。对于每个数，你可以给 \(Y\) 加 \(a_i\)，或者给 \(X\) 减 \(a_i\)。求最终 \(Y^2-X^2\) 的最大值。</p>
+<p>数据范围：\(1\le n\le 10^4,0&lt;X\le Y\le 100\)。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>结论是，把这 \(n\) 个数全部加给 \(Y\)，最后 \(Y^2-X^2\) 是最大的。</p>
+<p>考虑我们给 \(Y\) 加了 \(a\)，给 \(X\) 减了 \(b\)。那么 \(a,b\ge 0\) 且 \(a+b=\sum_{i=1}^n a_i\)。最后答案变为 \((Y+a)^2-(X-b)^2\)，化简整理为 \(Y^2-X^2+2Ya+2Xb+a^2-b^2\)。</p>
+<p>考虑到 \(\sum_{i=1}^n a_i\) 为一个定值，不妨设 \(k=\sum_{i=1}^n a_i\)。那么 \(b=k-a\)。由于要使得 \(Y^2-X^2+2Ya+2Xb+a^2-b^2\) 这个值最大，\(Y^2-X^2\) 为定值，因此目标要使得 \(2Ya+2Xb+a^2-b^2\) 最大。代入 \(b=k-a\)，得到 \(2(k-X+Y)a+2kX-k^2\)，我们即要使这个式子的值最大。首先观察得这个是关于 \(a\) 的一次函数，由于 \(Y\ge X\)，那么斜率一定是正数，那么最大值点就出现在定义域的最右端。即 \(a=k\) 时这个式子的值最大。至此我们证明了前面贪心的策略是正确的。</p>
+<p>需要注意数据范围和数据类型的使用。</p>
+<p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
+<p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2323.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2323.java" target="_blank" rel="noopener">Java</a>。</p>
+<p>Problem Setter: Kaiser</p>
+<h2 id="C-Expected-Score"><a href="#C-Expected-Score" class="headerlink" title="C. Expected Score"></a>C. Expected Score</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>有 \(n\) 个数 \(a_i\)。每次可以均匀随机选一个除了最后一个位置之外的位置，把这个位置的值改为这个位置的值与后一个位置的值之差，然后把后一个位置的数删去。这个过程一直进行，直到整个数列就剩一个数。求剩下的这个数的期望大小。</p>
+<p>数据范围：\(n\ge 2\)。</p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><p>结论是，\(E(X)=a_1-a_2\)。</p>
+<p>考虑这个过程进行到倒数第二步，即序列只剩下两个数的时候。可以发现，除了前两个数，后面的数对于每种情况正负出现次数相等。也就是说，对于 \(3\le i\le n\)，对最后期望的贡献 \(F(a_i)=-F(-a_i)\)，所以在计算期望的时候，后面的数没有贡献。第一个数的贡献恒正，第二个数由于在最后一步被减掉，所以贡献恒负。因此有之前的结论。</p>
+<p>这里不需要把 \(n\) 个数全部输入进来。只需要读入前两个数即可。</p>
+<p>时间复杂度：\(\mathcal{O}(1)\)，空间复杂度：\(\mathcal{O}(1)\)。</p>
+<p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2321.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2321.java" target="_blank" rel="noopener">Java</a>。</p>
+<p>Problem Setter: fatdog_jo</p>
+<h2 id="D-Linear-Algebra"><a href="#D-Linear-Algebra" class="headerlink" title="D. Linear Algebra"></a>D. Linear Algebra</h2><h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><p>给了 \(n\) 个矩阵，他们重新排列之后一定能乘起来。问重新排列后乘起来，这个矩阵的最大可能大小。</p>
+<p>数据范围：\(1\le n\le 10^5,1\le x_i,y_i\le 100\)。</p>
+<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><p>如果我们把重新排列之后的矩阵大小写成一排，大概类似于下面的形式：</p>
+<p>$$<br>a_1\times a_2,a_2\times a_3,\ldots ,a_{n}\times a_{n+1}<br>$$</p>
+<p>可以看出，这是一个从 \(a_1\) 出发到 \(a_{n+1}\) 的一条欧拉通路。欧拉通路是指从起点出发，经过边均不同到达终点的一条简单路径，也就是「一笔画问题」。</p>
+<p>对于求解这样的问题，如果学过图论的话就可以很轻松地用一些判定定理进行判断。性质是：统计每个 \(x_i,y_i\) 的出现次数，则按题目保证，一定没有或只有两个次数为奇数。如果没有次数为奇数，则输出出现次数不为 \(0\) 对应的大小的平方，否则输出两个出现次数为奇数的大小的乘积。</p>
+<p>证明比较简单，观察前面的序列，除了 \(a_1\) 和 \(a_{n+1}\)，其余数都出现了偶数次，如果 \(a_1=a_{n+1}\)，那么就对应上述情况的第一种，否则对应第二种。</p>
+<p>时间复杂度：\(\mathcal{O}(n)\)，空间复杂度：\(\mathcal{O}(x)\)。</p>
+<p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2338.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2338.java" target="_blank" rel="noopener">Java</a>。</p>
+<p>Problem Setter: Macaron_lin</p>
+<h2 id="E-Sugarii-and-String"><a href="#E-Sugarii-and-String" class="headerlink" title="E. Sugarii and String"></a>E. Sugarii and String</h2><h3 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h3><p>给了一个长度为 \(n\) 的 \(01\) 字符串，按照接下来的规则生成一个无限长度的字符串：</p>
+<ul>
+<li>将自己复制一遍接到原字符串后面；</li>
+<li>将复制过去的部分 \(01\) 翻转，即 \(1\) 变成 \(0\)，\(0\) 变成 \(1\)。</li>
+</ul>
+<p>询问这个无限字符串的第 \(k\) 位是什么。</p>
+<p>数据范围：\(1\le n\le 10^5,1\le k\le 10^{18}\)。</p>
+<h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h3><p>首先我们考虑 \(k\) 位置对应的原来的字符串的字符位置。虽然字符串以倍增方式增加，但是我们还是可以把无限字符串按长度为 \(n\) 分块，每块要么与原字符串相同，要么 \(01\) 是反转的。因此，可以计算出第 \(k\) 个字符对应原字符串的第 \((k-1)\bmod n+1\) 个字符。</p>
+<p>我们考虑这一块是和原字符串相同的还是翻转的。第 \(k\) 个字符所在块为 \(\lfloor \frac{k-1}{n}\rfloor +1\)。记 \(p\) 为第 \(k\) 个字符所在块，并且在第 \(i\) 次新生成的块中，那么 \(2^{i-1}\le p\le 2^i\)，我们将其减去 \(2^{i-1}\)，就知道了它是由之前的哪个块经 \(01\) 翻转得到的。每次我们找到小于等于 \(p\) 的最后一个二的幂次，然后每次让 \(p\) 减去这个值，并记录一共翻转了多少次。直到 \(p=0\) 时停止。</p>
+<p>观察这个过程，其实我们减去的这个二的幂次是 \(p\) 的二进制中所有等于 \(1\) 的位。实际上，如果所在块编号从 \(0\) 开始，块编号的二进制表示中 \(1\) 为偶数个的话，这个块就与原字符串相同，否则 \(01\) 互换。</p>
+<p>因此，记块编号的二进制表示中 \(1\) 为奇数个时 \(p=1\)，否则 \(p=0\)，答案就是字符串中第 \((k-1)\bmod n+1\) 个字符与 \(p\) 的异或。</p>
+<p>时间复杂度：\(\mathcal{O}(n)\) 或 \(\mathcal{O}(n+\log k)\)，空间复杂度：\(\mathcal{O}(n)\)。</p>
+<p>参考程序：<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2313.cpp" target="_blank" rel="noopener">C++</a>，<a href="https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2313.java" target="_blank" rel="noopener">Java</a>。</p>
+<p>Problem Setter: cjj490168650</p>
+<p>至此，电子科技大学第十一届 ACM 趣味程序设计竞赛就结束了。完结撒花~</p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/12/07/电子科技大学第十一届-ACM-趣味程序设计竞赛第五场（正式赛）题解/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/数学/">数学</a>, <a class="has-link-grey -link" href="/tags/概率与期望/">概率与期望</a>, <a class="has-link-grey -link" href="/tags/模拟/">模拟</a>, <a class="has-link-grey -link" href="/tags/欧拉路径/">欧拉路径</a>, <a class="has-link-grey -link" href="/tags/贪心/">贪心</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -183,477 +234,43 @@
 
 
 
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-30T09:00:00.000Z">2019-11-30</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    14 分钟 读完 (大约 2071 个字)
-                </span>
-                
-                
-            </div>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/30/电子科技大学第十一届-ACM-趣味程序设计竞赛第四场（正式赛）题解/">
+                <span class="level-item">电子科技大学第十一届 ACM 趣味程序设计竞赛第四场（正式赛）题解</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/30/电子科技大学第十一届-ACM-趣味程序设计竞赛第四场（正式赛）题解/">电子科技大学第十一届 ACM 趣味程序设计竞赛第四场（正式赛）题解</a>
-            
-        </h1>
-        <div class="content">
-            <p>正式赛第二场</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/30/电子科技大学第十一届-ACM-趣味程序设计竞赛第四场（正式赛）题解/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
         
     </div>
 </div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: 'ee72bcab76c2f4174f33',
+        clientSecret: '31d9ec1c309ad83b7aaae7b81e40c296dceb8ea2',
+        id: 'dc332039c409cf3dcaa2d3012a3e5a78',
+        repo: 'HeRaNO.github.io',
+        owner: 'HeRaNO',
+        admin: "HeRaNO"
+    })
+    gitalk.render('comment-container')
+</script>
 
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-23T09:00:00.000Z">2019-11-23</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    10 分钟 读完 (大约 1571 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/11/23/电子科技大学第十一届-ACM-趣味程序设计竞赛第三场（正式赛）题解/">电子科技大学第十一届 ACM 趣味程序设计竞赛第三场（正式赛）题解</a>
-            
-        </h1>
-        <div class="content">
-            <p>正式赛第一场</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/11/23/电子科技大学第十一届-ACM-趣味程序设计竞赛第三场（正式赛）题解/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
     </div>
 </div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-23T06:06:31.000Z">2019-08-23</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    11 分钟 读完 (大约 1645 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/08/23/Educational-Codeforces-Round-71-Rated-for-Div-2-题解/">Educational Codeforces Round 71 (Rated for Div. 2) 题解</a>
-            
-        </h1>
-        <div class="content">
-            <p>(5-1)/7 Penalty: 224 Rank: 1243/1082</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/08/23/Educational-Codeforces-Round-71-Rated-for-Div-2-题解/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-23T06:06:31.000Z">2019-08-23</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    23 分钟 读完 (大约 3487 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/08/23/2019-中国大学生程序设计竞赛（CCPC）网络选拔赛验题报告与部分题解/">2019 中国大学生程序设计竞赛（CCPC）网络选拔赛验题报告与部分题解</a>
-            
-        </h1>
-        <div class="content">
-            <p>2019.8.17 6/11</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/08/23/2019-中国大学生程序设计竞赛（CCPC）网络选拔赛验题报告与部分题解/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-26T10:33:50.000Z">2019-03-26</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    15 分钟 读完 (大约 2241 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/03/26/「CODECHEF-CHEFKNN」大厨与区间染色/">「CODECHEF CHEFKNN」大厨与区间染色</a>
-            
-        </h1>
-        <div class="content">
-            <p>这篇文章为题解翻译，原题解详见<a href="https://discuss.codechef.com/questions/123905/chefknn-editorial" target="_blank" rel="noopener">这里</a>。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/03/26/「CODECHEF-CHEFKNN」大厨与区间染色/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-08T09:30:43.000Z">2018-12-08</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 1040 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/08/UESTC-第十届-ICPC-趣味程序设计竞赛第五场（正式赛）题解/">UESTC 第十届 ICPC 趣味程序设计竞赛第五场（正式赛）题解</a>
-            
-        </h1>
-        <div class="content">
-            <p>3/5 Penalty: 04:00:50 Rank 14<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/12/08/UESTC-第十届-ICPC-趣味程序设计竞赛第五场（正式赛）题解/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-12-02T09:46:27.000Z">2018-12-02</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 836 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/12/02/UESTC-第十届-ICPC-趣味程序设计竞赛第四场（正式赛）题解/">UESTC 第十届 ICPC 趣味程序设计竞赛第四场（正式赛）题解</a>
-            
-        </h1>
-        <div class="content">
-            <p>2/5 Penalty: 02:15:58 Rank 94<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/12/02/UESTC-第十届-ICPC-趣味程序设计竞赛第四场（正式赛）题解/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-24T08:49:52.000Z">2018-11-24</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 1021 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/11/24/UESTC-第十届-ICPC-趣味程序设计竞赛第三场（正式赛）题解/">UESTC 第十届 ICPC 趣味程序设计竞赛第三场（正式赛）题解</a>
-            
-        </h1>
-        <div class="content">
-            <p>4/5 Penalty: 09:23:54 Rank 20<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/11/24/UESTC-第十届-ICPC-趣味程序设计竞赛第三场（正式赛）题解/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-11-17T09:00:00.000Z">2018-11-17</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 分钟 读完 (大约 1326 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/">UESTC 第十届 ICPC 趣味程序设计竞赛第一场（热身赛）题解</a>
-            
-        </h1>
-        <div class="content">
-            <p>5/5 Penalty: 03:36:41 Rank 5<br></p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/11/17/UESTC-第十届-ACM-趣味程序设计竞赛第一场（热身赛）题解/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
 </div>
                 
 
@@ -756,6 +373,77 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#A-Nico-Nico-Ni">
+        <span class="has-mr-6">1</span>
+        <span>A. Nico~Nico~Ni~</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述">
+        <span class="has-mr-6">1.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解">
+        <span class="has-mr-6">1.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#B-Help-Fat-Dog-Kill-Bugs">
+        <span class="has-mr-6">2</span>
+        <span>B. Help Fat_Dog Kill Bugs</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-1">
+        <span class="has-mr-6">2.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-1">
+        <span class="has-mr-6">2.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C-Expected-Score">
+        <span class="has-mr-6">3</span>
+        <span>C. Expected Score</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-2">
+        <span class="has-mr-6">3.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-2">
+        <span class="has-mr-6">3.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#D-Linear-Algebra">
+        <span class="has-mr-6">4</span>
+        <span>D. Linear Algebra</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-3">
+        <span class="has-mr-6">4.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-3">
+        <span class="has-mr-6">4.2</span>
+        <span>题解</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#E-Sugarii-and-String">
+        <span class="has-mr-6">5</span>
+        <span>E. Sugarii and String</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#题目描述-4">
+        <span class="has-mr-6">5.1</span>
+        <span>题目描述</span>
+        </a></li><li>
+        <a class="is-flex" href="#题解-4">
+        <span class="has-mr-6">5.2</span>
+        <span>题解</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -2454,7 +2142,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="HeRaNO" height="28">
+                    <img src="/images/logo.svg" alt="电子科技大学第十一届 ACM 趣味程序设计竞赛第五场（正式赛）题解" height="28">
                 
                 </a>
                 <p class="is-size-7">

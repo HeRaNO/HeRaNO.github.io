@@ -16,7 +16,7 @@
 <meta property="og:description" content="200 分滚粗，T5 白给，180 块钱白给。 数字恐惧症患者慎入">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2019-12-15T17:52:02.248Z">
+<meta property="og:updated_time" content="2019-12-15T18:20:00.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「CSP 2019 十二月」魔数（未解决）">
 <meta name="twitter:description" content="200 分滚粗，T5 白给，180 块钱白给。 数字恐惧症患者慎入">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 437 个字)
+                    3 分钟 读完 (大约 442 个字)
                 </span>
                 
                 
@@ -182,7 +182,7 @@
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>目前还不会，整理一下思路。</p>
 <p>分解每个数得：<br>$$<br>u_0=2^3\times 3947\times 1455859\times 6849701\\<br>u_1=2^2\times 3\times 157\times 373\times 607909278869\\<br>u_2=2^6\times 5\times 1109\times 366901\times 7851359\\<br>u_3=3\times 227\times 1171\times 2129885634067\\<br>u_4=2^3\times 6115411\times 41005034123\\<br>p=998244353\times 2013265921\\<br>2019=3\times 673<br>$$</p>
 <p>用 Python 算出 \(u_0^i, u_1^i\) 的循环节长度是 \(4\)，\(u_2^i, u_3^i, u_4^i\) 的循环节长度是 \(8\)。也就是说每个数的变化情况最多只有 \(8192\) 种。</p>
-<p>接着算：<br>$$<br>u_0\equiv u_3^3\times u_4^5\pmod p\\<br>u_0^2\equiv u_3^2\times u_4^6\pmod p\\<br>u_0^3\equiv u_3\times u_4^7\pmod p\\<br>u_1\equiv u_3^3\times u_4^3\pmod p\\<br>u_1^2\equiv u_3^2\times u_4^2\pmod p\\<br>u_1^3\equiv u_3\times u_4\pmod p\\<br>u_2\equiv u_4^3\pmod p\\<br>$$</p>
+<p>接着算：<br>$$<br>u_0\equiv u_3^3\times u_4^5\pmod p\\<br>u_0^2\equiv u_3^2\times u_4^6\pmod p\\<br>u_0^3\equiv u_3\times u_4^7\pmod p\\<br>u_1\equiv u_3^3\times u_4^3\pmod p\\<br>u_1^2\equiv u_3^2\times u_4^2\pmod p\\<br>u_1^3\equiv u_3\times u_4\pmod p\\<br>u_2\equiv u_4^3\pmod p\\<br>u_3^4\equiv u_4^4\pmod p<br>$$</p>
 <p>打表可以发现这 \(8192\) 个数还是有循环节的，长度是 \(36\)。但是最后 \(74\) 个不太一样。</p>
 <p>这样我们可能只需要维护 \(u_3,u_4\) 就行了。</p>
 <p><del>我一 ICPC 选手为什么要打 CTF 啊</del></p>

@@ -16,7 +16,7 @@
 <meta property="og:description" content="(200-30) 分滚粗，T5 沉了，180 块钱白给。 数字恐惧症患者慎入">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2020-01-02T15:05:55.722Z">
+<meta property="og:updated_time" content="2020-01-09T05:47:33.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「CSP 2019 十二月」魔数">
 <meta name="twitter:description" content="(200-30) 分滚粗，T5 沉了，180 块钱白给。 数字恐惧症患者慎入">
@@ -178,7 +178,7 @@
 <h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><h3 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入 1"></a>样例输入 1</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 4</span><br><span class="line">1 3</span><br><span class="line">3 4</span><br><span class="line">3 3</span><br><span class="line">1 3</span><br></pre></td></tr></table></figure>
 <h3 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出 1"></a>样例输出 1</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">1105</span><br><span class="line">1735</span><br><span class="line">4744</span><br></pre></td></tr></table></figure>
 <h3 id="样例-2"><a href="#样例-2" class="headerlink" title="样例 2"></a>样例 2</h3><p><a href="/downloads/sample_magic.zip">sample_magic.zip</a></p>
-<h2 id="数据范围及时空限制"><a href="#数据范围及时空限制" class="headerlink" title="数据范围及时空限制"></a>数据范围及时空限制</h2><p>$1\le n\le 10^6,1\le q\le 10^5,1\le l\le r\le n$</p>
+<h2 id="数据范围及时空限制"><a href="#数据范围及时空限制" class="headerlink" title="数据范围及时空限制"></a>数据范围及时空限制</h2><p>\(1\le n\le 10^6,1\le q\le 10^5,1\le l\le r\le n\)</p>
 <p>时间限制：\(4\text{s}\)<br>空间限制：\(1\text{GB}\)</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>分解每个数得：<br>$$<br>u_0=2^3\times 3947\times 1455859\times 6849701\\<br>u_1=2^2\times 3\times 157\times 373\times 607909278869\\<br>u_2=2^6\times 5\times 1109\times 366901\times 7851359\\<br>u_3=3\times 227\times 1171\times 2129885634067\\<br>u_4=2^3\times 6115411\times 41005034123\\<br>p=998244353\times 2013265921\\<br>2019=3\times 673<br>$$</p>
 <p>用 Python 算出 \(u_0^i, u_1^i\) 的循环节长度是 \(4\)，\(u_2^i, u_3^i, u_4^i\) 的循环节长度是 \(8\)。也就是说每个数的变化情况最多只有 \(8192\) 种。</p>

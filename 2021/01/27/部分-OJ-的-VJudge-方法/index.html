@@ -2,19 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: 差分约束系统 - HeRaNO</title>
+<title>部分 OJ 的 VJudge 方法 - HeRaNO</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="HeRaNO">
-<meta property="og:url" content="https://herano.github.io/tags/差分约束系统/index.html">
+    <meta name="description" content="主要讲的就是怎么搭（mo）VJudge（yu）">
+<meta name="keywords" content="开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部分 OJ 的 VJudge 方法">
+<meta property="og:url" content="https://herano.github.io/2021/01/27/部分-OJ-的-VJudge-方法/index.html">
 <meta property="og:site_name" content="HeRaNO">
+<meta property="og:description" content="主要讲的就是怎么搭（mo）VJudge（yu）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
+<meta property="og:updated_time" content="2021-01-27T14:48:19.425Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HeRaNO">
+<meta name="twitter:title" content="部分 OJ 的 VJudge 方法">
+<meta name="twitter:description" content="主要讲的就是怎么搭（mo）VJudge（yu）">
 <meta name="twitter:image" content="https://herano.github.io/images/og_image.png">
 
 
@@ -87,7 +92,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="HeRaNO" height="28">
+                <img src="/images/logo.svg" alt="部分 OJ 的 VJudge 方法" height="28">
             
             </a>
         </div>
@@ -110,6 +115,10 @@
             <div class="navbar-end">
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -124,33 +133,22 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">差分约束系统</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-06-08T16:00:00.000Z">2019-06-09</time>
+                <time class="level-item has-text-grey" datetime="2021-01-27T14:19:07.000Z">2021-01-27</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/OI-ICPC/">OI/ICPC</a>
+                <a class="has-link-grey -link" href="/categories/开发/">开发</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    33 分钟 读完 (大约 4917 个字)
+                    4 分钟 读完 (大约 604 个字)
                 </span>
                 
                 
@@ -159,21 +157,35 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/06/09/2019-年电子科技大学-ACM-ICPC-暑假前集训图论专题解题报告/">2019 年电子科技大学 ACM-ICPC 暑假前集训图论专题解题报告</a>
+                部分 OJ 的 VJudge 方法
             
         </h1>
         <div class="content">
-            <p>10/15/15<br></p>
+            <p>主要讲的就是怎么搭（mo）VJudge（yu）</p>
+<a id="more"></a>
+<p>这个人终于被 VJudge 整崩溃了，寒假集训的时候所有学校都在寒假集训，CF 交题一直 Pending，毕竟 VJudge 只有五个账号，到高峰期一等就是 10 多分钟，十分影响比赛体验（骂骂咧咧）。并且 VJudge 自己 fork 题面的话就不能用数学公式，很气。</p>
+<p>加上 Lutece 的重构需求，大概的想法是将测评端（Judge Server）抽象出来，作为独立的服务来看，测评端的存储题面和数据，接受后端发来的测评和题目请求，返回结果。这样抽象的话就可以兼顾 Lutece 作为题库的需求和 VJudge 需求了。本地 Judge Server 提供题目相关接口和测评接口，后端接口一对接就完事了。爬来的题面渲染问题在前端解决应该就可以了。</p>
+<p>然后就是走一遍 VJudge 老路，看怎么登录和提交代码了。</p>
+<p>主要参考的是 <a href="https://github.com/hnshhslsh/virtual-judge" target="_blank" rel="noopener">VJudge 源码</a>和 <a href="https://github.com/BNUACM/bnuoj-vjudge" target="_blank" rel="noopener">BNUOJ VJudge 源码</a>。两个项目一个是 Java 一个是 C++，互相参考理解可能更快一点吧。</p>
+<p>原型在<a href="https://github.com/HeRaNO/ChickenRibs/tree/master/Lutece-VJudge-prototype" target="_blank" rel="noopener">这里</a>，都是 Python 写的，以供参考。</p>
+<h2 id="Codeforces-Gym"><a href="#Codeforces-Gym" class="headerlink" title="Codeforces / Gym"></a>Codeforces / Gym</h2><p>这个是 VJudge 都会搞的。对于题面来说不是大事，总的题目可以通过 API 调取，然后根据调取结果爬题面即可。</p>
+<p>对于 CF 的登录，需要从页面中拿到 CSRF token，还需要从页面 Cookies 中提取 <code>39ce7</code> 的神仙字段，然后计算出 <code>_tta</code>，作为 POST 的参数。很神仙，根本不懂这个 <code>_tta</code> 算出来有啥用。</p>
+<p>CF 的提交仍然需要 CSRF token，但是不需要 <code>_tta</code> 了，然后提交语言需要参照列表里面的对应值填写，反正也是从页面爬。</p>
+<p>Gym 的提交和 CF 提交大体一样。</p>
+<h2 id="AtCoder"><a href="#AtCoder" class="headerlink" title="AtCoder"></a>AtCoder</h2><p>AtCoder 的登录还是简单一些，只需要 CSRF token 就好了。</p>
+<p>AtCoder 的提交需要一顿好找，需要找到那些标签的名称，语言的话还是从页面爬到，填对应的值即可。</p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/06/09/2019-年电子科技大学-ACM-ICPC-暑假前集训图论专题解题报告/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/开发/">开发</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -183,9 +195,43 @@
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2021/01/24/一些神仙东西/">
+                <span class="level-item">一些神仙东西</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '15e64dc00eaa49f26158',
+        clientSecret: 'd6725ac513fe27005c4145cae854ce6577ded4cb',
+        id: '10a499953d1c51330d9cf6e7c5acaf55',
+        repo: 'HeRaNO.github.io',
+        owner: 'HeRaNO',
+        admin: "HeRaNO"
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
 </div>
                 
 
@@ -288,6 +334,25 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Codeforces-Gym">
+        <span class="has-mr-6">1</span>
+        <span>Codeforces / Gym</span>
+        </a></li><li>
+        <a class="is-flex" href="#AtCoder">
+        <span class="has-mr-6">2</span>
+        <span>AtCoder</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -2058,7 +2123,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="HeRaNO" height="28">
+                    <img src="/images/logo.svg" alt="部分 OJ 的 VJudge 方法" height="28">
                 
                 </a>
                 <p class="is-size-7">

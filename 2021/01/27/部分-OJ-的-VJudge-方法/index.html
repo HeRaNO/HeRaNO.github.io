@@ -16,7 +16,7 @@
 <meta property="og:description" content="主要讲的就是怎么搭（mo）VJudge（yu）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2021-01-27T14:48:19.425Z">
+<meta property="og:updated_time" content="2021-01-28T14:16:26.601Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="部分 OJ 的 VJudge 方法">
 <meta name="twitter:description" content="主要讲的就是怎么搭（mo）VJudge（yu）">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 604 个字)
+                    7 分钟 读完 (大约 1074 个字)
                 </span>
                 
                 
@@ -168,12 +168,29 @@
 <p>然后就是走一遍 VJudge 老路，看怎么登录和提交代码了。</p>
 <p>主要参考的是 <a href="https://github.com/hnshhslsh/virtual-judge" target="_blank" rel="noopener">VJudge 源码</a>和 <a href="https://github.com/BNUACM/bnuoj-vjudge" target="_blank" rel="noopener">BNUOJ VJudge 源码</a>。两个项目一个是 Java 一个是 C++，互相参考理解可能更快一点吧。</p>
 <p>原型在<a href="https://github.com/HeRaNO/ChickenRibs/tree/master/Lutece-VJudge-prototype" target="_blank" rel="noopener">这里</a>，都是 Python 写的，以供参考。</p>
-<h2 id="Codeforces-Gym"><a href="#Codeforces-Gym" class="headerlink" title="Codeforces / Gym"></a>Codeforces / Gym</h2><p>这个是 VJudge 都会搞的。对于题面来说不是大事，总的题目可以通过 API 调取，然后根据调取结果爬题面即可。</p>
+<h2 id="Codeforces-Gym-SGU"><a href="#Codeforces-Gym-SGU" class="headerlink" title="Codeforces / Gym / SGU"></a>Codeforces / Gym / SGU</h2><p>这个是 VJudge 都会搞的。对于题面来说不是大事，总的题目可以通过 API 调取，然后根据调取结果爬题面即可。</p>
 <p>对于 CF 的登录，需要从页面中拿到 CSRF token，还需要从页面 Cookies 中提取 <code>39ce7</code> 的神仙字段，然后计算出 <code>_tta</code>，作为 POST 的参数。很神仙，根本不懂这个 <code>_tta</code> 算出来有啥用。</p>
 <p>CF 的提交仍然需要 CSRF token，但是不需要 <code>_tta</code> 了，然后提交语言需要参照列表里面的对应值填写，反正也是从页面爬。</p>
 <p>Gym 的提交和 CF 提交大体一样。</p>
+<p>SGU 的题放在 CF 上了，所以这部分也和 CF 一样。</p>
 <h2 id="AtCoder"><a href="#AtCoder" class="headerlink" title="AtCoder"></a>AtCoder</h2><p>AtCoder 的登录还是简单一些，只需要 CSRF token 就好了。</p>
 <p>AtCoder 的提交需要一顿好找，需要找到那些标签的名称，语言的话还是从页面爬到，填对应的值即可。</p>
+<h2 id="Aizu"><a href="#Aizu" class="headerlink" title="Aizu"></a>Aizu</h2><p>VJudge 起来超级舒服的 OJ，但是自己是个 sb。</p>
+<p>提供了齐全的 API，文档在<a href="http://developers.u-aizu.ac.jp/index" target="_blank" rel="noopener">这里</a>，面向 API 搞就好了。</p>
+<p>最后没搞懂提交的异步返回是怎么搞的，返回一个 token 之后不知道怎么查结果，或许应该 await 一下就好了……</p>
+<h2 id="CodeChef"><a href="#CodeChef" class="headerlink" title="CodeChef"></a>CodeChef</h2><p><del>是个人会写成 CodeChef 这样的提交吗。</del></p>
+<p>写这个的时候也参考了 <a href="https://github.com/sk364/codechef-cli" target="_blank" rel="noopener">CodeChef CLI</a> 的实现。</p>
+<p>CodeChef 把一堆验证都设成了 hidden，需要在一面上好找一顿。提交时需要注意 <code>form_token</code> 有两个，一定要填 <code>id</code> 对应的，否则会出错。</p>
+<p>而且必须要传个空文件上去，否则也会被拒绝<del>，实属脑瘫设计</del>。</p>
+<p>调了一下午结果是语言代码写错了……</p>
+<p>是个人能写成这样？</p>
+<h2 id="Baekjoon-OJ"><a href="#Baekjoon-OJ" class="headerlink" title="Baekjoon OJ"></a>Baekjoon OJ</h2><p>这个 OJ 上有一堆别的地方找不到的题，各种远古题看起来很全。</p>
+<p>但是登陆要绕 reCAPTCHA 认证，很烦，虽然是隐藏的认证不用点图片或者输验证码什么的，但是还是不会绕。</p>
+<p>看上去提交的时候还是有 CSRF token。</p>
+<p>OJ 开发者远古的时候写了个自动提交代码的 Python 脚本，但是现在不好使了……</p>
+<p>这个 OJ 也打算提供 API，但是不知道要等到啥时候了……</p>
+<h2 id="LibreOJ"><a href="#LibreOJ" class="headerlink" title="LibreOJ"></a>LibreOJ</h2><p>问题同 Baekjoon OJ，更新到 SYZOJ NG 之后有了全套 API，但是不知道文档在哪儿，并且登录还是得绕隐藏的 reCAPTCHA 认证……</p>
+<p>VJudge 支持了，但是不知道 VJudge 咋写的，太神仙了……</p>
 
         </div>
         
@@ -341,13 +358,29 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#Codeforces-Gym">
+        <a class="is-flex" href="#Codeforces-Gym-SGU">
         <span class="has-mr-6">1</span>
-        <span>Codeforces / Gym</span>
+        <span>Codeforces / Gym / SGU</span>
         </a></li><li>
         <a class="is-flex" href="#AtCoder">
         <span class="has-mr-6">2</span>
         <span>AtCoder</span>
+        </a></li><li>
+        <a class="is-flex" href="#Aizu">
+        <span class="has-mr-6">3</span>
+        <span>Aizu</span>
+        </a></li><li>
+        <a class="is-flex" href="#CodeChef">
+        <span class="has-mr-6">4</span>
+        <span>CodeChef</span>
+        </a></li><li>
+        <a class="is-flex" href="#Baekjoon-OJ">
+        <span class="has-mr-6">5</span>
+        <span>Baekjoon OJ</span>
+        </a></li><li>
+        <a class="is-flex" href="#LibreOJ">
+        <span class="has-mr-6">6</span>
+        <span>LibreOJ</span>
         </a></li></ul>
         </div>
     </div>

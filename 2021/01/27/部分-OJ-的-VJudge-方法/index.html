@@ -16,7 +16,7 @@
 <meta property="og:description" content="主要讲的就是怎么搭（mo）VJudge（yu）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2021-01-28T14:16:26.601Z">
+<meta property="og:updated_time" content="2021-01-29T15:00:30.599Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="部分 OJ 的 VJudge 方法">
 <meta name="twitter:description" content="主要讲的就是怎么搭（mo）VJudge（yu）">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 1074 个字)
+                    11 分钟 读完 (大约 1586 个字)
                 </span>
                 
                 
@@ -165,6 +165,7 @@
 <a id="more"></a>
 <p>这个人终于被 VJudge 整崩溃了，寒假集训的时候所有学校都在寒假集训，CF 交题一直 Pending，毕竟 VJudge 只有五个账号，到高峰期一等就是 10 多分钟，十分影响比赛体验（骂骂咧咧）。并且 VJudge 自己 fork 题面的话就不能用数学公式，很气。</p>
 <p>加上 Lutece 的重构需求，大概的想法是将测评端（Judge Server）抽象出来，作为独立的服务来看，测评端的存储题面和数据，接受后端发来的测评和题目请求，返回结果。这样抽象的话就可以兼顾 Lutece 作为题库的需求和 VJudge 需求了。本地 Judge Server 提供题目相关接口和测评接口，后端接口一对接就完事了。爬来的题面渲染问题在前端解决应该就可以了。</p>
+<p>其实也不怎么算 VJudge 了，主要是需要被动增加题目，不是主动去对方 OJ 搜题。</p>
 <p>然后就是走一遍 VJudge 老路，看怎么登录和提交代码了。</p>
 <p>主要参考的是 <a href="https://github.com/hnshhslsh/virtual-judge" target="_blank" rel="noopener">VJudge 源码</a>和 <a href="https://github.com/BNUACM/bnuoj-vjudge" target="_blank" rel="noopener">BNUOJ VJudge 源码</a>。两个项目一个是 Java 一个是 C++，互相参考理解可能更快一点吧。</p>
 <p>原型在<a href="https://github.com/HeRaNO/ChickenRibs/tree/master/Lutece-VJudge-prototype" target="_blank" rel="noopener">这里</a>，都是 Python 写的，以供参考。</p>
@@ -184,13 +185,34 @@
 <p>而且必须要传个空文件上去，否则也会被拒绝<del>，实属脑瘫设计</del>。</p>
 <p>调了一下午结果是语言代码写错了……</p>
 <p>是个人能写成这样？</p>
-<h2 id="Baekjoon-OJ"><a href="#Baekjoon-OJ" class="headerlink" title="Baekjoon OJ"></a>Baekjoon OJ</h2><p>这个 OJ 上有一堆别的地方找不到的题，各种远古题看起来很全。</p>
+<h2 id="Baekjoon-OJ"><a href="#Baekjoon-OJ" class="headerlink" title="Baekjoon OJ"></a>Baekjoon OJ</h2><p>OJ 地址是<a href="https://acmicpc.net" target="_blank" rel="noopener">这个</a>。</p>
+<p>这个 OJ 上有一堆别的地方找不到的题，各种远古题看起来很全。</p>
 <p>但是登陆要绕 reCAPTCHA 认证，很烦，虽然是隐藏的认证不用点图片或者输验证码什么的，但是还是不会绕。</p>
 <p>看上去提交的时候还是有 CSRF token。</p>
 <p>OJ 开发者远古的时候写了个自动提交代码的 Python 脚本，但是现在不好使了……</p>
 <p>这个 OJ 也打算提供 API，但是不知道要等到啥时候了……</p>
 <h2 id="LibreOJ"><a href="#LibreOJ" class="headerlink" title="LibreOJ"></a>LibreOJ</h2><p>问题同 Baekjoon OJ，更新到 SYZOJ NG 之后有了全套 API，但是不知道文档在哪儿，并且登录还是得绕隐藏的 reCAPTCHA 认证……</p>
 <p>VJudge 支持了，但是不知道 VJudge 咋写的，太神仙了……</p>
+<p>Menci 说要手动登录获取 session 的 token，我决定放弃。</p>
+<h2 id="HDU"><a href="#HDU" class="headerlink" title="HDU"></a>HDU</h2><p>HDU 到现在都是 HTTP 方式访问……</p>
+<p>浏览器抓个包其实都看出来了，登录会重定向，但是不影响访问。</p>
+<p>网站编码是 GBK 系的，提交的时候注意编码，但是我完全搞不懂。所以直接交 Base64 让后端解决去了……</p>
+<p>可以用中文测试，也可以试试 <a href="http://acm.hdu.edu.cn/showproblem.php?pid=2815" target="_blank" rel="noopener">HDU 2815</a> 这道题，输出的那个单引号不是英文单引号……</p>
+<h2 id="ZOJ"><a href="#ZOJ" class="headerlink" title="ZOJ"></a>ZOJ</h2><p>ZOJ 登录时需要拼图认证，同 LOJ 和 Baekjoon OJ 不会搞。</p>
+<h2 id="Kattis"><a href="#Kattis" class="headerlink" title="Kattis"></a>Kattis</h2><p>Kattis 上比赛挺多的。</p>
+<p><del>看标志有点像恋爱裁判 PV 女主竟然有点萌</del></p>
+<p>Kattis 登录有 CSRF token，并且会重定向，但是 HDU 不能自动重定向但是 Kattis 可以不知道为什么。</p>
+<p>提交依旧提供了提交文件的选项，同 CodeChef 处理就行了。</p>
+<h2 id="POJ-OpenJudge"><a href="#POJ-OpenJudge" class="headerlink" title="POJ / OpenJudge"></a>POJ / OpenJudge</h2><p>POJ 原本是不想支持的，但是就当个标本摆着了。</p>
+<p>因为我们也没怎么在 POJ 拉题倒是……</p>
+<p>这两个 OJ 的表单数据都不怎么复杂，继续浏览器抓包就啥都有了。</p>
+<p>OpenJudge 提供了 API，查状态还是很方便的。</p>
+<h2 id="SPOJ"><a href="#SPOJ" class="headerlink" title="SPOJ"></a>SPOJ</h2><p>看 SPOJ 的 footer 有 API 吓到我了，结果就是个广告。</p>
+<p>仍然没什么需要特别注意的地方……提交文件还是像 CodeChef 处理。</p>
+<h2 id="HackerRank"><a href="#HackerRank" class="headerlink" title="HackerRank"></a>HackerRank</h2><p>登录有 CSRF token，并且有反爬手段，必须交一个伪 header。</p>
+<p>剩下的没什么了。</p>
+<h2 id="URAL"><a href="#URAL" class="headerlink" title="URAL"></a>URAL</h2><p>这个 OJ 很有意思，注册了之后你会获得一个 <code>JUDGE_ID</code>，然后凭这个 ID 提交，根本不用登录。</p>
+<p>但是记这个 <code>JUDGE_ID</code> 感觉好烦……</p>
 
         </div>
         
@@ -381,6 +403,34 @@
         <a class="is-flex" href="#LibreOJ">
         <span class="has-mr-6">6</span>
         <span>LibreOJ</span>
+        </a></li><li>
+        <a class="is-flex" href="#HDU">
+        <span class="has-mr-6">7</span>
+        <span>HDU</span>
+        </a></li><li>
+        <a class="is-flex" href="#ZOJ">
+        <span class="has-mr-6">8</span>
+        <span>ZOJ</span>
+        </a></li><li>
+        <a class="is-flex" href="#Kattis">
+        <span class="has-mr-6">9</span>
+        <span>Kattis</span>
+        </a></li><li>
+        <a class="is-flex" href="#POJ-OpenJudge">
+        <span class="has-mr-6">10</span>
+        <span>POJ / OpenJudge</span>
+        </a></li><li>
+        <a class="is-flex" href="#SPOJ">
+        <span class="has-mr-6">11</span>
+        <span>SPOJ</span>
+        </a></li><li>
+        <a class="is-flex" href="#HackerRank">
+        <span class="has-mr-6">12</span>
+        <span>HackerRank</span>
+        </a></li><li>
+        <a class="is-flex" href="#URAL">
+        <span class="has-mr-6">13</span>
+        <span>URAL</span>
         </a></li></ul>
         </div>
     </div>

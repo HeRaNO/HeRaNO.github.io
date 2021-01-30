@@ -16,7 +16,7 @@
 <meta property="og:description" content="主要讲的就是怎么搭（mo）VJudge（yu）">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2021-01-29T15:00:30.599Z">
+<meta property="og:updated_time" content="2021-01-30T16:16:47.306Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="部分 OJ 的 VJudge 方法">
 <meta name="twitter:description" content="主要讲的就是怎么搭（mo）VJudge（yu）">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1586 个字)
+                    18 分钟 读完 (大约 2707 个字)
                 </span>
                 
                 
@@ -213,6 +213,46 @@
 <p>剩下的没什么了。</p>
 <h2 id="URAL"><a href="#URAL" class="headerlink" title="URAL"></a>URAL</h2><p>这个 OJ 很有意思，注册了之后你会获得一个 <code>JUDGE_ID</code>，然后凭这个 ID 提交，根本不用登录。</p>
 <p>但是记这个 <code>JUDGE_ID</code> 感觉好烦……</p>
+<h2 id="计蒜客"><a href="#计蒜客" class="headerlink" title="计蒜客"></a>计蒜客</h2><p>计蒜客的验证挺烦的，CSRF 的 token 放在 Cookie 里了，传密码要传 MD5……但是响应是 json 的，还是挺方便的。</p>
+<h2 id="SCU"><a href="#SCU" class="headerlink" title="SCU"></a>SCU</h2><p>作为一个远古 OJ，主要是<del>嫖上面的省赛题</del>训练为主。</p>
+<p>登录还是很正常，但是提交的时候又双叒叕是 GBK 编码，这回没办法用 Base64 糊弄过去了，BNUOJ 的 VJugde 是把代码当 URL 查询参数传过去的，但是感觉这样太丑了……</p>
+<p>非常震撼的是提交要验证码，但是我不会写验证码识别，看两个 VJudge 都是手写的验证码识别，应该不难，但是懒得搞了……也防 SCU 突然加强验证码导致提交失败……</p>
+<h2 id="hihoCoder"><a href="#hihoCoder" class="headerlink" title="hihoCoder"></a>hihoCoder</h2><p>hihoCoder 上貌似有些区域赛的题可以做。</p>
+<p>真的没啥说的，应该是最简单的了……</p>
+<h2 id="51nod"><a href="#51nod" class="headerlink" title="51nod"></a>51nod</h2><p><del>51nod 上面有 lxl 题还是可以搬的。</del></p>
+<p>51nod 的密码传输采用 RSA 算法加密，公钥如下：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN PUBLIC KEY-----</span><br><span class="line">MIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgGTNlnTkCV1UvqhwEwoTBSgve1Ic</span><br><span class="line">eORoDpB8lV7g358xqoXTHFj7i+4SP3mD48VmGFUyKu+ZiH8hN0Od6s6+bttQ7YbE</span><br><span class="line">vSRwEjwfVC9DCCPukAHtirBSCDUqbFJPg8BfsHIOtPDx0CJCNmzutNkSnhD/lNad</span><br><span class="line">JvHU/Gl9NitAceZlAgMBAAE=</span><br><span class="line">-----END PUBLIC KEY-----</span><br></pre></td></tr></table></figure>
+<p>需要用公钥加密密码之后传过去……绝了……</p>
+<p>登录成功返回一个 <code>-1</code>，我还以为登录挂了。</p>
+<p>提交成功返回提交编号。</p>
+<h2 id="TopCoder"><a href="#TopCoder" class="headerlink" title="TopCoder"></a>TopCoder</h2><p>过于奇妙以至于根本没看懂它是怎么 work 的。</p>
+<h2 id="E-Olymp"><a href="#E-Olymp" class="headerlink" title="E-Olymp"></a>E-Olymp</h2><p>听说这个 OJ 有很多奇妙的远古比赛。</p>
+<p>登录不难，提交有一个 token 需要从提交页面获取。交完直接跳转到结果页面。</p>
+<h2 id="UVa-UVALive"><a href="#UVa-UVALive" class="headerlink" title="UVa / UVALive"></a>UVa / UVALive</h2><p>UVa 已经开始用 C++ 重构了，但是表单还是很离谱，在页面里藏了一堆 tag。</p>
+<p>UVa 100 这个题输入范围是错的，并且不保证左边界小于等于右边界，很离谱。</p>
+<p>UVALive 和 UVa 用的 OJ 差不多，方法也都类似。</p>
+<h2 id="LightOJ"><a href="#LightOJ" class="headerlink" title="LightOJ"></a>LightOJ</h2><p>登录有 reCAPTCHA，不会搞。</p>
+<h2 id="FZU"><a href="#FZU" class="headerlink" title="FZU"></a>FZU</h2><p>FZU 的 OJ 看起来好老啊（（（</p>
+<p>然后页面编码居然是 ISO-8859-1，人都傻了。</p>
+<p>但是提交代码是 UTF-8 的，支持中文，海星。</p>
+<h2 id="ECNU"><a href="#ECNU" class="headerlink" title="ECNU"></a>ECNU</h2><p><del>哦草后端真的写验证写起来不嫌麻烦是吧</del></p>
+<p>ECNU 搞了以上所有 OJ 的验证与加密方法，密码用 RSA 加密，图片验证码，CSRF token，能用上的都用上了，我吐了。</p>
+<p>公钥在 HTML 里面，可以直接找到。</p>
+<p>交题的时候有 CSRF token，返回一个 json，能获得当前提交状态。</p>
+<h2 id="NowCoder"><a href="#NowCoder" class="headerlink" title="NowCoder"></a>NowCoder</h2><p>牛客的登录外包出去了……转到 <a href="https://growingio.com/" target="_blank" rel="noopener">GrowingIO</a> 做验证……</p>
+<h2 id="HIT"><a href="#HIT" class="headerlink" title="HIT"></a>HIT</h2><p>说实话去爬 HIT 和 HRBUST 的题也没啥必要……也没拉过他们的题……VJudge 也不支持 HIT 了……</p>
+<p>坑还是有一些的。登录之前先获得验证码，里面有登录用的 token，登录之后还会获得一个 token，用来交题中的身份认证。</p>
+<p>这里认证用的是 JWT，虽然不怎么重要但是确实是这样。</p>
+<p>然后他们公开代码写反了是我没想到的，提交代码 public 选 false 才能看自己的代码，而且自己不能看自己没 public 的代码。</p>
+<p>关键这种逻辑写挂的不是随便测一下就测出来了吗……</p>
+<p>然后交题之后什么都不返回是我没想到的……只有一个状态码 200……</p>
+<h2 id="HRBUST"><a href="#HRBUST" class="headerlink" title="HRBUST"></a>HRBUST</h2><p>登录的时候是把用户名密码信息的 JSON 转化成字符串之后用 RSA 加密发出去的，绝了……</p>
+<p>公钥如下：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN PUBLIC KEY-----</span><br><span class="line">MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC88fBRU1FaC5S537krMDVDapOZ</span><br><span class="line">k44Nw+Yud69IPZYwk9HT0n6D7Pvp3mXp+Par6gp5HUW3tFs7/l3cTIqryEXMfJXR</span><br><span class="line">F7FlneM64kLs/KZ2i0larVrz7QgcTb5oAuHeIE24Uc0ja+S83Hlc2Dk6z1TWkAjG</span><br><span class="line">2f/p15xRfv/IO5yyywIDAQAB</span><br><span class="line">-----END PUBLIC KEY-----</span><br></pre></td></tr></table></figure>
+<p>而且 OJ 不能在比赛中注册账号，绝了……</p>
+<h2 id="Universal-OJ-Dark-BZOJ"><a href="#Universal-OJ-Dark-BZOJ" class="headerlink" title="Universal OJ / Dark BZOJ"></a>Universal OJ / Dark BZOJ</h2><p>UOJ 的密码是加盐 MD5 加密的，找了一晚上才发现是 HMAC-MD5 加盐加密的，甚至想手动照着 JS 代码实现一遍，但是 JS 写法太奔放了根本承受不住地址溢出……</p>
+<p>还要在 JS 代码里面找 CSRF token 我真的是吐了。</p>
+<p>但是所幸一个 session 里的 token 不会变……</p>
 
         </div>
         
@@ -431,6 +471,62 @@
         <a class="is-flex" href="#URAL">
         <span class="has-mr-6">13</span>
         <span>URAL</span>
+        </a></li><li>
+        <a class="is-flex" href="#计蒜客">
+        <span class="has-mr-6">14</span>
+        <span>计蒜客</span>
+        </a></li><li>
+        <a class="is-flex" href="#SCU">
+        <span class="has-mr-6">15</span>
+        <span>SCU</span>
+        </a></li><li>
+        <a class="is-flex" href="#hihoCoder">
+        <span class="has-mr-6">16</span>
+        <span>hihoCoder</span>
+        </a></li><li>
+        <a class="is-flex" href="#51nod">
+        <span class="has-mr-6">17</span>
+        <span>51nod</span>
+        </a></li><li>
+        <a class="is-flex" href="#TopCoder">
+        <span class="has-mr-6">18</span>
+        <span>TopCoder</span>
+        </a></li><li>
+        <a class="is-flex" href="#E-Olymp">
+        <span class="has-mr-6">19</span>
+        <span>E-Olymp</span>
+        </a></li><li>
+        <a class="is-flex" href="#UVa-UVALive">
+        <span class="has-mr-6">20</span>
+        <span>UVa / UVALive</span>
+        </a></li><li>
+        <a class="is-flex" href="#LightOJ">
+        <span class="has-mr-6">21</span>
+        <span>LightOJ</span>
+        </a></li><li>
+        <a class="is-flex" href="#FZU">
+        <span class="has-mr-6">22</span>
+        <span>FZU</span>
+        </a></li><li>
+        <a class="is-flex" href="#ECNU">
+        <span class="has-mr-6">23</span>
+        <span>ECNU</span>
+        </a></li><li>
+        <a class="is-flex" href="#NowCoder">
+        <span class="has-mr-6">24</span>
+        <span>NowCoder</span>
+        </a></li><li>
+        <a class="is-flex" href="#HIT">
+        <span class="has-mr-6">25</span>
+        <span>HIT</span>
+        </a></li><li>
+        <a class="is-flex" href="#HRBUST">
+        <span class="has-mr-6">26</span>
+        <span>HRBUST</span>
+        </a></li><li>
+        <a class="is-flex" href="#Universal-OJ-Dark-BZOJ">
+        <span class="has-mr-6">27</span>
+        <span>Universal OJ / Dark BZOJ</span>
         </a></li></ul>
         </div>
     </div>

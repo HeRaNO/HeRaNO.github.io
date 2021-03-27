@@ -16,7 +16,7 @@
 <meta property="og:description" content="为了避免自己摸鱼，每周写周报。 为了查阅方便，时间从近到远排。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2021-03-21T09:51:34.620Z">
+<meta property="og:updated_time" content="2021-03-27T07:18:43.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lutece 重构周报（2021 年）">
 <meta name="twitter:description" content="为了避免自己摸鱼，每周写周报。 为了查阅方便，时间从近到远排。">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 分钟 读完 (大约 1737 个字)
+                    14 分钟 读完 (大约 2165 个字)
                 </span>
                 
                 
@@ -164,13 +164,26 @@
             <p>为了避免自己摸鱼，每周写周报。</p>
 <p>为了查阅方便，时间从近到远排。</p>
 <a id="more"></a>
-<h2 id="3-月"><a href="#3-月" class="headerlink" title="3 月"></a>3 月</h2><h3 id="03-21"><a href="#03-21" class="headerlink" title="03-21"></a>03-21</h3><h4 id="这周干了啥"><a href="#这周干了啥" class="headerlink" title="这周干了啥"></a>这周干了啥</h4><p>人类史上最大最恶最绝望事件来了，学院要求写初期报告了。我就寻思我写的代码和文档都 L2 保密的，实习报告里面要求写实习内容，这咋写。</p>
+<h2 id="3-月"><a href="#3-月" class="headerlink" title="3 月"></a>3 月</h2><h3 id="03-27"><a href="#03-27" class="headerlink" title="03-27"></a>03-27</h3><h4 id="这周干了啥"><a href="#这周干了啥" class="headerlink" title="这周干了啥"></a>这周干了啥</h4><p>初赛初步定期为 5.1，tmd 原来排期整整排多了一个月，有没有什么几天速成前端的东西。</p>
+<p>直接倒排期，发现 4.13 就得把前后端开发完，我完了。</p>
+<p>想买本《人月神话》学习一下了……</p>
+<p>这周没有特别大的进展，买了一年的华为云鲲鹏服务器，2 vCPU 4G 1M 一年 200 块还挺便宜的，但是 CPU 是 ARM 的（虽然没啥关系）。</p>
+<p>不过 Debian 的版本比较低，Redis 在上面跑有数据损坏的 Bug，参考<a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=977615" target="_blank" rel="noopener">这里</a>，然后去提工单和华为云对线被嗯嗯，顺便 Go 的版本也很低，需要手动卸载原版本然后升级。</p>
+<p>新需求还是没定容，接着摸鱼。</p>
+<p>现在 xcpc-team-reg 的初始化部分倒是调通了，获取学院信息的一个简单接口也调通了。然后就是写登录鉴权，太难了根本不会十分难受。想着拿这个项目搭一个脚手架，但是进展还是很慢。</p>
+<p>找到了扔猫的那个游戏，没想到<a href="https://github.com/wheatup/wtfgame" target="_blank" rel="noopener">开源</a>了，青回。</p>
+<p>但是搭服看起来挺麻烦的……文档真的不全……</p>
+<p>顺便被队友拉去 ByteCamp，在五一，Guest WiFi 又合体了。</p>
+<p><del>还和组织对接人在 Lark 上尬聊</del></p>
+<h4 id="下周要干啥"><a href="#下周要干啥" class="headerlink" title="下周要干啥"></a>下周要干啥</h4><p>解决一下登录鉴权的问题。如果有空写个博客记录一下。</p>
+<p>下周是清明，希望能有些进展吧……</p>
+<h3 id="03-21"><a href="#03-21" class="headerlink" title="03-21"></a>03-21</h3><h4 id="这周干了啥-1"><a href="#这周干了啥-1" class="headerlink" title="这周干了啥"></a>这周干了啥</h4><p>人类史上最大最恶最绝望事件来了，学院要求写初期报告了。我就寻思我写的代码和文档都 L2 保密的，实习报告里面要求写实习内容，这咋写。</p>
 <p>这周主要起了一个新项目 <a href="https://github.com/HeRaNO/xcpc-team-reg" target="_blank" rel="noopener">xcpc-team-reg</a>，是一个 XCPC 组队服务，还在开发中。打算先用这个验一下 Lutece 的用户服务和队伍服务。</p>
 <p>想用服务器测一下，但是没有服务器，哭了。</p>
 <p><del>然后把这个放在实习报告里当成公司项目</del></p>
 <p>下周新需求定容，下下周开始开发，跪了。</p>
-<h4 id="下周要干啥"><a href="#下周要干啥" class="headerlink" title="下周要干啥"></a>下周要干啥</h4><p>完善 xcpc-team-reg 功能。</p>
-<h3 id="03-13"><a href="#03-13" class="headerlink" title="03-13"></a>03-13</h3><h4 id="这周干了啥-1"><a href="#这周干了啥-1" class="headerlink" title="这周干了啥"></a>这周干了啥</h4><p>这周写需求写吐了，横跨五个 repo，两个方法从同一个接口拿数据用了两种完全不一样的方式，两种结构，同一个修改改两次，人都崩溃了。</p>
+<h4 id="下周要干啥-1"><a href="#下周要干啥-1" class="headerlink" title="下周要干啥"></a>下周要干啥</h4><p>完善 xcpc-team-reg 功能。</p>
+<h3 id="03-13"><a href="#03-13" class="headerlink" title="03-13"></a>03-13</h3><h4 id="这周干了啥-2"><a href="#这周干了啥-2" class="headerlink" title="这周干了啥"></a>这周干了啥</h4><p>这周写需求写吐了，横跨五个 repo，两个方法从同一个接口拿数据用了两种完全不一样的方式，两种结构，同一个修改改两次，人都崩溃了。</p>
 <p>顺便找了找有没有学校能给我个读研的机会……然后发现太卷了基本没有……</p>
 <p>然后得知小羊也在写 OJ 当毕设，说设计容量 500，我已经虚了……</p>
 <p>这周没怎么写 model，主要还是大概设计了一下。但是感觉关系表太多了……</p>
@@ -180,8 +193,8 @@
 <p><strong>do smth instead of nothing and stay organized</strong></p>
 <p><strong>WRITE STUFF DOWN</strong></p>
 <p>所以，上来最好先莽他一发，说不定就把需求写通了。</p>
-<h4 id="下周要干啥-1"><a href="#下周要干啥-1" class="headerlink" title="下周要干啥"></a>下周要干啥</h4><p>下周小周，应该可以结束 model 设计……</p>
-<h3 id="03-06"><a href="#03-06" class="headerlink" title="03-06"></a>03-06</h3><h4 id="这周干了啥-2"><a href="#这周干了啥-2" class="headerlink" title="这周干了啥"></a>这周干了啥</h4><p>这周没写用户管理，但是写了数据库 model。</p>
+<h4 id="下周要干啥-2"><a href="#下周要干啥-2" class="headerlink" title="下周要干啥"></a>下周要干啥</h4><p>下周小周，应该可以结束 model 设计……</p>
+<h3 id="03-06"><a href="#03-06" class="headerlink" title="03-06"></a>03-06</h3><h4 id="这周干了啥-3"><a href="#这周干了啥-3" class="headerlink" title="这周干了啥"></a>这周干了啥</h4><p>这周没写用户管理，但是写了数据库 model。</p>
 <ul>
 <li>Users：用户</li>
 <li>Teams：队伍</li>
@@ -200,9 +213,9 @@
 <p>顺便复习了数据库怎么设计多对多关系……</p>
 <p>还认识到了为什么虚拟机不能用作开发机……</p>
 <p>MBP 真好啊，我也想整一个。</p>
-<h4 id="下周要干啥-2"><a href="#下周要干啥-2" class="headerlink" title="下周要干啥"></a>下周要干啥</h4><p>这周接了两个需求，第一个需求还好，第二个需求要写死了……</p>
+<h4 id="下周要干啥-3"><a href="#下周要干啥-3" class="headerlink" title="下周要干啥"></a>下周要干啥</h4><p>这周接了两个需求，第一个需求还好，第二个需求要写死了……</p>
 <p>下周准备接着写 model……</p>
-<h2 id="2-月"><a href="#2-月" class="headerlink" title="2 月"></a>2 月</h2><h3 id="02-27"><a href="#02-27" class="headerlink" title="02-27"></a>02-27</h3><h4 id="这周干了啥-3"><a href="#这周干了啥-3" class="headerlink" title="这周干了啥"></a>这周干了啥</h4><p>这 Lutece 是一分钟也用不下去了，为了避免摸鱼，只能强迫自己写周报了。</p>
+<h2 id="2-月"><a href="#2-月" class="headerlink" title="2 月"></a>2 月</h2><h3 id="02-27"><a href="#02-27" class="headerlink" title="02-27"></a>02-27</h3><h4 id="这周干了啥-4"><a href="#这周干了啥-4" class="headerlink" title="这周干了啥"></a>这周干了啥</h4><p>这 Lutece 是一分钟也用不下去了，为了避免摸鱼，只能强迫自己写周报了。</p>
 <p><del>上班要写日报，Lutece 再日报写不过来</del></p>
 <p>今天把 Lutece 的本地仓库搭起来辣！</p>
 <p><del>功能都实现完了再推 Github 上。</del></p>
@@ -241,7 +254,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="下周要干啥-3"><a href="#下周要干啥-3" class="headerlink" title="下周要干啥"></a>下周要干啥</h4><p>下周先从用户管理开始写。框架是 <a href="https://github.com/go-chi/chi" target="_blank" rel="noopener">chi</a>，还没想用 RPC，如果有需要的话转微服务可能会用 Kite。测评端数据库是 MongoDB（题面啥的都放到测评端解耦，并且文档类型数据也不适合放在 RDB 里），Web 端的数据库 PostgreSQL。</p>
+<h4 id="下周要干啥-4"><a href="#下周要干啥-4" class="headerlink" title="下周要干啥"></a>下周要干啥</h4><p>下周先从用户管理开始写。框架是 <a href="https://github.com/go-chi/chi" target="_blank" rel="noopener">chi</a>，还没想用 RPC，如果有需要的话转微服务可能会用 Kite。测评端数据库是 MongoDB（题面啥的都放到测评端解耦，并且文档类型数据也不适合放在 RDB 里），Web 端的数据库 PostgreSQL。</p>
 
         </div>
         
@@ -413,9 +426,9 @@
         <span class="has-mr-6">1</span>
         <span>3 月</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#03-21">
+        <a class="is-flex" href="#03-27">
         <span class="has-mr-6">1.1</span>
-        <span>03-21</span>
+        <span>03-27</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#这周干了啥">
         <span class="has-mr-6">1.1.1</span>
@@ -425,9 +438,9 @@
         <span class="has-mr-6">1.1.2</span>
         <span>下周要干啥</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#03-13">
+        <a class="is-flex" href="#03-21">
         <span class="has-mr-6">1.2</span>
-        <span>03-13</span>
+        <span>03-21</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#这周干了啥-1">
         <span class="has-mr-6">1.2.1</span>
@@ -437,9 +450,9 @@
         <span class="has-mr-6">1.2.2</span>
         <span>下周要干啥</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#03-06">
+        <a class="is-flex" href="#03-13">
         <span class="has-mr-6">1.3</span>
-        <span>03-06</span>
+        <span>03-13</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#这周干了啥-2">
         <span class="has-mr-6">1.3.1</span>
@@ -447,6 +460,18 @@
         </a></li><li>
         <a class="is-flex" href="#下周要干啥-2">
         <span class="has-mr-6">1.3.2</span>
+        <span>下周要干啥</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#03-06">
+        <span class="has-mr-6">1.4</span>
+        <span>03-06</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#这周干了啥-3">
+        <span class="has-mr-6">1.4.1</span>
+        <span>这周干了啥</span>
+        </a></li><li>
+        <a class="is-flex" href="#下周要干啥-3">
+        <span class="has-mr-6">1.4.2</span>
         <span>下周要干啥</span>
         </a></li></ul></li></ul></li><li>
         <a class="is-flex" href="#2-月">
@@ -457,11 +482,11 @@
         <span class="has-mr-6">2.1</span>
         <span>02-27</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#这周干了啥-3">
+        <a class="is-flex" href="#这周干了啥-4">
         <span class="has-mr-6">2.1.1</span>
         <span>这周干了啥</span>
         </a></li><li>
-        <a class="is-flex" href="#下周要干啥-3">
+        <a class="is-flex" href="#下周要干啥-4">
         <span class="has-mr-6">2.1.2</span>
         <span>下周要干啥</span>
         </a></li></ul></li></ul></li></ul>

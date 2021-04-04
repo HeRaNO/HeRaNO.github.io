@@ -16,7 +16,7 @@
 <meta property="og:description" content="这鉴权服务是一秒也写不下去了。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2021-04-03T17:47:45.935Z">
+<meta property="og:updated_time" content="2021-04-04T03:43:05.029Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用户与鉴权服务开发思路整理">
 <meta name="twitter:description" content="这鉴权服务是一秒也写不下去了。">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    10 分钟 读完 (大约 1444 个字)
+                    10 分钟 读完 (大约 1473 个字)
                 </span>
                 
                 
@@ -221,14 +221,18 @@
 <li>存在 Cookies 的数据可能会被 XSS 攻击拿到；</li>
 <li>存在 Cookies 的数据可能会被 CSRF 攻击利用。</li>
 </ul>
-<p>解决办法是服务端设置 Cookies 的属性为 HttpOnly。然后所有请求把 JWT 放在 HTTP 请求头里。不要把 JWT 放在 Local Storage 或者 Session Storage 里。</p>
+<p>解决办法是服务端设置 Cookies 的属性为 HttpOnly。然后所有请求把 JWT 放在 HTTP 请求头里。不要把 JWT 放在 Local Storage 里。</p>
 <p>关于签名失效的问题，可以把 secret 存到 Redis 里并设置过期时间，这里管理也类似 Session。也可以使用 <code>exp</code> 配合 Cookies 过期时间使用。</p>
 <p>使用 RS256 的话只使用一对公私钥即可，但是使用 HS256 只使用一个 secret 也是可以的。不知道为什么推荐 RS256……</p>
 <p>总结来说就是：</p>
 <ul>
 <li>使用 HTTPS 传输；</li>
-<li>JWT 放在 Cookies 里并设置 HttpOnly，在服务端只检验 Header 里的 Authentication 字段；</li>
+<li>JWT 放在 Session Storage 里，在服务端只检验 Header 里的 Authentication 字段；</li>
 <li>JWT 设置 <code>exp</code>，Cookies 设置过期时间。</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html" target="_blank" rel="noopener">Authentication Cheat Sheet</a></li>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html" target="_blank" rel="noopener">JSON Web Token Cheat Sheet for Java</a></li>
 </ul>
 <p>以上。</p>
 
@@ -409,6 +413,10 @@
         <a class="is-flex" href="#鉴权服务设计">
         <span class="has-mr-6">3</span>
         <span>鉴权服务设计</span>
+        </a></li><li>
+        <a class="is-flex" href="#参考资料">
+        <span class="has-mr-6">4</span>
+        <span>参考资料</span>
         </a></li></ul>
         </div>
     </div>

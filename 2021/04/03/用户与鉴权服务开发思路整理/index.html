@@ -16,7 +16,7 @@
 <meta property="og:description" content="这鉴权服务是一秒也写不下去了。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2021-04-04T03:43:05.029Z">
+<meta property="og:updated_time" content="2021-04-04T13:05:30.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用户与鉴权服务开发思路整理">
 <meta name="twitter:description" content="这鉴权服务是一秒也写不下去了。">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    10 分钟 读完 (大约 1473 个字)
+                    10 分钟 读完 (大约 1537 个字)
                 </span>
                 
                 
@@ -221,8 +221,8 @@
 <li>存在 Cookies 的数据可能会被 XSS 攻击拿到；</li>
 <li>存在 Cookies 的数据可能会被 CSRF 攻击利用。</li>
 </ul>
-<p>解决办法是服务端设置 Cookies 的属性为 HttpOnly。然后所有请求把 JWT 放在 HTTP 请求头里。不要把 JWT 放在 Local Storage 里。</p>
-<p>关于签名失效的问题，可以把 secret 存到 Redis 里并设置过期时间，这里管理也类似 Session。也可以使用 <code>exp</code> 配合 Cookies 过期时间使用。</p>
+<p>解决办法是服务端把 JWT 发到客户端，客户端扔到 Session Storage 里，然后在 Cookies 里加一个服务指纹，将指纹的 SHA256 放到 JWT 里。客户端的所有请求把 JWT 放在 HTTP 请求头里，鉴权时连同 Cookies 里的指纹一并检查。不要把 JWT 放在 Local Storage 里。</p>
+<p>关于签名失效的问题，可以把 secret 存到 Redis 里并设置过期时间，这里管理也类似 Session。也可以使用 <code>exp</code> 配合 Cookies 过期时间使用。但是根据无状态原则，应采用后者。</p>
 <p>使用 RS256 的话只使用一对公私钥即可，但是使用 HS256 只使用一个 secret 也是可以的。不知道为什么推荐 RS256……</p>
 <p>总结来说就是：</p>
 <ul>

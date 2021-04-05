@@ -16,7 +16,7 @@
 <meta property="og:description" content="XCPC Team Registration 的技术文档">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2021-04-04T14:02:05.166Z">
+<meta property="og:updated_time" content="2021-04-05T04:02:05.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XCPC Team Registration 的技术文档">
 <meta name="twitter:description" content="XCPC Team Registration 的技术文档">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    13 分钟 读完 (大约 1996 个字)
+                    14 分钟 读完 (大约 2037 个字)
                 </span>
                 
                 
@@ -200,7 +200,7 @@
 <li><code>email</code>：要验证的邮箱</li>
 <li><code>type</code>：当前操作类型</li>
 </ul>
-<h4 id="响应数据结构-2"><a href="#响应数据结构-2" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>email token sended</code>。</p>
+<h4 id="响应数据结构-2"><a href="#响应数据结构-2" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
 <h4 id="权限-2"><a href="#权限-2" class="headerlink" title="权限"></a>权限</h4><p>任意用户。</p>
 <h3 id="api-register"><a href="#api-register" class="headerlink" title="/api/register"></a><code>/api/register</code></h3><h4 id="方法-3"><a href="#方法-3" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
 <h4 id="作用-3"><a href="#作用-3" class="headerlink" title="作用"></a>作用</h4><p>用户注册。</p>
@@ -213,7 +213,7 @@
 <li><code>stuid</code>：用户学号</li>
 <li><code>email_token</code>：邮箱验证码，用户需要先请求一个邮箱验证码</li>
 <li><code>pwd_token</code>：密码加密后的值</li>
-<li><code>action</code>：当前在进行的操作，应为一常量字符串</li>
+<li><code>action</code>：当前在进行的操作，应为一常量字符串 <code>register</code></li>
 </ul>
 <h4 id="响应数据结构-3"><a href="#响应数据结构-3" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
 <h4 id="权限-3"><a href="#权限-3" class="headerlink" title="权限"></a>权限</h4><p>任意用户。</p>
@@ -225,7 +225,9 @@
 <li><code>email</code>：用户邮箱</li>
 <li><code>pwd</code>：密码加密后的值</li>
 </ul>
-<h4 id="响应数据结构-4"><a href="#响应数据结构-4" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
+<h4 id="响应数据结构-4"><a href="#响应数据结构-4" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个字符串，为用户的 JWT。以后任何操作都应将 JWT 附属在请求头的 Authorization 字段中，如下形式：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Authorization: Bearer &lt;JWT&gt;</span><br></pre></td></tr></table></figure>
+<p>其中 <code>&lt;JWT&gt;</code> 为用户的 JWT。</p>
 <h4 id="权限-4"><a href="#权限-4" class="headerlink" title="权限"></a>权限</h4><p>任意未登录的用户。</p>
 <h3 id="api-forgot"><a href="#api-forgot" class="headerlink" title="/api/forgot"></a><code>/api/forgot</code></h3><h4 id="方法-5"><a href="#方法-5" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
 <h4 id="作用-5"><a href="#作用-5" class="headerlink" title="作用"></a>作用</h4><p>用户重置密码。</p>
@@ -235,11 +237,11 @@
 <li><code>email</code>：用户邮箱</li>
 <li><code>email_token</code>：邮箱验证码，用户需要先请求一个邮箱验证码</li>
 <li><code>pwd_token</code>：密码加密后的值</li>
-<li><code>action</code>：当前在进行的操作，应为一常量字符串</li>
+<li><code>action</code>：当前在进行的操作，应为一常量字符串 <code>reset</code></li>
 </ul>
 <h4 id="响应数据结构-5"><a href="#响应数据结构-5" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
 <h4 id="权限-5"><a href="#权限-5" class="headerlink" title="权限"></a>权限</h4><p>任意未登录的用户。</p>
-<h3 id="api-logout"><a href="#api-logout" class="headerlink" title="/api/logout"></a><code>/api/logout</code></h3><h4 id="方法-6"><a href="#方法-6" class="headerlink" title="方法"></a>方法</h4><p><code>GET</code></p>
+<h3 id="api-logout"><a href="#api-logout" class="headerlink" title="/api/logout"></a><code>/api/logout</code></h3><h4 id="方法-6"><a href="#方法-6" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
 <h4 id="作用-6"><a href="#作用-6" class="headerlink" title="作用"></a>作用</h4><p>用户登出。</p>
 <h4 id="请求数据结构-6"><a href="#请求数据结构-6" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><p>请求中不需附加任何数据。</p>
 <h4 id="响应数据结构-6"><a href="#响应数据结构-6" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>

@@ -16,7 +16,7 @@
 <meta property="og:description" content="XCPC Team Registration 的技术文档">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://herano.github.io/images/og_image.png">
-<meta property="og:updated_time" content="2021-04-05T04:02:05.299Z">
+<meta property="og:updated_time" content="2021-04-06T14:53:21.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XCPC Team Registration 的技术文档">
 <meta name="twitter:description" content="XCPC Team Registration 的技术文档">
@@ -148,7 +148,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    14 分钟 读完 (大约 2037 个字)
+                    15 分钟 读完 (大约 2175 个字)
                 </span>
                 
                 
@@ -172,6 +172,7 @@
 <li><code>1000</code>：内部错误</li>
 <li><code>1001</code>：权限不足</li>
 <li><code>1002</code>：请求中信息有误</li>
+<li><code>1003</code>：不在报名时间段内</li>
 </ul>
 </li>
 <li><code>msg</code>：响应信息，若请求状态码为 <code>0</code>，则为 <code>success</code>，否则为失败原因。</li>
@@ -192,19 +193,31 @@
 <p>其中 <code>&lt;id&gt;</code> 为学院 ID，<code>&lt;school_name&gt;</code> 为学院名称，ID 与名称一一对应，并且在服务中 ID 是学院的唯一标识。</p>
 <p>响应数据中会包含学院总数，为 <code>total</code> 字段中的值。</p>
 <h4 id="权限-1"><a href="#权限-1" class="headerlink" title="权限"></a>权限</h4><p>任意用户。</p>
-<h3 id="api-verifyEmail"><a href="#api-verifyEmail" class="headerlink" title="/api/verifyEmail"></a><code>/api/verifyEmail</code></h3><h4 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
-<h4 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h4><p>验证用户邮箱。</p>
-<h4 id="请求数据结构-2"><a href="#请求数据结构-2" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> EmailVerification <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	Email <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"email"`</span></span><br><span class="line">	Type  <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"type"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="api-getContestInfo"><a href="#api-getContestInfo" class="headerlink" title="/api/getContestInfo"></a><code>/api/getContestInfo</code></h3><h4 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h4><p><code>GET</code></p>
+<h4 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h4><p>获得在报名的比赛详细信息。</p>
+<h4 id="请求数据结构-2"><a href="#请求数据结构-2" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><p>请求中不需附加任何数据。</p>
+<h4 id="响应数据结构-2"><a href="#响应数据结构-2" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> ContestInfo <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	Name      <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"name"`</span></span><br><span class="line">	StartTime <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"start_time"`</span></span><br><span class="line">	EndTime   <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"end_time"`</span></span><br><span class="line">	Note      <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"note"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><code>name</code>：比赛名称</li>
+<li><code>start_time</code>：报名开始时间</li>
+<li><code>end_time</code>：报名结束时间</li>
+<li><code>note</code>：注意事项</li>
+</ul>
+<h4 id="权限-2"><a href="#权限-2" class="headerlink" title="权限"></a>权限</h4><p>任意用户。</p>
+<h3 id="api-verifyEmail"><a href="#api-verifyEmail" class="headerlink" title="/api/verifyEmail"></a><code>/api/verifyEmail</code></h3><h4 id="方法-3"><a href="#方法-3" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
+<h4 id="作用-3"><a href="#作用-3" class="headerlink" title="作用"></a>作用</h4><p>验证用户邮箱。</p>
+<h4 id="请求数据结构-3"><a href="#请求数据结构-3" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> EmailVerification <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	Email <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"email"`</span></span><br><span class="line">	Type  <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"type"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中：</p>
 <ul>
 <li><code>email</code>：要验证的邮箱</li>
 <li><code>type</code>：当前操作类型</li>
 </ul>
-<h4 id="响应数据结构-2"><a href="#响应数据结构-2" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
-<h4 id="权限-2"><a href="#权限-2" class="headerlink" title="权限"></a>权限</h4><p>任意用户。</p>
-<h3 id="api-register"><a href="#api-register" class="headerlink" title="/api/register"></a><code>/api/register</code></h3><h4 id="方法-3"><a href="#方法-3" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
-<h4 id="作用-3"><a href="#作用-3" class="headerlink" title="作用"></a>作用</h4><p>用户注册。</p>
-<h4 id="请求数据结构-3"><a href="#请求数据结构-3" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> UserRegister <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	Name       <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"name"`</span></span><br><span class="line">	Email      <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"email"`</span></span><br><span class="line">	School     <span class="hljs-keyword">int</span>    <span class="hljs-string">`json:"school"`</span></span><br><span class="line">	StuID      <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"stuid"`</span></span><br><span class="line">	EmailToken <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"email_token"`</span></span><br><span class="line">	PwdToken   <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"pwd_token"`</span></span><br><span class="line">	Action     <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"action"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="响应数据结构-3"><a href="#响应数据结构-3" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
+<h4 id="权限-3"><a href="#权限-3" class="headerlink" title="权限"></a>权限</h4><p>任意用户。</p>
+<h3 id="api-register"><a href="#api-register" class="headerlink" title="/api/register"></a><code>/api/register</code></h3><h4 id="方法-4"><a href="#方法-4" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
+<h4 id="作用-4"><a href="#作用-4" class="headerlink" title="作用"></a>作用</h4><p>用户注册。</p>
+<h4 id="请求数据结构-4"><a href="#请求数据结构-4" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> UserRegister <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	Name       <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"name"`</span></span><br><span class="line">	Email      <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"email"`</span></span><br><span class="line">	School     <span class="hljs-keyword">int</span>    <span class="hljs-string">`json:"school"`</span></span><br><span class="line">	StuID      <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"stuid"`</span></span><br><span class="line">	EmailToken <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"email_token"`</span></span><br><span class="line">	PwdToken   <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"pwd_token"`</span></span><br><span class="line">	Action     <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"action"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中：</p>
 <ul>
 <li><code>name</code>：用户真实姓名</li>
@@ -215,23 +228,23 @@
 <li><code>pwd_token</code>：密码加密后的值</li>
 <li><code>action</code>：当前在进行的操作，应为一常量字符串 <code>register</code></li>
 </ul>
-<h4 id="响应数据结构-3"><a href="#响应数据结构-3" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
-<h4 id="权限-3"><a href="#权限-3" class="headerlink" title="权限"></a>权限</h4><p>任意用户。</p>
-<h3 id="api-login"><a href="#api-login" class="headerlink" title="/api/login"></a><code>/api/login</code></h3><h4 id="方法-4"><a href="#方法-4" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
-<h4 id="作用-4"><a href="#作用-4" class="headerlink" title="作用"></a>作用</h4><p>用户登录。</p>
-<h4 id="请求数据结构-4"><a href="#请求数据结构-4" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> UserLogin <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	Email    <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"email"`</span></span><br><span class="line">	PwdToken <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"pwd"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="响应数据结构-4"><a href="#响应数据结构-4" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
+<h4 id="权限-4"><a href="#权限-4" class="headerlink" title="权限"></a>权限</h4><p>任意用户。</p>
+<h3 id="api-login"><a href="#api-login" class="headerlink" title="/api/login"></a><code>/api/login</code></h3><h4 id="方法-5"><a href="#方法-5" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
+<h4 id="作用-5"><a href="#作用-5" class="headerlink" title="作用"></a>作用</h4><p>用户登录。</p>
+<h4 id="请求数据结构-5"><a href="#请求数据结构-5" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> UserLogin <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	Email    <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"email"`</span></span><br><span class="line">	PwdToken <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"pwd"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中：</p>
 <ul>
 <li><code>email</code>：用户邮箱</li>
 <li><code>pwd</code>：密码加密后的值</li>
 </ul>
-<h4 id="响应数据结构-4"><a href="#响应数据结构-4" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个字符串，为用户的 JWT。以后任何操作都应将 JWT 附属在请求头的 Authorization 字段中，如下形式：</p>
+<h4 id="响应数据结构-5"><a href="#响应数据结构-5" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个字符串，为用户的 JWT。以后任何操作都应将 JWT 附属在请求头的 Authorization 字段中，如下形式：</p>
 <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Authorization: Bearer &lt;JWT&gt;</span><br></pre></td></tr></table></figure>
 <p>其中 <code>&lt;JWT&gt;</code> 为用户的 JWT。</p>
-<h4 id="权限-4"><a href="#权限-4" class="headerlink" title="权限"></a>权限</h4><p>任意未登录的用户。</p>
-<h3 id="api-forgot"><a href="#api-forgot" class="headerlink" title="/api/forgot"></a><code>/api/forgot</code></h3><h4 id="方法-5"><a href="#方法-5" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
-<h4 id="作用-5"><a href="#作用-5" class="headerlink" title="作用"></a>作用</h4><p>用户重置密码。</p>
-<h4 id="请求数据结构-5"><a href="#请求数据结构-5" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> UserResetPwd <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	Email      <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"email"`</span></span><br><span class="line">	EmailToken <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"email_token"`</span></span><br><span class="line">	PwdToken   <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"pwd_token"`</span></span><br><span class="line">	Action     <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"action"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="权限-5"><a href="#权限-5" class="headerlink" title="权限"></a>权限</h4><p>任意未登录的用户。</p>
+<h3 id="api-forgot"><a href="#api-forgot" class="headerlink" title="/api/forgot"></a><code>/api/forgot</code></h3><h4 id="方法-6"><a href="#方法-6" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
+<h4 id="作用-6"><a href="#作用-6" class="headerlink" title="作用"></a>作用</h4><p>用户重置密码。</p>
+<h4 id="请求数据结构-6"><a href="#请求数据结构-6" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> UserResetPwd <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	Email      <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"email"`</span></span><br><span class="line">	EmailToken <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"email_token"`</span></span><br><span class="line">	PwdToken   <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"pwd_token"`</span></span><br><span class="line">	Action     <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"action"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中：</p>
 <ul>
 <li><code>email</code>：用户邮箱</li>
@@ -239,17 +252,17 @@
 <li><code>pwd_token</code>：密码加密后的值</li>
 <li><code>action</code>：当前在进行的操作，应为一常量字符串 <code>reset</code></li>
 </ul>
-<h4 id="响应数据结构-5"><a href="#响应数据结构-5" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
-<h4 id="权限-5"><a href="#权限-5" class="headerlink" title="权限"></a>权限</h4><p>任意未登录的用户。</p>
-<h3 id="api-logout"><a href="#api-logout" class="headerlink" title="/api/logout"></a><code>/api/logout</code></h3><h4 id="方法-6"><a href="#方法-6" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
-<h4 id="作用-6"><a href="#作用-6" class="headerlink" title="作用"></a>作用</h4><p>用户登出。</p>
-<h4 id="请求数据结构-6"><a href="#请求数据结构-6" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><p>请求中不需附加任何数据。</p>
 <h4 id="响应数据结构-6"><a href="#响应数据结构-6" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
-<h4 id="权限-6"><a href="#权限-6" class="headerlink" title="权限"></a>权限</h4><p>任意登录的用户。</p>
-<h3 id="api-getUserInfo"><a href="#api-getUserInfo" class="headerlink" title="/api/getUserInfo"></a><code>/api/getUserInfo</code></h3><h4 id="方法-7"><a href="#方法-7" class="headerlink" title="方法"></a>方法</h4><p><code>GET</code></p>
-<h4 id="作用-7"><a href="#作用-7" class="headerlink" title="作用"></a>作用</h4><p>查看用户信息。</p>
+<h4 id="权限-6"><a href="#权限-6" class="headerlink" title="权限"></a>权限</h4><p>任意未登录的用户。</p>
+<h3 id="api-logout"><a href="#api-logout" class="headerlink" title="/api/logout"></a><code>/api/logout</code></h3><h4 id="方法-7"><a href="#方法-7" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
+<h4 id="作用-7"><a href="#作用-7" class="headerlink" title="作用"></a>作用</h4><p>用户登出。</p>
 <h4 id="请求数据结构-7"><a href="#请求数据结构-7" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><p>请求中不需附加任何数据。</p>
-<h4 id="响应数据结构-7"><a href="#响应数据结构-7" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> UserInfo <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	Name       <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"name"`</span></span><br><span class="line">	School     <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"school"`</span></span><br><span class="line">	StuID      <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"stuid"`</span></span><br><span class="line">	BelongTeam <span class="hljs-keyword">int64</span>  <span class="hljs-string">`json:"teamid"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="响应数据结构-7"><a href="#响应数据结构-7" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
+<h4 id="权限-7"><a href="#权限-7" class="headerlink" title="权限"></a>权限</h4><p>任意登录的用户。</p>
+<h3 id="api-getUserInfo"><a href="#api-getUserInfo" class="headerlink" title="/api/getUserInfo"></a><code>/api/getUserInfo</code></h3><h4 id="方法-8"><a href="#方法-8" class="headerlink" title="方法"></a>方法</h4><p><code>GET</code></p>
+<h4 id="作用-8"><a href="#作用-8" class="headerlink" title="作用"></a>作用</h4><p>查看用户信息。</p>
+<h4 id="请求数据结构-8"><a href="#请求数据结构-8" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><p>请求中不需附加任何数据。</p>
+<h4 id="响应数据结构-8"><a href="#响应数据结构-8" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> UserInfo <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	Name       <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"name"`</span></span><br><span class="line">	School     <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"school"`</span></span><br><span class="line">	StuID      <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"stuid"`</span></span><br><span class="line">	BelongTeam <span class="hljs-keyword">int64</span>  <span class="hljs-string">`json:"teamid"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中：</p>
 <ul>
 <li><code>name</code>：用户真实姓名</li>
@@ -257,11 +270,11 @@
 <li><code>stuid</code>：用户学号</li>
 <li><code>teamid</code>：用户所属队伍编号，<code>0</code> 为未加入任何队伍</li>
 </ul>
-<h4 id="权限-7"><a href="#权限-7" class="headerlink" title="权限"></a>权限</h4><p>任意登录的用户。</p>
-<h3 id="api-getTeamInfo"><a href="#api-getTeamInfo" class="headerlink" title="/api/getTeamInfo"></a><code>/api/getTeamInfo</code></h3><h4 id="方法-8"><a href="#方法-8" class="headerlink" title="方法"></a>方法</h4><p><code>GET</code></p>
-<h4 id="作用-8"><a href="#作用-8" class="headerlink" title="作用"></a>作用</h4><p>查看用户所属队伍信息。</p>
-<h4 id="请求数据结构-8"><a href="#请求数据结构-8" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><p>请求中不需附加任何数据。</p>
-<h4 id="响应数据结构-8"><a href="#响应数据结构-8" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> TeamInfo <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	TeamID       <span class="hljs-keyword">int64</span>      <span class="hljs-string">`json:"team_id"`</span></span><br><span class="line">	TeamName     <span class="hljs-keyword">string</span>     <span class="hljs-string">`json:"team_name"`</span></span><br><span class="line">	TeamAccount  <span class="hljs-keyword">string</span>     <span class="hljs-string">`json:"account"`</span></span><br><span class="line">	TeamPassword <span class="hljs-keyword">string</span>     <span class="hljs-string">`json:"password"`</span></span><br><span class="line">	InviteToken  <span class="hljs-keyword">string</span>     <span class="hljs-string">`json:"invite_token"`</span></span><br><span class="line">	TeamMember   []UserInfo <span class="hljs-string">`json:"member"`</span></span><br><span class="line">	MemberCnt    <span class="hljs-keyword">int</span>        <span class="hljs-string">`json:"mem_cnt"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="权限-8"><a href="#权限-8" class="headerlink" title="权限"></a>权限</h4><p>任意登录的用户。</p>
+<h3 id="api-getTeamInfo"><a href="#api-getTeamInfo" class="headerlink" title="/api/getTeamInfo"></a><code>/api/getTeamInfo</code></h3><h4 id="方法-9"><a href="#方法-9" class="headerlink" title="方法"></a>方法</h4><p><code>GET</code></p>
+<h4 id="作用-9"><a href="#作用-9" class="headerlink" title="作用"></a>作用</h4><p>查看用户所属队伍信息。</p>
+<h4 id="请求数据结构-9"><a href="#请求数据结构-9" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><p>请求中不需附加任何数据。</p>
+<h4 id="响应数据结构-9"><a href="#响应数据结构-9" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> TeamInfo <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	TeamID       <span class="hljs-keyword">int64</span>      <span class="hljs-string">`json:"team_id"`</span></span><br><span class="line">	TeamName     <span class="hljs-keyword">string</span>     <span class="hljs-string">`json:"team_name"`</span></span><br><span class="line">	TeamAccount  <span class="hljs-keyword">string</span>     <span class="hljs-string">`json:"account"`</span></span><br><span class="line">	TeamPassword <span class="hljs-keyword">string</span>     <span class="hljs-string">`json:"password"`</span></span><br><span class="line">	InviteToken  <span class="hljs-keyword">string</span>     <span class="hljs-string">`json:"invite_token"`</span></span><br><span class="line">	TeamMember   []UserInfo <span class="hljs-string">`json:"member"`</span></span><br><span class="line">	MemberCnt    <span class="hljs-keyword">int</span>        <span class="hljs-string">`json:"mem_cnt"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中：</p>
 <ul>
 <li><code>team_id</code>：队伍 ID</li>
@@ -272,29 +285,20 @@
 <li><code>member</code>：队伍中所有队员的信息</li>
 <li><code>mem_cnt</code>：队伍中队员总数</li>
 </ul>
-<h4 id="权限-8"><a href="#权限-8" class="headerlink" title="权限"></a>权限</h4><p>任意登录的用户。</p>
-<h3 id="api-modifyUserInfo"><a href="#api-modifyUserInfo" class="headerlink" title="/api/modifyUserInfo"></a><code>/api/modifyUserInfo</code></h3><h4 id="方法-9"><a href="#方法-9" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
-<h4 id="作用-9"><a href="#作用-9" class="headerlink" title="作用"></a>作用</h4><p>用户修改个人信息。</p>
-<h4 id="请求数据结构-9"><a href="#请求数据结构-9" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> UserInfoModify <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	Name   <span class="hljs-keyword">string</span> <span class="hljs-string">`gorm:"column:user_name" json:"name"`</span></span><br><span class="line">	School <span class="hljs-keyword">int</span>    <span class="hljs-string">`gorm:"column:school" json:"school"`</span></span><br><span class="line">	StuID  <span class="hljs-keyword">string</span> <span class="hljs-string">`gorm:"column:stu_id" json:"stuid"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="权限-9"><a href="#权限-9" class="headerlink" title="权限"></a>权限</h4><p>任意登录的用户。</p>
+<h3 id="api-modifyUserInfo"><a href="#api-modifyUserInfo" class="headerlink" title="/api/modifyUserInfo"></a><code>/api/modifyUserInfo</code></h3><h4 id="方法-10"><a href="#方法-10" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
+<h4 id="作用-10"><a href="#作用-10" class="headerlink" title="作用"></a>作用</h4><p>用户修改个人信息。</p>
+<h4 id="请求数据结构-10"><a href="#请求数据结构-10" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> UserInfoModify <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	Name   <span class="hljs-keyword">string</span> <span class="hljs-string">`gorm:"column:user_name" json:"name"`</span></span><br><span class="line">	School <span class="hljs-keyword">int</span>    <span class="hljs-string">`gorm:"column:school" json:"school"`</span></span><br><span class="line">	StuID  <span class="hljs-keyword">string</span> <span class="hljs-string">`gorm:"column:stu_id" json:"stuid"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中：</p>
 <ul>
 <li><code>name</code>：用户真实姓名</li>
 <li><code>school</code>：用户学院</li>
 <li><code>stuid</code>：用户学号</li>
 </ul>
-<h4 id="响应数据结构-9"><a href="#响应数据结构-9" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
-<h4 id="权限-9"><a href="#权限-9" class="headerlink" title="权限"></a>权限</h4><p>任意登录的用户。</p>
-<h3 id="api-modifyTeamInfo"><a href="#api-modifyTeamInfo" class="headerlink" title="/api/modifyTeamInfo"></a><code>/api/modifyTeamInfo</code></h3><h4 id="方法-10"><a href="#方法-10" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
-<h4 id="作用-10"><a href="#作用-10" class="headerlink" title="作用"></a>作用</h4><p>用户修改所属队伍信息。</p>
-<h4 id="请求数据结构-10"><a href="#请求数据结构-10" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> TeamInfoModify <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	TeamName <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"team_name"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其中：</p>
-<ul>
-<li><code>team_name</code>：队伍名称</li>
-</ul>
 <h4 id="响应数据结构-10"><a href="#响应数据结构-10" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
 <h4 id="权限-10"><a href="#权限-10" class="headerlink" title="权限"></a>权限</h4><p>任意登录的用户。</p>
-<h3 id="api-createTeam"><a href="#api-createTeam" class="headerlink" title="/api/createTeam"></a><code>/api/createTeam</code></h3><h4 id="方法-11"><a href="#方法-11" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
-<h4 id="作用-11"><a href="#作用-11" class="headerlink" title="作用"></a>作用</h4><p>用户新建一个队伍。</p>
+<h3 id="api-modifyTeamInfo"><a href="#api-modifyTeamInfo" class="headerlink" title="/api/modifyTeamInfo"></a><code>/api/modifyTeamInfo</code></h3><h4 id="方法-11"><a href="#方法-11" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
+<h4 id="作用-11"><a href="#作用-11" class="headerlink" title="作用"></a>作用</h4><p>用户修改所属队伍信息。</p>
 <h4 id="请求数据结构-11"><a href="#请求数据结构-11" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> TeamInfoModify <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	TeamName <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"team_name"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中：</p>
 <ul>
@@ -302,41 +306,50 @@
 </ul>
 <h4 id="响应数据结构-11"><a href="#响应数据结构-11" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
 <h4 id="权限-11"><a href="#权限-11" class="headerlink" title="权限"></a>权限</h4><p>任意登录的用户。</p>
-<h3 id="api-joinTeam"><a href="#api-joinTeam" class="headerlink" title="/api/joinTeam"></a><code>/api/joinTeam</code></h3><h4 id="方法-12"><a href="#方法-12" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
-<h4 id="作用-12"><a href="#作用-12" class="headerlink" title="作用"></a>作用</h4><p>用户加入某个队伍。</p>
-<h4 id="请求数据结构-12"><a href="#请求数据结构-12" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> JoinTeamRequest <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	TeamID      <span class="hljs-keyword">int64</span>  <span class="hljs-string">`json:"team_id"`</span></span><br><span class="line">	InviteToken <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"invite_token"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="api-createTeam"><a href="#api-createTeam" class="headerlink" title="/api/createTeam"></a><code>/api/createTeam</code></h3><h4 id="方法-12"><a href="#方法-12" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
+<h4 id="作用-12"><a href="#作用-12" class="headerlink" title="作用"></a>作用</h4><p>用户新建一个队伍。</p>
+<h4 id="请求数据结构-12"><a href="#请求数据结构-12" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> TeamInfoModify <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	TeamName <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"team_name"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<ul>
+<li><code>team_name</code>：队伍名称</li>
+</ul>
+<h4 id="响应数据结构-12"><a href="#响应数据结构-12" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
+<h4 id="权限-12"><a href="#权限-12" class="headerlink" title="权限"></a>权限</h4><p>任意登录的用户。</p>
+<h3 id="api-joinTeam"><a href="#api-joinTeam" class="headerlink" title="/api/joinTeam"></a><code>/api/joinTeam</code></h3><h4 id="方法-13"><a href="#方法-13" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
+<h4 id="作用-13"><a href="#作用-13" class="headerlink" title="作用"></a>作用</h4><p>用户加入某个队伍。</p>
+<h4 id="请求数据结构-13"><a href="#请求数据结构-13" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><figure class="highlight go hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">type</span> JoinTeamRequest <span class="hljs-keyword">struct</span> &#123;</span><br><span class="line">	TeamID      <span class="hljs-keyword">int64</span>  <span class="hljs-string">`json:"team_id"`</span></span><br><span class="line">	InviteToken <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"invite_token"`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其中：</p>
 <ul>
 <li><code>team_id</code>：要加入的队伍 ID</li>
 <li><code>invite_token</code>：加入队伍的邀请码</li>
 </ul>
-<h4 id="响应数据结构-12"><a href="#响应数据结构-12" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
-<h4 id="权限-12"><a href="#权限-12" class="headerlink" title="权限"></a>权限</h4><p>任意登录的用户。</p>
-<h3 id="api-quitTeam"><a href="#api-quitTeam" class="headerlink" title="/api/quitTeam"></a><code>/api/quitTeam</code></h3><h4 id="方法-13"><a href="#方法-13" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
-<h4 id="作用-13"><a href="#作用-13" class="headerlink" title="作用"></a>作用</h4><p>用户退出自己所属的队伍。</p>
-<h4 id="请求数据结构-13"><a href="#请求数据结构-13" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><p>请求中不需附加任何数据。</p>
 <h4 id="响应数据结构-13"><a href="#响应数据结构-13" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
 <h4 id="权限-13"><a href="#权限-13" class="headerlink" title="权限"></a>权限</h4><p>任意登录的用户。</p>
-<h3 id="api-admin-adminHello"><a href="#api-admin-adminHello" class="headerlink" title="/api/admin/adminHello"></a><code>/api/admin/adminHello</code></h3><h4 id="方法-14"><a href="#方法-14" class="headerlink" title="方法"></a>方法</h4><p><code>GET</code></p>
-<h4 id="作用-14"><a href="#作用-14" class="headerlink" title="作用"></a>作用</h4><p>没有实际作用，可以用作管理员状态检查。</p>
+<h3 id="api-quitTeam"><a href="#api-quitTeam" class="headerlink" title="/api/quitTeam"></a><code>/api/quitTeam</code></h3><h4 id="方法-14"><a href="#方法-14" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
+<h4 id="作用-14"><a href="#作用-14" class="headerlink" title="作用"></a>作用</h4><p>用户退出自己所属的队伍。</p>
 <h4 id="请求数据结构-14"><a href="#请求数据结构-14" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><p>请求中不需附加任何数据。</p>
-<h4 id="响应数据结构-14"><a href="#响应数据结构-14" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>xcpc-team-reg admin</code>。</p>
-<h4 id="权限-14"><a href="#权限-14" class="headerlink" title="权限"></a>权限</h4><p>登录的管理员用户。</p>
-<h3 id="api-admin-export"><a href="#api-admin-export" class="headerlink" title="/api/admin/export"></a><code>/api/admin/export</code></h3><h4 id="方法-15"><a href="#方法-15" class="headerlink" title="方法"></a>方法</h4><p><code>GET</code></p>
-<h4 id="作用-15"><a href="#作用-15" class="headerlink" title="作用"></a>作用</h4><p>按 CSV 格式导出所有队伍信息。</p>
+<h4 id="响应数据结构-14"><a href="#响应数据结构-14" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>ok</code>。</p>
+<h4 id="权限-14"><a href="#权限-14" class="headerlink" title="权限"></a>权限</h4><p>任意登录的用户。</p>
+<h3 id="api-admin-adminHello"><a href="#api-admin-adminHello" class="headerlink" title="/api/admin/adminHello"></a><code>/api/admin/adminHello</code></h3><h4 id="方法-15"><a href="#方法-15" class="headerlink" title="方法"></a>方法</h4><p><code>GET</code></p>
+<h4 id="作用-15"><a href="#作用-15" class="headerlink" title="作用"></a>作用</h4><p>没有实际作用，可以用作管理员状态检查。</p>
 <h4 id="请求数据结构-15"><a href="#请求数据结构-15" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><p>请求中不需附加任何数据。</p>
-<h4 id="响应数据结构-15"><a href="#响应数据结构-15" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个文件，格式为：</p>
+<h4 id="响应数据结构-15"><a href="#响应数据结构-15" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个常量字符串 <code>xcpc-team-reg admin</code>。</p>
+<h4 id="权限-15"><a href="#权限-15" class="headerlink" title="权限"></a>权限</h4><p>登录的管理员用户。</p>
+<h3 id="api-admin-export"><a href="#api-admin-export" class="headerlink" title="/api/admin/export"></a><code>/api/admin/export</code></h3><h4 id="方法-16"><a href="#方法-16" class="headerlink" title="方法"></a>方法</h4><p><code>GET</code></p>
+<h4 id="作用-16"><a href="#作用-16" class="headerlink" title="作用"></a>作用</h4><p>按 CSV 格式导出所有队伍信息。</p>
+<h4 id="请求数据结构-16"><a href="#请求数据结构-16" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><p>请求中不需附加任何数据。</p>
+<h4 id="响应数据结构-16"><a href="#响应数据结构-16" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个文件，格式为：</p>
 <ul>
 <li>第一列：队伍 ID</li>
 <li>第二列：队伍名称</li>
 <li>接下来的每三列：队员姓名、队员学院，队员学号</li>
 </ul>
-<h4 id="权限-15"><a href="#权限-15" class="headerlink" title="权限"></a>权限</h4><p>登录的管理员用户。</p>
-<h3 id="api-admin-import"><a href="#api-admin-import" class="headerlink" title="/api/admin/import"></a><code>/api/admin/import</code></h3><h4 id="方法-16"><a href="#方法-16" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
-<h4 id="作用-16"><a href="#作用-16" class="headerlink" title="作用"></a>作用</h4><p>导入队伍账号密码。</p>
-<h4 id="请求数据结构-16"><a href="#请求数据结构-16" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><p>请求中添加一个文件，字段名为 <code>team_table</code>。</p>
-<h4 id="响应数据结构-16"><a href="#响应数据结构-16" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个 JSON 数组，包含所有未成功添加的队伍 ID。<code>total</code> 字段为所有未成功添加的队伍总数。</p>
 <h4 id="权限-16"><a href="#权限-16" class="headerlink" title="权限"></a>权限</h4><p>登录的管理员用户。</p>
+<h3 id="api-admin-import"><a href="#api-admin-import" class="headerlink" title="/api/admin/import"></a><code>/api/admin/import</code></h3><h4 id="方法-17"><a href="#方法-17" class="headerlink" title="方法"></a>方法</h4><p><code>POST</code></p>
+<h4 id="作用-17"><a href="#作用-17" class="headerlink" title="作用"></a>作用</h4><p>导入队伍账号密码。</p>
+<h4 id="请求数据结构-17"><a href="#请求数据结构-17" class="headerlink" title="请求数据结构"></a>请求数据结构</h4><p>请求中添加一个文件，字段名为 <code>team_table</code>。</p>
+<h4 id="响应数据结构-17"><a href="#响应数据结构-17" class="headerlink" title="响应数据结构"></a>响应数据结构</h4><p>返回一个 JSON 数组，包含所有未成功添加的队伍 ID。<code>total</code> 字段为所有未成功添加的队伍总数。</p>
+<h4 id="权限-17"><a href="#权限-17" class="headerlink" title="权限"></a>权限</h4><p>登录的管理员用户。</p>
 <h2 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h2><h3 id="用户服务逻辑"><a href="#用户服务逻辑" class="headerlink" title="用户服务逻辑"></a>用户服务逻辑</h3><p>用户输入正确的邮箱和密码后即可登录成功。</p>
 <p>用户只能在非登录状态下登录和重置密码。</p>
 <p>用户只能在登录状态下登出。</p>
@@ -345,9 +358,9 @@
 <p>用户加入队伍时需要提供队伍 ID 和队伍邀请码。</p>
 <p>只有已加入队伍的用户可以退出队伍。</p>
 <h2 id="可改进点"><a href="#可改进点" class="headerlink" title="可改进点"></a>可改进点</h2><ul>
-<li>队伍审核后自动生成账号密码。</li>
-<li>组队时间控制，在时间之后无法对队伍进行操作。</li>
-<li>多场比赛报名，作为 SaaS 提供服务。</li>
+<li>队伍审核后自动生成账号密码（以后再说吧）。</li>
+<li><del>组队时间控制，在时间之后无法对队伍进行操作。</del></li>
+<li><del>多场比赛报名，作为 SaaS 提供服务（作为一次性服务运行，不提供了）。</del></li>
 </ul>
 
         </div>
@@ -583,9 +596,9 @@
         <span class="has-mr-6">3.2.5</span>
         <span>权限</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#api-verifyEmail">
+        <a class="is-flex" href="#api-getContestInfo">
         <span class="has-mr-6">3.3</span>
-        <span>/api/verifyEmail</span>
+        <span>/api/getContestInfo</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#方法-2">
         <span class="has-mr-6">3.3.1</span>
@@ -607,9 +620,9 @@
         <span class="has-mr-6">3.3.5</span>
         <span>权限</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#api-register">
+        <a class="is-flex" href="#api-verifyEmail">
         <span class="has-mr-6">3.4</span>
-        <span>/api/register</span>
+        <span>/api/verifyEmail</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#方法-3">
         <span class="has-mr-6">3.4.1</span>
@@ -631,9 +644,9 @@
         <span class="has-mr-6">3.4.5</span>
         <span>权限</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#api-login">
+        <a class="is-flex" href="#api-register">
         <span class="has-mr-6">3.5</span>
-        <span>/api/login</span>
+        <span>/api/register</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#方法-4">
         <span class="has-mr-6">3.5.1</span>
@@ -655,9 +668,9 @@
         <span class="has-mr-6">3.5.5</span>
         <span>权限</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#api-forgot">
+        <a class="is-flex" href="#api-login">
         <span class="has-mr-6">3.6</span>
-        <span>/api/forgot</span>
+        <span>/api/login</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#方法-5">
         <span class="has-mr-6">3.6.1</span>
@@ -679,9 +692,9 @@
         <span class="has-mr-6">3.6.5</span>
         <span>权限</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#api-logout">
+        <a class="is-flex" href="#api-forgot">
         <span class="has-mr-6">3.7</span>
-        <span>/api/logout</span>
+        <span>/api/forgot</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#方法-6">
         <span class="has-mr-6">3.7.1</span>
@@ -703,9 +716,9 @@
         <span class="has-mr-6">3.7.5</span>
         <span>权限</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#api-getUserInfo">
+        <a class="is-flex" href="#api-logout">
         <span class="has-mr-6">3.8</span>
-        <span>/api/getUserInfo</span>
+        <span>/api/logout</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#方法-7">
         <span class="has-mr-6">3.8.1</span>
@@ -727,9 +740,9 @@
         <span class="has-mr-6">3.8.5</span>
         <span>权限</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#api-getTeamInfo">
+        <a class="is-flex" href="#api-getUserInfo">
         <span class="has-mr-6">3.9</span>
-        <span>/api/getTeamInfo</span>
+        <span>/api/getUserInfo</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#方法-8">
         <span class="has-mr-6">3.9.1</span>
@@ -751,9 +764,9 @@
         <span class="has-mr-6">3.9.5</span>
         <span>权限</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#api-modifyUserInfo">
+        <a class="is-flex" href="#api-getTeamInfo">
         <span class="has-mr-6">3.10</span>
-        <span>/api/modifyUserInfo</span>
+        <span>/api/getTeamInfo</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#方法-9">
         <span class="has-mr-6">3.10.1</span>
@@ -775,9 +788,9 @@
         <span class="has-mr-6">3.10.5</span>
         <span>权限</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#api-modifyTeamInfo">
+        <a class="is-flex" href="#api-modifyUserInfo">
         <span class="has-mr-6">3.11</span>
-        <span>/api/modifyTeamInfo</span>
+        <span>/api/modifyUserInfo</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#方法-10">
         <span class="has-mr-6">3.11.1</span>
@@ -799,9 +812,9 @@
         <span class="has-mr-6">3.11.5</span>
         <span>权限</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#api-createTeam">
+        <a class="is-flex" href="#api-modifyTeamInfo">
         <span class="has-mr-6">3.12</span>
-        <span>/api/createTeam</span>
+        <span>/api/modifyTeamInfo</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#方法-11">
         <span class="has-mr-6">3.12.1</span>
@@ -823,9 +836,9 @@
         <span class="has-mr-6">3.12.5</span>
         <span>权限</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#api-joinTeam">
+        <a class="is-flex" href="#api-createTeam">
         <span class="has-mr-6">3.13</span>
-        <span>/api/joinTeam</span>
+        <span>/api/createTeam</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#方法-12">
         <span class="has-mr-6">3.13.1</span>
@@ -847,9 +860,9 @@
         <span class="has-mr-6">3.13.5</span>
         <span>权限</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#api-quitTeam">
+        <a class="is-flex" href="#api-joinTeam">
         <span class="has-mr-6">3.14</span>
-        <span>/api/quitTeam</span>
+        <span>/api/joinTeam</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#方法-13">
         <span class="has-mr-6">3.14.1</span>
@@ -871,9 +884,9 @@
         <span class="has-mr-6">3.14.5</span>
         <span>权限</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#api-admin-adminHello">
+        <a class="is-flex" href="#api-quitTeam">
         <span class="has-mr-6">3.15</span>
-        <span>/api/admin/adminHello</span>
+        <span>/api/quitTeam</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#方法-14">
         <span class="has-mr-6">3.15.1</span>
@@ -895,9 +908,9 @@
         <span class="has-mr-6">3.15.5</span>
         <span>权限</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#api-admin-export">
+        <a class="is-flex" href="#api-admin-adminHello">
         <span class="has-mr-6">3.16</span>
-        <span>/api/admin/export</span>
+        <span>/api/admin/adminHello</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#方法-15">
         <span class="has-mr-6">3.16.1</span>
@@ -919,9 +932,9 @@
         <span class="has-mr-6">3.16.5</span>
         <span>权限</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#api-admin-import">
+        <a class="is-flex" href="#api-admin-export">
         <span class="has-mr-6">3.17</span>
-        <span>/api/admin/import</span>
+        <span>/api/admin/export</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#方法-16">
         <span class="has-mr-6">3.17.1</span>
@@ -941,6 +954,30 @@
         </a></li><li>
         <a class="is-flex" href="#权限-16">
         <span class="has-mr-6">3.17.5</span>
+        <span>权限</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#api-admin-import">
+        <span class="has-mr-6">3.18</span>
+        <span>/api/admin/import</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#方法-17">
+        <span class="has-mr-6">3.18.1</span>
+        <span>方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#作用-17">
+        <span class="has-mr-6">3.18.2</span>
+        <span>作用</span>
+        </a></li><li>
+        <a class="is-flex" href="#请求数据结构-17">
+        <span class="has-mr-6">3.18.3</span>
+        <span>请求数据结构</span>
+        </a></li><li>
+        <a class="is-flex" href="#响应数据结构-17">
+        <span class="has-mr-6">3.18.4</span>
+        <span>响应数据结构</span>
+        </a></li><li>
+        <a class="is-flex" href="#权限-17">
+        <span class="has-mr-6">3.18.5</span>
         <span>权限</span>
         </a></li></ul></li></ul></li><li>
         <a class="is-flex" href="#逻辑">

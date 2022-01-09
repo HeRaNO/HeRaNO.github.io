@@ -23,7 +23,7 @@
 <meta property="og:description" content="为了避免自己摸鱼，每周写周报。 为了查阅方便，时间从近到远排。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-02-27T12:35:48.000Z">
-<meta property="article:modified_time" content="2022-01-09T16:30:41.200Z">
+<meta property="article:modified_time" content="2022-01-09T16:50:52.852Z">
 <meta property="article:author" content="HeRaNO">
 <meta property="article:tag" content="开发">
 <meta name="twitter:card" content="summary">
@@ -381,7 +381,7 @@ mjx-container[display="true"] + br {
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-01-10 00:30:41" itemprop="dateModified" datetime="2022-01-10T00:30:41+08:00">2022-01-10</time>
+      <time title="Modified: 2022-01-10 00:50:52" itemprop="dateModified" datetime="2022-01-10T00:50:52+08:00">2022-01-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -662,7 +662,14 @@ mjx-container[display="true"] + br {
 <h3 id="section-34">04-29</h3>
 <h4 id="这周干了啥-32">这周干了啥</h4>
 <p>因为被拉去 ByteCamp 了，所以这周估计也没时间写了……趁有空赶紧补上。</p>
-<p>系统终于上线了，还是找到了一些 bug 的。整理一下： 1. <code>JoinTeamRequest</code> 中前端传入 <code>string</code>，但后端按 <code>int64</code> 进行解析导致失败。上线前队内测试发现，已经解决。 2. 查询某队队员出现空记录，是错误使用了 <code>make([]int64, x)</code>，这样会申请一段长为 x 的内存，继续 <code>append</code> 不会使用已经申请的内存，直接放入即可。上线前队内测试发现，已经解决。 3. 前端修改学院信息传回 <code>school</code> 字段为空，是前端使用列表 <code>get</code> 学院 ID 时名称弄错了。上线前队内测试发现，已经解决。 4. 注册和找回密码时发送邮件并没有先判断用户是否注册过，导致部分邮件发送非预期失败。后新增了判断逻辑。上线前队内测试发现，已经解决。 5. 后端部分字段未转义导致 XSS 风险。后端已加转义。上线后发现，已经解决。</p>
+<p>系统终于上线了，还是找到了一些 bug 的。整理一下：</p>
+<ol type="1">
+<li><code>JoinTeamRequest</code> 中前端传入 <code>string</code>，但后端按 <code>int64</code> 进行解析导致失败。上线前队内测试发现，已经解决。</li>
+<li>查询某队队员出现空记录，是错误使用了 <code>make([]int64, x)</code>，这样会申请一段长为 x 的内存，继续 <code>append</code> 不会使用已经申请的内存，直接放入即可。上线前队内测试发现，已经解决。</li>
+<li>前端修改学院信息传回 <code>school</code> 字段为空，是前端使用列表 <code>get</code> 学院 ID 时名称弄错了。上线前队内测试发现，已经解决。</li>
+<li>注册和找回密码时发送邮件并没有先判断用户是否注册过，导致部分邮件发送非预期失败。后新增了判断逻辑。上线前队内测试发现，已经解决。</li>
+<li>后端部分字段未转义导致 XSS 风险。后端已加转义。上线后发现，已经解决。</li>
+</ol>
 <p>还有可两个改进点：</p>
 <ul>
 <li><code>math/rand</code> 改为 <code>crypto/rand</code>：但是谁也猜不到种子是啥时候，也用于非常重要的随机生成，所以没改。</li>

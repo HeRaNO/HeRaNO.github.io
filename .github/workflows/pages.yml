@@ -21,6 +21,8 @@ jobs:
           key: ${{ runner.OS }}-npm-cache
           restore-keys: |
             ${{ runner.OS }}-npm-cache
+      - name: Install Pandoc
+        run: sudo apt-get install pandoc
       - name: Install Dependencies
         run: npm install
       - name: Build

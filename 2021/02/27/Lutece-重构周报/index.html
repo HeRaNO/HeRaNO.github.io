@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"herano.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="为了避免自己摸鱼，每周写周报。 为了查阅方便，时间从近到远排。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lutece 重构周报（2021 年）">
+<meta property="og:url" content="https://herano.github.io/2021/02/27/Lutece-%E9%87%8D%E6%9E%84%E5%91%A8%E6%8A%A5/index.html">
+<meta property="og:site_name" content="return 0;">
+<meta property="og:description" content="为了避免自己摸鱼，每周写周报。 为了查阅方便，时间从近到远排。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-27T12:35:48.000Z">
+<meta property="article:modified_time" content="2022-01-09T16:30:41.200Z">
+<meta property="article:author" content="HeRaNO">
+<meta property="article:tag" content="开发">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://herano.github.io/2021/02/27/Lutece-%E9%87%8D%E6%9E%84%E5%91%A8%E6%8A%A5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://herano.github.io/2021/02/27/Lutece-%E9%87%8D%E6%9E%84%E5%91%A8%E6%8A%A5/","path":"2021/02/27/Lutece-重构周报/","title":"Lutece 重构周报（2021 年）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Lutece 重构周报（2021 年） | return 0;</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">return 0;</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fas fa-handshake fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88"><span class="nav-number">1.</span> <span class="nav-text">12 月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#section"><span class="nav-number">1.1.</span> <span class="nav-text">12-25</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5"><span class="nav-number">1.1.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5"><span class="nav-number">1.1.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-1"><span class="nav-number">1.2.</span> <span class="nav-text">12-18</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-2"><span class="nav-number">1.3.</span> <span class="nav-text">12-11</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-3"><span class="nav-number">1.4.</span> <span class="nav-text">12-04</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-3"><span class="nav-number">1.4.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88-1"><span class="nav-number">2.</span> <span class="nav-text">11 月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#section-4"><span class="nav-number">2.1.</span> <span class="nav-text">11-27</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-4"><span class="nav-number">2.1.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-4"><span class="nav-number">2.1.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-5"><span class="nav-number">2.2.</span> <span class="nav-text">11-20</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-5"><span class="nav-number">2.2.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-5"><span class="nav-number">2.2.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-6"><span class="nav-number">2.3.</span> <span class="nav-text">11-14</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-6"><span class="nav-number">2.3.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-6"><span class="nav-number">2.3.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-7"><span class="nav-number">2.4.</span> <span class="nav-text">11-06</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-7"><span class="nav-number">2.4.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-7"><span class="nav-number">2.4.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88-2"><span class="nav-number">3.</span> <span class="nav-text">10 月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#section-8"><span class="nav-number">3.1.</span> <span class="nav-text">10-30</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-8"><span class="nav-number">3.1.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-8"><span class="nav-number">3.1.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-9"><span class="nav-number">3.2.</span> <span class="nav-text">10-23</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-9"><span class="nav-number">3.2.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-9"><span class="nav-number">3.2.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-10"><span class="nav-number">3.3.</span> <span class="nav-text">10-16</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-10"><span class="nav-number">3.3.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-10"><span class="nav-number">3.3.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-11"><span class="nav-number">3.4.</span> <span class="nav-text">10-09</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-11"><span class="nav-number">3.4.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-11"><span class="nav-number">3.4.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-12"><span class="nav-number">3.5.</span> <span class="nav-text">10-03</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-12"><span class="nav-number">3.5.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-12"><span class="nav-number">3.5.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88-3"><span class="nav-number">4.</span> <span class="nav-text">9 月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#section-13"><span class="nav-number">4.1.</span> <span class="nav-text">09-26</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-13"><span class="nav-number">4.1.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-13"><span class="nav-number">4.1.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88-4"><span class="nav-number">5.</span> <span class="nav-text">9 月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#section-14"><span class="nav-number">5.1.</span> <span class="nav-text">09-17</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-14"><span class="nav-number">5.1.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-14"><span class="nav-number">5.1.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-15"><span class="nav-number">5.2.</span> <span class="nav-text">09-12</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-15"><span class="nav-number">5.2.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-15"><span class="nav-number">5.2.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-16"><span class="nav-number">5.3.</span> <span class="nav-text">09-04</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-16"><span class="nav-number">5.3.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-16"><span class="nav-number">5.3.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88-5"><span class="nav-number">6.</span> <span class="nav-text">8 月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#section-17"><span class="nav-number">6.1.</span> <span class="nav-text">08-28</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-17"><span class="nav-number">6.1.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-17"><span class="nav-number">6.1.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-18"><span class="nav-number">6.2.</span> <span class="nav-text">08-21</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-18"><span class="nav-number">6.2.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-18"><span class="nav-number">6.2.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-19"><span class="nav-number">6.3.</span> <span class="nav-text">08-14</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-19"><span class="nav-number">6.3.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-19"><span class="nav-number">6.3.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-20"><span class="nav-number">6.4.</span> <span class="nav-text">08-07</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-20"><span class="nav-number">6.4.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-20"><span class="nav-number">6.4.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88-6"><span class="nav-number">7.</span> <span class="nav-text">7 月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#section-21"><span class="nav-number">7.1.</span> <span class="nav-text">07-31</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-21"><span class="nav-number">7.1.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-21"><span class="nav-number">7.1.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-22"><span class="nav-number">7.2.</span> <span class="nav-text">07-25</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-22"><span class="nav-number">7.2.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-22"><span class="nav-number">7.2.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-23"><span class="nav-number">7.3.</span> <span class="nav-text">07-17</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-23"><span class="nav-number">7.3.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-23"><span class="nav-number">7.3.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-24"><span class="nav-number">7.4.</span> <span class="nav-text">07-11</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-24"><span class="nav-number">7.4.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-24"><span class="nav-number">7.4.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-25"><span class="nav-number">7.5.</span> <span class="nav-text">07-04</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-25"><span class="nav-number">7.5.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-25"><span class="nav-number">7.5.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88-7"><span class="nav-number">8.</span> <span class="nav-text">6 月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#section-26"><span class="nav-number">8.1.</span> <span class="nav-text">06-26</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-26"><span class="nav-number">8.1.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-26"><span class="nav-number">8.1.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-27"><span class="nav-number">8.2.</span> <span class="nav-text">06-19</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-27"><span class="nav-number">8.2.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-27"><span class="nav-number">8.2.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-28"><span class="nav-number">8.3.</span> <span class="nav-text">06-13</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-28"><span class="nav-number">8.3.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-28"><span class="nav-number">8.3.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-29"><span class="nav-number">8.4.</span> <span class="nav-text">06-06</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88-8"><span class="nav-number">9.</span> <span class="nav-text">5 月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#section-30"><span class="nav-number">9.1.</span> <span class="nav-text">05-29</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-29"><span class="nav-number">9.1.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-29"><span class="nav-number">9.1.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-31"><span class="nav-number">9.2.</span> <span class="nav-text">05-22</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-30"><span class="nav-number">9.2.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-30"><span class="nav-number">9.2.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-32"><span class="nav-number">9.3.</span> <span class="nav-text">05-15</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-31"><span class="nav-number">9.3.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-31"><span class="nav-number">9.3.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-33"><span class="nav-number">9.4.</span> <span class="nav-text">05-08</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88-9"><span class="nav-number">10.</span> <span class="nav-text">4 月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#section-34"><span class="nav-number">10.1.</span> <span class="nav-text">04-29</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-32"><span class="nav-number">10.1.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-32"><span class="nav-number">10.1.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-35"><span class="nav-number">10.2.</span> <span class="nav-text">04-24</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-36"><span class="nav-number">10.3.</span> <span class="nav-text">04-17</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-33"><span class="nav-number">10.3.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-33"><span class="nav-number">10.3.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-37"><span class="nav-number">10.4.</span> <span class="nav-text">04-11</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-38"><span class="nav-number">10.5.</span> <span class="nav-text">04-04</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-34"><span class="nav-number">10.5.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-34"><span class="nav-number">10.5.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88-10"><span class="nav-number">11.</span> <span class="nav-text">3 月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#section-39"><span class="nav-number">11.1.</span> <span class="nav-text">03-27</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-35"><span class="nav-number">11.1.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-35"><span class="nav-number">11.1.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-40"><span class="nav-number">11.2.</span> <span class="nav-text">03-21</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-36"><span class="nav-number">11.2.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-36"><span class="nav-number">11.2.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-41"><span class="nav-number">11.3.</span> <span class="nav-text">03-13</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-37"><span class="nav-number">11.3.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-37"><span class="nav-number">11.3.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#section-42"><span class="nav-number">11.4.</span> <span class="nav-text">03-06</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-38"><span class="nav-number">11.4.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-38"><span class="nav-number">11.4.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%88-11"><span class="nav-number">12.</span> <span class="nav-text">2 月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#section-43"><span class="nav-number">12.1.</span> <span class="nav-text">02-27</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%99%E5%91%A8%E5%B9%B2%E4%BA%86%E5%95%A5-39"><span class="nav-number">12.1.1.</span> <span class="nav-text">这周干了啥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E5%91%A8%E8%A6%81%E5%B9%B2%E5%95%A5-39"><span class="nav-number">12.1.2.</span> <span class="nav-text">下周要干啥</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="HeRaNO"
+      src="https://cn.gravatar.com/avatar/db46c601e36b86f9f275e9349e798149?s=215">
+  <p class="site-author-name" itemprop="name">HeRaNO</p>
+  <div class="site-description" itemprop="description">Getting along with desperate.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/HeRaNO" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;HeRaNO" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:heran55@126.com" title="E-Mail → mailto:heran55@126.com" rel="noopener" target="_blank"><i class="fas fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/HeRaNO/activities" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;HeRaNO&#x2F;activities" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/user/home?id=428068590" title="NeteaseMusic → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;428068590" rel="noopener" target="_blank"><i class="fas fa-music fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Useful Sites
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://m1.oi-archive.org:2/" title="https:&#x2F;&#x2F;m1.oi-archive.org:2&#x2F;" rel="noopener" target="_blank">OI Archive</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://judge.yosupo.jp/" title="https:&#x2F;&#x2F;judge.yosupo.jp&#x2F;" rel="noopener" target="_blank">Library Checker</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://herano.github.io/2021/02/27/Lutece-%E9%87%8D%E6%9E%84%E5%91%A8%E6%8A%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cn.gravatar.com/avatar/db46c601e36b86f9f275e9349e798149?s=215">
+      <meta itemprop="name" content="HeRaNO">
+      <meta itemprop="description" content="Getting along with desperate.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="return 0;">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Lutece 重构周报（2021 年）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-27 20:35:48" itemprop="dateCreated datePublished" datetime="2021-02-27T20:35:48+08:00">2021-02-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-01-10 00:30:41" itemprop="dateModified" datetime="2022-01-10T00:30:41+08:00">2022-01-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Lutece/" itemprop="url" rel="index"><span itemprop="name">Lutece</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>为了避免自己摸鱼，每周写周报。</p>
+<p>为了查阅方便，时间从近到远排。</p>
+<span id="more"></span>
+<h2 id="月">12 月</h2>
+<h3 id="section">12-25</h3>
+<h4 id="这周干了啥">这周干了啥</h4>
+<p>江苏省赛结束了，USACO 也打挂了，WF 2020 翻译完了，初期通知也发了……</p>
+<h4 id="下周要干啥">下周要干啥</h4>
+<p>写完初期报告之后回家……</p>
+<h3 id="section-1">12-18</h3>
+<h4 id="这周干了啥-1">这周干了啥</h4>
+<p>出题 DDL 基本赶完了，最后还是造了三个题零一道题除了标程，差点就要造第五道。这周又基本摸了，打会儿 USACO。</p>
+<h4 id="下周要干啥-1">下周要干啥</h4>
+<p>应该能写点东西了吧……</p>
+<h3 id="section-2">12-11</h3>
+<h4 id="这周干了啥-2">这周干了啥</h4>
+<p>研究了一会儿 Octave，感觉有些神仙问题，比如 <code>disp</code> 一个整数前面会带一个空格，但是字符串不会，莫名其妙只能说。也大概确定了测评支持的语言吧，C/C++，Java/Kotlin，Python，Go，Rust，Octave。</p>
+<p>然后大部分时间都在赶出题 ddl，一个人手造四个题，我真的哭死。可能还要造第五个，但是我不会。</p>
+<h4 id="下周要干啥-2">下周要干啥</h4>
+<p>希望验题没事.jpg</p>
+<h3 id="section-3">12-04</h3>
+<h4 id="这周干了啥-3">这周干了啥</h4>
+<p>写编译部分的时候发现 MongoDB 的 ObjectId 里面有时间戳，而且是 32 位的，上网一查还没有要改进的意愿。俺寻思 ObjectId 也算个主键，告诉我 2106 年前肯定没问题，2106 年后有概率主键相同，即使数据不会保存 100 多年，这么说也挺反直觉的。两亿年后的事情我不会管，但是一百年之后的事情还是有能力管的。</p>
+<p>所以估计最后主数据库就 PostgreSQL 了，对象存储用 MinIO，消息队列 RocketMQ。基本就算完成技术选型了吧……但是又有一些问题，比如测试任务组依赖应该怎么存，测试点重排使得 quick fail 怎么实现等等。</p>
+<h4 id="下周要干啥-3">下周要干啥</h4>
+<p>心情简单.jpg</p>
+<h2 id="月-1">11 月</h2>
+<h3 id="section-4">11-27</h3>
+<h4 id="这周干了啥-4">这周干了啥</h4>
+<p>总体来说，在抄 <a target="_blank" rel="noopener" href="https://github.com/lyrio-dev/judge">lyrio-dev/judge</a>，但又没完全抄，抄得七零八落的。</p>
+<p>既不喜欢 TypeScript 这种脚本语言，也恨 Go 没有面向对象……写得贼难受……</p>
+<h4 id="下周要干啥-4">下周要干啥</h4>
+<p>接着写，已经不知道啥时候能进调试了……</p>
+<h3 id="section-5">11-20</h3>
+<h4 id="这周干了啥-5">这周干了啥</h4>
+<p>论如何每周都不重复地说这周摸了。但是又感觉摸着摸着写 60% 了。</p>
+<h4 id="下周要干啥-5">下周要干啥</h4>
+<p>淦，怎么说都得进 judge core 的调试了吧。</p>
+<p><del>我好想有流量回放定期压测的测试环境哼哼啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</del></p>
+<h3 id="section-6">11-14</h3>
+<h4 id="这周干了啥-6">这周干了啥</h4>
+<p>莫名在改很多细节，周末去 CCPC 志愿者了，没写。</p>
+<h4 id="下周要干啥-6">下周要干啥</h4>
+<p>淦，怎么说都得进 judge core 的调试了吧。</p>
+<h3 id="section-7">11-06</h3>
+<h4 id="这周干了啥-7">这周干了啥</h4>
+<p>选好导师，企业和课题了。第一个五天计划完成了属于是。</p>
+<h4 id="下周要干啥-7">下周要干啥</h4>
+<p>怎么说下周都得干点活了吧淦。</p>
+<h2 id="月-2">10 月</h2>
+<h3 id="section-8">10-30</h3>
+<h4 id="这周干了啥-8">这周干了啥</h4>
+<p>选了导师，剩下基本又啥也没干，好咸。</p>
+<p>osu! 1000pp 了。</p>
+<h4 id="下周要干啥-8">下周要干啥</h4>
+<p>下周把编译部分写了。</p>
+<h3 id="section-9">10-23</h3>
+<h4 id="这周干了啥-9">这周干了啥</h4>
+<p>去绵阳了，这次 CSP 挺搞的只能说，不过绵阳还不错。主要是 U 盘中毒就很离谱。</p>
+<p>毕设也开始选题了……</p>
+<h4 id="下周要干啥-9">下周要干啥</h4>
+<p>赶紧选毕设导师。</p>
+<h3 id="section-10">10-16</h3>
+<h4 id="这周干了啥-10">这周干了啥</h4>
+<p>CSP 技术组开始干活了，今年好忙还要去绵阳准备考场……</p>
+<p>交互题 grader 的 container 有些权限问题，不对劲了起来，发现自己又不会 Linux 操作系统了。</p>
+<h4 id="下周要干啥-10">下周要干啥</h4>
+<p>下周 CSP。</p>
+<h3 id="section-11">10-09</h3>
+<h4 id="这周干了啥-11">这周干了啥</h4>
+<p>上周感冒了，这周加上国庆假期感觉啥也没干……</p>
+<p>研究了一下多线程题的测评，感觉还是按 CPU 分配的好，需要限制一定数量的 PID。</p>
+<h4 id="下周要干啥-11">下周要干啥</h4>
+<p>下周再努力吧。</p>
+<h3 id="section-12">10-03</h3>
+<h4 id="这周干了啥-12">这周干了啥</h4>
+<p>把所有题目测评的 pattern 写完了。然后进组了。</p>
+<h4 id="下周要干啥-12">下周要干啥</h4>
+<p>下周再努力吧。</p>
+<h2 id="月-3">9 月</h2>
+<h3 id="section-13">09-26</h3>
+<h4 id="这周干了啥-13">这周干了啥</h4>
+<p>最后的最后，一顿折腾，还是去哈工大直博了。但是全校的推免资格都没有，不知道怎么回事。</p>
+<p>不知道怎么就进入了开局就糊一堆乱七八糟的东西的节奏。很多东西都想试试，比如分布式存数据，就像直接 MongoDB 做 shard，但是问题就在于没那么多机器，效率也不一定高。还可以提前预载数据到内存里，大文件 I/O 时间或许就可以减少，但是不管怎么说这个时间都是要消耗的。</p>
+<p>最恶心的是多题型和 Go 有但完全没有的 OOP……</p>
+<h4 id="下周要干啥-13">下周要干啥</h4>
+<p>下周再努力吧。</p>
+<h2 id="月-4">9 月</h2>
+<h3 id="section-14">09-17</h3>
+<h4 id="这周干了啥-14">这周干了啥</h4>
+<p>哈工大（可能）找到导师了，找得十分自闭，南大浙大又把我挂了，把人挂了一次的学校一定会有第二次，加上不想去存储于是没报华科。中科院网络中心直接放弃了，看老师也不怎么发论文，很难受。华东师大还没有消息，毕竟 9.24 才报名结束。西交不报任何希望，毕竟鸽了夏令营。</p>
+<p>judge core 感觉越写越离谱，写半个月没用一个 context 感觉哪儿有点不对……</p>
+<h4 id="下周要干啥-14">下周要干啥</h4>
+<p>下周再努力吧。</p>
+<h3 id="section-15">09-12</h3>
+<h4 id="这周干了啥-15">这周干了啥</h4>
+<p>工大预推免过了，实习报告过了，不用答辩，去体测了，然后成绩没登上，不知道咋回事。</p>
+<p>在写 judge core 了，很离谱。</p>
+<h4 id="下周要干啥-15">下周要干啥</h4>
+<p>下周再努力吧。</p>
+<h3 id="section-16">09-04</h3>
+<h4 id="这周干了啥-16">这周干了啥</h4>
+<p>把实习报告等一堆杂七杂八的事情整完了。去清水河看了一眼老服务器，发现比我想象中的要惨，没法用了。</p>
+<p>看猴番能看上头，我病了。</p>
+<p>总之这周也没有太大进展，主要还是在写核心。</p>
+<h4 id="下周要干啥-16">下周要干啥</h4>
+<p>下周再努力吧。</p>
+<p>哈哈，完全笑不出来。</p>
+<h2 id="月-5">8 月</h2>
+<h3 id="section-17">08-28</h3>
+<h4 id="这周干了啥-17">这周干了啥</h4>
+<p>这周也啥也没干，实习报告快写完了，哈工大面试也结束了。然后回学校了。</p>
+<h4 id="下周要干啥-17">下周要干啥</h4>
+<p>下周再努力吧。</p>
+<h3 id="section-18">08-21</h3>
+<h4 id="这周干了啥-18">这周干了啥</h4>
+<p>这周把 core 相关的问题 close 了一下，包括时间限制，文件创建和权限限制问题。多线程多进程什么的并没有搞。大概原型已经完成了。</p>
+<h4 id="下周要干啥-18">下周要干啥</h4>
+<p>写实习报告。哈工大面试。</p>
+<h3 id="section-19">08-14</h3>
+<h4 id="这周干了啥-19">这周干了啥</h4>
+<p>沙盒用 libcontainer 跑起来了，传统题和交互题的最小原型都跑起来了。顺便还整明白了 testlib 的交互测评里 <code>tout</code> 是干啥用的，是往 <code>output</code> 里输出用的……然后可以再将输出的东西扔到 checker 里去评分。</p>
+<p>不过用 libcontainer 抽象的 process 和实际在程序内部测的时间有 8ms 左右的误差，倒也是可以接受。process 内部是用 wait4 等待进程运行结束的，用 rusage 获得进程消耗时间。</p>
+<p>感觉跟操作系统复习课一样……</p>
+<p>现在就差限制时间了，libcontainer 不会向 cpuacct 里写东西限制 CPU 时间。打算用 Tick 搞一下就完事。发现 Rlimit 的 CPU 也可以，但是限制太粗了，只能实现秒级的限制……</p>
+<p>突然想起腾讯面试的时候，面试官问我怎么限制在沙盒里创建文件的数量，我答的用 Cgroups V2 的 blkio 限制，现在发现是错的……需要用 Rlimit 的 NOFILE 限制打开的文件描述符个数……而且这个只能限制打开的文件描述符数量，不能限制创建文件数量……</p>
+<p>但是这个东西一般限制都很小（比如 1024）……不知道为啥在 LOJ 上会直接导致 System Error……</p>
+<h4 id="下周要干啥-19">下周要干啥</h4>
+<p>细化一些实现吧……需要搞一下文件创建限制，Rlimit 修改限制，还得测一下多线程（进程？协程？），还可以搞搞通信题，其实实现上就是跑两次交互。GPU 题也想搞搞，但是好像 libcontainer 没有 GPU 相关的限制（或者是在 devices 里挂设备上去，我不懂）。</p>
+<h3 id="section-20">08-07</h3>
+<h4 id="这周干了啥-20">这周干了啥</h4>
+<p>这周干的最有意义的事情是把架构设计定稿了。</p>
+<p>然后在想很多没用的东西……最后发现是真的没用。比如被 <a target="_blank" rel="noopener" href="https://github.com/criyle/go-judge">go-judge</a> 绕进去，去看它三平台沙箱的实现，发现貌似目前没有三平台的需求，除非非得上 MSVC，倒也没必要看，而且实现方式不太喜欢。然后就是想一些有的没的的架构，比如容灾，多机房，可伸缩分布式什么玩意的，毕竟你电只有一台机器……属实浪费了一周。</p>
+<p>架构大概分下面几块：</p>
+<ul>
+<li><code>lutece-frontend</code>：前端</li>
+<li><code>lutece-backend</code>：后端前台业务，实现业务功能（比赛，训练，题库，博客，站内信，Honor，etc.）</li>
+<li><code>lutece-problem-platform</code>：测评中台服务，处理所有测评请求和与题目相关的数据，可以理解成测评机的主节点</li>
+<li><code>lutece-judge-core</code>：单个实体测评机，继承测评机父类</li>
+<li><code>lutece-vjudge-core</code>：单个虚拟测评机，为了支持 Vjudge 业务设计的虚拟测评节点，继承测评机父类</li>
+<li><code>lutece-oss</code>：文件中台服务，管理所有文件</li>
+</ul>
+<p>一条测评请求按下面路径处理：</p>
+<ol type="1">
+<li>backend 收到请求，RPC 调用中台</li>
+<li>中台把测评信息扔到中台搭的消息队列里</li>
+<li>测评端订阅消息，收到测评消息后测评</li>
+<li>把测评结果发布在 backend 准备的消息队列里，backend 订阅对应测评结果消息</li>
+</ol>
+<p>两个中台都是高频使用的，并且业务也比较重，测评中台由于测评机和服务器的配置应该不同，因此做了这样的分离的主从设计。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/392433573">Premature optimization is the root of all evil.</a></p>
+<p>你软的实习报告要求出来了，崩溃了直接。</p>
+<h4 id="下周要干啥-20">下周要干啥</h4>
+<p>下周争取把沙盒跑起来。</p>
+<h2 id="月-6">7 月</h2>
+<h3 id="section-21">07-31</h3>
+<h4 id="这周干了啥-21">这周干了啥</h4>
+<p><del>终于把科四考完了 55555555</del></p>
+<p>这周 HDU 多校，然后把 HDU 上唯一没 AC 的题搞定了。</p>
+<p>总之这周没什么干劲，下周再努力吧（躺）。</p>
+<h4 id="下周要干啥-21">下周要干啥</h4>
+<p>下周真的要开始写了。</p>
+<h3 id="section-22">07-25</h3>
+<h4 id="这周干了啥-22">这周干了啥</h4>
+<p>离职了，从北京回家。</p>
+<h4 id="下周要干啥-22">下周要干啥</h4>
+<p>该写测评端了。大概要分几个中台去设计，还有一些细节没确定。</p>
+<p>设想是测评中台主从架构，数据中台提供对象存储的能力存储测评数据，题面（包括引用内容），测评记录和博客等，必要时可以引入数据分析能力。</p>
+<p>一种激进的解决方案是前台业务不设任何数据库和数据存储服务，全部调用中台能力通过 RPC 进行数据交换。前台业务只关注业务逻辑整合，比如比赛，题目，训练等业务逻辑。</p>
+<p>下周还有省赛和多校……还得考科四……</p>
+<h3 id="section-23">07-17</h3>
+<h4 id="这周干了啥-23">这周干了啥</h4>
+<p>这周水逆，三个夏令营全被拒了，需求的 bug 修得乱七八糟，每天基本都晚上九点以后从公司走，团建吃完饭甚至还回去修了一个 bug。</p>
+<p>好消息是获得了半个暑假，能把科四考了，还能写写 Lutece Next。</p>
+<p>已经能和绝望和睦相处了……</p>
+<h4 id="下周要干啥-23">下周要干啥</h4>
+<p>离职，交接，差不多该准备先把测评端设计掉了。</p>
+<h3 id="section-24">07-11</h3>
+<h4 id="这周干了啥-24">这周干了啥</h4>
+<p>（其实是 7.12 写的）</p>
+<p>两个需求全进测试了，这周打算提离职。</p>
+<p>中介疯狂上门看房，真的快被烦死了。</p>
+<p>南大的笔试去了，计组和操统啥也不会，而且题也全是计组操统，目测是要完蛋，但是还是没发最终通知，只能等了……</p>
+<p>Kitex 开源了，剩下的无事发生。感觉要做的实验很多……</p>
+<p>还是没有太规整的时间看人月神话。</p>
+<h4 id="下周要干啥-24">下周要干啥</h4>
+<p>测试收尾，上线，整理交接罢。</p>
+<p>没想到半年过的还挺快的……</p>
+<h3 id="section-25">07-04</h3>
+<h4 id="这周干了啥-25">这周干了啥</h4>
+<p>（其实是 7.5 写的）</p>
+<p>疯狂写需求……赶需求的时候像极了假期赶作业的我……PM 还来了一手倒排期，虽然最后排期并没有什么用。</p>
+<p>柱爷有一个用分析 AC 提交用 ML 给题目打算法 tag 的 point，蛮有 argue 点的。</p>
+<p>HDOJ 倒了，又回来了。</p>
+<p>南大要周二必须参加模拟测试，否则就不能参加正式的线上测试，佛了，正好这两天两个需求全联调，真的烦，只能 WFH 两天。</p>
+<h4 id="下周要干啥-25">下周要干啥</h4>
+<p>南大的笔试据说考 408+数学+英语名词翻译，彻底佛了，还是关心联调吧……</p>
+<h2 id="月-7">6 月</h2>
+<h3 id="section-26">06-26</h3>
+<h4 id="这周干了啥-26">这周干了啥</h4>
+<p>西交夏令营没去，在上班，先给老师磕一个。</p>
+<p>第一个需求前端全跑了，又排不上期了，第二个需求周一技术评审，技术分享也完事了，离职的事情也和 mentor 说了，计算所填导师差点没填上，感谢群友提醒……未来什么样确实也是未知数……</p>
+<p>看了一下 GraphQL，但是感觉全都是洞，很难写安全，太难了。</p>
+<p>Lutece 不知道怎么升级编译器版本，找不到柱爷，数学几何专题在准备了，《人月神话》在看了，但是也没有太多时间看，也就看了几章，总之这周过得很乱，心情也很乱，乱七八糟的事。</p>
+<h4 id="下周要干啥-26">下周要干啥</h4>
+<p>下周南大浙大计算所全开奖，还是大周，离职倒计时一个月。</p>
+<p>总之接下来一个月不太会碰 Lutece。</p>
+<h3 id="section-27">06-19</h3>
+<h4 id="这周干了啥-27">这周干了啥</h4>
+<p>更新完了 honor，这周又来一个大活，顺便技术分享。形策课作业还得写。</p>
+<p>西交入营了，但是有点不想去……</p>
+<p>前端需要有几个功能后端同步支持……但是排期大概是在八月，最近先规划一下吧……</p>
+<p>发现一个 Go Web 框架 Iris，感觉比 chi 的中间件完善效率还高，打算 Lutece Next 用 Iris 做框架了……</p>
+<p>大概的框架使用：</p>
+<ul>
+<li>Web Framework：Iris（Hertz 开源了也可以考虑之后切 Hertz，但是还是要看实际收益）</li>
+<li>RPC Framework：KiteX（希望它能在我离职前开源）</li>
+<li>Database：PostgreSQL，MongoDB，Redis</li>
+<li>Message Queue：Kafka or RocketMQ</li>
+</ul>
+<h4 id="下周要干啥-27">下周要干啥</h4>
+<p>梳理需求，愣是看 prd 没看懂要干啥。活多又杂，有点乱套……</p>
+<h3 id="section-28">06-13</h3>
+<h4 id="这周干了啥-28">这周干了啥</h4>
+<p>这周更新了集训队的 honor，之前一顿好找，确定了是静态页面，偶然在 frontend 项目里搜了一下就找到了 honor 在哪儿，于是就更新了一下。</p>
+<h4 id="下周要干啥-28">下周要干啥</h4>
+<p>下周技术分享，还要搞多校。</p>
+<h3 id="section-29">06-06</h3>
+<p>这天在校赛，甚至还是大周……</p>
+<p>和南大 LANDS 组的老师聊了，让我报名夏令营好好准备……</p>
+<h2 id="月-8">5 月</h2>
+<h3 id="section-30">05-29</h3>
+<h4 id="这周干了啥-29">这周干了啥</h4>
+<p>在写需求和技术分享……</p>
+<p>夏令营投了挺多学校，根据学校要不要选最后方向成了。去 NJU 就去搞高性能网络，去 XJTU 就去搞 HPC，去 ICT 就去搞高性能网络或者 HPC，去 ZJU 就去搞图形学，不过大概率 ZJU 不要我，我也没啥图形学基础，总之跟摇骰子一样，摇，就嗯摇。</p>
+<p>小需求没 QA 一直在等测，大需求数据没准备好也在挂起中。</p>
+<p>技术分享……草我不会计组和计网了，面试咋办啊。</p>
+<h4 id="下周要干啥-29">下周要干啥</h4>
+<p>需求，技术分享，校赛决赛</p>
+<h3 id="section-31">05-22</h3>
+<h4 id="这周干了啥-30">这周干了啥</h4>
+<p>这周部署了 WTFGame 到自己的华为云上，能跑起来了。整理了一下搭建过程。</p>
+<p>这周初赛查重要整理了，但是感觉进度很慢，因为狗队在上海。</p>
+<p>定容俩需求，真就闲的没事的时候总能给我整个大的……</p>
+<p>图床新建文件夹了。</p>
+<h4 id="下周要干啥-30">下周要干啥</h4>
+<p>不出意外要写需求，而且是起个新页从零开始的那种。真的那个需求看都看不懂……</p>
+<h3 id="section-32">05-15</h3>
+<h4 id="这周干了啥-31">这周干了啥</h4>
+<p>这周初赛运维，具体决赛之后小作文会说。</p>
+<p>这周定容了两个需求……还被预定了一个技术分享……</p>
+<h4 id="下周要干啥-31">下周要干啥</h4>
+<p>没事的时候把 XCPC Team Registration 的文档挪到 Github Wiki 上。</p>
+<h3 id="section-33">05-08</h3>
+<p>这天在上班，第二天去吃了顿饭……</p>
+<h2 id="月-9">4 月</h2>
+<h3 id="section-34">04-29</h3>
+<h4 id="这周干了啥-32">这周干了啥</h4>
+<p>因为被拉去 ByteCamp 了，所以这周估计也没时间写了……趁有空赶紧补上。</p>
+<p>系统终于上线了，还是找到了一些 bug 的。整理一下： 1. <code>JoinTeamRequest</code> 中前端传入 <code>string</code>，但后端按 <code>int64</code> 进行解析导致失败。上线前队内测试发现，已经解决。 2. 查询某队队员出现空记录，是错误使用了 <code>make([]int64, x)</code>，这样会申请一段长为 x 的内存，继续 <code>append</code> 不会使用已经申请的内存，直接放入即可。上线前队内测试发现，已经解决。 3. 前端修改学院信息传回 <code>school</code> 字段为空，是前端使用列表 <code>get</code> 学院 ID 时名称弄错了。上线前队内测试发现，已经解决。 4. 注册和找回密码时发送邮件并没有先判断用户是否注册过，导致部分邮件发送非预期失败。后新增了判断逻辑。上线前队内测试发现，已经解决。 5. 后端部分字段未转义导致 XSS 风险。后端已加转义。上线后发现，已经解决。</p>
+<p>还有可两个改进点：</p>
+<ul>
+<li><code>math/rand</code> 改为 <code>crypto/rand</code>：但是谁也猜不到种子是啥时候，也用于非常重要的随机生成，所以没改。</li>
+<li>展示 Token 使用等宽字体：推行复制粘贴，也没让前端改……</li>
+</ul>
+<p>这周柱爷组织启动 Lutece Next 了，有幸进到 Dev 组了，我直接下跪。第一个活是定位现在的 Judger 返回结果非预期过慢的问题……</p>
+<p><del>别催，在做了</del></p>
+<p>做的需求被 QA 折磨，最后还是今天过了验收（应该是），应该没啥事了。</p>
+<p>下一个需求被终止了，需要重新定容……</p>
+<h4 id="下周要干啥-32">下周要干啥</h4>
+<p>跟着 Lutece Next 走吧……</p>
+<h3 id="section-35">04-24</h3>
+<p>这周又忘了写周报，因为这天在搬家来着，一直没空写……第二天还要上班……</p>
+<h3 id="section-36">04-17</h3>
+<h4 id="这周干了啥-33">这周干了啥</h4>
+<p>上周学校开了会，定了校赛的大概时间，初赛 5.5。前端 Vingying 负责，今天联调+捉虫。</p>
+<p>花了 90 买了半年邮件服务，又在阿里云上开了按量计费的服务器，但是对于工资来说这也不算啥了。</p>
+<p>还是有一些点要注意的，比如 <a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/rfc8259/">JSON 标准</a>里对数字的支持是 <code>double</code> 型，<code>make([], x)</code> 会直接申请长度为 x 的数组什么的。</p>
+<h4 id="下周要干啥-33">下周要干啥</h4>
+<p>下周必须要写需求了……估计没有啥进展……</p>
+<h3 id="section-37">04-11</h3>
+<p>这周忘了写周报了……草</p>
+<h3 id="section-38">04-04</h3>
+<h4 id="这周干了啥-34">这周干了啥</h4>
+<p>xcpc-team-reg 大概写完了，还处在一个差不多能用的状态。</p>
+<p>用它编的初期报告很顺利。</p>
+<p>写的用户服务完全是个笑话。</p>
+<h4 id="下周要干啥-34">下周要干啥</h4>
+<p>抓前端，顺便调试一下。</p>
+<h2 id="月-10">3 月</h2>
+<h3 id="section-39">03-27</h3>
+<h4 id="这周干了啥-35">这周干了啥</h4>
+<p>初赛初步定期为 5.1，tmd 原来排期整整排多了一个月，有没有什么几天速成前端的东西。</p>
+<p>直接倒排期，发现 4.13 就得把前后端开发完，我完了。</p>
+<p>想买本《人月神话》学习一下了……</p>
+<p>这周没有特别大的进展，买了一年的华为云鲲鹏服务器，2 vCPU 4G 1M 一年 200 块还挺便宜的，但是 CPU 是 ARM 的（虽然没啥关系）。</p>
+<p>不过 Debian 的版本比较低，Redis 在上面跑有数据损坏的 Bug，参考<a target="_blank" rel="noopener" href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=977615">这里</a>，然后去提工单和华为云对线被嗯嗯，顺便 Go 的版本也很低，需要手动卸载原版本然后升级。</p>
+<p>新需求还是没定容，接着摸鱼。</p>
+<p>现在 xcpc-team-reg 的初始化部分倒是调通了，获取学院信息的一个简单接口也调通了。然后就是写登录鉴权，太难了根本不会十分难受。想着拿这个项目搭一个脚手架，但是进展还是很慢。</p>
+<p>找到了扔猫的那个游戏，没想到<a target="_blank" rel="noopener" href="https://github.com/wheatup/wtfgame">开源</a>了，青回。</p>
+<p>但是搭服看起来挺麻烦的……文档真的不全……</p>
+<p>顺便被队友拉去 ByteCamp，在五一，Guest WiFi 又合体了。</p>
+<p><del>还和组织对接人在 Lark 上尬聊</del></p>
+<h4 id="下周要干啥-35">下周要干啥</h4>
+<p>解决一下登录鉴权的问题。如果有空写个博客记录一下。</p>
+<p>下周是清明，希望能有些进展吧……</p>
+<h3 id="section-40">03-21</h3>
+<h4 id="这周干了啥-36">这周干了啥</h4>
+<p>人类史上最大最恶最绝望事件来了，学院要求写初期报告了。我就寻思我写的代码和文档都 L2 保密的，实习报告里面要求写实习内容，这咋写。</p>
+<p>这周主要起了一个新项目 <a target="_blank" rel="noopener" href="https://github.com/HeRaNO/xcpc-team-reg">xcpc-team-reg</a>，是一个 XCPC 组队服务，还在开发中。打算先用这个验一下 Lutece 的用户服务和队伍服务。</p>
+<p>想用服务器测一下，但是没有服务器，哭了。</p>
+<p><del>然后把这个放在实习报告里当成公司项目</del></p>
+<p>下周新需求定容，下下周开始开发，跪了。</p>
+<h4 id="下周要干啥-36">下周要干啥</h4>
+<p>完善 xcpc-team-reg 功能。</p>
+<h3 id="section-41">03-13</h3>
+<h4 id="这周干了啥-37">这周干了啥</h4>
+<p>这周写需求写吐了，横跨五个 repo，两个方法从同一个接口拿数据用了两种完全不一样的方式，两种结构，同一个修改改两次，人都崩溃了。</p>
+<p>顺便找了找有没有学校能给我个读研的机会……然后发现太卷了基本没有……</p>
+<p>然后得知小羊也在写 OJ 当毕设，说设计容量 500，我已经虚了……</p>
+<p>这周没怎么写 model，主要还是大概设计了一下。但是感觉关系表太多了……</p>
+<p>使用用户组来进行一定的权限控制，但是不想设计成 SYZOJ NG 一样的强权限控制。大概只是想让特定的用户组看到特定的比赛和训练这样，只有具有管理权限才能 CRUD 题目，训练和比赛。</p>
+<p>这里建立训练和比赛的权限管理是否需要细分，还需要从需求出发。</p>
+<p>在干活的时候深刻地体会到这两句话的意思，摘录一下。</p>
+<p><strong>do smth instead of nothing and stay organized</strong></p>
+<p><strong>WRITE STUFF DOWN</strong></p>
+<p>所以，上来最好先莽他一发，说不定就把需求写通了。</p>
+<h4 id="下周要干啥-37">下周要干啥</h4>
+<p>下周小周，应该可以结束 model 设计……</p>
+<h3 id="section-42">03-06</h3>
+<h4 id="这周干了啥-38">这周干了啥</h4>
+<p>这周没写用户管理，但是写了数据库 model。</p>
+<ul>
+<li>Users：用户</li>
+<li>Teams：队伍</li>
+<li>Groups：用户组，做权限分离</li>
+<li>Trainings：训练，与比赛分离，不排名，不计 rating
+<ul>
+<li>可以设计一下更好的 UI</li>
+</ul></li>
+<li>Contests：比赛，优先级比训练高，排名，计 rating</li>
+<li>Submissions：提交记录</li>
+<li>Blogs：博客，静态页面，并且把原来的 Announcement 合进来</li>
+<li>Clarifications：训练与比赛内的 Clarification</li>
+</ul>
+<p>站内信想了想算了，毕竟怎么样都能 QQ，或者从个人资料 get 到其他交流方式。这种容易洪泛的功能不太知道怎么设计才好。</p>
+<p>还有 Honors 也是静态页面，做个接口能访问和修改就行了。</p>
+<p>顺便复习了数据库怎么设计多对多关系……</p>
+<p>还认识到了为什么虚拟机不能用作开发机……</p>
+<p>MBP 真好啊，我也想整一个。</p>
+<h4 id="下周要干啥-38">下周要干啥</h4>
+<p>这周接了两个需求，第一个需求还好，第二个需求要写死了……</p>
+<p>下周准备接着写 model……</p>
+<h2 id="月-11">2 月</h2>
+<h3 id="section-43">02-27</h3>
+<h4 id="这周干了啥-39">这周干了啥</h4>
+<p>这 Lutece 是一分钟也用不下去了，为了避免摸鱼，只能强迫自己写周报了。</p>
+<p><del>上班要写日报，Lutece 再日报写不过来</del></p>
+<p>今天把 Lutece 的本地仓库搭起来辣！</p>
+<p><del>功能都实现完了再推 Github 上。</del></p>
+<p>然后就没有辣！</p>
+<p>（扔西瓜）</p>
+<p>还是大概爬爬格子写个大体目标吧……</p>
+<ul>
+<li>主语言：Go（实现后将全部转 Rust，视情况还可能得重构）</li>
+<li>目标：高性能，Just High Performance
+<ul>
+<li>期望实现标准：在比赛场景下，可以容纳至少 10000 人同时访问，90% 的访问时延小于 1 秒，无失败访问。</li>
+<li>说人话就是解决 C10K 问题。但是这里有点复杂，是要在双服务器下解决，两服务器在同一局域网下，第二个服务器（测评端）提供 DDL 保证的服务。</li>
+<li>合理是挺合理，但是不知道现有资源能不能实现，感觉有点悬。</li>
+</ul></li>
+<li>模块：
+<ul>
+<li>题目：至少 CRUD 都有，总感觉从 CDOJ 开始就没有删除功能，不知道怎么回事就很怪。可能是因为涉及提交记录删除吧，但是感觉这个也不是瓶颈。
+<ul>
+<li>测评类型：传统，交互，提交答案。打算先直接用 Simple Sandbox 了。</li>
+</ul></li>
+<li>比赛：先只有 XCPC，之后需要再加。
+<ul>
+<li>看看有没有赞助再决定有没有其他赛制，比如 IOI 赛制。</li>
+</ul></li>
+<li>训练：把暑假前集训和课程需要的比赛都划分为训练，并设计更多功能满足需求。</li>
+<li>用户：希望和学校的学生认证关联起来，至少整个邮箱验证能改密码……</li>
+<li>博客：集训队内用，希望以后能有人更新。</li>
+<li>站内信：提供比赛时问答功能，希望能做成独立组件。</li>
+</ul></li>
+<li>其他相关需求
+<ul>
+<li>安全性：是很重要，希望能在高性能的基础上解决。</li>
+<li>部署难度和迁移难度：原 Lutece 迁移到新版可能要花一定时间，原 Lutece 的数据是 GraphQL，不懂为啥要用这个。</li>
+<li>美观性：其实很多时候感觉，并不是一个设计变丑了用户说不好看，而是一个原有设计改变了，用户不习惯才说不好看。但是我不负责前端，不关我事。</li>
+<li>运维难度：有没有人应聘一下运维啊？</li>
+<li>题目维护：众所周知 Lutece 有两个问题，一个是题库问题，另一个是题目问题（没别的了啊喂）……之前的空题目需要删除，一些题目需要整理顺序，还有的要视情况加数据，加 checker 什么的，总之这个和建题库一样烦。</li>
+</ul></li>
+</ul>
+<h4 id="下周要干啥-39">下周要干啥</h4>
+<p>下周先从用户管理开始写。框架是 <a target="_blank" rel="noopener" href="https://github.com/go-chi/chi">chi</a>，还没想用 RPC，如果有需要的话转微服务可能会用 Kite。测评端数据库是 MongoDB（题面啥的都放到测评端解耦，并且文档类型数据也不适合放在 RDB 里），Web 端的数据库 PostgreSQL。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>HeRaNO
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://herano.github.io/2021/02/27/Lutece-%E9%87%8D%E6%9E%84%E5%91%A8%E6%8A%A5/" title="Lutece 重构周报（2021 年）">https://herano.github.io/2021/02/27/Lutece-重构周报/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%BC%80%E5%8F%91/" rel="tag"># 开发</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/01/27/%E9%83%A8%E5%88%86-OJ-%E7%9A%84-VJudge-%E6%96%B9%E6%B3%95/" rel="prev" title="部分 OJ 的 VJudge 方法">
+                  <i class="fa fa-chevron-left"></i> 部分 OJ 的 VJudge 方法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/04/03/XCPC-Team-Registration-%E7%9A%84%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/" rel="next" title="XCPC Team Registration 的技术文档">
+                  XCPC Team Registration 的技术文档 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HeRaNO</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"HeRaNO","repo":"HeRaNO.github.io","client_id":"15e64dc00eaa49f26158","client_secret":"d6725ac513fe27005c4145cae854ce6577ded4cb","admin_user":"HeRaNO","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"4906f38635610477bd015d8a023857f4"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

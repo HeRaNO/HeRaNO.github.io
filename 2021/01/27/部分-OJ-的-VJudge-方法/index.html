@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"herano.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="主要讲的就是怎么搭（mo）VJudge（yu）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部分 OJ 的 VJudge 方法">
+<meta property="og:url" content="https://herano.github.io/2021/01/27/%E9%83%A8%E5%88%86-OJ-%E7%9A%84-VJudge-%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="return 0;">
+<meta property="og:description" content="主要讲的就是怎么搭（mo）VJudge（yu）">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-27T14:19:07.000Z">
+<meta property="article:modified_time" content="2022-01-09T16:30:41.200Z">
+<meta property="article:author" content="HeRaNO">
+<meta property="article:tag" content="开发">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://herano.github.io/2021/01/27/%E9%83%A8%E5%88%86-OJ-%E7%9A%84-VJudge-%E6%96%B9%E6%B3%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://herano.github.io/2021/01/27/%E9%83%A8%E5%88%86-OJ-%E7%9A%84-VJudge-%E6%96%B9%E6%B3%95/","path":"2021/01/27/部分-OJ-的-VJudge-方法/","title":"部分 OJ 的 VJudge 方法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>部分 OJ 的 VJudge 方法 | return 0;</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">return 0;</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+        <li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fas fa-handshake fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#codeforces-gym-sgu"><span class="nav-number">1.</span> <span class="nav-text">Codeforces &#x2F; Gym &#x2F; SGU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#atcoder"><span class="nav-number">2.</span> <span class="nav-text">AtCoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#aizu"><span class="nav-number">3.</span> <span class="nav-text">Aizu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#codechef"><span class="nav-number">4.</span> <span class="nav-text">CodeChef</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#baekjoon-oj"><span class="nav-number">5.</span> <span class="nav-text">Baekjoon OJ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#libreoj"><span class="nav-number">6.</span> <span class="nav-text">LibreOJ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdu"><span class="nav-number">7.</span> <span class="nav-text">HDU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zoj"><span class="nav-number">8.</span> <span class="nav-text">ZOJ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kattis"><span class="nav-number">9.</span> <span class="nav-text">Kattis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#poj-openjudge"><span class="nav-number">10.</span> <span class="nav-text">POJ &#x2F; OpenJudge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spoj"><span class="nav-number">11.</span> <span class="nav-text">SPOJ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hackerrank"><span class="nav-number">12.</span> <span class="nav-text">HackerRank</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ural"><span class="nav-number">13.</span> <span class="nav-text">URAL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E8%92%9C%E5%AE%A2"><span class="nav-number">14.</span> <span class="nav-text">计蒜客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scu"><span class="nav-number">15.</span> <span class="nav-text">SCU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hihocoder"><span class="nav-number">16.</span> <span class="nav-text">hihoCoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nod"><span class="nav-number">17.</span> <span class="nav-text">51nod</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#topcoder"><span class="nav-number">18.</span> <span class="nav-text">TopCoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#e-olymp"><span class="nav-number">19.</span> <span class="nav-text">E-Olymp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uva-uvalive"><span class="nav-number">20.</span> <span class="nav-text">UVa &#x2F; UVALive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lightoj"><span class="nav-number">21.</span> <span class="nav-text">LightOJ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fzu"><span class="nav-number">22.</span> <span class="nav-text">FZU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ecnu"><span class="nav-number">23.</span> <span class="nav-text">ECNU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nowcoder"><span class="nav-number">24.</span> <span class="nav-text">NowCoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hit"><span class="nav-number">25.</span> <span class="nav-text">HIT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hrbust"><span class="nav-number">26.</span> <span class="nav-text">HRBUST</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#universal-oj-dark-bzoj"><span class="nav-number">27.</span> <span class="nav-text">Universal OJ &#x2F; Dark BZOJ</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="HeRaNO"
+      src="https://cn.gravatar.com/avatar/db46c601e36b86f9f275e9349e798149?s=215">
+  <p class="site-author-name" itemprop="name">HeRaNO</p>
+  <div class="site-description" itemprop="description">Getting along with desperate.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/HeRaNO" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;HeRaNO" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:heran55@126.com" title="E-Mail → mailto:heran55@126.com" rel="noopener" target="_blank"><i class="fas fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/HeRaNO/activities" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;HeRaNO&#x2F;activities" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/user/home?id=428068590" title="NeteaseMusic → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;428068590" rel="noopener" target="_blank"><i class="fas fa-music fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Useful Sites
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://m1.oi-archive.org:2/" title="https:&#x2F;&#x2F;m1.oi-archive.org:2&#x2F;" rel="noopener" target="_blank">OI Archive</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://judge.yosupo.jp/" title="https:&#x2F;&#x2F;judge.yosupo.jp&#x2F;" rel="noopener" target="_blank">Library Checker</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://herano.github.io/2021/01/27/%E9%83%A8%E5%88%86-OJ-%E7%9A%84-VJudge-%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cn.gravatar.com/avatar/db46c601e36b86f9f275e9349e798149?s=215">
+      <meta itemprop="name" content="HeRaNO">
+      <meta itemprop="description" content="Getting along with desperate.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="return 0;">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          部分 OJ 的 VJudge 方法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-01-27 22:19:07" itemprop="dateCreated datePublished" datetime="2021-01-27T22:19:07+08:00">2021-01-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-01-10 00:30:41" itemprop="dateModified" datetime="2022-01-10T00:30:41+08:00">2022-01-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">主要讲的就是怎么搭（mo）VJudge（yu）</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>这个人终于被 VJudge 整崩溃了，寒假集训的时候所有学校都在寒假集训，CF 交题一直 Pending，毕竟 VJudge 只有五个账号，到高峰期一等就是 10 多分钟，十分影响比赛体验（骂骂咧咧）。并且 VJudge 自己 fork 题面的话就不能用数学公式，很气。</p>
+<p>加上 Lutece 的重构需求，大概的想法是将测评端（Judge Server）抽象出来，作为独立的服务来看，测评端的存储题面和数据，接受后端发来的测评和题目请求，返回结果。这样抽象的话就可以兼顾 Lutece 作为题库的需求和 VJudge 需求了。本地 Judge Server 提供题目相关接口和测评接口，后端接口一对接就完事了。爬来的题面渲染问题在前端解决应该就可以了。</p>
+<p>其实也不怎么算 VJudge 了，主要是需要被动增加题目，不是主动去对方 OJ 搜题。</p>
+<p>然后就是走一遍 VJudge 老路，看怎么登录和提交代码了。</p>
+<p>主要参考的是 <a target="_blank" rel="noopener" href="https://github.com/hnshhslsh/virtual-judge">VJudge 源码</a>和 <a target="_blank" rel="noopener" href="https://github.com/BNUACM/bnuoj-vjudge">BNUOJ VJudge 源码</a>。两个项目一个是 Java 一个是 C++，互相参考理解可能更快一点吧。</p>
+<p>原型在<a target="_blank" rel="noopener" href="https://github.com/HeRaNO/ChickenRibs/tree/master/Lutece-VJudge-prototype">这里</a>，都是 Python 写的，以供参考。</p>
+<h2 id="codeforces-gym-sgu">Codeforces / Gym / SGU</h2>
+<p>这个是 VJudge 都会搞的。对于题面来说不是大事，总的题目可以通过 API 调取，然后根据调取结果爬题面即可。</p>
+<p>对于 CF 的登录，需要从页面中拿到 CSRF token，还需要从页面 Cookies 中提取 <code>39ce7</code> 的神仙字段，然后计算出 <code>_tta</code>，作为 POST 的参数。很神仙，根本不懂这个 <code>_tta</code> 算出来有啥用。</p>
+<p>CF 的提交仍然需要 CSRF token，但是不需要 <code>_tta</code> 了，然后提交语言需要参照列表里面的对应值填写，反正也是从页面爬。</p>
+<p>Gym 的提交和 CF 提交大体一样。</p>
+<p>SGU 的题放在 CF 上了，所以这部分也和 CF 一样。</p>
+<h2 id="atcoder">AtCoder</h2>
+<p>AtCoder 的登录还是简单一些，只需要 CSRF token 就好了。</p>
+<p>AtCoder 的提交需要一顿好找，需要找到那些标签的名称，语言的话还是从页面爬到，填对应的值即可。</p>
+<h2 id="aizu">Aizu</h2>
+<p>VJudge 起来超级舒服的 OJ，但是自己是个 sb。</p>
+<p>提供了齐全的 API，文档在<a target="_blank" rel="noopener" href="http://developers.u-aizu.ac.jp/index">这里</a>，面向 API 搞就好了。</p>
+<p>最后没搞懂提交的异步返回是怎么搞的，返回一个 token 之后不知道怎么查结果，或许应该 await 一下就好了……</p>
+<h2 id="codechef">CodeChef</h2>
+<p><del>是个人会写成 CodeChef 这样的提交吗。</del></p>
+<p>写这个的时候也参考了 <a target="_blank" rel="noopener" href="https://github.com/sk364/codechef-cli">CodeChef CLI</a> 的实现。</p>
+<p>CodeChef 把一堆验证都设成了 hidden，需要在一面上好找一顿。提交时需要注意 <code>form_token</code> 有两个，一定要填 <code>id</code> 对应的，否则会出错。</p>
+<p>而且必须要传个空文件上去，否则也会被拒绝<del>，实属脑瘫设计</del>。</p>
+<p>调了一下午结果是语言代码写错了……</p>
+<p>是个人能写成这样？</p>
+<h2 id="baekjoon-oj">Baekjoon OJ</h2>
+<p>OJ 地址是<a target="_blank" rel="noopener" href="https://acmicpc.net">这个</a>。</p>
+<p>这个 OJ 上有一堆别的地方找不到的题，各种远古题看起来很全。</p>
+<p>但是登陆要绕 reCAPTCHA 认证，很烦，虽然是隐藏的认证不用点图片或者输验证码什么的，但是还是不会绕。</p>
+<p>看上去提交的时候还是有 CSRF token。</p>
+<p>OJ 开发者远古的时候写了个自动提交代码的 Python 脚本，但是现在不好使了……</p>
+<p>这个 OJ 也打算提供 API，但是不知道要等到啥时候了……</p>
+<h2 id="libreoj">LibreOJ</h2>
+<p>问题同 Baekjoon OJ，更新到 SYZOJ NG 之后有了全套 API，但是不知道文档在哪儿，并且登录还是得绕隐藏的 reCAPTCHA 认证……</p>
+<p>VJudge 支持了，但是不知道 VJudge 咋写的，太神仙了……</p>
+<p>Menci 说要手动登录获取 session 的 token，我决定放弃。</p>
+<h2 id="hdu">HDU</h2>
+<p>HDU 到现在都是 HTTP 方式访问……</p>
+<p>浏览器抓个包其实都看出来了，登录会重定向，但是不影响访问。</p>
+<p>网站编码是 GBK 系的，提交的时候注意编码，但是我完全搞不懂。所以直接交 Base64 让后端解决去了……</p>
+<p>可以用中文测试，也可以试试 <a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=2815">HDU 2815</a> 这道题，输出的那个单引号不是英文单引号……</p>
+<h2 id="zoj">ZOJ</h2>
+<p>ZOJ 登录时需要拼图认证，同 LOJ 和 Baekjoon OJ 不会搞。</p>
+<h2 id="kattis">Kattis</h2>
+<p>Kattis 上比赛挺多的。</p>
+<p><del>看标志有点像恋爱裁判 PV 女主竟然有点萌</del></p>
+<p>Kattis 登录有 CSRF token，并且会重定向，但是 HDU 不能自动重定向但是 Kattis 可以不知道为什么。</p>
+<p>提交依旧提供了提交文件的选项，同 CodeChef 处理就行了。</p>
+<h2 id="poj-openjudge">POJ / OpenJudge</h2>
+<p>POJ 原本是不想支持的，但是就当个标本摆着了。</p>
+<p>因为我们也没怎么在 POJ 拉题倒是……</p>
+<p>这两个 OJ 的表单数据都不怎么复杂，继续浏览器抓包就啥都有了。</p>
+<p>OpenJudge 提供了 API，查状态还是很方便的。</p>
+<h2 id="spoj">SPOJ</h2>
+<p>看 SPOJ 的 footer 有 API 吓到我了，结果就是个广告。</p>
+<p>仍然没什么需要特别注意的地方……提交文件还是像 CodeChef 处理。</p>
+<h2 id="hackerrank">HackerRank</h2>
+<p>登录有 CSRF token，并且有反爬手段，必须交一个伪 header。</p>
+<p>剩下的没什么了。</p>
+<h2 id="ural">URAL</h2>
+<p>这个 OJ 很有意思，注册了之后你会获得一个 <code>JUDGE_ID</code>，然后凭这个 ID 提交，根本不用登录。</p>
+<p>但是记这个 <code>JUDGE_ID</code> 感觉好烦……</p>
+<h2 id="计蒜客">计蒜客</h2>
+<p>计蒜客的验证挺烦的，CSRF 的 token 放在 Cookie 里了，传密码要传 MD5……但是响应是 json 的，还是挺方便的。</p>
+<h2 id="scu">SCU</h2>
+<p>作为一个远古 OJ，主要是<del>嫖上面的省赛题</del>训练为主。</p>
+<p>登录还是很正常，但是提交的时候又双叒叕是 GBK 编码，这回没办法用 Base64 糊弄过去了，BNUOJ 的 VJugde 是把代码当 URL 查询参数传过去的，但是感觉这样太丑了……</p>
+<p>非常震撼的是提交要验证码，但是我不会写验证码识别，看两个 VJudge 都是手写的验证码识别，应该不难，但是懒得搞了……也防 SCU 突然加强验证码导致提交失败……</p>
+<h2 id="hihocoder">hihoCoder</h2>
+<p>hihoCoder 上貌似有些区域赛的题可以做。</p>
+<p>真的没啥说的，应该是最简单的了……</p>
+<h2 id="nod">51nod</h2>
+<p><del>51nod 上面有 lxl 题还是可以搬的。</del></p>
+<p>51nod 的密码传输采用 RSA 算法加密，公钥如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN PUBLIC KEY-----</span><br><span class="line">MIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgGTNlnTkCV1UvqhwEwoTBSgve1Ic</span><br><span class="line">eORoDpB8lV7g358xqoXTHFj7i+4SP3mD48VmGFUyKu+ZiH8hN0Od6s6+bttQ7YbE</span><br><span class="line">vSRwEjwfVC9DCCPukAHtirBSCDUqbFJPg8BfsHIOtPDx0CJCNmzutNkSnhD/lNad</span><br><span class="line">JvHU/Gl9NitAceZlAgMBAAE=</span><br><span class="line">-----END PUBLIC KEY-----</span><br></pre></td></tr></table></figure>
+<p>需要用公钥加密密码之后传过去……绝了……</p>
+<p>登录成功返回一个 <code>-1</code>，我还以为登录挂了。</p>
+<p>提交成功返回提交编号。</p>
+<h2 id="topcoder">TopCoder</h2>
+<p>过于奇妙以至于根本没看懂它是怎么 work 的。</p>
+<h2 id="e-olymp">E-Olymp</h2>
+<p>听说这个 OJ 有很多奇妙的远古比赛。</p>
+<p>登录不难，提交有一个 token 需要从提交页面获取。交完直接跳转到结果页面。</p>
+<h2 id="uva-uvalive">UVa / UVALive</h2>
+<p>UVa 已经开始用 C++ 重构了，但是表单还是很离谱，在页面里藏了一堆 tag。</p>
+<p>UVa 100 这个题输入范围是错的，并且不保证左边界小于等于右边界，很离谱。</p>
+<p>UVALive 和 UVa 用的 OJ 差不多，方法也都类似。</p>
+<h2 id="lightoj">LightOJ</h2>
+<p>登录有 reCAPTCHA，不会搞。</p>
+<h2 id="fzu">FZU</h2>
+<p>FZU 的 OJ 看起来好老啊（（（</p>
+<p>然后页面编码居然是 ISO-8859-1，人都傻了。</p>
+<p>但是提交代码是 UTF-8 的，支持中文，海星。</p>
+<h2 id="ecnu">ECNU</h2>
+<p><del>哦草后端真的写验证写起来不嫌麻烦是吧</del></p>
+<p>ECNU 搞了以上所有 OJ 的验证与加密方法，密码用 RSA 加密，图片验证码，CSRF token，能用上的都用上了，我吐了。</p>
+<p>公钥在 HTML 里面，可以直接找到。</p>
+<p>交题的时候有 CSRF token，返回一个 json，能获得当前提交状态。</p>
+<h2 id="nowcoder">NowCoder</h2>
+<p>牛客的登录外包出去了……转到 <a target="_blank" rel="noopener" href="https://growingio.com/">GrowingIO</a> 做验证……</p>
+<h2 id="hit">HIT</h2>
+<p>说实话去爬 HIT 和 HRBUST 的题也没啥必要……也没拉过他们的题……VJudge 也不支持 HIT 了……</p>
+<p>坑还是有一些的。登录之前先获得验证码，里面有登录用的 token，登录之后还会获得一个 token，用来交题中的身份认证。</p>
+<p>这里认证用的是 JWT，虽然不怎么重要但是确实是这样。</p>
+<p>然后他们公开代码写反了是我没想到的，提交代码 public 选 false 才能看自己的代码，而且自己不能看自己没 public 的代码。</p>
+<p>关键这种逻辑写挂的不是随便测一下就测出来了吗……</p>
+<p>然后交题之后什么都不返回是我没想到的……只有一个状态码 200……</p>
+<h2 id="hrbust">HRBUST</h2>
+<p>登录的时候是把用户名密码信息的 JSON 转化成字符串之后用 RSA 加密发出去的，绝了……</p>
+<p>公钥如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN PUBLIC KEY-----</span><br><span class="line">MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC88fBRU1FaC5S537krMDVDapOZ</span><br><span class="line">k44Nw+Yud69IPZYwk9HT0n6D7Pvp3mXp+Par6gp5HUW3tFs7/l3cTIqryEXMfJXR</span><br><span class="line">F7FlneM64kLs/KZ2i0larVrz7QgcTb5oAuHeIE24Uc0ja+S83Hlc2Dk6z1TWkAjG</span><br><span class="line">2f/p15xRfv/IO5yyywIDAQAB</span><br><span class="line">-----END PUBLIC KEY-----</span><br></pre></td></tr></table></figure>
+<p>而且 OJ 不能在比赛中注册账号，绝了……</p>
+<h2 id="universal-oj-dark-bzoj">Universal OJ / Dark BZOJ</h2>
+<p>UOJ 的密码是加盐 MD5 加密的，找了一晚上才发现是 HMAC-MD5 加盐加密的，甚至想手动照着 JS 代码实现一遍，但是 JS 写法太奔放了根本承受不住地址溢出……</p>
+<p>还要在 JS 代码里面找 CSRF token 我真的是吐了。</p>
+<p>但是所幸一个 session 里的 token 不会变……</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>HeRaNO
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://herano.github.io/2021/01/27/%E9%83%A8%E5%88%86-OJ-%E7%9A%84-VJudge-%E6%96%B9%E6%B3%95/" title="部分 OJ 的 VJudge 方法">https://herano.github.io/2021/01/27/部分-OJ-的-VJudge-方法/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%BC%80%E5%8F%91/" rel="tag"># 开发</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/01/24/%E4%B8%80%E4%BA%9B%E7%A5%9E%E4%BB%99%E4%B8%9C%E8%A5%BF/" rel="prev" title="一些神仙东西">
+                  <i class="fa fa-chevron-left"></i> 一些神仙东西
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/02/27/Lutece-%E9%87%8D%E6%9E%84%E5%91%A8%E6%8A%A5/" rel="next" title="Lutece 重构周报（2021 年）">
+                  Lutece 重构周报（2021 年） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HeRaNO</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"HeRaNO","repo":"HeRaNO.github.io","client_id":"15e64dc00eaa49f26158","client_secret":"d6725ac513fe27005c4145cae854ce6577ded4cb","admin_user":"HeRaNO","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.7.2/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"7659975b61d963358b0db90685af81ee"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

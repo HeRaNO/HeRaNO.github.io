@@ -169,7 +169,6 @@ links_settings:
 
 links:
   #Title: https://example.com
-  OI Archive: 'https://m1.oi-archive.org:2/'
   Library Checker: 'https://judge.yosupo.jp/'
 
 # Table of Contents in the Sidebar

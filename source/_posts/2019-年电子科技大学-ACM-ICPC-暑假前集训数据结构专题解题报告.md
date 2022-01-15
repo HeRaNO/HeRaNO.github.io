@@ -301,7 +301,7 @@ $$
 
 时间复杂度 $\mathcal{O}(n\log n)$，空间复杂度 $\mathcal{O}(n)$。
 
-原题详见：JZOJ 4726. 种花
+原题详见：[Luogu P1792. [国家集训队]种树](https://www.luogu.com.cn/problem/P1792)
 
 代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/2152.cpp)
 

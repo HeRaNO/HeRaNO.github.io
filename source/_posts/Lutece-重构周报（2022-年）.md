@@ -14,6 +14,34 @@ sticky: 100
 
 <!-- more -->
 
+## 2 月
+
+### 02-05
+
+#### 这周干了啥
+
+先给大家拜个晚年，祝大家晚年幸福。
+
+USACO 又打挂了，原因令人暖心。
+
+决定把消息队列从 RocketMQ 换成 RabbitMQ，因为 RocketMQ 部署太麻烦了，有很多东西预设是有一台 nb 服务器的，比如上来就要 8G 内存。而且 RocketMQ 没有 docker 部署方案，所以溜了。
+
+然后发现 RabbitMQ 的架构要重学，哈哈。[重学链接](https://blog.csdn.net/kavito/article/details/91403659)，真不想看英文了。
+
+RabbitMQ 用 docker 部署需要调个时区，用 `-e TZ=CST` 不好使，所以要把本机的时间配置挂过去。大概运行命令就像这样：
+
+```plain
+docker run -d --hostname my-rabbit --name some-rabbit -p 5672:5672 -p 15672:15672 -v /etc/timezone:/etc/timezone:ro -v /etc/localtime:/etc/localtime:ro rabbitmq:alpine
+```
+
+然后其实应该很多配置都应该从中台拉下来的，比如 MQ 的地址，用户名密码，队列名称啥的，但是先在文件配置吧，等中台好了再说。
+
+说实话真有点后悔，应该去复刻 Polygon 的，全是业务层的代码，写架构层代码太痛苦了。
+
+#### 下周要干啥
+
+目测下周进度快能发一个 execution-worker 的可迭代版本。
+
 ## 1 月
 
 ### 01-29

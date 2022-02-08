@@ -363,7 +363,7 @@ codeblock:
   # All available themes: https://theme-next.js.org/highlight/
   theme:
     light: default
-    dark: tomorrow-night
+    dark: monokai-sublime
   prism:
     light: prism
     dark: prism-dark

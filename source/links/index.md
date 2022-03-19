@@ -27,7 +27,7 @@ date: 2022-01-09 23:13:01
 
 你电的大爷们
 
-- [Decision@UESTC](https://decision01.cn/)
+- [Decision@UESTC](https://decision01.com/)
 - [Vingying@UESTC](https://reimu.red/)
 
 ---

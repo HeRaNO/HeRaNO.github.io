@@ -29,7 +29,7 @@ toc: true
 
 时间复杂度：$\mathcal{O}(n)$，空间复杂度：$\mathcal{O}(1)$。
 
-代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/48.cpp)。
+代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/1511.cpp)。
 
 ## B. 保护果实
 题目大意：有 $n$ 块板子排成一行，如果要买第 $i$ 块栅栏，那么必须要先买第 $i-1$ 块栅栏（第一块栅栏除外），求至少买多少板子才能构成一个多边形。
@@ -44,7 +44,7 @@ toc: true
 
 时间复杂度：$\mathcal{O}(n)$，空间复杂度：$\mathcal{O}(1)$。
 
-代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/50.cpp)。
+代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/1515.cpp)。
 
 ## C. 渐变字符串
 
@@ -56,7 +56,7 @@ toc: true
 
 时间复杂度：$\mathcal{O}(n)$，空间复杂度：$\mathcal{O}(n)$
 
-代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/52.cpp)。
+代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/1510.cpp)。
 
 ## D. 可怜的非洲银
 
@@ -70,7 +70,7 @@ toc: true
 
 时间复杂度：$\mathcal{O}(\min(n,k)m)$，其中 $m$ 为字符串长度，空间复杂度：$\mathcal{O}(m)$。
 
-代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/49.cpp)。
+代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/1512.cpp)。
 
 ## E. 简单的数学题
 
@@ -105,4 +105,4 @@ $$
 
 时间复杂度：$\mathcal{O}(n\log n)$，空间复杂度：$\mathcal{O}(n)$。
 
-代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/51.cpp)。
+代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/UESTC/1513.cpp)。

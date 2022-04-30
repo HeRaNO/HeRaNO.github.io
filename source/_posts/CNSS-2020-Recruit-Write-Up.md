@@ -39,7 +39,7 @@ flag 藏在响应头的 Cookie 里，Cookie 里面是一段 Base64 编码，后�
 
 flag 是 `code` 数组中所有元素的取反，稍微分析一下源码即可。
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Reverse/babyc.cpp)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Reverse/babyc.cpp)
 
 ### baby_pyc
 
@@ -47,7 +47,7 @@ flag 是 `code` 数组中所有元素的取反，稍微分析一下源码即可�
 
 发现这个文件里其实运行会挂，还要自己引入一下库再跑。加个 `hashlib` 就行了。
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Reverse/baby_pyc.py)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Reverse/baby_pyc.py)
 
 ### babyre
 
@@ -69,7 +69,7 @@ a3 传的是 v4，a4 传的是 v3，v3 是那个常量数组，v4 是输入。
 
 把那堆常量复制下来即可，对常量异或 0x6F 后再减 10 即可还原。
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Reverse/cppRe.cpp)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Reverse/cppRe.cpp)
 
 ## Crypto
 
@@ -79,7 +79,7 @@ a3 传的是 v4，a4 传的是 v3，v3 是那个常量数组，v4 是输入。
 
 线性筛一遍即可，答案不超过 `long long` 能表示的范围。
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Crypto/dragon1.cpp)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Crypto/dragon1.cpp)
 
 ### (baby) 龙王的代码II
 
@@ -87,7 +87,7 @@ a3 传的是 v4，a4 传的是 v3，v3 是那个常量数组，v4 是输入。
 
 直接 exCRT 即可，一定要用 Python 写。
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Crypto/dragon2.py)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Crypto/dragon2.py)
 
 ### (easy) 龙王的代码III
 
@@ -97,7 +97,7 @@ a3 传的是 v4，a4 传的是 v3，v3 是那个常量数组，v4 是输入。
 
 然后直接把熊板拿 Python 写一下就好了。
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Crypto/dragon3.py)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Crypto/dragon3.py)
 
 ### (baby) babyFib
 
@@ -107,7 +107,7 @@ a3 传的是 v4，a4 传的是 v3，v3 是那个常量数组，v4 是输入。
 
 ~~做法？不会真有人不会写矩阵快速幂吧？~~
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Crypto/babyFib.py)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Crypto/babyFib.py)
 
 ### (easy) notFib
 
@@ -213,7 +213,7 @@ $$
 
 ~~新人这能过四个真的 tql~~
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Crypto/notFib.py)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Crypto/notFib.py)
 
 ### (easy) Feistel
 
@@ -223,7 +223,7 @@ $$
 
 注意加密代码最后一步对密文还要交换一下，因此解密时也要先交换再解密。
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Crypto/feistel.py)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Crypto/feistel.py)
 
 ## Pwn
 
@@ -261,21 +261,21 @@ $$
 
 ~~啊？不会真有人不会用 Go 写多线程吧？~~
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Dev/multithread.go)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Dev/multithread.go)
 
 ### 0x04 仓鼠大师第二步
 
 ~~啊？都会写多线程了不会写计网实验？~~
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Dev/proxy.go)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Dev/proxy.go)
 
 ### KV Engine [ Step 0 ]
 
 ~~啊？不会真有人不会用 unordered_map 吧？~~
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Dev/kv0.cpp)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Dev/kv0.cpp)
 
-[Test code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Dev/kv0_test.cpp)
+[Test code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Dev/kv0_test.cpp)
 
 ## SA
 
@@ -299,7 +299,7 @@ RUN 命令需要写在一起，构建证书那段需要分阶段构建。
 
 ~~但是懒得改了……~~
 
-[nginx-quic](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/SA/nginx-quic)
+[nginx-quic](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/SA/nginx-quic)
 
 ## Design
 
@@ -311,13 +311,13 @@ RUN 命令需要写在一起，构建证书那段需要分阶段构建。
 
 ~~啊？不会真有人不会输出 Hello, World! 吧？~~
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Misc/hello1.c)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Misc/hello1.c)
 
 ### Hello World - 2
 
 要求不能出现各种引号，可以考虑用 `putchar()`，只需要打 ASCII 码就行了。
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Misc/hello2.c)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Misc/hello2.c)
 
 ### Hello World - 3
 
@@ -329,7 +329,7 @@ RUN 命令需要写在一起，构建证书那段需要分阶段构建。
 
 `if` 语句套进去可以不带分号……
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Misc/hello3.c)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Misc/hello3.c)
 
 ### Hello World - 4
 
@@ -343,7 +343,7 @@ main(){ /* code */ }
 
 但是 C++ 不能这么写。就考虑用 `extern "C"` 引入 `printf` 搞定之。
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Misc/hello4.cpp)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Misc/hello4.cpp)
 
 ### Hello World - 5
 
@@ -365,7 +365,7 @@ main(){ /* code */ }
 
 总符号使用数为 20。
 
-[Code](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2020/Misc/mod3.cpp)
+[Code](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2020/Misc/mod3.cpp)
 
 ### 电报
 

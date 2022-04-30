@@ -9,7 +9,7 @@ tags:
 	- 多项式相关
 ---
 
-这篇文章为题解翻译，原题解详见[这里](https://discuss.codechef.com/questions/123905/chefknn-editorial)。
+这篇文章为题解翻译，原题解详见[这里](https://discuss.codechef.com/t/chefknn-editorial/18179)。
 
 <!-- more -->
 

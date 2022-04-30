@@ -13,7 +13,7 @@ description: 前方高能！慎入！
 ## 为什么学 FFT
 退役（很早）之前听说 FFT 很神（e）奇（xin），Po 姐来讲的时候也是膜（sha）了（ye）一（bu）发（dong），于是就放那里了。退役之后有（xian）了（de）时（mei）间（shi），~~并且在篮球赛之前立了赢一场的 flag 否则学 FFT 结果又双叒叕全输了~~，于是下面就是成果了……网上 FFT 讲解多得是不看也罢……
 
-如果想要深入了解，请参考王逸松在 2018 年全国青少年信息学奥林匹克竞赛冬令营的讲课[傅里叶变换及其在 OI 中的应用](https://wys.life/201801-Fourier-Lecture.html)。
+如果想要深入了解，请参考王逸松在 2018 年全国青少年信息学奥林匹克竞赛冬令营的讲课[傅里叶变换及其在 OI 中的应用](/downloads/FT-Lecture.pdf)。
 
 ## 什么是 FFT？为什么 FFT？
 
@@ -39,7 +39,7 @@ $$
 
 从一个简单问题说起：大整数乘法。在做 [Vijos P2000](https://vijos.org/p/2000) 的时候，看数据范围 $\mathcal{O}(n^2)$ 有点卡常？在做 [HDOJ1402](http://acm.hdu.edu.cn/showproblem.php?pid=1402) 的时候 $\mathcal{O}(n^2)$ 接着卡常？大整数乘法的时间复杂度只能是 $\mathcal{O}(n^2)$ 了？
 
-并不是。从算法优化上可以实现为 $\mathcal{O}(n^{\log_2 3})$ 的方法（$\log_2 3\approx 1.585$，此方法为 Karatsuba 乘法，详解看[这里](http://blog.miskcoo.com/2014/10/karatsuba-multiplication)），还是不太友好。那么就会用到 $\mathcal{O}(n\log n)$ 的 FFT 了。
+并不是。从算法优化上可以实现为 $\mathcal{O}(n^{\log_2 3})$ 的方法（$\log_2 3\approx 1.585$，此方法为 Karatsuba 乘法，详解看[这里](http://web.archive.org/web/20200924035210/http://blog.miskcoo.com/2014/10/karatsuba-multiplication)），还是不太友好。那么就会用到 $\mathcal{O}(n\log n)$ 的 FFT 了。
 
 ## （初中知识）多项式
 
@@ -515,7 +515,7 @@ $$
 
 Po 姐：「此外，一个答案模一个数的计数问题必须用 NTT。」
 
-[这里](http://blog.miskcoo.com/2014/07/fft-prime-table)是一些常用质数的原根。
+[这里](http://web.archive.org/web/20201214071224/http://blog.miskcoo.com/2014/07/fft-prime-table)是一些常用质数的原根。
 
 ## FWT
 FWT 是一种类似于 FFT 的变换。我们都知道对于数组 $a$ 与数组 $b $ 的卷积 $c$ 可以表示为：

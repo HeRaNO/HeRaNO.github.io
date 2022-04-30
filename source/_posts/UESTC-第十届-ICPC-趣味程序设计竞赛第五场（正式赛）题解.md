@@ -15,8 +15,6 @@ toc: true
 
 woc 就差一个比较就能 $4$ 题了啊啊啊啊啊我石乐志啊啊啊啊啊
 
-比赛链接在[这里](https://acm.uestc.edu.cn/contest/58/summary)。
-
 因为是英文场，作为 LibreOJ 翻译组的一个 sb，懒得翻译了……
 
 ## A. Cooking - 做饭

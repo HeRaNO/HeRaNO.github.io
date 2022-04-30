@@ -62,7 +62,7 @@ CodeChef 把一堆验证都设成了 hidden，需要在一面上好找一顿。�
 
 ## Baekjoon OJ
 
-OJ 地址是[这个](https://acmicpc.net)。
+OJ 地址是[这个](https://www.acmicpc.net)。
 
 这个 OJ 上有一堆别的地方找不到的题，各种远古题看起来很全。
 
@@ -215,7 +215,7 @@ ECNU 搞了以上所有 OJ 的验证与加密方法，密码用 RSA 加密，图
 
 ## NowCoder
 
-牛客的登录外包出去了……转到 [GrowingIO](https://growingio.com/) 做验证……
+牛客的登录外包出去了……转到 [GrowingIO](https://www.growingio.com/) 做验证……
 
 ## HIT
 

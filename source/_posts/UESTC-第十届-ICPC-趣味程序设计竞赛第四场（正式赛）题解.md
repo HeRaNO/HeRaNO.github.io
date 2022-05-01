@@ -32,7 +32,7 @@ mdzz
 
 时间复杂度：$\mathcal{O}(n)$，空间复杂度：$\mathcal{O}(1)$。
 
-代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/69.cpp)。
+代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Contest/The%2010th%20UESTC%20Fun%20Programming%20Contest%20-%202nd%20Phase/A.cpp)。
 
 ## B. Sindar家的气球
 
@@ -46,7 +46,7 @@ mdzz 我 TM 直接去想动量定理了。
 
 时间复杂度：$\mathcal{O}(n)$，空间复杂度：$\mathcal{O}(1)$。
 
-代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/68.cpp)。
+代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Contest/The%2010th%20UESTC%20Fun%20Programming%20Contest%20-%202nd%20Phase/B.cpp)。
 
 ## C. 蚂蚁的旅途
 
@@ -56,7 +56,7 @@ mdzz 我 TM 直接去想动量定理了。
 
 时间复杂度：$\mathcal{O}(T2^t)$，空间复杂度：$\mathcal{O}(1)$。
 
-代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/70.cpp)。
+代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Contest/The%2010th%20UESTC%20Fun%20Programming%20Contest%20-%202nd%20Phase/C.cpp)。
 
 ## D. XOR 最长路径
 
@@ -76,7 +76,7 @@ mdzz 我 TM 直接去想动量定理了。
 
 时间复杂度：$\mathcal{O}(n)$，空间复杂度：$\mathcal{O}(n)$。
 
-代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/71.cpp)。
+代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Contest/The%2010th%20UESTC%20Fun%20Programming%20Contest%20-%202nd%20Phase/D.cpp)。
 
 ## E. 奥本海姆的衣柜
 
@@ -86,4 +86,4 @@ mdzz 我 TM 直接去想动量定理了。
 
 时间复杂度：$\mathcal{O}(nk)$，空间复杂度：$\mathcal{O}(1)$。
 
-代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Lutece/72.cpp)。
+代码见[这里](https://github.com/HeRaNO/OI-ICPC-Codes/blob/master/Contest/The%2010th%20UESTC%20Fun%20Programming%20Contest%20-%202nd%20Phase/E.cpp)。

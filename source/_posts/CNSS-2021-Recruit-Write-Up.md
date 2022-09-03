@@ -1,5 +1,5 @@
 ---
-title: CNSS 2021 Recruit Write Up
+title: CNSS 2021 Recruit Writeups
 categories: 'CTF'
 toc: true
 date: 2021-09-28 22:53:56
@@ -35,6 +35,8 @@ tags:
 后面的 `preg_replace` 还是比较简单的，因为它只会执行一次，所以用一个完整的串插入到这个串的某个位置就好了，比如 `fifilterlter` 这样。
 
 这样只能获得 flag 的前一半。后面要绕到 `verify`，估计是利用对数组 MD5 未处理异常的问题把 `===` 绕过去，然后显示 `flag`。但是不会了，放弃。
+
+UPD：上面的后一半想复杂了，是 `extract` 的问题，只需要搞一下覆盖的问题就行了。让 `verify` 的内容是 `flag2`，实际上传 MD5 就可以了……
 
 ## Reverse
 
@@ -150,6 +152,8 @@ P.S. 其他 XCPC 选手仍然表示不会做，与去年如出一辙，甚至还
 
 据 NamelessOIer 说单次应该是 $\mathcal{O}(\log p)$ 的，所以上面的暴力应该不是标解。顺便据说是某道区域赛的前半部分，应该是我没做过的东西了。
 
+UPD：用原根乱搞，我是啥b
+
 [BigBigSupermanIII.py](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2021/Crypto/BigBigSupermanIII.py)
 
 ### [😯] RSA II
@@ -157,6 +161,8 @@ P.S. 其他 XCPC 选手仍然表示不会做，与去年如出一辙，甚至还
 看上去 $e$ 很大，还是在 tr0y 师傅的[教程](https://www.tr0y.wang/2017/11/06/CTFRSA/#%E4%BD%8E%E8%A7%A3%E5%AF%86%E6%8C%87%E6%95%B0%E6%94%BB%E5%87%BB) 提到了 Wiener Attack，但是并不能用，怒而 Factor DB，发现有人把这玩意分解好了，于是一通基础操作就拿到了明文，发现并不是 flag，哈哈，又是代码。
 
 转而分析新代码，发现用同一个 $n,e$ 加密了两份明文，而且 $e$ 很小，猜它 padding 很小，然后 Coppersmith，结果猜错了，用不了，这题就寄了。
+
+UPD：就是 Coppersmith，我没细看，我是啥b×2。
 
 ## Misc
 

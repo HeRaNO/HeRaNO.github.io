@@ -1,5 +1,5 @@
 ---
-title: CNSS 2020 Recruit Write Up
+title: CNSS 2020 Recruit Writeups
 categories: 'CTF'
 toc: true
 date: 2020-10-14 11:18:35

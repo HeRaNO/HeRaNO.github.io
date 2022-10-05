@@ -1,6 +1,7 @@
 ---
 title: 看（玩）过的 ACGN 作品
 date: 2022-07-10 14:07:39
+categories: '杂言'
 tags:
 	- 杂言
 description: ' '

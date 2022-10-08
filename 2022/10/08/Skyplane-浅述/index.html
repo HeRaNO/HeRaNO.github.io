@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"herano.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="skyplane-project &#x2F; skyplane">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Skyplane 浅述">
+<meta property="og:url" content="https://herano.github.io/2022/10/08/Skyplane-%E6%B5%85%E8%BF%B0/index.html">
+<meta property="og:site_name" content="return 0;">
+<meta property="og:description" content="skyplane-project &#x2F; skyplane">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-10-08T06:38:30.000Z">
+<meta property="article:modified_time" content="2022-10-08T11:58:17.270Z">
+<meta property="article:author" content="HeRaNO">
+<meta property="article:tag" content="云计算">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://herano.github.io/2022/10/08/Skyplane-%E6%B5%85%E8%BF%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://herano.github.io/2022/10/08/Skyplane-%E6%B5%85%E8%BF%B0/","path":"2022/10/08/Skyplane-浅述/","title":"Skyplane 浅述"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Skyplane 浅述 | return 0;</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">return 0;</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fas fa-handshake fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#intro"><span class="nav-number">1.</span> <span class="nav-text">Intro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#motivation"><span class="nav-number">2.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sky-computing"><span class="nav-number">3.</span> <span class="nav-text">Sky Computing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#method"><span class="nav-number">4.</span> <span class="nav-text">Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#comment"><span class="nav-number">5.</span> <span class="nav-text">Comment</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="HeRaNO"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">HeRaNO</p>
+  <div class="site-description" itemprop="description">Getting along with despair.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/HeRaNO" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;HeRaNO" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:heran55@126.com" title="E-Mail → mailto:heran55@126.com" rel="noopener" target="_blank"><i class="fas fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/HeRaNO/activities" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;HeRaNO&#x2F;activities" rel="noopener" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/user/home?id=428068590" title="NeteaseMusic → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;428068590" rel="noopener" target="_blank"><i class="fas fa-music fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Useful Sites
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://judge.yosupo.jp/" title="https:&#x2F;&#x2F;judge.yosupo.jp&#x2F;" rel="noopener" target="_blank">Library Checker</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://herano.github.io/2022/10/08/Skyplane-%E6%B5%85%E8%BF%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="HeRaNO">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="return 0;">
+      <meta itemprop="description" content="Getting along with despair.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Skyplane 浅述 | return 0;">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Skyplane 浅述
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-08 14:38:30" itemprop="dateCreated datePublished" datetime="2022-10-08T14:38:30+08:00">2022-10-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Networking/" itemprop="url" rel="index"><span itemprop="name">Networking</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener" href="https://github.com/skyplane-project/skyplane">skyplane-project / skyplane</a></p>
+<span id="more"></span>
+<p>这几天在看算力网络相关的东西，老师让调研一下 Skyplane，于是花时间看了一下。</p>
+<h2 id="intro">Intro</h2>
+<p>Skyplane 是一个云上的超大数据的同步器。它可以管理并行化传输，数据分割，优化传输网路，并启动多 VM 提高吞吐量。</p>
+<p>使用 Skyplane 可以在如下服务之间传递数据：</p>
+<ul>
+<li>在云服务商内部，比如 S3 到 S3</li>
+<li>从多云服务商，比如 S3 到 Azure</li>
+<li>在本地和云服务商之间</li>
+</ul>
+<h2 id="motivation">Motivation</h2>
+<p>二十世纪九十年代中期有了 Web 托管服务，但是需要按 CPU，内存，带宽，存储分别付费。这就很烦，于是就有了 AWS 这样的云服务，他们打包了一套计算资源，但是在付费方面开倒车。</p>
+<hr>
+<p>如果是一个在云上开发过什么东西并且上过线的话可能会比较理解，就比如腾讯云会卖两种服务器，一种是 CVM，一种是 Lighthouse。CVM 是类似 EC2 的那种稳定性比较高的服务器，Lighthouse 也就是所谓轻量级服务器。CVM 的带宽特别低，一般只有 1M，Lighthouse 可以有 8M 或者 10M 的带宽。但是 CVM 支持按量付费，Lighthouse 是开箱即用的，可以预装各种环境，比如 LAMP 啥的，腾讯云可以预装宝塔（乐）。</p>
+<p>但是它们都有一个缺点就是<del>贼他吗</del>贵，贵得离谱，贵得吓人，贵得没有底线。CVM 包月服务加带宽可能会加到上万一个月，按量计费加带宽比较便宜，但是也就局限于开一两天。我们校赛在华为云开按量计费，10M 的带宽开一天也要一百多块钱。</p>
+<p>但是作为 Web 服务最重要的就是保证带宽，1M 小水管 P 用没有，把前端放在服务器上就会变成灾难，10 用户甚至 9 用户并发下一些前端大 JS 就会卡住。</p>
+<hr>
+<p>诸如 AWS 的云服务是向用户存储收费的，但是他们又要为修机房建网络付钱，通过 <a target="_blank" rel="noopener" href="https://blog.cloudflare.com/aws-egregious-egress/">Cloudflare 的调查</a>发现，北美地区用户为数据存储付的钱是 AWS 为网络带宽付的钱的 80 倍。这就造成了一种不平等。</p>
+<p>现在有了机器学习，我们为了经济，可能在 AWS 的 S3 上开存储，在 GCP 的计算中心学习，然后把模型发布到 Azure 上让其他人用。这里就涉及了大量的数据传递，比如把训练数据跨云服务商传递，或者在数据中心之间传递数据。</p>
+<p>研究者调研了一些云服务商，发现他们的出口流量小，费用高，导致云上串行化组织困难。并且云服务商均使用 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing">hot potato routing</a>，即将流量尽可能快地转发给下个自治域。例如云 A 的北美节点向云 B 的亚洲节点运输，使用 hot-potato routing 的话云 A 会把数据丢给云 B 的北美节点，然后云 B 内部将数据传给亚洲节点。这样对于 A 来说的花费是最小的，因为 A 不需要满世界建节点，但是最终速度是取决于云服务商的美洲节点之间互联的速度的，所以作者的结论是云服务商会优化花费，但不是速度。</p>
+<h2 id="sky-computing">Sky Computing</h2>
+<p>近些年以 UC Berkeley 为代表的实验室提出了 Sky Computing 的概念，不知道该咋翻译，总不能直接称为天计算吧，总之他们是想把这些云服务商连起来，构造另一个顶层逻辑。</p>
+<p>现在 Sky Computing 的瓶颈就在于各个云服务商提供的出口流量太小了，在 IO 密集型需求上就只能在一个 DC 内部做，如果跨 DC 就需要网络交互，而云服务商的出口流量正限制了这一业务。所以期望找到一个什么架构去连接这些云，使它们成为一个整体进行调度。</p>
+<h2 id="method">Method</h2>
+<p>Skyplane 是为了解决这一问题设计的。它的工作步骤如下：</p>
+<ol type="1">
+<li>首先检查要传输数据的源和目的的 diff</li>
+<li>选择一个传输方案，使得达到最小花费和最大吞吐量</li>
+<li>启动多个 VM 进行并行传输</li>
+</ol>
+<p>第三点中使用多个 VM 为的是并行化，VM 可以使用多块网卡同时传输数据。选路的时候优化的是吞吐量而非延迟，所以找到最大吞吐的路由是目标。有些延迟较高的路吞吐量也很高，在路由的时候也会考虑这些路径。</p>
+<p>在代码中，延迟和吞吐量数据都是预先测量好的，在代码里只是计算用。</p>
+<h2 id="comment">Comment</h2>
+<p>首先看了一眼作者的研究方向，是 ML System，感觉和 Network 不太沾边。这个系统的后期工作中倒是包括优化机器学习的学习过程和部署。</p>
+<p>整个系统是通过优化选路和并行来提高吞吐量的，其实也没做什么协议的改变，整个东西还是架在应用层的。但是确实避免了 hot-potato routing，最优选吞吐量大的来获得性能提升，这个部分可以做个 SDN。</p>
+<p>但是两点之间吞吐量和延迟可能是动态变化的，最优选路也是动态的。怎么抑制这样的路由摆动可能需要注意。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>HeRaNO
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://herano.github.io/2022/10/08/Skyplane-%E6%B5%85%E8%BF%B0/" title="Skyplane 浅述">https://herano.github.io/2022/10/08/Skyplane-浅述/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/" rel="tag"># 云计算</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/01/Viking-2022-Recruit-Writeups/" rel="prev" title="Viking 2022 Recruit Writeups">
+                  <i class="fa fa-chevron-left"></i> Viking 2022 Recruit Writeups
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HeRaNO</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"HeRaNO","repo":"HeRaNO.github.io","client_id":"15e64dc00eaa49f26158","client_secret":"d6725ac513fe27005c4145cae854ce6577ded4cb","admin_user":"HeRaNO","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"230539dea53e882350a78d712349c31e"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

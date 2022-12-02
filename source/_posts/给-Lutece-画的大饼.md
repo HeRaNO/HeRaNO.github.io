@@ -1,6 +1,6 @@
 ---
 title: 给 Lutece 画的大饼
-categories: 'Lutece'
+categories: 'DevOps'
 toc: true
 date: 2021-08-15 14:09:58
 tags:

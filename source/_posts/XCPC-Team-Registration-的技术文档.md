@@ -1,6 +1,6 @@
 ---
 title: "XCPC Team Registration 的技术文档"
-categories: '开发'
+categories: 'DevOps'
 toc: true
 date: 2021-04-03 16:31:25
 tags:

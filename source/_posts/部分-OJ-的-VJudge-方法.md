@@ -1,6 +1,6 @@
 ---
 title: 部分 OJ 的 VJudge 方法
-categories: '开发'
+categories: 'DevOps'
 toc: true
 date: 2021-01-27 22:19:07
 tags:

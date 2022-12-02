@@ -1,6 +1,6 @@
 ---
 title: ContestSonic 开发笔记（五）
-categories: '开发'
+categories: 'DevOps'
 toc: true
 date: 2019-10-13 16:26:29
 tags:

@@ -1,6 +1,6 @@
 ---
 title: ContestSonic 开发笔记（三）
-categories: '开发'
+categories: 'DevOps'
 date: 2019-06-25 01:00:00
 tags:
 	- Golang

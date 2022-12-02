@@ -1,6 +1,6 @@
 ---
 title: WTFGame 开服与运维
-categories: '开发'
+categories: 'DevOps'
 toc: false
 date: 2021-05-19 21:34:56
 tags:

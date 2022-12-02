@@ -1,6 +1,6 @@
 ---
 title: Lutece 重构周报（2021 年）
-categories: 'Lutece'
+categories: 'DevOps'
 toc: true
 date: 2021-02-27 20:35:48
 tags:

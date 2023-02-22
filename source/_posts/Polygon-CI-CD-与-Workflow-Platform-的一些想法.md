@@ -24,3 +24,5 @@ description: ' '
 返回结果也可以做到 FaaS 里，有个专门的消息队列收集结果，或者是一种异步缓冲区。
 
 Web API 也可以看成一种 Workflow，只不过十分简单。
+
+阿里云其实有 [Serverless 工作流](https://cn.aliyun.com/product/aliware/fnf)编排服务，但是我没用过。

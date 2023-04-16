@@ -12,6 +12,8 @@ tags:
 
 这几天在看算力网络相关的东西，老师让调研一下 Skyplane，于是花时间看了一下。
 
+UPD：说实话之前我不是很看好这个研究，但是他们中 [NSDI 2023](https://www.usenix.org/conference/nsdi23/presentation/jain) 了，所以不得不看了。
+
 ## Intro
 
 Skyplane 是一个云上的超大数据的同步器。它可以管理并行化传输，数据分割，优化传输网路，并启动多 VM 提高吞吐量。

@@ -4,6 +4,7 @@ date: 2022-10-08 14:38:30
 categories: 'Networking'
 tags:
 	- '云计算'
+	- '笔记'
 ---
 
 [skyplane-project / skyplane](https://github.com/skyplane-project/skyplane)

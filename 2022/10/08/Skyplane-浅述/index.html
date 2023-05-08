@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://herano.github.io/images/skyplane/f.3.png">
 <meta property="og:image" content="https://herano.github.io/images/skyplane/f.4.png">
 <meta property="article:published_time" content="2022-10-08T06:38:30.000Z">
-<meta property="article:modified_time" content="2023-05-07T07:23:44.265Z">
+<meta property="article:modified_time" content="2023-05-08T06:13:00.100Z">
 <meta property="article:author" content="HeRaNO">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="云计算">
@@ -398,9 +398,9 @@ mjx-container[display="true"] + br {
 <p>这里的「在一个云上的传输性能比公共云传输服务高出 4.6 倍」应该指的是在同一个云服务的不同地域之间拷贝。比如 AWS 的美东到孟买什么的。不同云就是跨云的，比如 AWS 到 Azure 的传输等等。一般跨云都会跨地域，所以就没有再强调地域不同。</p>
 </blockquote>
 <h2 id="intro">Intro</h2>
-<p>一份对 727 位受访者的调查显示，超过 86% 的受访者采用了多云（multi-cloud）的策略。主要是由于隐私合规，使用一些定制的硬件，或者避免制造商封锁。</p>
+<p>一份对 727 位受访者的调查显示，超过 86% 的受访者采用了多云（multi-cloud）的策略。主要是由于隐私合规，使用一些定制的硬件，或者避免<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Vendor_lock-in">供应商锁定</a>。</p>
 <blockquote>
-<p>隐私合规是一个非常重要的问题，我认为在这里是主要问题。这里的隐私合规是指数据存储必须在本地（物理的地域），并且限制数据外传处理的场景。使用定制硬件也是一个问题，比如某个区域可能没有 GPU 或者 FPGA 的服务器，但是训练模型的话需要先过一遍 FPGA 再过一遍 GPU，这时候就需要大规模迁移数据。至于最后的 prevent vendor lock-in，不是很理解。</p>
+<p>隐私合规是一个非常重要的问题，我认为在这里是主要问题。这里的隐私合规是指数据存储必须在本地（物理的地域），并且限制数据外传处理的场景。使用定制硬件也是一个问题，比如某个区域可能没有 GPU 或者 FPGA 的服务器，但是训练模型的话需要先过一遍 FPGA 再过一遍 GPU，这时候就需要大规模迁移数据。供应商锁定指对某个供应商形成了强依赖，要切换的话就要花费巨大的代价的情况，可以看<a target="_blank" rel="noopener" href="https://www.cloudflare.com/learning/cloud/what-is-vendor-lock-in/">这篇</a>博客了解。</p>
 </blockquote>
 <p>应用在数据中心之间传输数据为了批处理（比如 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Extract,_transform,_load">ETL</a>，<a target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/2829988.2787505">基于地理的统计</a>）和提供产品服务（比如搜索指数）。</p>
 <blockquote>

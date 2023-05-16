@@ -13,6 +13,8 @@ tags:
 
 [skypilot-org / skypilot](https://github.com/skypilot-org/skypilot)
 
+[知乎讨论](https://www.zhihu.com/question/533781841)
+
 文章中「任务负载」指的是 workload。
 
 ## Abstract

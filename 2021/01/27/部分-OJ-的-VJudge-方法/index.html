@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"herano.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"herano.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.17.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="主要讲的就是怎么搭（mo）VJudge（yu）">
 <meta property="og:type" content="article">
@@ -22,7 +22,7 @@
 <meta property="og:description" content="主要讲的就是怎么搭（mo）VJudge（yu）">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-27T14:19:07.000Z">
-<meta property="article:modified_time" content="2023-05-16T09:26:21.193Z">
+<meta property="article:modified_time" content="2023-06-11T05:32:15.477Z">
 <meta property="article:author" content="HeRaNO">
 <meta property="article:tag" content="开发">
 <meta name="twitter:card" content="summary">
@@ -379,8 +379,7 @@ mjx-container[display="true"] + br {
     
     
     
-    <div class="post-body" itemprop="articleBody">
-        <p>这个人终于被 VJudge 整崩溃了，寒假集训的时候所有学校都在寒假集训，CF 交题一直 Pending，毕竟 VJudge 只有五个账号，到高峰期一等就是 10 多分钟，十分影响比赛体验（骂骂咧咧）。并且 VJudge 自己 fork 题面的话就不能用数学公式，很气。</p>
+    <div class="post-body" itemprop="articleBody"><p>这个人终于被 VJudge 整崩溃了，寒假集训的时候所有学校都在寒假集训，CF 交题一直 Pending，毕竟 VJudge 只有五个账号，到高峰期一等就是 10 多分钟，十分影响比赛体验（骂骂咧咧）。并且 VJudge 自己 fork 题面的话就不能用数学公式，很气。</p>
 <p>加上 Lutece 的重构需求，大概的想法是将测评端（Judge Server）抽象出来，作为独立的服务来看，测评端的存储题面和数据，接受后端发来的测评和题目请求，返回结果。这样抽象的话就可以兼顾 Lutece 作为题库的需求和 VJudge 需求了。本地 Judge Server 提供题目相关接口和测评接口，后端接口一对接就完事了。爬来的题面渲染问题在前端解决应该就可以了。</p>
 <p>其实也不怎么算 VJudge 了，主要是需要被动增加题目，不是主动去对方 OJ 搜题。</p>
 <p>然后就是走一遍 VJudge 老路，看怎么登录和提交代码了。</p>
@@ -588,6 +587,8 @@ mjx-container[display="true"] + br {
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
+
+
 
 
 

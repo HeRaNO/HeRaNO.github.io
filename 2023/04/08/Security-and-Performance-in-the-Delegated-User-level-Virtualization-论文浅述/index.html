@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"herano.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.17.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"herano.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="IPADS-DuVisor &#x2F; DuVisor">
 <meta property="og:type" content="article">
@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://herano.github.io/images/duvisor/6.png">
 <meta property="og:image" content="https://herano.github.io/images/duvisor/8.png">
 <meta property="article:published_time" content="2023-04-08T08:01:37.000Z">
-<meta property="article:modified_time" content="2023-07-26T08:11:44.646Z">
+<meta property="article:modified_time" content="2023-08-18T05:23:46.807Z">
 <meta property="article:author" content="HeRaNO">
 <meta property="article:tag" content="云计算">
 <meta property="article:tag" content="笔记">
@@ -403,7 +403,7 @@ mjx-container[display="true"] + br {
 <p>这里的控制面指内核的控制面，内核驱动只控制虚拟机的启停和一些内存溢出等严重错误，剩下 VM exit 事件都是由数据面来负责操作的。和预印本不同的是，正式版论文删除了对于性能提升的表述，我觉得也是，整个论文应该是提升的安全性，性能不明显下降就很好了。并且控制面和数据面说得更直接了，挺好的。</p>
 </blockquote>
 <h2 id="研究的问题">研究的问题</h2>
-<p>虚拟化的分为三个阶段。第一阶段是如早期 IBM VM/370 的，直接把虚拟化功能实现在内核态里，实现虚拟化。第二阶段是把一些 hypervisor 函数移到内核态，利用系统调用复用操作系统功能，实现虚拟化。这种虚拟化方案仍然需要在内核态运行一些函数，比如指令仿真和内存虚拟化。</p>
+<p>虚拟化分为三个阶段。第一阶段是如早期 IBM VM/370 的，直接把虚拟化功能实现在内核态里，实现虚拟化。第二阶段是把一些 hypervisor 函数移到内核态，利用系统调用复用操作系统功能，实现虚拟化。这种虚拟化方案仍然需要在内核态运行一些函数，比如指令仿真和内存虚拟化。</p>
 <p>目前的虚拟化方案正处于第三阶段，即使用虚拟化硬件扩展，将一部分虚拟化函数放在硬件扩展中，以提高性能。虚拟化硬件扩展如 Intel VMX，AMD SVM 等，这些扩展通过将一些虚拟化函数移进硬件，更大规模地缩小了虚拟化中内核的参与。</p>
 <p>这种虚拟化通常包含两个交互的组件：内核态组件和用户态 helper。比如 KVM 虚拟化就包含一个 KVM 内核模块和用户态 helper（比如 QEMU）。KVM 模块和硬件扩展与主机内核交互，用户态 helper 负责 VM 管理和 I/O 虚拟化。</p>
 <p>但这种设计同时面临安全问题和性能问题。如下表展示了对 KVM 和 Xen 的 CVE 分析，Host 代表可能导致对主机内核攻击的漏洞。PE、DoS 和 DL 分别代表提权、拒绝服务和数据泄漏。Other 表示只攻击 VM 或者不能被利用的 CVE。LoC 表示他们的代码行数，Time Scale 表示 CVE 分析的时间跨度。</p>
@@ -412,8 +412,9 @@ mjx-container[display="true"] + br {
 <blockquote>
 <p>从原理来说应该是这样，因为整个 VM 都在用户态，从理论来说，与 VM 交互的组件能够获得的权限集合应该就是 VM 获得的权限集合，否则 VM 通过潜在的漏洞逃逸，理论上首先就需要通过 hypervisor，如果这里 hypervisor 的权限较大，那潜在可利用的威胁就变大了，属于扩大了攻击面。当然，这样做似乎也是回到了把所有的 hypervisor 全放在内核态里，VM 执行 VM exit 事件的时候（naive 的情况下）还需要进内核，这样性能就不好了。当然，后面有一系列操作解决了性能问题。</p>
 </blockquote>
-<p>这样做有三个问题： 1. 特权限制：现代硬件虚拟化扩展只能在内核态下配置，比如设置 VM 的二阶段页表。这就需要在主机内核中存在一个管理程序组件来使用这些扩展。</p>
-<ol start="2" type="1">
+<p>这样做有三个问题：</p>
+<ol type="1">
+<li><p>特权限制：现代硬件虚拟化扩展只能在内核态下配置，比如设置 VM 的二阶段页表。这就需要在主机内核中存在一个管理程序组件来使用这些扩展。</p></li>
 <li><p>安全风险：简单地把所有 VM 硬件资源管理移到用户态违背了最小权限原则，并且扩大了攻击面。例如，如果允许 QEMU 修改一个 VM 的二阶段页表，它就可以访问任意物理内存页，暴露了一个显著的安全威胁。</p>
 <blockquote>
 <p>这与上面所说的不相违背，也就是与 VM 交互的组件全在用户态和简单地把 VM 硬件资源管理移到用户态违背最小权限原则这两件事，这是两个组件</p>
@@ -551,12 +552,12 @@ mjx-container[display="true"] + br {
           <div class="post-nav">
             <div class="post-nav-item">
                 <a href="/2023/03/23/%E9%AB%98%E7%BA%A7%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%E4%BD%9C%E4%B8%9A%E5%8F%8A%E4%B8%AA%E4%BA%BA%E8%A7%A3%E6%9E%90/" rel="prev" title="高级算法设计与分析课后内容个人解析">
-                  <i class="fa fa-chevron-left"></i> 高级算法设计与分析课后内容个人解析
+                  <i class="fa fa-angle-left"></i> 高级算法设计与分析课后内容个人解析
                 </a>
             </div>
             <div class="post-nav-item">
                 <a href="/2023/05/08/Following-the-Data-Not-the-Function-Rethinking-Function-Orchestration-in-Serverless-Computing-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="next" title="Following the Data, Not the Function: Rethinking Function Orchestration in Serverless Computing 论文阅读">
-                  Following the Data, Not the Function: Rethinking Function Orchestration in Serverless Computing 论文阅读 <i class="fa fa-chevron-right"></i>
+                  Following the Data, Not the Function: Rethinking Function Orchestration in Serverless Computing 论文阅读 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

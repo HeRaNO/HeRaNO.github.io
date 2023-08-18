@@ -375,10 +375,10 @@ td {
   Touched: 2021
 */pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}.hljs{background:#f3f3f3;color:#444}.hljs-comment{color:#697070}.hljs-punctuation,.hljs-tag{color:#444a}.hljs-tag .hljs-attr,.hljs-tag .hljs-name{color:#444}.hljs-attribute,.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-name,.hljs-selector-tag{font-weight:700}.hljs-deletion,.hljs-number,.hljs-quote,.hljs-selector-class,.hljs-selector-id,.hljs-string,.hljs-template-tag,.hljs-type{color:#800}.hljs-section,.hljs-title{color:#800;font-weight:700}.hljs-link,.hljs-operator,.hljs-regexp,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-symbol,.hljs-template-variable,.hljs-variable{color:#ab5656}.hljs-literal{color:#695}.hljs-addition,.hljs-built_in,.hljs-bullet,.hljs-code{color:#397300}.hljs-meta{color:#1f7199}.hljs-meta .hljs-string{color:#38a}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}
 .highlight:hover .copy-btn,
-pre:hover .copy-btn {
+.code-container:hover .copy-btn {
   opacity: 1;
 }
-figure.highlight .table-container {
+.code-container {
   position: relative;
 }
 .copy-btn {
@@ -499,7 +499,6 @@ pre figcaption {
 pre {
   overflow: auto;
   padding: 10px;
-  position: relative;
 }
 pre code {
   background: none;
@@ -825,8 +824,8 @@ pre code {
   text-align: center;
   transition: all 0.2s ease-out;
 }
-.post-body .tabs ul.nav-tabs li.tab a i,
-.tabs-comment ul.nav-tabs li.tab a i {
+.post-body .tabs ul.nav-tabs li.tab a i[class^='fa'],
+.tabs-comment ul.nav-tabs li.tab a i[class^='fa'] {
   width: 1.285714285714286em;
 }
 .post-body .tabs ul.nav-tabs li.tab.active,
@@ -1094,10 +1093,7 @@ pre code {
 .menu-item a.menu-item-active {
   background: var(--menu-item-bg-color);
 }
-.menu-item .fa,
-.menu-item .fab,
-.menu-item .far,
-.menu-item .fas {
+.menu-item i[class^='fa'] {
   margin-right: 8px;
 }
 .menu-item .badge {
@@ -1170,10 +1166,7 @@ pre code {
   background: #fc6423;
   color: #fff;
 }
-.sidebar .sidebar-button button .fa,
-.sidebar .sidebar-button button .fab,
-.sidebar .sidebar-button button .far,
-.sidebar .sidebar-button button .fas {
+.sidebar .sidebar-button button i[class^='fa'] {
   margin-right: 5px;
 }
 .links-of-blogroll {
@@ -1657,10 +1650,6 @@ pre code {
   border-bottom: 0;
   color: var(--link-color);
 }
-.posts-collapse .post-content .post-title .fa-external-link-alt {
-  font-size: 0.875em;
-  margin-left: 5px;
-}
 .posts-collapse .post-content::before {
   background: #f5f5f5;
   content: ' ';
@@ -1756,7 +1745,6 @@ pre code {
   font-size: 0.875em;
   margin-left: 4px;
 }
-.post-body .image-caption,
 .post-body img + figcaption,
 .post-body .fancybox + figcaption {
   color: #999;
@@ -1847,7 +1835,7 @@ pre code {
 .posts-expand .post-title-link:hover::before {
   transform: scaleX(1);
 }
-.posts-expand .post-title-link .fa-external-link-alt {
+.posts-expand .post-title-link .fa {
   font-size: 0.875em;
   margin-left: 5px;
 }

@@ -257,7 +257,7 @@ mjx-container[display="true"] + br {
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -314,6 +314,169 @@ mjx-container[display="true"] + br {
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://herano.github.io/2023/09/25/Computers-Can-Learn-from-the-Heuristic-Designs-and-Master-Internet-Congestion-Control-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="HeRaNO">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="return 0;">
+      <meta itemprop="description" content="Getting along with despair.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | return 0;">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/09/25/Computers-Can-Learn-from-the-Heuristic-Designs-and-Master-Internet-Congestion-Control-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" class="post-title-link" itemprop="url">Computers Can Learn from the Heuristic Designs and Master Internet Congestion Control 论文阅读</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-09-25 14:35:38" itemprop="dateCreated datePublished" datetime="2023-09-25T14:35:38+08:00">2023-09-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Networking/" itemprop="url" rel="index"><span itemprop="name">Networking</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <span id="more"></span>
+<p>论文地址在<a target="_blank" rel="noopener" href="https://dl.acm.org/doi/abs/10.1145/3603269.3604838">这里</a>。</p>
+<p>这篇文章是纯输出观点，没有原文部分。原文部分也不想写了，直接开喷吧。</p>
+<p>就是说这个用 ML 去做 CC 可不可行的问题，皮鞋哥有一篇<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/657936466">文章</a>来阐述这个事情，就是说它可能是可以借鉴的，毕竟现在的 CC 并不能被公理化证明它就是最优的，反而有很多模糊地带需要做 tuning。我和学弟有一次交流也讨论到这一点了，但是我们觉得 CC 里面有些决策并不影响拥塞水平（这里需要参考 Bolt 那篇文章，DC 内有些 CC 决策失误会很大程度影响拥塞水平），而 ML 要做的是一次决策失误可能出现严重影响的场景。当时的结论是 ML 没必要，现在看来可以重新考虑一下是否可以借鉴某些思路来做 CC。我其实感觉 CC 和控制理论是强相关的，但是由于网络的复杂性，很容易导致内部混沌，并不是一个简单的反馈系统，这又是另一个点了，不是很懂，但是感觉很难。</p>
+<p>其实也有一些用 ML 来做 CC 的 paper，比如 <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/8357943">QTCP</a>，TNSE 2019 的，就是用强化学习做 CC。论文没太细看，但是这个论文说不用在线，用离线的强化学习，他可能有自己的想法。上来来个 Disclaimer，Note that mastering a task does not necessarily mean achieving the optimal performance. 那不达到 optimal performance 要你干啥，现在的 CC 如果说是 mastering a task，那这个工作就和以前的 CC 一样，如果说自己是唯一一个 mastering a task，那后面也没证明，话说的一股 AI 味。中间那图画得比我 PPT 好看多了，可能是在这个领域我看的论文里图画的最牛的一个了，公式又列一堆，整损失函数呗，然后实验搞了个和其他 CC 的 Avg. Normalized 吞吐量和时延对比，说你吗呢，绝对的多大吞吐，多少时延都没说，一平均高其他 CC 挺多，高你吗呢，绝对数值高他吗几 M 平均下来都能高 0.1 左右，最后来 10 个附录，服啦，request 一个 review 意见就多个附录呗。</p>
+<p>总之是 AI 味非常非常重的一篇文章，谁他吗审的稿能让这种玩意上的，不是很懂。ML 做 CC 确实是要走一段路，但是纯 AI 做感觉真不行，你至少公布一下绝对吞吐量和时延吧。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://herano.github.io/2023/09/25/CodedBulk-Inter-Datacenter-Bulk-Transfers-using-Network-Coding-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="HeRaNO">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="return 0;">
+      <meta itemprop="description" content="Getting along with despair.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | return 0;">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/09/25/CodedBulk-Inter-Datacenter-Bulk-Transfers-using-Network-Coding-%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" class="post-title-link" itemprop="url">CodedBulk: Inter-Datacenter Bulk Transfers using Network Coding 论文阅读</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-09-25 13:57:52" itemprop="dateCreated datePublished" datetime="2023-09-25T13:57:52+08:00">2023-09-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Networking/" itemprop="url" rel="index"><span itemprop="name">Networking</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://www.usenix.org/conference/nsdi21/presentation/tseng">CodedBulk</a></p>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -921,166 +1084,6 @@ mjx-container[display="true"] + br {
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/Misc/" itemprop="url" rel="index"><span itemprop="name">Misc</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p> </p>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://herano.github.io/2022/12/02/Polygon-CI-CD-%E4%B8%8E-Workflow-Platform-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="HeRaNO">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="return 0;">
-      <meta itemprop="description" content="Getting along with despair.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | return 0;">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/12/02/Polygon-CI-CD-%E4%B8%8E-Workflow-Platform-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/" class="post-title-link" itemprop="url">Polygon, CI/CD 与 Workflow Platform 的一些想法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-12-02 17:00:00" itemprop="dateCreated datePublished" datetime="2022-12-02T17:00:00+08:00">2022-12-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p> </p>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://herano.github.io/2022/11/05/k-%E6%AC%A1%E6%96%B9%E5%92%8C%E9%97%AE%E9%A2%98%E6%B5%85%E8%BF%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="HeRaNO">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="return 0;">
-      <meta itemprop="description" content="Getting along with despair.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | return 0;">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/05/k-%E6%AC%A1%E6%96%B9%E5%92%8C%E9%97%AE%E9%A2%98%E6%B5%85%E8%BF%B0/" class="post-title-link" itemprop="url">k 次方和问题浅述</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-11-05 19:51:46" itemprop="dateCreated datePublished" datetime="2022-11-05T19:51:46+08:00">2022-11-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/OI-ICPC/" itemprop="url" rel="index"><span itemprop="name">OI/ICPC</span></a>
         </span>
     </span>
 

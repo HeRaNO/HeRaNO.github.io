@@ -5,9 +5,8 @@ categories: 'Networking'
 tags:
   - 'Congestion Control'
   - '笔记'
+description: ' '
 ---
-
-<!-- more -->
 
 论文地址在[这里](https://dl.acm.org/doi/abs/10.1145/3603269.3604838)。
 

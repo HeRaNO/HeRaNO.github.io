@@ -52,7 +52,7 @@ UPD：上面的后一半想复杂了，是 `extract` 的问题，只需要搞一
 
 Python 字节码还挺好懂的，结合最右边的符号和中间的指令，自己写出源代码，发现又是异或一下加一下就完事的那种。于是逆回去就完事了。
 
-[pymaster.py](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2021/Reverse/pymaster.py)
+[pymaster.py](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2021/Bin/pymaster.py)
 
 ## Pwn
 
@@ -66,7 +66,7 @@ IDA 逆一下程序，大概意思是给对方剪刀石头布的出法，你要�
 
 于是就变成了简单的 pwntools 应用题……
 
-[roshambo.py](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2021/Pwn/roshambo.py)
+[roshambo.py](https://github.com/HeRaNO/ChickenRibs/blob/master/CNSSRecruit/2021/Bin/roshambo.py)
 
 ## Crypto
 

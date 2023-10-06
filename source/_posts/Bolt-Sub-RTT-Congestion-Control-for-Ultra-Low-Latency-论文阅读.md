@@ -23,7 +23,7 @@ tags:
 
 ![](/images/bolt/1.png)
 
-> 相当于求一个 $\int_0^\text{siz} \text{cnt}\cdot \text{siz} = \text{BDP}$ 的 $\text{siz}$。
+> 相当于求一个 $\int_0^\text{siz} \text{cnt}\cdot \text{siz} \text{ d } \text{siz} = \text{BDP}$ 的 $\text{siz}$。
 
 实际上 DC 内的流量大部分是 RPC 流量，而 RPC 流量通常是 One shot Ping-Pong，也就是类似于一次 Ping，过了这次就没了。而 RPC 通常是突发性高，性能敏感的，文中提到中等大小的包不允许路由器过度积压，这就依赖于 CC 决策。而即使是一次错误或者慢 CC 决策，会导致几十毫秒的长尾（预测剩余带宽很大，实际很小）或利用率低（预测剩余带宽很小，实际很大），这样将导致网络降级。类似的负载还有分离式内存和机器学习负载，都是类似 RPC 这种的。
 

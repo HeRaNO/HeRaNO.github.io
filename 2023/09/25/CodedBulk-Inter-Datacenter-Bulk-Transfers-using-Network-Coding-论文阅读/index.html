@@ -10,9 +10,9 @@
 
 
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"herano.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"herano.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="CodedBulk">
 <meta property="og:type" content="article">
@@ -22,7 +22,7 @@
 <meta property="og:description" content="CodedBulk">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-09-25T05:57:52.000Z">
-<meta property="article:modified_time" content="2023-10-06T12:14:37.852Z">
+<meta property="article:modified_time" content="2023-10-16T08:17:15.193Z">
 <meta property="article:author" content="HeRaNO">
 <meta property="article:tag" content="Congestion Control">
 <meta property="article:tag" content="笔记">
@@ -385,7 +385,7 @@ mjx-container[display="true"] + br {
 <h2 id="abstract">Abstract</h2>
 <p>本文介绍了用于数据中心间高吞吐量批量传输的系统 CodedBulk。CodedBulk 的核心是使用网络编码，这是编码理论界的一项技术，可保证单个 bulk 传输的最佳吞吐量。之前在有线网络中使用网络编码的尝试面临着一些实际和基本的障碍。CodedBulk 利用数据中心间网络的独特属性，并使用定制设计的逐跳流量控制机制，在现有传输协议上高效实现了网络编码，从而解决了这些障碍。与不使用网络编码的机制相比，在地理分布的数据中心间网络上运行的端到端 CodedBulk 实现了将批量传输吞吐量提高了 1.2-2.5 倍。</p>
 <blockquote>
-<p>就是说他的主要方法是逐条拥塞控制和网络编码，没听说过用这个途径解决的。</p>
+<p>就是说他的主要方法是逐跳拥塞控制和网络编码，没听说过用这个途径解决的。</p>
 </blockquote>
 <h2 id="introduction">Introduction</h2>
 <p>据预测，目前跨 DC 的 WAN 流量将在未来五年内变为现在的四倍。但是远距离传输的容量是受 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Noisy-channel_coding_theorem">Shannon Limit</a> 限制的。</p>

@@ -6,11 +6,12 @@ toc: true
 tags:
 	- 数学
 	- 数论
+description: ' '
 ---
 
 ## 夏令营
 
-### [Re] 🐍 [Mid]Pyfuck
+### \[Re\] 🐍 [Mid]Pyfuck
 
 把 `x` 数组和那堆怪浪怪浪的异或值拖出来算就好了，那堆值是根据位运算算出来的，`([]<[])` 是 `False`，但是 `~False` 是 `-1`，因为 `False` 是 $0$，所以这样。我也是第一次知道 Python 还有这种操作。
 
@@ -18,7 +19,7 @@ tags:
 
 [pyfxxk.py](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2023/Bin/pyfxxk.py)
 
-### [Pwn] 😡 [Baby]让我访问！！！
+### \[Pwn\] 😡 [Baby]让我访问！！！
 
 这道题难点在于要把 `cat` 命令直接发过去，而不是进 interaction。或者在 Linux 下跑。
 
@@ -26,31 +27,31 @@ Windows 下进 interaction 之后发命令崩了，不知道为啥，看 debug �
 
 [letmein.py](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2023/Bin/letmein.py)
 
-### [Pwn] 👀 [Easy]你的名字
+### \[Pwn\] 👀 [Easy]你的名字
 
 数组比较和整数存储方式，还是 4B 分个段然后反过来。本地测的时候可能有内存屏障导致溢出到数组的部分没被处理，可能是编译的时候要加点花活，不过总之这样是对的。
 
-### [Pwn] 💞 [Easy]古明地觉模拟器
+### \[Pwn\] 💞 [Easy]古明地觉模拟器
 
 IDA 之后发现先和一个 char 数组比较，如果是 `KomeijiSatori` 就再和一个随机数比较，如果相等就 getshell。一看数组开的位置和读入的位置就知道直接把数组溢出覆盖掉那个随机数就行了。覆盖的方式也十分随意，直接搞一个长度大于 $28$，前缀是 `KomeijiSatori` 但是别太离谱的输入就行，因为 `memcmp` 有长度限制所以也不用加 `\0` 啥的，长度可以设为 $32$，然后本地 get 一下回显的覆盖出来的数，然后拿这个数上去输入就可以了。
 
-### [Pwn] 🥰 [Easy]看看你的backd00r
+### \[Pwn\] 🥰 [Easy]看看你的backd00r
 
 上上学期做过的实验复现，IDA 可以看到有个 `backdoor` 函数能 getshell，然后考虑溢出 `buf` 就行，IDA 显示的距离 rbp 的距离是对的。再看跳转到哪儿，如果直接跳到 backdoor 的头上是不行的，因为 64 位程序包含 `system` 要考虑堆栈平衡，可以看[这篇文章](https://blog.csdn.net/qq_41560595/article/details/112161243)，总之直接跳到给 `system` 赋参数那行就行了。
 
 [backdoor.py](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2023/Bin/backdoor.py)
 
-### [Crypto] 🌀 cyclic group
+### \[Crypto\] 🌀 cyclic group
 
 就是 RSA，一样做就好了。
 
 [cyclic.py](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2023/Crypto/cyclic.py)
 
-### [Misc] 🔎 侦探 CNSS 娘的秘密
+### \[Misc\] 🔎 侦探 CNSS 娘的秘密
 
 flag 在图片信息内，用 [Stegsolve](http://www.caesum.com/handbook/Stegsolve.jar) 看一下信息就有了，注意把空格删了。
 
-### [Misc] 🏆 重生之我在 CNSS 当 OIer
+### \[Misc\] 🏆 重生之我在 CNSS 当 OIer
 
 运行时没做隔离可以直接读答案，虽然答案没和程序放一起，设置一下读答案的路径就行了。
 
@@ -58,11 +59,11 @@ flag 在图片信息内，用 [Stegsolve](http://www.caesum.com/handbook/Stegsol
 
 [oier.c](https://github.com/HeRaNO/ChickenRibs/tree/master/CNSSRecruit/2023/Misc/oier.c)
 
-### [Misc] 🔮 東方希缇符
+### \[Misc\] 🔮 東方希缇符
 
 我好像记得这个曾经出过。总之打开游戏发现是永夜抄，上谷去搜有没有解包，有一个 [VS 没编译过的工程](https://github.com/xfgryujk/THUnpacker)，还有个[只有二进制的](https://github.com/shirokurakana/Quick-Touhou-Extractor)。总之用那个只有二进制的，解包之后会出来一个 `flag.txt` 就是了。
 
-### [Misc] ❓ 泻药，人在CNSS，刚打完招新
+### \[Misc\] ❓ 泻药，人在CNSS，刚打完招新
 
 在 Timlzh 的[知乎回答](https://www.zhihu.com/question/561337166/answer/2730585153)里，居然埋了一年。
 

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"herano.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta property="og:type" content="article">
+<meta property="og:title" content="RDMA 相关梳理">
+<meta property="og:url" content="https://herano.github.io/2024/03/14/RDMA-%E7%9B%B8%E5%85%B3%E6%A2%B3%E7%90%86/index.html">
+<meta property="og:site_name" content="return 0;">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-14T07:15:38.000Z">
+<meta property="article:modified_time" content="2024-03-14T08:37:15.991Z">
+<meta property="article:author" content="HeRaNO">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://herano.github.io/2024/03/14/RDMA-%E7%9B%B8%E5%85%B3%E6%A2%B3%E7%90%86/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://herano.github.io/2024/03/14/RDMA-%E7%9B%B8%E5%85%B3%E6%A2%B3%E7%90%86/","path":"2024/03/14/RDMA-相关梳理/","title":"RDMA 相关梳理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>RDMA 相关梳理 | return 0;</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">return 0;</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fas fa-handshake fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">定义问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ib-vs-roce"><span class="nav-number">2.</span> <span class="nav-text">IB vs RoCE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lossless-ethernet-vs-lossy-ethernet"><span class="nav-number">3.</span> <span class="nav-text">Lossless Ethernet vs Lossy Ethernet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-lossless-flow-control"><span class="nav-number">3.1.</span> <span class="nav-text">How to Lossless: Flow Control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%A3-lossy-%E8%A1%8C%E4%B8%8D%E8%A1%8C"><span class="nav-number">3.2.</span> <span class="nav-text">那 Lossy 行不行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cc"><span class="nav-number">4.</span> <span class="nav-text">CC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dcn-vs-wan"><span class="nav-number">5.</span> <span class="nav-text">DCN vs WAN</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="HeRaNO"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">HeRaNO</p>
+  <div class="site-description" itemprop="description">Getting along with despair.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">61</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/HeRaNO" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;HeRaNO" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:heran55@126.com" title="E-Mail → mailto:heran55@126.com" rel="noopener me" target="_blank"><i class="fas fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/HeRaNO/activities" title="Zhihu → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;HeRaNO&#x2F;activities" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://music.163.com/#/user/home?id=428068590" title="NeteaseMusic → https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;428068590" rel="noopener me" target="_blank"><i class="fas fa-music fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://judge.yosupo.jp/" title="https:&#x2F;&#x2F;judge.yosupo.jp&#x2F;" rel="noopener" target="_blank">Library Checker</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://herano.github.io/2024/03/14/RDMA-%E7%9B%B8%E5%85%B3%E6%A2%B3%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="HeRaNO">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="return 0;">
+      <meta itemprop="description" content="Getting along with despair.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="RDMA 相关梳理 | return 0;">
+      <meta itemprop="description" content=" ">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          RDMA 相关梳理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-03-14 15:15:38" itemprop="dateCreated datePublished" datetime="2024-03-14T15:15:38+08:00">2024-03-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Networking/" itemprop="url" rel="index"><span itemprop="name">Networking</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description"> </div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>总之就是 RDMA 相关的一些梳理，但是还是比较乱。</p>
+<p><del>随手整理的，之后讨论发现基本没什么用，还是太屑了</del></p>
+<h2 id="定义问题">定义问题</h2>
+<ol type="1">
+<li>拥塞：一般来说交换机 buffer 无法容纳网络流量造成丢包叫拥塞，但是现在更关注 QoS 了，交换机排队过长导致时延过高也叫拥塞了（更广义）。一般使用后面的定义，理解起来类似 BBR 最佳操作点的那张图。如果使用前面的定义，在 RDMA 拥塞控制上就会理解偏差了。</li>
+<li>无损：在网络运行中不拥塞叫无损，这里的拥塞采用前面的定义，就是不丢包。</li>
+<li>我们希望的：高吞吐，低时延</li>
+<li>为什么做不到：拥塞（后面的定义）</li>
+</ol>
+<h2 id="ib-vs-roce">IB vs RoCE</h2>
+<p>IB 包括从物理层到网络层的标准和实现，无损网络。不兼容以太网。</p>
+<p>RoCE 协议可以跑在以太网上。</p>
+<p>IB 没啥好写的，大概就是 credit base 流控什么的，闭源，技术细节不太公开，Switch to RoCE context</p>
+<h2 id="lossless-ethernet-vs-lossy-ethernet">Lossless Ethernet vs Lossy Ethernet</h2>
+<p>这里的 <code>loss</code> 指丢包，但是实际上指的是因为交换机拥塞而丢包。因包损坏而丢包不算在其中。</p>
+<p>本身以太网就是 Lossy 的，Lossless 指不会因为交换机拥塞而丢包。</p>
+<p>Lossless Ethernet 一定不丢包吗？否：包损坏，但以太网环境下概率很小，<a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/1404595">WiFi</a> 的时候常发生。交换机配置错误，物理链路损坏也可能导致包损坏，所以在设计时也应该考虑进行重传等操作，只不过 hit 的情况少而已。</p>
+<p>Lossless Ethernet 一定不因为拥塞丢包吗？一定不丢包，要不然不叫 lossless 了。</p>
+<p>Lossless Ethernet 理论上可以用于一切 payload。但是值不值得用是另一个问题，感觉现在只有 RDMA 在谈无损以太网。</p>
+<h3 id="how-to-lossless-flow-control">How to Lossless: Flow Control</h3>
+<p>加入流控算法，<a target="_blank" rel="noopener" href="https://1.ieee802.org/dcb/802-1qbb/">IEEE 802.1Qbb</a>。其实就是 PFC，感觉是先有 PFC 然后被 RoCE 用上了，后续什么 payload 都直接在无损网络上传了。</p>
+<p>和小老板讨论的结果是 RoCE 适用于以太网，并且没办法用 IB 专属硬件，如果用 credit base 还需要大量硬件修改，所以采用了 PFC。</p>
+<p>但是为了达到 Lossless，还可以 GBN，但是 hurts performance，GBN 不行还可以 SACK，但是硬件实现不好实现，hurts performance。</p>
+<h3 id="那-lossy-行不行">那 Lossy 行不行</h3>
+<p><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/3230543.3230557">IRN</a>，<a target="_blank" rel="noopener" href="https://datatracker.ietf.org/meeting/108/materials/slides-108-tsvwg-sessb-82-pfc-free-low-delay-control-protocol-00">LDCP</a></p>
+<h2 id="cc">CC</h2>
+<p>为什么已经有了流控，不丢包了，还要引入拥塞控制？因为 PFC 导致 buffer 太大了，效果不好。所以 <a target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/2785956.2787484">DCQCN</a> 是优化这个的，感觉可以理解为优化 QoS？</p>
+<p>主要目的应转为对尾延迟和吞吐量的优化上。以前有人说拥塞控制一词不好，应该换成尾延迟优化等等，大概就是这个意思。</p>
+<h2 id="dcn-vs-wan">DCN vs WAN</h2>
+<p>数据中心内部网络十分正则 - Clos 架构</p>
+<ul>
+<li>Spin - Agg - ToR，每条相邻级的网线长度几乎相同</li>
+</ul>
+<p>导致拥塞的根本原因是大量数据<strong>同时</strong>到达某节点，而不是流量过大。而同时到达某节点的根本原因是网络结构正则。</p>
+<ul>
+<li>无论据，只有一个论点</li>
+<li>改进方案
+<ul>
+<li>引入随机，消除一部分正则性</li>
+<li>不要出现多打一，多打一对于终端类似加锁，但是会把中间链路拉爆</li>
+</ul></li>
+</ul>
+<p>PFC 标准说只能 DCN 内部用，DCBX 协议域下。</p>
+<p>跨数据中心流量十分复杂，其中包含数据中心内的流和跨数据中心的流，一般分别控制。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9749785/">Gemini</a></li>
+<li><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/abs/10.1145/3387514.3405899">Annulus</a></li>
+<li><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9546440">GTCP</a></li>
+<li><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10188700">IDCC</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>HeRaNO
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://herano.github.io/2024/03/14/RDMA-%E7%9B%B8%E5%85%B3%E6%A2%B3%E7%90%86/" title="RDMA 相关梳理">https://herano.github.io/2024/03/14/RDMA-相关梳理/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/12/31/2023-%E5%B9%B4%E9%83%BD%E5%B9%B2%E4%BA%86%E5%95%A5/" rel="prev" title="2023 年都干了啥">
+                  <i class="fa fa-angle-left"></i> 2023 年都干了啥
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">HeRaNO</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"HeRaNO","repo":"HeRaNO.github.io","client_id":"15e64dc00eaa49f26158","client_secret":"d6725ac513fe27005c4145cae854ce6577ded4cb","admin_user":"HeRaNO","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":null,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"af2a5f26c70458a6447e07ba938c989c"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

@@ -77,3 +77,11 @@ PFC 标准说只能 DCN 内部用，DCBX 协议域下。
 - [Annulus](https://dl.acm.org/doi/abs/10.1145/3387514.3405899)
 - [GTCP](https://ieeexplore.ieee.org/document/9546440)
 - [IDCC](https://ieeexplore.ieee.org/document/10188700)
+
+## 一些观察和猜想
+
+用 RDMA 主要应该是为了降 core，带宽和时延属于附加收益，因为跑 TCP 也一样跑，只不过 core 多。从理论上长距离 RDMA 可能不支持多中心 AI workload 的模型训练，物理时延是主要瓶颈，除非优化模型训练的通讯过程，否则没法突破物理瓶颈，关注点应该在数据同步上。写论文可能要 argue 为什么它一定要 RDMA，TCP 不行吗？
+
+难点在于无损以太网如何用于跨数据中心网络上，或者在跨数据中心网络上高效实现一个有损以太网。
+
+一个潜在的跨数据中心 RDMA 的使用场景：TailWind (ATC '18) RDMA 做 replica。

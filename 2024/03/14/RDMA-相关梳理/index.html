@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="return 0;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-03-14T07:15:38.000Z">
-<meta property="article:modified_time" content="2024-03-14T09:05:16.025Z">
+<meta property="article:modified_time" content="2024-03-18T03:09:52.037Z">
 <meta property="article:author" content="HeRaNO">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
@@ -244,7 +244,7 @@ mjx-container[display="true"] + br {
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">定义问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ib-vs-roce"><span class="nav-number">2.</span> <span class="nav-text">IB vs RoCE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lossless-ethernet-vs-lossy-ethernet"><span class="nav-number">3.</span> <span class="nav-text">Lossless Ethernet vs Lossy Ethernet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-lossless-flow-control"><span class="nav-number">3.1.</span> <span class="nav-text">How to Lossless: Flow Control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%A3-lossy-%E8%A1%8C%E4%B8%8D%E8%A1%8C"><span class="nav-number">3.2.</span> <span class="nav-text">那 Lossy 行不行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cc"><span class="nav-number">4.</span> <span class="nav-text">CC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dcn-vs-wan"><span class="nav-number">5.</span> <span class="nav-text">DCN vs WAN</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">定义问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ib-vs-roce"><span class="nav-number">2.</span> <span class="nav-text">IB vs RoCE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lossless-ethernet-vs-lossy-ethernet"><span class="nav-number">3.</span> <span class="nav-text">Lossless Ethernet vs Lossy Ethernet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-lossless-flow-control"><span class="nav-number">3.1.</span> <span class="nav-text">How to Lossless: Flow Control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%A3-lossy-%E8%A1%8C%E4%B8%8D%E8%A1%8C"><span class="nav-number">3.2.</span> <span class="nav-text">那 Lossy 行不行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cc"><span class="nav-number">4.</span> <span class="nav-text">CC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dcn-vs-wan"><span class="nav-number">5.</span> <span class="nav-text">DCN vs WAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E8%A7%82%E5%AF%9F%E5%92%8C%E7%8C%9C%E6%83%B3"><span class="nav-number">6.</span> <span class="nav-text">一些观察和猜想</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -427,6 +427,10 @@ mjx-container[display="true"] + br {
 <li><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/9546440">GTCP</a></li>
 <li><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10188700">IDCC</a></li>
 </ul>
+<h2 id="一些观察和猜想">一些观察和猜想</h2>
+<p>用 RDMA 主要应该是为了降 core，带宽和时延属于附加收益，因为跑 TCP 也一样跑，只不过 core 多。从理论上长距离 RDMA 可能不支持多中心 AI workload 的模型训练，物理时延是主要瓶颈，除非优化模型训练的通讯过程，否则没法突破物理瓶颈，关注点应该在数据同步上。写论文可能要 argue 为什么它一定要 RDMA，TCP 不行吗？</p>
+<p>难点在于无损以太网如何用于跨数据中心网络上，或者在跨数据中心网络上高效实现一个有损以太网。</p>
+<p>一个潜在的跨数据中心 RDMA 的使用场景：TailWind (ATC '18) RDMA 做 replica。</p>
 
     </div>
 

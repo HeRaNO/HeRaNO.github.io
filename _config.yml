@@ -4,7 +4,7 @@ description: 'Getting along with despair.'
 keywords: null
 author: HeRaNO
 language: en
-timezone: 'Asia/Chongqing'
+timezone: 'Asia/Shanghai'
 url: https://herano.github.io
 permalink: ':year/:month/:day/:title/'
 permalink_defaults: null

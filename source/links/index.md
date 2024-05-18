@@ -9,7 +9,7 @@ date: 2022-01-09 23:13:01
 
 学长们
 
-- [TwIStOy](https://twistoy.com/)
+- [TwIStOy](https://twistoy.cn/)
 - [slongle](https://slongle.github.io/)
 - [Xris](https://xr1s.me/)
 - [Autsky_JadeK](https://www.cnblogs.com/autsky-jadek/)
@@ -18,7 +18,7 @@ date: 2022-01-09 23:13:01
 
 飙车队的大爷们
 
-- Ferric（博客没了）
+- [Ferric](https://ferric.top/)
 - [2018szb](https://www.cnblogs.com/2018szb/)
 - [Jerome](https://peter-819.github.io/)
 - [Sidney](https://blog.csdn.net/SidneyAustin/)

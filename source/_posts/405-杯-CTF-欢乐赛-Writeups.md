@@ -22,7 +22,13 @@ description: ' '
 
 ### tiny image
 
-首先这个题得把文件直接传上去绕过后缀检查，可以用 Burp 也可以 requests，为了方便用了 Burp。接着是如何构造这个 BMP，试了很多方案（比如只有 `BM` 文件头，BMP 文件只到宽和高，改偏移量等等），经过了无数次 reset 之后确认只有 24 位 BMP 的关于像素的 12 字节能动，所以需要构造尽可能短的 PHP 代码，就别想一句话木马了，直接 `exec` 得了。首先至少得要个 `echo` 还有 `exec` 类的函数，经过搜索搜到了 `<?=` 可以代替 `echo`，反引号可以代替 `exec` 执行（其实是做 webshell detect 的时候搜的），然后就是执行的命令也要尽可能短，但是 `flag` 已经占了四个字符了，所以考虑用通配符，然后 `<?=```cat /*```?>` 一共 13 个字符（这里三个反引号是一个反引号），还需要找一个能输出东西还比 `cat` 长度短的函数，找到了 `nl`。换成 `nl` 就可以了。
+首先这个题得把文件直接传上去绕过后缀检查，可以用 Burp 也可以 requests，为了方便用了 Burp。接着是如何构造这个 BMP，试了很多方案（比如只有 `BM` 文件头，BMP 文件只到宽和高，改偏移量等等），经过了无数次 reset 之后确认只有 24 位 BMP 的关于像素的 12 字节能动，所以需要构造尽可能短的 PHP 代码，就别想一句话木马了，直接 `exec` 得了。首先至少得要个 `echo` 还有 `exec` 类的函数，经过搜索搜到了 `<?=` 可以代替 `echo`，反引号可以代替 `exec` 执行（其实是做 webshell detect 的时候搜的），然后就是执行的命令也要尽可能短，但是 `flag` 已经占了四个字符了，所以考虑用通配符，然后
+
+```php
+<?=`cat /*`?>
+```
+
+一共 13 个字符，还需要找一个能输出东西还比 `cat` 长度短的函数，找到了 `nl`。换成 `nl` 就可以了。
 
 [tiny_image.py](https://github.com/HeRaNO/ChickenRibs/tree/master/405/Web/tiny_image.py)
 
@@ -323,6 +329,8 @@ xref 了一下发现这个 Flag 应该是打在日志里的，但是游戏运行
 ### poker
 
 先 `checksec` 了一下发现有 NX 有 PIE，然后 IDA 看一下发现是跟一个固定操作模式的 AI 打德扑，赢掉 AI 所有钱就 getshell，不会打德扑，算了。
+
+> 看了一下[出题人 WP](https://cnwangjihe.notion.site/poker-1272fe66351f80cb9ec6c4b657320268) 是打一个 race condition，完全没有想到。
 
 ### RealWorld
 

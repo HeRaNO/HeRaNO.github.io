@@ -6,14 +6,14 @@ on:
       - source  # default branch
 
 jobs:
-  pages:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js 18.x
+      - name: Use Node.js 20.x
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
       - name: Cache NPM dependencies
         uses: actions/cache@v4
         with:
@@ -27,9 +27,20 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          publish_branch: gh-pages  # deploying branch
+          path: ./public
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

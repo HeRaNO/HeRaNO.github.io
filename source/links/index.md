@@ -18,7 +18,7 @@ date: 2022-01-09 23:13:01
 
 飙车队的大爷们
 
-- [Ferric](https://ferric.top/)
+- [Ferric](https://github.com/FerricIon)
 - [2018szb](https://www.cnblogs.com/2018szb/)
 - [Jerome](https://peter-819.github.io/)
 - [Sidney](https://blog.csdn.net/SidneyAustin/)
@@ -28,7 +28,7 @@ date: 2022-01-09 23:13:01
 你电的大爷们
 
 - [Decision](https://decision01.com/)
-- [Vingying](https://reimu.red/)
+- [Vingying](https://vingying.github.io/)
 
 ---
 

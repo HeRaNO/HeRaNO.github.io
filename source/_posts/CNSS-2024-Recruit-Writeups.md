@@ -62,7 +62,7 @@ Python 处理一下代码就行，缺了两个数。
 
 ### ❓ 璇椾汉鎻℃寔
 
-很喜欢的一个网站 [乱码恢复](http://www.mytju.com/classcode/tools/messycoderecover.asp)，然后恢复出来是一堆大写中文数字，人脑挨个敲回去就是了。
+很喜欢的一个网站 [乱码恢复](https://www.ff98sha.me/tools/messycode/)，然后恢复出来是一堆大写中文数字，人脑挨个敲回去就是了。
 
 ### 👑 我意同君共天涯
 

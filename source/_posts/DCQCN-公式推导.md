@@ -476,10 +476,12 @@ $$
 $$
 \frac{\mathrm{d}R_C}{\mathrm{d}t}\approx \frac{\Delta R_C}{\Delta t}=\frac{R_T-R_C}{2B}R_C\approx \frac{2R_\text{AI}}{2B}R_C=\frac{R_\text{AI}}{B}R_C
 $$
-我们考虑速率从 $R_\min$ 开始上升，则
+考虑速率从 $R_\min$ 开始上升这一过程，实际上在最初主要起作用的是计时器，因为速率很低，升速计时器触发时发送字节数还没有达到 $B$，因此在最初还是进行加性增，直到一计时器时间间隔内发送数据量大于等于 $B$，则此时开始的发送速率为 $B/T$，之后的增速由字节计数器驱动，因此后面的增速过程可以表达为
 $$
-R_C(t)=R_\min\exp\left(\frac{R_\text{AI}}{B}t\right)
+R_C(t)=\frac{B}{T}\exp\left(\frac{R_\text{AI}}{B}t\right)
 $$
+
+也就是说这个乘性增只在增速到一定程度后才起作用，此时可能网络空闲带宽很多，需要快速探测带宽，这样的设计倒也是有其合理性。
 
 ## 问题
 

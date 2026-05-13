@@ -327,8 +327,10 @@ $$
 
 第二部分和第三部分形式类似。对于第二部分，考虑 $b$ 的倒数和 $d$ 的倒数
 $$
-\frac{1}{b}=\frac{(1-p^\ast)^{-B}-1}{p^\ast}\\
-\frac{1}{d}=\frac{(1-p^\ast)^{-TR_C^{(i)\ast}}-1}{p^\ast}
+\begin{aligned}
+\frac{1}{b}&=\frac{(1-p^\ast)^{-B}-1}{p^\ast}\\
+\frac{1}{d}&=\frac{(1-p^\ast)^{-TR_C^{(i)\ast}}-1}{p^\ast}
+\end{aligned}
 $$
 考虑函数
 $$
@@ -369,8 +371,10 @@ $$
 
 对于第三部分，类似考虑 $c$ 的倒数和 $e$ 的倒数
 $$
-\frac{1}{c}=\frac{(1-p^\ast)^{-B}-1}{(1-p^\ast)^{FB}p^\ast}\\
-\frac{1}{e}=\frac{(1-p^\ast)^{-TR_C^{(i)\ast}}-1}{(1-p^\ast)^{FTR_C^{(i)\ast}}p^\ast}
+\begin{aligned}
+\frac{1}{c}&=\frac{(1-p^\ast)^{-B}-1}{(1-p^\ast)^{FB}p^\ast}\\
+\frac{1}{e}&=\frac{(1-p^\ast)^{-TR_C^{(i)\ast}}-1}{(1-p^\ast)^{FTR_C^{(i)\ast}}p^\ast}
+\end{aligned}
 $$
 都把分母中 $(1-p)^C$ 的部分除上去，得到类似下面的函数
 $$

@@ -11,6 +11,8 @@ description: ' '
 
 DCQCN 的流体模型来源于 SIGMETRICS '11 的 [Stability Analysis of QCN: The Averaging Principle](https://dl.acm.org/doi/10.1145/1993744.1993751) 这篇文章，在这届会议中同样还有分析 DCTCP 的稳定性的文章（[Analysis of DCTCP: stability, convergence, and fairness](https://dl.acm.org/doi/10.1145/1993744.1993753)，出自同一人之手）。总之可以互相参考着看。
 
+DCQCN 文章中有一些更详细的公式推导在 CoNEXT '16 的 [ECN or Delay: Lessons Learnt from Analysis of DCQCN and TIMELY](https://dl.acm.org/doi/10.1145/2999572.2999593)，其中还有关于 TIMELY 的稳定性分析，但本文并不关心 TIMELY。
+
 ## 符号表
 
 |          符号          |                        意义                        |
@@ -30,6 +32,7 @@ DCQCN 的流体模型来源于 SIGMETRICS '11 的 [Stability Analysis of QCN: Th
 |     $R_\text{AI}$      |          速率增长的幅度（固定为 40Mbps）           |
 |      $\tau^\ast$       |                   控制回路的延迟                   |
 |        $\tau'$         |              $\alpha$ 更新的时间周期               |
+|         $\tau$         |                   CNP 的生成周期                   |
 
 ## 前提假设
 
@@ -232,17 +235,247 @@ DCQCN 论文中并没有直接证明稳定性，而是依赖 QCN 的稳定性证
 
 ### 不动点
 
-令公式 6 至 9 的左式为 0（求解微分方程），当满足 $R_C=C/N$ 时，此流体模型存在唯一不动点。剩余部分变成有关 $R_T$，$\alpha$ 和 $p$ 的等式，然后数值求解等式求出不动点处 $p$ 的取值，解出来 $p$ 的取值是唯一的。
+这部分内容在 CoNEXT '16 文章中的 3.2 节。
+
+首先置公式 6 左式为 $0$，即
+$$
+0=\frac{\mathrm{d}q}{\mathrm{d}t}=\sum_{i=1}^N R_C^{(i)}(t)-C
+$$
+也就是说，如果 DCQCN 存在一个不动点，则必须满足
+$$
+\sum_{i=1}^N R_C^{(i)\ast}(t)=C
+$$
+
+> 因为不动点处一定有队列长度不变，说明速率收敛了
+
+在任一不动点处，设 $p$ 的值为 $p^\ast$，所有流都共享此值。此时，队列长度的不动点与每条流的 $\alpha^{(i)}$ 的不动点可以由公式 5 和 7 确定。
+
+假设流收敛在队列长度为 $K_\min$ 到 $K_\max$ 之间（其原因并没有说明）。则直接将 $p^\ast$ 带入公式 5，得到队列长度的不动点
+$$
+q^\ast=\frac{p^\ast}{p_\max}(K_\max-K_\min)+K_\min
+$$
+对于 $\alpha^{(i)}$ 的不动点，仍然置公式 7 左式为 0，即
+$$
+0=\frac{\mathrm{d}\alpha}{\mathrm{d}t}=\frac{g}{\tau'}\left(\left(1-\left(1-p(t-\tau^\ast)\right)^{\tau'R_C(t-\tau^\ast)}\right)-\alpha^{(i)\ast}(t)\right)
+$$
+由于 $\frac{g}{\tau'}\neq 0$，因此只能是后面括号内部为 0，则可解得
+$$
+\alpha^{(i)\ast}=1-(1-p^\ast)^{\tau'R_C^{(i)\ast}}
+$$
+接下来我们需要证明 $p^\ast$ 存在，并且被 $R_C^{(i)\ast}$ 唯一确定。
+
+为了简单需要确定五个代换变量
+$$
+\begin{aligned}
+a&=1-(1-p^\ast)^{\tau R_C^{(i)\ast}}\\
+b&=\frac{p^\ast}{(1-p^\ast)^{-B}-1}\\
+c&=\frac{(1-p^\ast)^{FB}p^\ast}{(1-p^\ast)^{-B}-1}\\
+d&=\frac{p^\ast}{(1-p^\ast)^{-TR_C^{(i)\ast}}-1}\\
+e&=\frac{(1-p^\ast)^{FTR_C^{(i)\ast}}p^\ast}{(1-p^\ast)^{-TR_C^{(i)\ast}}-1}
+\end{aligned}
+$$
+置公式 8 左式为 0，得到
+$$
+\begin{aligned}
+0=\frac{\mathrm{d}R_T}{\mathrm{d}t}=&-\frac{R_T^{(i)\ast}-R_C^{(i)\ast}}{\tau}a\\
+&+R_{\text{AI}}R_C^{(i)\ast}c\\
+&+R_{\text{AI}}R_C^{(i)\ast}e
+\end{aligned}
+$$
+则
+$$
+\frac{R_T^{(i)\ast}-R_C^{(i)\ast}}{\tau}a=R_{\text{AI}}R_C^{(i)\ast}(c+e)
+$$
+置公式 9 左式为 0，得到
+$$
+\begin{aligned}
+0=\frac{\mathrm{d}R_C}{\mathrm{d}t}=&-\frac{R_C^{(i)\ast}\alpha^{(i)\ast}}{2\tau}a\\
+&+\frac{R_T^{(i)\ast}-R_C^{(i)\ast}}{2}R_C^{(i)\ast}b\\
+&+\frac{R_T^{(i)\ast}-R_C^{(i)\ast}}{2}R_C^{(i)\ast}d
+\end{aligned}
+$$
+则
+$$
+\frac{R_C^{(i)\ast}\alpha^{(i)\ast}}{2\tau}a=
+\frac{R_T^{(i)\ast}-R_C^{(i)\ast}}{2}R_C^{(i)\ast}(b+d)
+$$
+解得
+$$
+R_T^{(i)\ast}-R_C^{(i)\ast}=\frac{\alpha^{(i)\ast}a}{\tau(b+d)}
+$$
+带入公式 8 得到的结果，有
+$$
+\frac{\alpha^{(i)\ast}a^2}{\tau^2(b+d)}=R_{\text{AI}}R_C^{(i)\ast}(c+e)
+$$
+移项得
+$$
+\frac{\alpha^{(i)\ast}a^2}{(b+d)(c+e)}=\tau^2R_{\text{AI}}R_C^{(i)\ast}
+$$
+为 CoNEXT 论文中公式 11。
+
+> 此处，由于我们已经是考虑稳态中情况了，$R_C^{(i)\ast}$ 实际上为一常数，可以根据上式求解 $p^\ast$。
+
+下面我们要考虑不动点是否只有一个，也就是求解上式是否可以唯一确定 $p^\ast$。可以发现，当 $p\in [0,1]$ 时，左式是关于 $p^\ast$ 的单调递增函数。这部分证明论文没写，虽然我猜他们是猜的，但是确实是单调递增的。
+
+考虑左式拆为
+$$
+f(p)=a^2\alpha^\ast\cdot \frac{1}{b+d}\cdot \frac{1}{c+e}
+$$
+如果这三部分均关于 $p$ 在 $[0,1]$ 上单调递增，那么 $f(p)$ 在 $[0,1]$ 上单调递增。
+
+首先，$a=1-(1-p^\ast)^{\tau R_C^{(i)\ast}},\alpha^{(i)\ast}=1-(1-p^\ast)^{\tau'R_C^{(i)\ast}}$，两部分都是关于 $p^\ast$ 的多项式函数，因为指数部分都是常数。考虑 $(1-p)^C$（$C$ 为一常数）在 $[0,1]$ 上单调递减，则 $1-(1-p)^C$ 在 $[0,1]$ 上单调递增成立，因此第一部分在 $[0,1]$ 上单调递增成立。
+
+第二部分和第三部分形式类似。对于第二部分，考虑 $b$ 的倒数和 $d$ 的倒数
+$$
+\frac{1}{b}=\frac{(1-p^\ast)^{-B}-1}{p^\ast}\\
+\frac{1}{d}=\frac{(1-p^\ast)^{-TR_C^{(i)\ast}}-1}{p^\ast}
+$$
+考虑函数
+$$
+g(p)=\frac{(1-p)^C-1}{p}
+$$
+其中 $C<0$，我们想知道它在 $[0,1]$ 上的单调性。
+
+对 $g(p)$ 求导
+$$
+g'(p)=\frac{-C(1-p)^{C+1}p-(1-p)^C+1}{p^2}
+$$
+其中，$-C(1-p)^{C+1}p\ge 0$ 在 $[0,1]$ 上恒成立，考虑 $h(p)=1-(1-p)^C$ 在 $[0,1]$ 上的取值，继续求导。
+$$
+h'(p)=C(1-p)^{C+1}
+$$
+$h'(p)\ge 0$ 在 $[0,1]$ 上恒成立，因此 $h(p)$ 在 $[0,1]$ 上单调增，也就是 $h(p)\ge h(0)=0$ 成立，因此 $g'(p)\ge 0$ 在 $[0,1]$ 上恒成立，$g(p)$ 在 $[0,1]$ 上单调增。因此 $1/b$ 和 $1/d$ 在 $[0,1]$ 上均单调增。
+
+那么
+$$
+\frac{1}{b+d}=\frac{1}{\frac{1}{1/b}+\frac{1}{1/d}}=\frac{(1/b)(1/d)}{(1/b)+(1/d)}
+$$
+由于 $1/b$ 和 $1/d$ 均单调增，那么它们的并联函数也单调增，因此第二部分也单调增。
+
+>设 $f(x)$ 和 $g(x)$ 均为单调增函数，且 $f(x)$ 和 $g(x)$ 均不为 $0$，现在考虑它们的并联函数
+>$$
+>h=\frac{f\cdot g}{f+g}
+>$$
+>求导
+>$$
+>\begin{aligned}
+>h'&=\frac{(f\cdot g)'(f+g)-f\cdot g(f+g)'}{(f+g)^2}\\
+>&=\frac{(f'\cdot g+f\cdot g')(f+g)-f\cdot g(f'+g')}{(f+g)^2}\\
+>&=\frac{(f\cdot f'\cdot g+f^2\cdot g'+f'\cdot g^2+g\cdot f\cdot g')-(f'\cdot f\cdot g+g'\cdot f\cdot g)}{(f+g)^2}\\
+>&=\frac{f^2\cdot g'+f'\cdot g^2}{(f+g)^2}
+>\end{aligned}
+>$$
+>由于 $f$ 和 $g$ 均单调增，那么 $f'$ 和 $g'$ 均大于 $0$，因此 $h'>0$ 成立，即 $h$ 单调增。
+
+对于第三部分，类似考虑 $c$ 的倒数和 $e$ 的倒数
+$$
+\frac{1}{c}=\frac{(1-p^\ast)^{-B}-1}{(1-p^\ast)^{FB}p^\ast}\\
+\frac{1}{e}=\frac{(1-p^\ast)^{-TR_C^{(i)\ast}}-1}{(1-p^\ast)^{FTR_C^{(i)\ast}}p^\ast}
+$$
+都把分母中 $(1-p)^C$ 的部分除上去，得到类似下面的函数
+$$
+h(p)=\frac{(1-p)^{C_1}-(1-p)^{C_2}}{p}
+$$
+其中 $C_1<C_2<0$。由于求导十分麻烦，因此在 $p=0$ 处对分子 Taylor 展开
+$$
+\begin{aligned}
+k(p)&=(1-p)^C\\
+&=1-Cp+\frac{C(C-1)}{2!}p^2-\frac{C(C-1)(C-2)}{3!}p^3+\dots
+\end{aligned}
+$$
+则
+$$
+\begin{aligned}
+h(p)&=(C_2-C_1)\\
+&+\frac{C_1(C_1-1)-C_2(C_2-1)}{2!}p\\
+&+\frac{C_2(C_2-1)(C_2-2)-C_1(C_1-1)(C_1-2)}{3!}p^2\\
+&+\dots
+\end{aligned}
+$$
+观察 $p$ 前系数，分奇偶讨论，可以得出系数均为正。因此对展开式求导，可知 $h'(p)$ 大于 0 恒成立。
+
+> 考虑函数
+> $$
+> f(x)=\prod_{i=0}^n(x-i)
+> $$
+> 求导得到
+> $$
+> f'(x)=\sum_{j=0}^n\left(\prod_{i=0,i\neq j}^n (x-i)\right)
+> $$
+> 分析当 $x < 0$ 时的各项符号：
+>
+> 1. 由于 $i$ 的取值范围是 $0, 1, 2, \dots, n$，当 $x < 0$ 时，所有的 $(x-i)$ 都是负数。
+> 2. 在 $f'(x)$ 的求和公式中，每一项 $\prod_{i \neq j} (x-i)$ 都是从 $n+1$ 个负数因子中抽掉了一个，因此每一项恰好是 $n$ 个负数的乘积。
+>
+> 因此，当 $n$ 为偶数时，$f'(x) > 0$ 恒成立，函数在负半轴上单调递增。当 $n$ 为奇数时，$f'(x) < 0$ 恒成立，函数在负半轴上单调递减。
+
+类似第二项分析并联函数，第三项同样单调递增。至此，可以证明原式单调递增。
+
+回顾原式
+$$
+\frac{\alpha^{(i)\ast}a^2}{(b+d)(c+e)}=\tau^2R_{\text{AI}}R_C^{(i)\ast}
+$$
+当 $p^\ast$ 取 $0$ 时，左式小于右式，$p^\ast$ 取 $1$ 时，左式大于右式，因此 $p^\ast$ 在 $(0,1)$ 上有唯一不动点，这使得队列长度也存在唯一不动点 $q^\ast$。
+
+在收敛性一节中证明了每条流的不动点是 $R_C^{(i)\ast}=C/N$，接下来估计 $p^\ast$ 的大小。由于 $p^\ast$ 通常非常接近 0，因此考虑在 $p=0$ 处 Taylor 展开，忽略 $O(p^4)$。
+
+> 实际上只展开了到 $p$ 忽略的是 $o(p^2)$。原论文大小 $o$ 还打错了。
+
+考虑 $(1-p)^x=1-xp+o(p^2)\approx 1-xp$，因此
+$$
+\begin{aligned}
+\alpha^{(i)\ast}&\approx \tau'R_C^{(i)\ast}p^\ast\\
+a&\approx \tau R_C^{(i)\ast}p^\ast\\
+b&\approx \frac{p^\ast}{(1+Bp^\ast)-1}=\frac{1}{B}\\
+c&\approx \frac{(1-FBp^\ast)p^\ast}{(1+Bp^\ast)-1}\approx \frac{1}{B}\\
+d&\approx \frac{p^\ast}{(1+TR_C^{(i)\ast}p^\ast)-1}=\frac{1}{TR_C^{(i)\ast}}\\
+e&\approx \frac{(1-FTR_C^{(i)\ast}p^\ast)p^\ast}{(1+TR_C^{(i)\ast}p^\ast)-1}\approx \frac{1}{TR_C^{(i)\ast}}\\
+\end{aligned}
+$$
+
+> 由于 $p^\ast$ 非常接近 0，因此同样忽略了 $c$ 和 $e$ 中的 $Cp^\ast$ 部分（$C$ 指某个常数）。
+
+代入原式
+$$
+\frac{(\tau R_C^{(i)\ast}p^\ast)^2\tau'R_C^{(i)\ast}p^\ast}{(1/B+1/TR_C^{(i)\ast})^2}=\tau^2R_{\text{AI}}R_C^{(i)\ast}
+$$
+化简
+$$
+(p^\ast)^3=\frac{\tau^2R_\text{AI}}{\tau'(R_C^{(i)\ast})^2}\left(\frac{1}{B}+\frac{1}{TR_C^{(i)\ast}}\right)^2
+$$
+代入 $R_C^{(i)\ast}=C/N$，化简得
+$$
+p^\ast\approx \sqrt[3]{\frac{R_\text{AI} N^2}{\tau' C^2} \left( \frac{1}{B} + \frac{N}{TC} \right)^2}
+$$
+
 
 ### 收敛性
 
-我们需要说明在两条流有不同发送速率的情况下它们仍能收敛到公平速率。考虑两条流有不同的发送速率和 $\alpha$，根据公式 7 到 9 和
+收敛性的详细证明在 CoNEXT 论文的 3.3 节，是分析多次一次降速后的多次升速过程，通过证明任意两条流之间的速率差随时间指数级别减小来说明多条流可以收敛，最后推导出收敛至公平。但是需要特别注意的是，分析过程中仅存在计时器引导的升速，而不存在字节计数器引导的升速。
 
-$$
-\frac{\mathrm{d}q}{\mathrm{d}t}=R_{C_1}(t)+R_{C_2}(t)-C
-$$
+需要注意的是，字节计数器引导的升速是乘性增。根据前面的公式是可以算出 $R_C$ 关于 $t$ 的关系的，但由于我已修为尽失所以只能问 Gemini。
 
-通过联立求数值解来理解参数选取对 DCQCN 表现的影响。
+考虑不触发 CNP 且仅有字节计数器影响时，每发送 $B$ 字节触发一次升速，两次触发升速之间的时间为 $\Delta t=B/R_C$，对 $R_C$ 和 $R_T$ 类似求导
+$$
+\frac{\mathrm{d}R_C}{\mathrm{d}t}\approx \frac{\Delta R_C}{\Delta t}=\frac{R_T-R_C}{2B}R_C\\
+\frac{\mathrm{d}R_T}{\mathrm{d}t}\approx \frac{\Delta R_T}{\Delta t}=\frac{R_\text{AI}}{B}R_C\\
+$$
+上下两式相除，得
+$$
+\frac{\mathrm{d}R_C}{\mathrm{d}R_T}+\frac{1}{2R_\text{AI}}R_C=\frac{R_T}{2R_\text{AI}}
+$$
+这是一个一阶线性常微分方程，求解得到
+$$
+R_C(R_T)=R_T-2R_\text{AI}+C_1\exp\left(-\frac{R_T}{2R_\text{AI}}\right)
+$$
+由于 $R_T\gg R_\text{AI}$，因此后一项趋近于 0，因此 $R_T-R_C\approx 2R_\text{AI}$。那么
+$$
+\frac{\mathrm{d}R_C}{\mathrm{d}t}\approx \frac{\Delta R_C}{\Delta t}=\frac{R_T-R_C}{2B}R_C\approx \frac{2R_\text{AI}}{2B}R_C=\frac{R_\text{AI}}{B}R_C
+$$
+我们考虑速率从 $R_\min$ 开始上升，则
+$$
+R_C(t)=R_\min\exp\left(\frac{R_\text{AI}}{B}t\right)
+$$
 
 ## 问题
 

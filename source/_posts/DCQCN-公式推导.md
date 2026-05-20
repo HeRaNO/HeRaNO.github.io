@@ -262,6 +262,60 @@ $$
 $$
 \alpha^{(i)\ast}=1-(1-p^\ast)^{\tau'R_C^{(i)\ast}}
 $$
+
+> 有一个没什么意义的推导。如果发送端每隔 $\tau$ 时间就收到一个 CNP，$\alpha$ 也是收敛的。设 $n=\lfloor \tau/\tau'\rfloor$，在等待下一个 CNP 的时间 $\tau$ 内，$\alpha$ 衰减 $n$ 次。因此在**下一个 CNP 刚好到达前**，$\alpha$ 衰减到：
+> $$
+> \alpha_{\text{nxt}} = [(1-g)\alpha_\text{now}+g](1-g)^n
+> $$
+> 因为当前 $\alpha$ 处于稳态，所以有 $\alpha_{\text{nxt}}=\alpha_{\text{now}}$，令稳态 $\alpha^\ast=\alpha_{\text{nxt}}=\alpha_{\text{now}}$，则有
+> $$
+> \alpha^\ast = [(1-g)\alpha^\ast+g](1-g)^n
+> $$
+> 解得
+> $$
+> \alpha^\ast=\frac{g(1-g)^n}{1-(1-g)^{n+1}}
+> $$
+> 考虑 $\alpha$ 更新的递推式
+> $$
+> \alpha_{k} = \left[ (1-g)\alpha_{k-1} + g \right] (1-g)^n
+> $$
+> 为了方便计算，我们令一个衰减常数 $A = (1-g)^{n+1}$。将上式展开并整理，得到一个标准的一阶线性递推数列：
+>
+> $$
+> \alpha_{k} = A \cdot \alpha_{k-1} + g(1-g)^n
+> $$
+> 已知该数列的最终收敛稳态为 $\alpha^\ast$，我们可以利用稳态值将递推式改写为：
+>
+> $$
+> \alpha_{k} - \alpha^\ast = A \cdot (\alpha_{k-1} - \alpha^\ast)
+> $$
+> 不断向下递推，可以得到第 $k$ 次迭代后的 $\alpha_k$ 与初始值 $\alpha_0$ 的关系：
+>
+> $$
+> \alpha_{k} - \alpha^\ast = A^k \cdot (\alpha_0 - \alpha^\ast)
+> $$
+> 如果进入稳态，则对任意给定 $\varepsilon>0$，存在正整数 $N$ 使得对于 $k>N$ 都有
+> $$
+> | \alpha_k - \alpha^\ast | < \varepsilon
+> $$
+> 成立。
+>
+> 将上面的通项公式代入：
+>
+> $$
+> A^k \cdot | \alpha_0 - \alpha^\ast | \le \varepsilon
+> $$
+> 两边同时取自然对数（注意 $A < 1$，所以 $\ln(A)$ 是负数，除以负数时不等号要变号）：
+>
+> $$
+> k \ge \frac{\ln\left( \frac{\varepsilon}{|\alpha_0 - \alpha^\ast|} \right)}{\ln(A)}
+> $$
+> 化简得
+> $$
+> k\ge \frac{ \ln\varepsilon + \ln\left( \frac{1 - (1-g)^{n+1}}{1 - (1-g)^n} \right) }{ (n+1)\ln(1-g) }
+> $$
+> 但由于不可能一直收到 CNP，这意味着拥塞一直不缓解，并且有时进入收敛态的 $n$ 可能很大，所以计算这个确实没什么意义。
+
 接下来我们需要证明 $p^\ast$ 存在，并且被 $R_C^{(i)\ast}$ 唯一确定。
 
 为了简单需要确定五个代换变量
@@ -445,7 +499,7 @@ $$
 $$
 化简
 $$
-(p^\ast)^3=\frac{\tau^2R_\text{AI}}{\tau'(R_C^{(i)\ast})^2}\left(\frac{1}{B}+\frac{1}{TR_C^{(i)\ast}}\right)^2
+(p^\ast)^3=\frac{R_\text{AI}}{\tau'(R_C^{(i)\ast})^2}\left(\frac{1}{B}+\frac{1}{TR_C^{(i)\ast}}\right)^2
 $$
 代入 $R_C^{(i)\ast}=C/N$，化简得
 $$

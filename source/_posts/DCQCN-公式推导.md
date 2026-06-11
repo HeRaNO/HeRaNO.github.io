@@ -621,7 +621,7 @@ $$
 &-\frac{R_T^\ast - R_C^\ast}{2TR_C^\ast}\delta R_C + \frac{R_T^\ast - R_C^\ast}{4TR_C^\ast}p^\ast\delta R_C
 \end{aligned}
 $$
-由于稳定点处导数等于 0，所以可以将数值部分直接求出。
+由于稳定点处导数等于 0，所以 $F_1+F_2+F_3=0$。
 
 > 但这个方程并不严谨，我们仍需考虑 $\tau^\ast$ 项的影响。考虑之后应该长这样
 > $$

@@ -34,6 +34,8 @@ DCQCN 文章中有一些更详细的公式推导在 CoNEXT '16 的 [ECN or Delay
 |        $\tau'$         |              $\alpha$ 更新的时间周期               |
 |         $\tau$         |                   CNP 的生成周期                   |
 
+> 实际上，这里的速率或字节计数器是被包长度归一化的，因为要利用 ECN 概率进行计算，而 ECN 是逐包的，所以在计算上需要进行归一化。
+
 ## 前提假设
 
 分析时，假设有 $N$ 条贪心流（指如果有空闲带宽就会抢占）通过单个容量为 $C$ 的瓶颈链路。
@@ -95,7 +97,7 @@ $$
 \frac{\mathrm{d}\alpha}{\mathrm{d}t}\approx \frac{\mathbb{E}(\Delta \alpha)}{\tau'}
 $$
 
-> 强行解释就是我们希望计算在 $\tau'$ 时间内 $\alpha$ 的平均变化率，而 $\tau'$ 是一个极小量，然后变化量期望代表着平均变化量，一除就是平均变化率了，反正不是的话也推不出后面的东西。严格来说这么写都是错的，$\alpha(t)$ 不可导，应该写成类似 Ito 积分的形式，虽然选了应用随机过程但已经过了四年（但好像讲的时候 Ito 积分也就提了一嘴，没细讲），现在啥也不会了。
+> 强行解释就是我们希望计算在 $\tau'$ 时间内 $\alpha$ 的平均变化率，而 $\tau'$ 是一个极小量，然后变化量期望代表着平均变化量，一除就是平均变化率了，反正不是的话也推不出后面的东西。这⾥⽤的是流体均值近似 ODE，作为建模来说相当粗糙。
 
 设在 $\tau'$ 时间窗口内没有 CNP 的概率为 $p_0$，那么
 
@@ -127,15 +129,15 @@ $$
 
 由此得证。
 
-> 但为什么是这样是很无厘头的。首先不是所有的发送数据都形成队列，假设这些数据都形成队列了，虽然 ECN 是根据队列长度变化的，但是按理说这个概率应该和包个数有关，而不是字节数。然后是打 ECN 标记的时间并非控制回路延迟 $\tau^\ast$，综合起来这公式混合了不同时刻发生的事情，虽然差距很小但还是有差距，但是数据中心内这点差距也不算啥，数学是天体物理老师教的，就只能感性理解，不要用它来计算。长距链路上带入这个 $\tau^\ast$ 显然就是错的了。
+> 但为什么是这样是很无厘头的。首先不是所有的发送数据都形成队列，假设这些数据都形成队列了，虽然 ECN 是根据队列长度变化的，但是按理说这个概率应该和包个数有关，而不是字节数，这里的指数位置考虑已经进行了归一化。然后是打 ECN 标记的时间并非控制回路延迟 $\tau^\ast$，综合起来这公式混合了不同时刻发生的事情，虽然差距很小但还是有差距，但是数据中心内这点差距也不算啥，数学是天体物理老师教的，就只能感性理解，不要用它来计算。长距链路上带入这个 $\tau^\ast$ 显然就是错的了。
 
 ### 公式 9
 
 $$
 \begin{aligned}
 \frac{\mathrm{d}R_C}{\mathrm{d}t}=&-\frac{R_C(t)\alpha(t)}{2\tau}\left(1-(1-p(t-\tau^\ast))^{\tau R_C(t-\tau^\ast)}\right)\\
-&+\frac{R_T(t)-R_C(T)}{2}\frac{R_C(t-\tau^\ast)p(t-\tau^\ast)}{(1-p(t-\tau^\ast))^{-B}-1}\\
-&+\frac{R_T(t)-R_C(T)}{2}\frac{R_C(t-\tau^\ast)p(t-\tau^\ast)}{(1-p(t-\tau^\ast))^{-TR_C(t-\tau^\ast)}-1}
+&+\frac{R_T(t)-R_C(t)}{2}\frac{R_C(t-\tau^\ast)p(t-\tau^\ast)}{(1-p(t-\tau^\ast))^{-B}-1}\\
+&+\frac{R_T(t)-R_C(t)}{2}\frac{R_C(t-\tau^\ast)p(t-\tau^\ast)}{(1-p(t-\tau^\ast))^{-TR_C(t-\tau^\ast)}-1}
 \end{aligned}
 $$
 
@@ -217,17 +219,6 @@ $$
 与 $R_C$ 更新不同的是，至少更新 $F$ 次 $R_C$ 后才会更新 $R_T$，即 FastRecovery 不会更新 $R_T$，而是在 Increase 阶段才更新。因此，公式 9 字节计数器升速时讨论的「网卡要发送 $B$ 个字节且期间不收到任何 CNP，才能触发一次提速」就变成了「网卡要发送 $FB$ 个字节且期间不收到任何 CNP，才能触发一次提速」，对于计时器升速同理，指数部分多乘个 $F$ 就是了。
 
 综合起来原式得证。
-
-## 稳定性
-
-DCQCN 论文中并没有直接证明稳定性，而是依赖 QCN 的稳定性证明。QCN 也没有直接证明稳定性，而是通过如下路径来证明：
-
-1. QCN 利用了 Average Principle（似乎没有对应的汉语翻译）；
-2. AP 在线性控制系统中和 PD（比例微分）控制器代数意义上等价，即给 AP 和 PD 等价的输入，它们的输出是等价的；
-3. PD 具有稳定性，那么 AP 也具有稳定性；
-4. 所以 QCN 是稳定的。
-
-至于证明已经完全不想看了。
 
 ## 用处
 
@@ -394,11 +385,11 @@ $$
 
 对 $g(p)$ 求导
 $$
-g'(p)=\frac{-C(1-p)^{C+1}p-(1-p)^C+1}{p^2}
+g'(p)=\frac{-C(1-p)^{C-1}p-(1-p)^C+1}{p^2}
 $$
 其中，$-C(1-p)^{C+1}p\ge 0$ 在 $[0,1]$ 上恒成立，考虑 $h(p)=1-(1-p)^C$ 在 $[0,1]$ 上的取值，继续求导。
 $$
-h'(p)=C(1-p)^{C+1}
+h'(p)=-C(1-p)^{C-1}
 $$
 $h'(p)\ge 0$ 在 $[0,1]$ 上恒成立，因此 $h(p)$ 在 $[0,1]$ 上单调增，也就是 $h(p)\ge h(0)=0$ 成立，因此 $g'(p)\ge 0$ 在 $[0,1]$ 上恒成立，$g(p)$ 在 $[0,1]$ 上单调增。因此 $1/b$ 和 $1/d$ 在 $[0,1]$ 上均单调增。
 
@@ -426,46 +417,11 @@ $$
 对于第三部分，类似考虑 $c$ 的倒数和 $e$ 的倒数
 $$
 \begin{aligned}
-\frac{1}{c}&=\frac{(1-p^\ast)^{-B}-1}{(1-p^\ast)^{FB}p^\ast}\\
-\frac{1}{e}&=\frac{(1-p^\ast)^{-TR_C^{(i)\ast}}-1}{(1-p^\ast)^{FTR_C^{(i)\ast}}p^\ast}
+\frac{1}{c}&=\frac{(1-p^\ast)^{-B}-1}{(1-p^\ast)^{FB}p^\ast}=(1-p^\ast)^{-FB}\cdot \frac{1}{b}\\
+\frac{1}{e}&=\frac{(1-p^\ast)^{-TR_C^{(i)\ast}}-1}{(1-p^\ast)^{FTR_C^{(i)\ast}}p^\ast}=(1-p^\ast)^{-FTR_{C}^{(i)\ast}}\cdot \frac{1}{d}
 \end{aligned}
 $$
-都把分母中 $(1-p)^C$ 的部分除上去，得到类似下面的函数
-$$
-h(p)=\frac{(1-p)^{C_1}-(1-p)^{C_2}}{p}
-$$
-其中 $C_1<C_2<0$。由于求导十分麻烦，因此在 $p=0$ 处对分子 Taylor 展开
-$$
-\begin{aligned}
-k(p)&=(1-p)^C\\
-&=1-Cp+\frac{C(C-1)}{2!}p^2-\frac{C(C-1)(C-2)}{3!}p^3+\dots
-\end{aligned}
-$$
-则
-$$
-\begin{aligned}
-h(p)&=(C_2-C_1)\\
-&+\frac{C_1(C_1-1)-C_2(C_2-1)}{2!}p\\
-&+\frac{C_2(C_2-1)(C_2-2)-C_1(C_1-1)(C_1-2)}{3!}p^2\\
-&+\dots
-\end{aligned}
-$$
-观察 $p$ 前系数，分奇偶讨论，可以得出系数均为正。因此对展开式求导，可知 $h'(p)$ 大于 0 恒成立。
-
-> 考虑函数
-> $$
-> f(x)=\prod_{i=0}^n(x-i)
-> $$
-> 求导得到
-> $$
-> f'(x)=\sum_{j=0}^n\left(\prod_{i=0,i\neq j}^n (x-i)\right)
-> $$
-> 分析当 $x < 0$ 时的各项符号：
->
-> 1. 由于 $i$ 的取值范围是 $0, 1, 2, \dots, n$，当 $x < 0$ 时，所有的 $(x-i)$ 都是负数。
-> 2. 在 $f'(x)$ 的求和公式中，每一项 $\prod_{i \neq j} (x-i)$ 都是从 $n+1$ 个负数因子中抽掉了一个，因此每一项恰好是 $n$ 个负数的乘积。
->
-> 因此，当 $n$ 为偶数时，$f'(x) > 0$ 恒成立，函数在负半轴上单调递增。当 $n$ 为奇数时，$f'(x) < 0$ 恒成立，函数在负半轴上单调递减。
+由于 $(1-p^\ast)^{-FB}$ 和 $(1-p^\ast)^{-FTR_C^{(i)\ast}}$ 也在 $[0,1)$ 上单调增，所以 $\frac{1}{c}$ 和 $\frac{1}{e}$ 也是单调增的。
 
 类似第二项分析并联函数，第三项同样单调递增。至此，可以证明原式单调递增。
 
@@ -475,11 +431,8 @@ $$
 $$
 当 $p^\ast$ 取 $0$ 时，左式小于右式，$p^\ast$ 取 $1$ 时，左式大于右式，因此 $p^\ast$ 在 $(0,1)$ 上有唯一不动点，这使得队列长度也存在唯一不动点 $q^\ast$。
 
-在收敛性一节中证明了每条流的不动点是 $R_C^{(i)\ast}=C/N$，接下来估计 $p^\ast$ 的大小。由于 $p^\ast$ 通常非常接近 0，因此考虑在 $p=0$ 处 Taylor 展开，忽略 $O(p^4)$。
+在收敛性一节中证明了每条流的不动点是 $R_C^{(i)\ast}=C/N$，接下来估计 $p^\ast$ 的大小。由于 $p^\ast$ 通常非常接近 0，因此考虑在 $p=0$ 处 Taylor 展开。考虑 $(1-p)^x=1-xp+o(p)\approx 1-xp$，因此
 
-> 实际上只展开了到 $p$ 忽略的是 $o(p^2)$。原论文大小 $o$ 还打错了。
-
-考虑 $(1-p)^x=1-xp+o(p^2)\approx 1-xp$，因此
 $$
 \begin{aligned}
 \alpha^{(i)\ast}&\approx \tau'R_C^{(i)\ast}p^\ast\\
@@ -493,7 +446,7 @@ $$
 
 > 由于 $p^\ast$ 非常接近 0，因此同样忽略了 $c$ 和 $e$ 中的 $Cp^\ast$ 部分（$C$ 指某个常数）。
 
-代入原式
+忽略左侧产生的 $o(p^3)$，代入原式
 $$
 \frac{(\tau R_C^{(i)\ast}p^\ast)^2\tau'R_C^{(i)\ast}p^\ast}{(1/B+1/TR_C^{(i)\ast})^2}=\tau^2R_{\text{AI}}R_C^{(i)\ast}
 $$
@@ -506,6 +459,256 @@ $$
 p^\ast\approx \sqrt[3]{\frac{R_\text{AI} N^2}{\tau' C^2} \left( \frac{1}{B} + \frac{N}{TC} \right)^2}
 $$
 
+### 稳定性
+
+DCQCN 论文中并没有直接证明稳定性，而是依赖 QCN 的稳定性证明。QCN 也没有直接证明稳定性，而是通过如下路径来证明：
+
+1. QCN 利用了 Average Principle（似乎没有对应的汉语翻译）；
+2. AP 在线性控制系统中和 PD（比例微分）控制器代数意义上等价，即给 AP 和 PD 等价的输入，它们的输出是等价的；
+3. PD 具有稳定性，那么 AP 也具有稳定性；
+4. 所以 QCN 是稳定的。
+
+在 CoNEXT 论文中通过数值方法证明了一部分稳定性问题。首先通过系统线性化和 Laplace 变换得到 DCQCN 的特征方程。
+
+仍然考虑公式 9，我们直接将公式写成如下形式。
+$$
+\begin{aligned}
+\frac{\mathrm{d}R_C}{\mathrm{d}t} &=- \frac{R_C \alpha}{2\tau} \left( 1 - (1-p)^{\tau R_C} \right)\\ 
+&+ \frac{R_T - R_C}{2} \left[ \frac{R_C p}{(1-p)^{-B} - 1} + \frac{R_C p}{(1-p)^{-TR_C} - 1} \right]
+\end{aligned}
+$$
+
+> 这里从第一步开始就忽略了反馈延迟。
+
+在平衡点附近，标记概率 $p$ 非常接近 0，所以仍然考虑 Taylor 展开。
+
+对于 $(1-p)^{\tau R_C}$，当 $p \to 0$ 时，$(1-p)^x \approx 1 - xp$，因此
+$$
+1 - (1-p)^{\tau R_C} \approx 1 - (1 - \tau R_C p) = \tau R_C p
+$$
+对于后面的分式，其核心为 $g(x) = \frac{p}{(1-p)^{-x} - 1}$（其中 $x$ 为 $B$ 或 $TR_C$）。考虑利用 Taylor 展开化简 $(1-p)^{-x}$ 的部分，为了保证线性化的精度，分母必须保留到二阶：
+$$
+(1-p)^{-x} = 1 + xp + \frac{x(x+1)}{2}p^2 + o(p^2)
+$$
+将结果代回分式
+$$
+g(x) \approx \frac{p}{xp(1 + \frac{x+1}{2}p)} = \frac{1}{x} \left(1 + \frac{x+1}{2}p\right)^{-1}
+$$
+由于 $p\to 0$，那么 $\frac{x+1}{2}p\to 0$，由于 $(1+x)^{-1}=\sum_{n=0}^\infty (-1)^nx^n\approx 1-x$，仍可进一步写成
+$$
+g(x)\approx \frac{1}{x}\left(1-\frac{x+1}{2}p\right)=\frac{1}{x}-\left(\frac{1}{2}+\frac{1}{2x}\right)p
+$$
+把 $x=B$ 和 $x=TR_C$ 代进去
+$$
+\begin{aligned}
+&\left[ \frac{1}{B} - \left(\frac{1}{2} + \frac{1}{2B}\right)p \right] + \left[ \frac{1}{TR_C} - \left(\frac{1}{2} + \frac{1}{2TR_C}\right)p \right]\\
+&= \left(\frac{1}{B} + \frac{1}{TR_C}\right) - p - \frac{1}{2}\left(\frac{1}{B} + \frac{1}{TR_C}\right)p
+\end{aligned}
+$$
+令 $A=\frac{1}{B}+\frac{1}{TR_C}$，则上式可以写成
+$$
+A - p - \frac{A}{2}p = A - \left(1 + \frac{A}{2}\right)p
+$$
+把所有部分都合起来
+$$
+\begin{aligned}
+\frac{\mathrm{d}R_C}{\mathrm{d}t} &=- \frac{R_C \alpha}{2\tau} \left( 1 - (1-p)^{\tau R_C} \right)\\ 
+&+ \frac{R_T - R_C}{2} \left[ \frac{R_C p}{(1-p)^{-B} - 1} + \frac{R_C p}{(1-p)^{-TR_C} - 1} \right]\\
+&=- \frac{R_C \alpha}{2\tau} \tau R_Cp+ \frac{R_C(R_T - R_C)}{2} \left[ A - \left(1 + \frac{A}{2}\right)p \right]
+\end{aligned}
+$$
+拆开，约分，化简
+$$
+\begin{aligned}
+\frac{\mathrm{d}R_C}{\mathrm{d}t} =- \frac{1}{2}R_C^2 \alpha p+\frac{A}{2}(R_TR_C - R_C^2) - \left(\frac{1}{2}+ \frac{A}{4}\right)(R_TR_Cp - R_C^2p)
+\end{aligned}
+$$
+
+> 如果不忽略反馈延迟，应该是
+> $$
+> \begin{aligned}
+> \frac{\mathrm{d}R_C}{\mathrm{d}t} &=- \frac{1}{2}R_C(t)R_C(t-\tau^\ast) \alpha p\\
+> &+\frac{A}{2}(R_TR_C(t-\tau^\ast) - R_C(t)R_C(t-\tau^\ast))\\
+> &- \left(\frac{1}{2}+ \frac{A}{4}\right)(R_TR_C(t-\tau^\ast)p - R_C(t)R_C(t-\tau^\ast)p)
+> \end{aligned}
+> $$
+> 这里的 $\alpha$ 都是 $\alpha(t)$，$R_T$ 都是 $R_T(t)$，$p$ 都是 $p(t-\tau^\ast)$，$A$ 中的 $R_C$ 都是 $R_C(t-\tau^\ast)$。
+
+现在我们得到的系统方程仍然不是线性的，只有线性化后才能进行 Laplace 变换，所以我们在不动点处对 $\frac{\mathrm{d}R_C}{\mathrm{d}t}$ 进行一阶 Taylor 展开。
+
+令
+$$
+F(R_C, R_T, p, \alpha)=- \frac{1}{2}R_C^2 \alpha p+\frac{A}{2}(R_TR_C - R_C^2) - \left(\frac{1}{2}+ \frac{A}{4}\right)(R_TR_Cp - R_C^2p)
+$$
+对其在不动点处进行 Taylor 展开。这个过程十分掉 san。
+
+首先需要复习一下多元函数的一阶 Taylor 展开
+
+> 设多元函数 $f(x_1,x_2,\ldots,x_n)$ 在 $(a_1,a_2,\ldots,a_n)$ 处一阶可偏导，则有：
+> $$
+> \begin{aligned}
+> f(x_1,x_2,\ldots,x_n)&=f(a_1,a_2,\ldots,a_n)+\sum_{i=1}^n(x_i-a_i)\frac{\partial f}{\partial x_i}(a_1,a_2,\ldots,a_n)\\
+> &+R(x_1,x_2,\ldots,x_n)
+> \end{aligned}
+> $$
+> 其中 $R(x_1,x_2,\ldots,x_n)$ 为余项。但是接下来写的所有式子全部忽略余项。
+
+对于第一个式子
+$$
+\begin{aligned}
+F_1(R_C,\alpha,p)&=F_1(R_C^\ast,\alpha^\ast,p^\ast)\\
+&-R_C^\ast\alpha^\ast p^\ast(R_C-R_C^\ast)-\frac{1}{2}(R_C^\ast)^2p^\ast(\alpha-\alpha^\ast)-\frac{1}{2}(R_C^\ast)^2\alpha^\ast(p-p^\ast)\\
+\end{aligned}
+$$
+对于第二个式子，令 $A^\ast=\frac{1}{B}+\frac{1}{TR_C^\ast}$。
+$$
+\begin{aligned}
+F_2(R_C,R_T)=&\frac{1}{2}\left(\frac{1}{B}+\frac{1}{TR_C}\right)(R_TR_C - R_C^2)\\
+=&\frac{1}{2}\left(\frac{1}{B}(R_TR_C - R_C^2)+\frac{1}{T}(R_T - R_C)\right)\\
+=&F_2(R_C^\ast,R_T^\ast)\\
+&+\frac{1}{2}\left(\frac{R_C^\ast}{B}+\frac{1}{T}\right)(R_T-R_T^\ast)\\
+&+\frac{1}{2}\left(\frac{R_T^\ast}{B}-\frac{2R_C^\ast}{B}-\frac{1}{T}\right)(R_C-R_C^\ast)\\
+=&F_2(R_C^\ast,R_T^\ast)\\
+&+\frac{1}{2}\left(\frac{1}{B}+\frac{1}{TR_C^\ast}\right)R_C^\ast(R_T-R_T^\ast)\\
+&+\frac{1}{2}\left(\frac{R_T^\ast - 2R_C^\ast}{B} + \frac{R_T^\ast - 2R_C^\ast}{TR_C^\ast} - \frac{R_T^\ast - 2R_C^\ast}{TR_C^\ast} - \frac{1}{T}\right)(R_C-R_C^\ast)\\
+=&F_2(R_C^\ast,R_T^\ast)\\
+&+\frac{1}{2}\left(\frac{1}{B}+\frac{1}{TR_C^\ast}\right)R_C^\ast(R_T-R_T^\ast)\\
+&+\frac{1}{2}\left(\frac{1}{B}+\frac{1}{TR_C^\ast}\right)\left(R_T^\ast - 2R_C^\ast \right)(R_C-R_C^\ast)\\
+&-\frac{R_T^\ast - R_C^\ast}{2TR_C^\ast}(R_C-R_C^\ast)\\
+=&F_2(R_C^\ast,R_T^\ast)+\frac{A^\ast}{2}R_C^\ast(R_T-R_T^\ast)+\frac{A^\ast}{2}\left(R_T^\ast - 2R_C^\ast \right)(R_C-R_C^\ast)\\
+&-\frac{R_T^\ast - R_C^\ast}{2TR_C^\ast}(R_C-R_C^\ast)\\
+\end{aligned}
+$$
+> 参考推不动点的过程，其实稳态时 $R_T^\ast\neq R_C^\ast$，所以最后还不能省掉。
+
+再对第三项同样展开，会很长很长。
+$$
+\begin{aligned}
+F_3(R_C,R_T,p)=&-\frac{1}{2}\left(1+\frac{1}{2B}+\frac{1}{2TR_C}\right)(R_TR_Cp - R_C^2p)\\
+=&-\frac{1}{2}\left((R_TR_Cp - R_C^2p)+\frac{1}{2B}(R_TR_Cp - R_C^2p)+\frac{1}{2T}(R_Tp - R_Cp)\right)\\
+=&F_3(R_C^\ast,R_T^\ast,p^\ast)\\
+&-\frac{1}{2}\left(R_C^\ast p^\ast+\frac{R_C^\ast p^\ast}{2B}+\frac{p^\ast}{2T}\right)(R_T-R_T^\ast)\\
+&-\frac{1}{2}\left(R_T^\ast p^\ast-2R_C^\ast p^\ast+\frac{R_T^\ast p^\ast-2R_C^\ast p^\ast}{2B}-\frac{p^\ast}{2T}\right)(R_C-R_C^\ast)\\
+&-\frac{1}{2}\left(R_T^\ast R_C^\ast-(R_C^\ast)^2+\frac{R_T^\ast R_C^\ast-(R_C^\ast)^2}{2B}+\frac{R_T^\ast-R_C^\ast}{2T}\right)(p-p^\ast)\\
+=&F_3(R_C^\ast,R_T^\ast,p^\ast)\\
+&-\frac{1}{2}\left(1+\frac{1}{2B}+\frac{1}{2TR_C^\ast}\right)R_C^\ast p^\ast(R_T-R_T^\ast)\\
+&-\frac{1}{2}\left(R_T^\ast p^\ast-2R_C^\ast p^\ast+\frac{R_T^\ast p^\ast-2R_C^\ast p^\ast}{2B}+\frac{R_T^\ast p^\ast-2R_C^\ast p^\ast}{2TR_C^\ast}-\frac{R_T^\ast p^\ast-2R_C^\ast p^\ast}{2TR_C^\ast}-\frac{p^\ast}{2T}\right)(R_C-R_C^\ast)\\
+&-\frac{1}{2}\left(1+\frac{1}{2B}+\frac{1}{2TR_C^\ast}\right)(R_T^\ast R_C^\ast-(R_C^\ast)^2)(p-p^\ast)\\
+=&F_3(R_C^\ast,R_T^\ast,p^\ast)\\
+&-\frac{1}{2}\left(1+\frac{1}{2B}+\frac{1}{2TR_C^\ast}\right)R_C^\ast p^\ast(R_T-R_T^\ast)\\
+&-\frac{1}{2}\left(1+\frac{1}{2B}+\frac{1}{2TR_C^\ast}\right)\left(R_T^\ast p^\ast-2R_C^\ast p^\ast\right)(R_C-R_C^\ast)\\
+&+\frac{R_T^\ast p^\ast-R_C^\ast p^\ast}{4TR_C^\ast}(R_C-R_C^\ast)\\
+&-\frac{1}{2}\left(1+\frac{1}{2B}+\frac{1}{2TR_C^\ast}\right)(R_T^\ast R_C^\ast-(R_C^\ast)^2)(p-p^\ast)\\
+=&F_3(R_C^\ast,R_T^\ast,p^\ast)\\
+&-\left(\frac{1}{2}+\frac{A^\ast}{4}\right)R_C^\ast p^\ast(R_T-R_T^\ast)\\
+&-\left(\frac{1}{2}+\frac{A^\ast}{4}\right)\left(R_T^\ast p^\ast-2R_C^\ast p^\ast\right)(R_C-R_C^\ast)\\
+&-\left(\frac{1}{2}+\frac{A^\ast}{4}\right)(R_T^\ast R_C^\ast-(R_C^\ast)^2)(p-p^\ast)\\
+&+\frac{R_T^\ast - R_C^\ast}{4TR_C^\ast}p^\ast(R_C-R_C^\ast)
+\end{aligned}
+$$
+令 $\delta R_C(t)=R_C(t)-R_C^\ast$，$\delta R_T(t)=R_T(t)-R_T^\ast$，$\delta p(t)=p(t)-p^\ast$，$\delta \alpha(t)=\alpha(t)-\alpha^\ast$。把上面的式子合起来。
+
+> 实际上所有的 $p$ 都是 $p(t-\tau^\ast)$。
+
+$$
+\begin{aligned}
+\frac{\mathrm{d}R_C}{\mathrm{d}t}=& F_1 + F_2 + F_3 \\
+=& -\frac{1}{2}(R_C^\ast)^2\alpha^\ast\delta p - \frac{1}{2}p^\ast R_C^\ast\alpha^\ast\delta R_C \notag \\
+&-\frac{1}{2}p^\ast R_C^\ast\alpha^\ast\delta R_C - \frac{1}{2}p^\ast(R_C^\ast)^2\delta\alpha \notag \\
+&+\frac{A^\ast}{2}\left(R_C^\ast\delta R_T - R_C^\ast\delta R_C + R_T^\ast\delta R_C - R_C^\ast\delta R_C\right) \notag \\
+&-\left(\frac{1}{2}+\frac{A^\ast}{4}\right)\left(p^\ast R_C^\ast\delta R_T - p^\ast R_C^\ast\delta R_C + p^\ast R_T^\ast\delta R_C\right) \notag \\
+&-\left(\frac{1}{2}+\frac{A^\ast}{4}\right)\left(p^\ast R_C^\ast\delta R_C + R_C^\ast R_T^\ast\delta p - (R_C^\ast)^2\delta p\right) \notag \\
+&-\frac{R_T^\ast - R_C^\ast}{2TR_C^\ast}\delta R_C + \frac{R_T^\ast - R_C^\ast}{4TR_C^\ast}p^\ast\delta R_C
+\end{aligned}
+$$
+由于稳定点处导数等于 0，所以可以将数值部分直接求出。
+
+> 但这个方程并不严谨，我们仍需考虑 $\tau^\ast$ 项的影响。考虑之后应该长这样
+> $$
+> \begin{aligned}
+> \frac{\mathrm{d} R_C(t)}{\mathrm{d}t} =& \left[ -\frac{1}{2}(R_C^\ast)^2 \alpha^\ast - \left(\frac{1}{2}+\frac{A^\ast}{4}\right)(R_T^\ast R_C^\ast - (R_C^\ast)^2) \right] \delta p(t-\tau^\ast)\\ 
+> &+ \left[ -\frac{1}{2}(R_C^\ast)^2 p^\ast \right] \delta \alpha(t)\\ 
+> &+ \left[ \frac{A^\ast}{2}R_C^\ast - \left(\frac{1}{2}+\frac{A^\ast}{4}\right)R_C^\ast p^\ast \right] \delta R_T(t)\\ 
+> &+ \left[ -\frac{1}{2}R_C^\ast \alpha^\ast p^\ast - \frac{A^\ast}{2}R_C^\ast + \left(\frac{1}{2}+\frac{A^\ast}{4}\right)R_C^\ast p^\ast \right] \delta R_C(t)\\ 
+> &+ \left[ -\frac{1}{2}R_C^\ast \alpha^\ast p^\ast + \frac{A^\ast}{2}(R_T^\ast - R_C^\ast) - \left(\frac{1}{2}+\frac{A^\ast}{4}\right)(R_T^\ast - R_C^\ast )p^\ast \right] \delta R_C(t-\tau^\ast)
+> \end{aligned}
+> $$
+> 至于论文里为什么是 $\frac{\mathrm{d}\delta R_C}{\mathrm{d}t}$，因为 $\delta R_C=R_C(t)-R_C^\ast$，对常数求导是 0 所以也可以写成这个东西。感觉并不重要。
+
+接下来，对上面线性化的方程进行 Laplace 变换，以进行稳定性分析。
+
+首先我们需要知道 Laplace 变换是什么。
+
+> 对于所有实数 $t\ge 0$，函数 $f(t)$ 的 Laplace 变换是函数 $F(s)$，定义为：
+> $$
+> F(s)=\int_0^{\infty} \exp(-st)f(t) \mathrm{d}t
+> $$
+> 其中频率参数 $s$ 是一个复数：$s=\sigma+\mathrm{i}\omega$，其中 $\sigma$ 和 $\omega$ 是实数。
+>
+> 对 $f$ 的 Laplace 变换可记作 $\mathcal{L}\{f\}$。
+
+那么我们现在是对一个微分进行 Laplace 变换，即求 $\mathcal{L}(f')$。那么利用分部积分
+$$
+\begin{aligned}
+\int_{0}^{\infty} \exp(-st)f'(t) \mathrm{d}t &=\int_{0}^{\infty} \exp(-st) \mathrm{d}f(t)\\
+&= \left[ \exp(-st)f(t) \right]_{0}^{\infty} - \int_{0}^{\infty} f(t) \cdot (-s \exp(-st)) \mathrm{d}t\\
+&=s\int_{0}^{\infty} \exp(-st) f(t)  \mathrm{d}t-f(0)\\
+&=sF(s)-f(0)
+\end{aligned}
+$$
+定义 $R_C(s)$ 为 $\mathcal{L}\{R_C(t)\}$。类似定义，$R_T(s)=\mathcal{L}\{R_T(t)\}$，$p(s)=\mathcal{L}\{p(t-\tau^\ast)\}$，$\alpha(s)=\mathcal{L}\{\alpha(t)\}$。
+
+> 这里符号确实乱了，将就用吧。
+
+可以发现等式右侧是各种 $\delta$ 的线性组合，积分一个就能以类似形式得到其他的。比如
+$$
+\begin{aligned}
+\mathcal{L}\{\delta R_C(t)\}&=\int_0^{\infty}\exp(-st)\delta R_C(t)\mathrm{d}t\\
+&=\int_0^{\infty}\exp(-st) R_C(t)\mathrm{d}t-\int_0^{\infty}\exp(-st) R_C^\ast\mathrm{d}t\\
+&=\int_0^{\infty}\exp(-st) R_C(t)\mathrm{d}t-\frac{R_C^\ast}{s}\int_{-\infty}^{0}\exp(-st) \mathrm{d}(-st)\\
+&=R_C(s)-\frac{R_C^\ast}{s}
+\end{aligned}
+$$
+又如
+$$
+\begin{aligned}
+\mathcal{L}\{\delta p(t-\tau^\ast)\}&=\int_0^{\infty}\exp(-st)\delta p(t-\tau^\ast)\mathrm{d}t\\
+&=\int_0^{\infty}\exp(-st) p(t-\tau^\ast)\mathrm{d}t-\int_0^{\infty}\exp(-st) p^\ast\mathrm{d}t\\
+&=\int_0^{\infty}\exp(-s\tau^\ast)\exp(-s(t-\tau^\ast)) p(t-\tau^\ast)\mathrm{d}t-\int_0^{\infty}\exp(-st) p^\ast\mathrm{d}t\\
+&=\exp(-s\tau^\ast)\int_{-\tau^\ast}^{\infty}\exp(-su) p(u)\mathrm{d}u-\int_0^{\infty}\exp(-st) p^\ast\mathrm{d}t\\
+&=\exp(-s\tau^\ast)\int_{-\tau^\ast}^{\infty}\exp(-su) p(u)\mathrm{d}u-\frac{p*}{s}\\
+&=\exp(-s\tau^\ast)\int_{0}^{\infty}\exp(-su) p(u)\mathrm{d}u-\frac{p*}{s}\\
+&=\exp(-s\tau^\ast)p(s)-\frac{p*}{s}
+\end{aligned}
+$$
+
+> 这里的扰动视为因果信号，因此有 $\mathcal{L}\{f(t-\tau)\}=\exp(-s\tau)F(s)$。
+
+然后我们把这堆东西合进去。
+$$
+\begin{aligned}
+s R_C(s) - R_C(0) =&\ \left[-\frac{1}{2}(R_C^\ast)^2\alpha^\ast - \left(\frac{1}{2}+\frac{A^\ast}{4}\right)R_C^\ast R_T^\ast + \left(\frac{1}{2}+\frac{A^\ast}{4}\right)(R_C^\ast)^2\right] e^{-s\tau^\ast} p(s) \\
+&\ + \left[-\frac{1}{2}p^\ast R_C^\ast \alpha^\ast - \frac{A^\ast}{2}R_C^\ast + \left(\frac{1}{2}+\frac{A^\ast}{4}\right)p^\ast R_C^\ast\right] e^{-s\tau^\ast} R_C(s) \\
+&\ + \left[-\frac{1}{2}p^\ast R_C^\ast \alpha^\ast - \frac{A^\ast}{2}R_C^\ast + \frac{A^\ast}{2}R_T^\ast + \left(\frac{1}{2}+\frac{A^\ast}{4}\right)p^\ast R_C^\ast - \left(\frac{1}{2}+\frac{A^\ast}{4}\right)p^\ast R_T^\ast\right] R_C(s) \\
+&\ - \frac{1}{2}p^\ast (R_C^\ast)^2 \alpha(s) + \left[\frac{A^\ast}{2}R_C^\ast - \left(\frac{1}{2}+\frac{A^\ast}{4}\right)p^\ast R_C^\ast\right] R_T(s) \\
+&\ - \frac{1}{s} \left[-\frac{1}{2}(R_C^\ast)^2\alpha^\ast - \left(\frac{1}{2}+\frac{A^\ast}{4}\right)R_C^\ast R_T^\ast + \left(\frac{1}{2}+\frac{A^\ast}{4}\right)(R_C^\ast)^2\right] p^\ast e^{-s\tau^\ast} \\
+&\ - \frac{1}{s} \left[-\frac{1}{2}p^\ast R_C^\ast \alpha^\ast - \frac{A^\ast}{2}R_C^\ast + \left(\frac{1}{2}+\frac{A^\ast}{4}\right)p^\ast R_C^\ast\right] R_C^\ast e^{-s\tau^\ast} \\
+&\ - \frac{1}{s} \left[-\frac{1}{2}p^\ast R_C^\ast \alpha^\ast - \frac{A^\ast}{2}R_C^\ast + \frac{A^\ast}{2}R_T^\ast + \left(\frac{1}{2}+\frac{A^\ast}{4}\right)p^\ast R_C^\ast - \left(\frac{1}{2}+\frac{A^\ast}{4}\right)p^\ast R_T^\ast\right] R_C^\ast \\
+&\ + \frac{1}{s} \left[\frac{1}{2}(p^\ast)^2 (R_C^\ast)^2\right]\alpha^\ast - \frac{1}{s} \left[\frac{A^\ast}{2}R_C^\ast - \left(\frac{1}{2}+\frac{A^\ast}{4}\right)p^\ast R_C^\ast\right] R_T^\ast
+\end{aligned}
+$$
+
+> 同样的，这个公式也不严谨，考虑 $\tau^\ast$ 后为
+> $$
+> \begin{aligned}
+> s R_C(s) - \delta R_C(0) =& \left[ -\frac{1}{2}(R_C^\ast)^2 \alpha^\ast - \left(\frac{1}{2}+\frac{A^\ast}{4}\right)(R_T^\ast R_C^\ast - (R_C^\ast)^2) \right] e^{-s\tau^\ast} p(s)\\ 
+> &+ \left[ -\frac{1}{2}(R_C^\ast)^2 p^\ast \right] \alpha(s)\\ 
+> &+ \left[ \frac{A^\ast}{2}R_C^\ast - \left(\frac{1}{2}+\frac{A^\ast}{4}\right)R_C^\ast p^\ast \right] R_T(s)\\ 
+> &+ \left[ -\frac{1}{2}R_C^\ast \alpha^\ast p^\ast - \frac{A^\ast}{2}R_C^\ast + \left(\frac{1}{2}+\frac{A^\ast}{4}\right)R_C^\ast p^\ast \right] R_C(s)\\ 
+> &+ \left[ -\frac{1}{2}R_C^\ast \alpha^\ast p^\ast + \frac{A^\ast}{2}(R_T^\ast - R_C^\ast) - \left(\frac{1}{2}+\frac{A^\ast}{4}\right)(R_T^\ast  - R_C^\ast)p^\ast \right] e^{-s\tau^\ast} R_C(s)
+> \end{aligned}
+> $$
+> 这个公式考虑吸收了 $\frac{1}{s}$ 的部分，实际上论文的公式也吸收了 $\frac{1}{s}$ 的部分。
 
 ### 收敛性
 
@@ -515,18 +718,18 @@ $$
 
 考虑不触发 CNP 且仅有字节计数器影响时，每发送 $B$ 字节触发一次升速，两次触发升速之间的时间为 $\Delta t=B/R_C$，对 $R_C$ 和 $R_T$ 类似求导
 $$
-\frac{\mathrm{d}R_C}{\mathrm{d}t}\approx \frac{\Delta R_C}{\Delta t}=\frac{R_T-R_C}{2B}R_C\\
+\frac{\mathrm{d}R_C}{\mathrm{d}t}\approx \frac{\Delta R_C}{\Delta t}=\frac{R_T-R_C+R_\text{AI}}{2B}R_C\\
 \frac{\mathrm{d}R_T}{\mathrm{d}t}\approx \frac{\Delta R_T}{\Delta t}=\frac{R_\text{AI}}{B}R_C\\
 $$
 上下两式相除，得
 $$
-\frac{\mathrm{d}R_C}{\mathrm{d}R_T}+\frac{1}{2R_\text{AI}}R_C=\frac{R_T}{2R_\text{AI}}
+\frac{\mathrm{d}R_C}{\mathrm{d}R_T}+\frac{1}{2R_\text{AI}}R_C=\frac{R_T+R_\text{AI}}{2R_\text{AI}}
 $$
 这是一个一阶线性常微分方程，求解得到
 $$
-R_C(R_T)=R_T-2R_\text{AI}+C_1\exp\left(-\frac{R_T}{2R_\text{AI}}\right)
+R_C(R_T)=R_T-R_\text{AI}+C_1\exp\left(-\frac{R_T}{2R_\text{AI}}\right)
 $$
-由于 $R_T\gg R_\text{AI}$，因此后一项趋近于 0，因此 $R_T-R_C\approx 2R_\text{AI}$。那么
+由于 $R_T\gg R_\text{AI}$，因此后一项趋近于 0，因此 $R_T-R_C\approx R_\text{AI}$。那么
 $$
 \frac{\mathrm{d}R_C}{\mathrm{d}t}\approx \frac{\Delta R_C}{\Delta t}=\frac{R_T-R_C}{2B}R_C\approx \frac{2R_\text{AI}}{2B}R_C=\frac{R_\text{AI}}{B}R_C
 $$

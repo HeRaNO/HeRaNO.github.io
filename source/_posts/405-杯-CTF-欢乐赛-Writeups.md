@@ -18,7 +18,7 @@ description: ' '
 
 ### webshell detect
 
-自己构造了很久都没能传上去，最后还是在 Github 上搜到一个免杀 Webshell 的[项目](https://github.com/cseroad/Webshell_Generate)，然后随便生成一个。传上去，然后就过了，感觉一晚上白干。
+自己构造了很久都没能传上去，最后还是在 GitHub 上搜到一个免杀 Webshell 的[项目](https://github.com/cseroad/Webshell_Generate)，然后随便生成一个。传上去，然后就过了，感觉一晚上白干。
 
 ### tiny image
 
@@ -202,7 +202,7 @@ Python 实现的随机是 Mersenne Twister，搜到了一个 [PRNG](https://book
 
 很有意思的一道题。代码是要求输入一个串，构造哈希碰撞，然后 padding 是先接长度再接 `\x00`，所以想去干哈希长度扩展，但是没什么收获，浪费了一天。
 
-然后分析一下代码是类似 DES 加密，Github 搜代码找到了[差不多一样的代码](https://github.com/RobinDavid/pydes)。发现这个十分怪，把输入当 `key` 去循环加密 `\x00`，[CTF-Wiki](https://ctf-wiki.org/crypto/blockcipher/des/) 上说 `key` 只使用了 $56$ 位，有 $8$ 位丢了，才想到用丢的位构造。但是代码里 `CP_1` 换了一个置换，丢掉的不是每个位置的最后一位，输出看一下：
+然后分析一下代码是类似 DES 加密，GitHub 搜代码找到了[差不多一样的代码](https://github.com/RobinDavid/pydes)。发现这个十分怪，把输入当 `key` 去循环加密 `\x00`，[CTF-Wiki](https://ctf-wiki.org/crypto/blockcipher/des/) 上说 `key` 只使用了 $56$ 位，有 $8$ 位丢了，才想到用丢的位构造。但是代码里 `CP_1` 换了一个置换，丢掉的不是每个位置的最后一位，输出看一下：
 
 ```patch
         key = string_to_bit_array(self.msg)

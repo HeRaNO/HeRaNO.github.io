@@ -17,7 +17,7 @@ description: ' '
 
 说实话我没想清楚这么做的具体优势，我感觉在处理报文的速度上应该会有所提升……DC 内部的网络协议和 SDN 部分是解耦的，可能是一个优势。
 
-然后是 Polygon，Polygon 主要自动化的部分就是 CI 过程，造题大家还是正常写题面什么的，但是需要写 generator，validator，checker 等等，其中一点是对拍检查是一个明显的 CI 过程，而实际上每次 commit 都会形成一次 CI，比如每次修改题面就需要重新生成一份题面，改了测试点就要重新生成测试点，更复杂的比如改了 validator 之后需要重新对题面和测试点进行检查，以确保 validator，题面和测试点三者的对应性。现在 Polygon 用的版本控制不太清楚是不是 git，但是整套逻辑是和 Workflow 一样的，分别对不同的部分采取不同的 CI 策略，这点还是比 Github Actions 粒度更细的，因为 Actions 只支持对于 repo 层面的 CI。
+然后是 Polygon，Polygon 主要自动化的部分就是 CI 过程，造题大家还是正常写题面什么的，但是需要写 generator，validator，checker 等等，其中一点是对拍检查是一个明显的 CI 过程，而实际上每次 commit 都会形成一次 CI，比如每次修改题面就需要重新生成一份题面，改了测试点就要重新生成测试点，更复杂的比如改了 validator 之后需要重新对题面和测试点进行检查，以确保 validator，题面和测试点三者的对应性。现在 Polygon 用的版本控制不太清楚是不是 git，但是整套逻辑是和 Workflow 一样的，分别对不同的部分采取不同的 CI 策略，这点还是比 GitHub Actions 粒度更细的，因为 Actions 只支持对于 repo 层面的 CI。
 
 然后是 execution-worker，这个其实涉及到了一个运行基础，所有 CI 过程都是 dockerized 的，就需要构建一个支持这种 Workflow 的沙箱环境。但是给每个 Workflow 分配的资源份额是不尽相同的，这样构建沙箱的时候就比较困难。还有 OJ 运行需要的是 Benchmark 功能，但是一般的 checker 运行实际上只需要 Test 功能（Benchmark 和 Test 都是 Go 里面的测试用语），Benchmark 需要一个稳定的基准环境但是 Test 不需要。实际上 SDN 可以做一些同网络不同机器的隔离，甚至不需要规划 IP 端，大概记一下分类就行了。
 

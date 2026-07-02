@@ -279,7 +279,7 @@ judge core 感觉越写越离谱，写半个月没用一个 context 感觉哪儿
 - `lutece-backend`：后端前台业务，实现业务功能（比赛，训练，题库，博客，站内信，Honor，etc.）
 - `lutece-problem-platform`：测评中台服务，处理所有测评请求和与题目相关的数据，可以理解成测评机的主节点
 - `lutece-judge-core`：单个实体测评机，继承测评机父类
-- `lutece-vjudge-core`：单个虚拟测评机，为了支持 Vjudge 业务设计的虚拟测评节点，继承测评机父类
+- `lutece-vjudge-core`：单个虚拟测评机，为了支持 VJudge 业务设计的虚拟测评节点，继承测评机父类
 - `lutece-oss`：文件中台服务，管理所有文件
 
 一条测评请求按下面路径处理：
@@ -488,7 +488,7 @@ Lutece 不知道怎么升级编译器版本，找不到柱爷，数学几何专�
 
 #### 下周要干啥
 
-没事的时候把 XCPC Team Registration 的文档挪到 Github Wiki 上。
+没事的时候把 XCPC Team Registration 的文档挪到 GitHub Wiki 上。
 
 ### 05-08
 
@@ -687,7 +687,7 @@ MBP 真好啊，我也想整一个。
 
 今天把 Lutece 的本地仓库搭起来辣！
 
-~~功能都实现完了再推 Github 上。~~
+~~功能都实现完了再推 GitHub 上。~~
 
 然后就没有辣！
 

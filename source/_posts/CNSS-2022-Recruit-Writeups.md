@@ -165,7 +165,7 @@ unsigned char* encode(unsigned char* a1, unsigned char* a2, unsigned char* a3, u
 
 ### ❤ [Middle] Shino 的心跳大冒险
 
-打开游戏发现是用 [Yuri AVG Engine](https://github.com/rinkako/YuriAVGEngine) 写的，去 Github 搜一下能搜到这个项目（但是两年没更新了，估计弃坑了）。主要的场景都放在了 Scenario 文件夹下的 `main.sil` 文件里，打开发现是一堆 Base64。下载那些 Release，里面有一个 YuririCLI 是编译项目的，其实看项目介绍图也会发现有个 key，上源码搜有没有加密，发现[还真有](https://github.com/rinkako/YuriAVGEngine/blob/master/Lyyneheym/YuriPlatform/Utils/EncryptUtils.cs)，是个 DES 加密。把代码拖到本地编译，然后解密一下那个 sil 文件，key 就用默认的 `yurayuri`（key 不知道的话就变成 Crypto 题了），发现解密成功了，里面是一堆编译过的东西，有一堆怪浪怪浪的数字。但是这些数字出现还是有些规律的，比如有 dialog 里的，vol 里的什么的，猜它是 byte 转成数字存的，验证一下这些数字串长度都是三的倍数并且每三个都不超过 255，就直接按 flag 格式搜索字符串 `099110115115`，结果真被找到有一个，然后一直复制直到 `}` 的 ASCII 码 `125` 即可。然后将得到的字符串三位三位分割，之后转化成字符串输出即可。
+打开游戏发现是用 [Yuri AVG Engine](https://github.com/rinkako/YuriAVGEngine) 写的，去 GitHub 搜一下能搜到这个项目（但是两年没更新了，估计弃坑了）。主要的场景都放在了 Scenario 文件夹下的 `main.sil` 文件里，打开发现是一堆 Base64。下载那些 Release，里面有一个 YuririCLI 是编译项目的，其实看项目介绍图也会发现有个 key，上源码搜有没有加密，发现[还真有](https://github.com/rinkako/YuriAVGEngine/blob/master/Lyyneheym/YuriPlatform/Utils/EncryptUtils.cs)，是个 DES 加密。把代码拖到本地编译，然后解密一下那个 sil 文件，key 就用默认的 `yurayuri`（key 不知道的话就变成 Crypto 题了），发现解密成功了，里面是一堆编译过的东西，有一堆怪浪怪浪的数字。但是这些数字出现还是有些规律的，比如有 dialog 里的，vol 里的什么的，猜它是 byte 转成数字存的，验证一下这些数字串长度都是三的倍数并且每三个都不超过 255，就直接按 flag 格式搜索字符串 `099110115115`，结果真被找到有一个，然后一直复制直到 `}` 的 ASCII 码 `125` 即可。然后将得到的字符串三位三位分割，之后转化成字符串输出即可。
 
 代码就不放了，把那段加密代码拖下来编译就好。
 

@@ -613,11 +613,11 @@ $$
 $$
 \begin{aligned}
 \frac{\mathrm{d}R_C}{\mathrm{d}t}=& F_1 + F_2 + F_3 \\
-=& -\frac{1}{2}(R_C^\ast)^2\alpha^\ast\delta p - \frac{1}{2}p^\ast R_C^\ast\alpha^\ast\delta R_C \notag \\
-&-\frac{1}{2}p^\ast R_C^\ast\alpha^\ast\delta R_C - \frac{1}{2}p^\ast(R_C^\ast)^2\delta\alpha \notag \\
-&+\frac{A^\ast}{2}\left(R_C^\ast\delta R_T - R_C^\ast\delta R_C + R_T^\ast\delta R_C - R_C^\ast\delta R_C\right) \notag \\
-&-\left(\frac{1}{2}+\frac{A^\ast}{4}\right)\left(p^\ast R_C^\ast\delta R_T - p^\ast R_C^\ast\delta R_C + p^\ast R_T^\ast\delta R_C\right) \notag \\
-&-\left(\frac{1}{2}+\frac{A^\ast}{4}\right)\left(p^\ast R_C^\ast\delta R_C + R_C^\ast R_T^\ast\delta p - (R_C^\ast)^2\delta p\right) \notag \\
+=& -\frac{1}{2}(R_C^\ast)^2\alpha^\ast\delta p - \frac{1}{2}p^\ast R_C^\ast\alpha^\ast\delta R_C \\
+&-\frac{1}{2}p^\ast R_C^\ast\alpha^\ast\delta R_C - \frac{1}{2}p^\ast(R_C^\ast)^2\delta\alpha \\
+&+\frac{A^\ast}{2}\left(R_C^\ast\delta R_T - R_C^\ast\delta R_C + R_T^\ast\delta R_C - R_C^\ast\delta R_C\right) \\
+&-\left(\frac{1}{2}+\frac{A^\ast}{4}\right)\left(p^\ast R_C^\ast\delta R_T - p^\ast R_C^\ast\delta R_C + p^\ast R_T^\ast\delta R_C\right) \\
+&-\left(\frac{1}{2}+\frac{A^\ast}{4}\right)\left(p^\ast R_C^\ast\delta R_C + R_C^\ast R_T^\ast\delta p - (R_C^\ast)^2\delta p\right) \\
 &-\frac{R_T^\ast - R_C^\ast}{2TR_C^\ast}\delta R_C + \frac{R_T^\ast - R_C^\ast}{4TR_C^\ast}p^\ast\delta R_C
 \end{aligned}
 $$

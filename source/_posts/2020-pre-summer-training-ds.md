@@ -246,7 +246,7 @@ Problem setter：H_cheung
 
 打表可以发现循环节长度为 $27$，直接线段树维护合并即可。
 
-想法来自 [ZOJ 4009](https://zoj.pintia.cn/problem-sets/91827364500/problems/91827370220)，也可以来自 [CSP 2019 12 月 T5](https://herano.github.io/2019/12/15/%E3%80%8CCSP-2019-%E5%8D%81%E4%BA%8C%E6%9C%88%E3%80%8D%E9%AD%94%E6%95%B0/)。
+想法来自 [ZOJ 4009](https://zoj.pintia.cn/problem-sets/91827364500/problems/91827370220)，也可以来自 [CSP 2019 12 月 T5](/csp-2019-dec-magic)。
 
 ~~想搞成大型找规律现场但是想想还是做个人吧……~~
 

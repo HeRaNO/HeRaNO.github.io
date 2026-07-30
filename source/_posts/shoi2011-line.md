@@ -9,7 +9,7 @@ tags:
 description: SHOI 2011
 ---
 
-题目[传送门](https://loj.ac/problem/2582)。
+题目[传送门](https://loj.ac/p/2582)。
 
 题目大意是求一条直线使得所有点到直线距离的最大值最小。
 

@@ -38,13 +38,13 @@ description: ' '
 
 ### 【教学】HelloWorld
 
-Do something same as [[Easy] ezhttp](https://herano.github.io/2022/09/25/CNSS-2022-Recruit-Writeups/#easy-ezhttp)
+Do something same as [[Easy] ezhttp](/cnss-2022-recruit-writeups/#easy-ezhttp)
 
 [hw.py](https://github.com/HeRaNO/ChickenRibs/tree/master/405/Web/hw.py)
 
 ### 【教学】跑马场
 
-PHP 一句话木马，Do something same as [[Baby] Backdoor](https://herano.github.io/2022/09/25/CNSS-2022-Recruit-Writeups/#baby-backdoor)
+PHP 一句话木马，Do something same as [[Baby] Backdoor](/cnss-2022-recruit-writeups/#baby-backdoor)
 
 总之没用蚁剑，懒得装了
 
@@ -136,7 +136,7 @@ PwnTools 应用题，你需要猜 18 个题的答案。网上所有能找到的�
 
 ### 减肥备忘录
 
-一眼 ret2text，写过 [WP](https://herano.github.io/2023/11/20/CNSS-2023-Recruit-Writeups/#pwn-easy%E7%9C%8B%E7%9C%8B%E4%BD%A0%E7%9A%84backd00r)，首先还是能看到 `win()` 函数是能 getshell 的。看一下位置，考虑堆栈平衡直接跳到给 `system()` 函数赋值的地址。然后看一下主函数逻辑，是 `gets` 的栈溢出，但是 `s` 后面多开了两个 `int` 变量，这里需要考虑在栈上的变量定义顺序，但是 IDA 有 `s` 到 `rbp` 的距离，取 `70h` 就好。
+一眼 ret2text，写过 [WP](/cnss-2023-recruit-writeups/#pwn-easy%E7%9C%8B%E7%9C%8B%E4%BD%A0%E7%9A%84backd00r)，首先还是能看到 `win()` 函数是能 getshell 的。看一下位置，考虑堆栈平衡直接跳到给 `system()` 函数赋值的地址。然后看一下主函数逻辑，是 `gets` 的栈溢出，但是 `s` 后面多开了两个 `int` 变量，这里需要考虑在栈上的变量定义顺序，但是 IDA 有 `s` 到 `rbp` 的距离，取 `70h` 就好。
 
 ![](/images/405/7.png)
 
@@ -298,7 +298,7 @@ Flag 2 去找个 EXIF 信息的 [Extractor](https://exif.tools/) 就好了，在
 
 ### CatMine
 
-首先能看到是 Unity 项目，因为之前做过（倒也不是）一堆游戏 Misc（[東方希缇符](https://herano.github.io/2023/11/20/CNSS-2023-Recruit-Writeups/#misc-%E6%9D%B1%E6%96%B9%E5%B8%8C%E7%BC%87%E7%AC%A6)，[Shino 的心跳大冒险](https://herano.github.io/2022/09/25/CNSS-2022-Recruit-Writeups/#middle-shino-%E7%9A%84%E5%BF%83%E8%B7%B3%E5%A4%A7%E5%86%92%E9%99%A9)），所以路径依赖了（包括密码游戏也是），搜一下[解包](https://github.com/Perfare/AssetStudio)，然后用解包工具看一下。
+首先能看到是 Unity 项目，因为之前做过（倒也不是）一堆游戏 Misc（[東方希缇符](/cnss-2023-recruit-writeups/#misc-%E6%9D%B1%E6%96%B9%E5%B8%8C%E7%BC%87%E7%AC%A6)，[Shino 的心跳大冒险](/cnss-2022-recruit-writeups/#middle-shino-%E7%9A%84%E5%BF%83%E8%B7%B3%E5%A4%A7%E5%86%92%E9%99%A9)），所以路径依赖了（包括密码游戏也是），搜一下[解包](https://github.com/Perfare/AssetStudio)，然后用解包工具看一下。
 
 ![](/images/405/14.png)
 

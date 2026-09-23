@@ -548,7 +548,7 @@ $$
 考虑 Möbius 反演的一个补充结论
 
 $$
-\gcd(i,j)=\sum_{d\mid \gcd(i,j)} \mu(d)
+[\gcd(i,j)=1]=\sum_{d\mid \gcd(i,j)} \mu(d)
 $$
 
 这里考虑 $\mu * 1=\varepsilon$ 可知，详细过程可参考 [莫比乌斯反演 - OI Wiki](https://oi-wiki.org/math/number-theory/mobius/#_6)。代入之
@@ -627,7 +627,7 @@ $S(n)$ 和 $C(n)$ 的求和是 rockdu 证的。
 
 可以在 $\mathcal{O}(\pi(\sqrt n))$ 的复杂度进行质因子分解，众所周知 $\pi(n)\sim \frac{n}{\ln n}$，之后对于这些质因子分别计算，代价为 $\mathcal{O}(\omega(n))$。但当 $n=10^9$ 时，$\max\{\omega(n)\}=9$，因此统计答案时间代价可忽略不计。使用 $\mathcal{O}(\sqrt n)$ 的分解方法是无法通过的，第 4, 5 两组数据都是大质数。
 
-因为整个不除以 $2$ 的部分可能会占用 $64$ 位（因为带符号），因此直接用 `double` 的话将引入精度误差（即使除以 $2$ 是无误差的，但将 `long long` 转成 `double` 的时候精度误差就存在了），可以使用 `long double` 解决，或者写无精度误差的方法（但是要注意 C++ 对于负数除法并非向 $0$ 舍入，需要转为绝对值）。
+因为整个不除以 $2$ 的部分大小可能在 $10^{18}$ 量级，因此直接用 `double` 的话将引入精度误差（即使除以 $2$ 是无误差的，但将 `long long` 转成 `double` 的时候精度误差就存在了），可以使用 `long double` 解决，或者写无精度误差的方法。
 
 The Art of Shaving Logs.
 
@@ -646,7 +646,7 @@ $$
 下面记 $\omega_n$ 为 $n$ 次单位根，我们实际上求的就是
 
 $$
-\sum_{k=1}^nk\cdot \omega_{n}^k
+F(n)=\sum_{k=1}^nk\cdot \omega_{n}^k
 $$
 
 的实部。
@@ -655,15 +655,15 @@ $$
 
 $$
 \begin{align}
-C(n)&=1\cdot\omega_{n}^1+2\cdot\omega_{n}^2+\ldots+n\cdot \omega_{n}^n\\
-\omega_{n}C(n)&=1\cdot \omega_{n}^2+2\cdot \omega_n^3+\ldots+(n-1)\cdot \omega_{n}^n+n\cdot \omega_{n}^{n+1}
+F(n)&=1\cdot\omega_{n}^1+2\cdot\omega_{n}^2+\ldots+n\cdot \omega_{n}^n\\
+\omega_{n}F(n)&=1\cdot \omega_{n}^2+2\cdot \omega_n^3+\ldots+(n-1)\cdot \omega_{n}^n+n\cdot \omega_{n}^{n+1}
 \end{align}
 $$
 
 上下两式作差
 
 $$
-(1-\omega_n)C(n)=\omega_n^1+\omega_n^2+\ldots+\omega_n^n-n\cdot \omega_n^{n+1}
+(1-\omega_n)F(n)=\omega_n^1+\omega_n^2+\ldots+\omega_n^n-n\cdot \omega_n^{n+1}
 $$
 
 实际上前面的求和部分是一个 $1$ 到 $n$ 次单位根求和，当 $n>1$ 时，有
@@ -677,12 +677,12 @@ $$
 那么
 
 $$
-(1-\omega_n)C(n)=-n\cdot \omega_n^{n+1}=-n\cdot \omega_n
+(1-\omega_n)F(n)=-n\cdot \omega_n^{n+1}=-n\cdot \omega_n
 $$
 
-请注意，$\omega_1=1$，当 $n=1$ 时 $C(n)$ 前的系数为 $0$，不能简单相除。可以直接计算 $n=1$ 时的结果为 $C(1)=1$。
+请注意，$\omega_1=1$，当 $n=1$ 时 $C(n)$ 前的系数为 $0$，不能简单相除。可以直接计算 $n=1$ 时的结果为 $F(1)=1$。
 
-当 $n>1$ 时，$C(n)=-n\frac{\omega_n}{1-\omega_n}$。再次根据复分析知识，$\text{Re}(\frac{\omega_n}{1-\omega_n})=-\frac{1}{2}$，则 $C(n)=\frac{n}{2}$。请注意 $C(n)$ 是一个实数，因此对于单位根的计算我们取实部。
+当 $n>1$ 时，$F(n)=-n\frac{\omega_n}{1-\omega_n}$。再次根据复分析知识，$\text{Re}(\frac{\omega_n}{1-\omega_n})=-\frac{1}{2}$，则 $C(n)=\frac{n}{2}$。请注意 $C(n)$ 是一个实数，因此对于单位根的计算我们取实部。
 
 由此，$C(n)$ 已被证明。
 
